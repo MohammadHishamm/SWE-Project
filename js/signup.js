@@ -16,10 +16,21 @@
       next_fs = $(this).parent().next();
 
       //activate next step on progressbar using the index of next_fs
-      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
+      if ($("#cvcheck").is(":checked")) {
+        $("#progressbar li")
+          .eq($("fieldset").index(next_fs))
+          .addClass("active");
+        next_fs.show();
+      } else {
+        $("#progressbar li")
+          .eq($("fieldset").index(current_fs.next().next()))
+          .addClass("active");
+        current_fs.next().next().show();
+        current_fs.next().next().next().show();
+      }
       //show the next fieldset
-      next_fs.show();
+
       //hide the current fieldset with style
       current_fs.animate(
         {

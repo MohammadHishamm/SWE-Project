@@ -3,7 +3,7 @@
 /*Color Variables*/
 @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
 .multi_step_form {
-  background: #f6f9fb;
+  background: #ebeff4;
   display: block;
   overflow: hidden;
 }
@@ -11,8 +11,8 @@
   text-align: center;
   position: relative;
   padding-top: 50px;
-  min-height: 820px;
-  max-width: 810px;
+  height: 820px;
+  width: 820px;
   margin: 0 auto;
   background: #ffffff;
   z-index: 1;
@@ -313,7 +313,7 @@
   list-style-type: none;
   color: #99a2a8;
   font-size: 9px;
-  width: calc(100% / 3);
+  width: 150px;
   float: left;
   position: relative;
   font: 500 13px/1 "Roboto", sans-serif;
@@ -333,7 +333,7 @@
   display: block;
   background: #eaf0f4;
   border-radius: 50%;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 0px auto;
 }
 .multi_step_form #msform #progressbar li:after {
   content: "";
@@ -400,9 +400,7 @@ form .question input[type="text"] {
   font-weight: light;
   -webkit-font-smoothing: antialiased;
 }
-html {
-  background-color: #ff4a56;
-}
+
 form {
   position: relative;
   display: inline-block;
@@ -515,7 +513,8 @@ form .question input[type="text"]:valid ~ label {
 }
 
 .card {
-  width: 500px;
+  position: fixed;
+  width: 450px;
   height: 1200px;
   border-radius: 30px;
 }
@@ -593,4 +592,41 @@ button:focus {
     border-right: none;
     border-bottom: 1px solid #eeeeee;
   }
+}
+
+p,
+label {
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input {
+  margin: 0.4rem;
+}
+
+label {
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+input[type="file"]::file-selector-button {
+  border-top: #084cdf;
+  border: #0d45a5;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.test {
+  padding: 20px;
+}
+
+#cv {
+  display: none;
 }
