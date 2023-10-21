@@ -78,7 +78,9 @@
         .removeClass("active");
 
       //show the previous fieldset
+
       previous_fs.show();
+
       //hide the current fieldset with style
       current_fs.animate(
         {
