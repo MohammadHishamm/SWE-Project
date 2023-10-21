@@ -3,7 +3,7 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: #fc0000;
+  background: #3268fc;
 }
 .h-custom {
   height: calc(100% - 73px);
