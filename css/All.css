@@ -1,0 +1,74 @@
+/* width */
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track 
+{
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb 
+{
+    background: #0F141A; 
+    border-radius: 10px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover 
+{
+    background: grey; 
+}
+
+body
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.text
+{
+    color: #0F141A;
+}
+
+.card {
+  border-radius: .7rem;
+}
+
+.courses_content_name
+{
+    color: white;
+    font-size: 1.728rem;
+    font-weight: bolder;
+    letter-spacing: 3px;
+}
+.courses_content_title
+{
+    color: #0F141A;
+    font-size: 1.728rem;
+    font-weight: bolder;
+    letter-spacing: 3px;
+}
+.courses_content_teacher
+{
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+.courses_content_information
+{
+    color: #0F141A;
+    font-size: 12px;
+}
+.sidnav_courses_content
+{
+    text-decoration: none;
+    color: #0F141A;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
