@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DISCOVER</title>
+  <title>Arab Data Hub</title>
   <script src="../js/Loaders.js"></script>
   <link rel="stylesheet" href="../css/All.css">
   <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
@@ -13,14 +13,41 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="js/mdb.min.js"></script>
+    <script src="../js/MDB java/mdb.min.js"></script>
 </head>
 
 <body style="background-color: #EBEFF4;">
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
+      lists, etc.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-mdb-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
   <!-- TopNav -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     <div class="container-fluid">
-      <button class="btn btn-link ms-lg-5 ">
+      <button class="btn btn-link ms-lg-5 " data-mdb-toggle="offcanvas" href="#offcanvasExample" role="button"
+      aria-controls="offcanvasExample">
         <i class="fa-solid fa-bars-staggered fa-2xl " style="color: #0f141a; "></i>
       </button>
       <a class="text navbar-brand ps-lg-5 mx-auto" href="#" style=" font-size: 30px; font-weight: bolder;">Arab Data Hub</a>
@@ -55,7 +82,6 @@
     </div>
   </nav>
 
-
   <!-- Loaders -->
   <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 1000; ">
     <div>
@@ -65,6 +91,58 @@
       <h1 class="mt-4">DISCOVER</h1>
     </div>
   </div>
+
+  <!-- Fisrt section -->
+  <!-- <div >
+    <div class="position-absolute" style="margin-top: 100px; margin-left: 50px;" >
+        <span style="font-size: 64px; font-weight:bolder; ">
+          Build your first step
+          <br>
+          of knowledge with
+          <br> 
+          Arab Data Hub
+        </span>
+      
+        
+      
+    </div>
+
+
+    <img src="../Images/bar.png" alt="" srcset="" style="height: 64px; width: 11px;position: absolute; top: 500px; left: 50px;">
+
+
+  </div> -->
+
+  <div style="  position: relative;width: 100%;height: 45rem; background-image: url(../Images/blue\ wave\ back.png);
+    background-size: contain; background-repeat: no-repeat;  margin-top: 100px; padding-left: 60px;" >
+    <span style="font-size: 64px; font-weight:bold; ">
+      Build your first step
+      <br>
+      of knowledge with
+      <br> 
+      Arab Data Hub
+    </span>
+
+    <div style="margin-left: 10px; width: fit-content; height: auto;">
+        <img src="../Images/bar.png" alt="" style="height: 64px;width: 11px; margin-top: 20px;">
+        <span style="margin-left: 10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </span> 
+    </div>
+
+    <div style="margin-top: 70px; margin-left: 40px; width: fit-content; height: fit-content;">
+      <button class="btn p-3 fs-7 rounded-9" style="background-color: #58779D; color: white; letter-spacing: 3px;">
+        Get Started
+      </button>
+      <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
+        <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>
+        Watch Our Courses
+      </button>
+    </div>
+
+  <div style=" position: absolute;width: 685px;right: 70px; height: 524px;  top: 60px; background-image: url(../Images/image.png);
+  background-size: contain; background-repeat: no-repeat;">
+  </div>
+  </div>
+
 
   <!-- Second Section -->
   <div class="container col-xxl-8 px-4 py-5" >
@@ -183,7 +261,6 @@
 
     </div>
   </div>
-
 
   <!-- Testimonials section -->
   <section style="color: #000; background-color: #EBEFF4;">
@@ -306,11 +383,6 @@
       </div>
     </div>
   </section>
-
-
-
- 
-
 </body>
 
 </html>
