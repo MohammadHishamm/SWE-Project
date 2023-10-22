@@ -11,7 +11,7 @@
   text-align: center;
   position: relative;
   padding-top: 50px;
-  height: 820px;
+  height: 850px;
   width: 820px;
   margin: 0 auto;
   background: #ffffff;
@@ -197,7 +197,7 @@
   line-height: 23px;
 }
 .multi_step_form #msform fieldset .code_group {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 .multi_step_form #msform fieldset .code_group .form-control {
   border: 0;
@@ -629,4 +629,8 @@ input[type="file"]::file-selector-button:hover {
 
 #cv {
   display: none;
+}
+.verify {
+  margin-top: -40px;
+  padding-left: 330px;
 }
