@@ -72,3 +72,15 @@ body
     letter-spacing: 2px;
 }
 
+/* Start Video */
+.video {
+    position: relative;
+  }
+ 
+  .video video {
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  /* End Video */
