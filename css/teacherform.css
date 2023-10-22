@@ -11,8 +11,8 @@
   text-align: center;
   position: relative;
   padding-top: 50px;
-  height: 850px;
-  width: 820px;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
   background: #ffffff;
   z-index: 1;
@@ -829,4 +829,71 @@ input[type="radio"] + label {
 .remove-image:active {
   border: 0;
   transition: all 0.2s ease;
+}
+
+.input-plus {
+  display: flex;
+}
+
+.inputs-set {
+  border: none;
+}
+.email-input__w {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.input-field {
+  border: none;
+  border: 1px solid rgb(209, 209, 209);
+  padding: 8px;
+  margin-right: 4px;
+  display: block;
+  width: 210px;
+  padding-left: 300px;
+}
+
+.btn-submit,
+.btn-add-input,
+.btn-del-input {
+  border: none;
+  padding: 8px 12px;
+}
+
+.btn-add-input {
+  background-color: rgb(5, 110, 31);
+  margin-right: 4px;
+}
+.btn-del-input {
+  background-color: rgb(255, 0, 0);
+}
+
+input[type="file"] {
+  width: 300px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #555;
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.cvup {
+  padding-right: 140px;
 }

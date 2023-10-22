@@ -95,14 +95,55 @@
                 </div>
               </div>
             </div>
+            <br />
+            <h5>Qualification:</h5>
+            <textarea name="Qualification" rows="10" cols="50"></textarea>
+            <br />
+            <br />
+            <h5>Subjects you can teach:</h5>
 
+            <div class="inputs-set" id="email-list" class="input-field">
+              <div class="email-input__w">
+                <input
+                  class="input-field"
+                  type="email"
+                  name="email_field"
+                  required
+                />
+                <button
+                  class="btn-add-input"
+                  onclick="addEmailField()"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <br />
+            <h5>Upload your CV here (required):</h5>
+            <br />
+            <div class="cvup">
+              <input type="file" />
+            </div>
+            <br />
+
+            <h5>Additional comment:</h5>
+            <textarea name="Qualification" rows="10" cols="50"></textarea>
+            <br />
+            <br />
+
+            <h6>
+              <input type="checkbox" checked=" " /> I agree to the
+              <a href="#" id="input">terms and conditions</a>
+            </h6>
+            <br />
             <button
               type="button"
               class="btn btn-danger action-button previous previous_button"
             >
               Back
             </button>
-            <a href="#" class="btn btn-primary action-button">Finish</a>
+            <a href="#" class="btn btn-primary action-button">Submit</a>
           </tr>
         </fieldset>
       </form>
