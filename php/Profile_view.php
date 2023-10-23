@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/All.css">
-    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-<script src="js/mdb.min.js"></script>
-</head>
+<?php include "Header.php" ?>
 <body style="background-color: #CED8E3;"> 
+
+<?php include "Topnav.php" ?>
     <section >
-        <div class=" container-fluid py-5 h-100">
+        <div class=" container-fluid  h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="card">
+              <div>
                 <!-- Profile Image section -->
                 <div class=" text-white d-flex flex-row" style="background-color: #000; height:200px;">
                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
@@ -26,7 +21,7 @@
                   </div>
                 </div>
                 <!-- Profile Information section -->
-                <div class="card-body p-4 text-black">
+                <div class="card-body p-4 text-black" style="background-color: white;">
                   <div class="mb-5 pt-3">
                     <p class="lead fw-normal mb-1">About</p>
                     <div class="p-4">
