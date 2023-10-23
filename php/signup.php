@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +38,7 @@
     <!-- partial:index.partial.html -->
     <!-- Multi step form -->
     <section class="multi_step_form">
-      <form id="msform">
+      <form action="" method="post" id="msform" >
         <!-- Tittle -->
         <div class="tittle">
           <h2>Registration Process</h2>
@@ -55,27 +57,27 @@
         <!-- fieldsets -->
         <fieldset>
           <div class="question">
-            <input type="text" required />
+            <input type="text" required  name="FName"/>
             <label>First Name</label>
           </div>
           <div class="question">
-            <input type="text" required />
+            <input type="text" required name="LName" />
             <label>Last Name</label>
           </div>
           <div class="question">
-            <input type="text" required />
+            <input type="text" required name="Age" />
             <label>Age</label>
           </div>
           <div class="question">
-            <input type="text" required />
+            <input type="text" required  name="Email"/>
             <label>Email Address</label>
           </div>
           <div class="question">
-            <input type="password" required />
+            <input type="password" required  name="Password"/>
             <label> Password</label>
           </div>
           <div class="question">
-            <input type="password" required />
+            <input type="password" required name="confirmpass" />
             <label>Confirm password</label>
           </div>
 
@@ -107,6 +109,7 @@
                 type="text"
                 class="form-control"
                 placeholder="1123456789"
+                name="Phone"
               />
             </div>
           </div>
@@ -201,7 +204,7 @@
                             minlength="19"
                             maxlength="19"
                           />
-                          <p class="mb-0 ml-3">/</p>
+                          <p class="mb-0 ml-3"></p>
                           <img
                             class="image ml-1"
                             src="https://i.imgur.com/WIAP9Ku.jpg"
@@ -244,7 +247,8 @@
           >
             Back
           </button>
-          <a href="Home.php" class="btn btn-primary action-button">Finish</a>
+          <a href="Home.php"> <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit"> </a>
+     
         </fieldset>
       </form>
     </section>
@@ -259,3 +263,51 @@
     <script src="../js/signup.js"></script>
   </body>
 </html>
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$DB = "SWE";
+
+$conn = mysqli_connect($servername,$username,$password,$DB);
+
+
+if(!$conn){
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){ 
+	$Fname=htmlspecialchars($_POST["FName"]);
+	$Lname=htmlspecialchars($_POST["LName"]);
+	$Email=htmlspecialchars($_POST["Email"]);
+	$Password=htmlspecialchars($_POST["Password"]);
+	$Phone=htmlspecialchars($_POST["Phone"]);
+  $Age=htmlspecialchars($_POST["Age"]);
+  
+	$sql="insert into users(FirstName,LastName,Email,Password,Phonenumber,Age) 
+	values('$Fname','$Lname','$Email','$Password','$Phone','$Age')";
+	$result=mysqli_query($conn,$sql);
+
+  
+	if($result)	{
+		//done popup
+	}
+  else{
+   //error popup 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+?>
