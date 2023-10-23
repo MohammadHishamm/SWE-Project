@@ -1,5 +1,73 @@
+
+<?php
+
+$cvErr = $agreeErr = $subErr = $subErr = $qualErr = $imageErr = $passErr = $emailErr = $genderErr = $websiteErr = "";
+$agree = $cv = $sub = $qual = $image = $pass = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+ }else {
+    $gender = test_input($_POST["gender"]);
+ }
+ if (empty($_POST["image"])) {
+  $imageErr = "Image is required";
+}else {
+  $image = test_input($_POST["image"]);
+}
+
+if (empty($_POST["sub_field"])) {
+  $subErr = "Required";
+}else {
+  $sub = test_input($_POST["sub_field"]);
+}
+if (empty($_POST["cv"])) {
+  $cvErr = "Required";
+}else {
+  $cv = test_input($_POST["cv"]);
+}
+if (empty($_POST["agree"])) {
+  $agreeErr = "Required";
+}else {
+  $agree = test_input($_POST["agree"]);
+}
+   
+   if (empty($_POST["email"])) {
+      $emailErr = "Email is required";
+   }else {
+      $email = test_input($_POST["email"]);
+      
+      // check if e-mail address is well-formed
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+         $emailErr = "Invalid email format"; 
+      }
+   }
+}
+
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+<style>  
+.error {color: #FF0001;text-align:left;padding-right:300px;width:300px}  
+.qual {margin-left:5px;width:300px}
+</style>
   <head>
     <meta charset="UTF-8" />
     <title>Teacher form</title>
@@ -40,7 +108,8 @@
     <!-- partial:index.partial.html -->
     <!-- Multi step form -->
     <section class="multi_step_form">
-      <form id="msform">
+      <form id="msform" method="post" action="<?php 
+         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <!-- Tittle -->
         <div class="tittle">
           <h2>Become a teacher with us!</h2>
@@ -53,11 +122,14 @@
         <fieldset>
           <h5>Choose your gender:</h5>
           <div class="container">
-            <input type="radio" id="male" checked="checked" name="radio" />
+            <input type="radio" id="male"  name="gender" />
             <label for="male">Male</label>
-            <input type="radio" id="female" name="radio" />
+            <input type="radio" id="female" name="gender" />
             <label for="female">Female</label>
+            <br/>
+            
           </div>
+          <span class = "error"><?php echo $genderErr;?></span>
           <tr>
             <br />
             <h5>Recently image:</h5>
@@ -66,6 +138,7 @@
               <div class="image-upload-wrap">
                 <input
                   class="file-upload-input"
+                  name="image"
                   type="file"
                   onchange="readURL(this);"
                   accept="image/*"
@@ -90,25 +163,31 @@
                     onclick="removeUpload()"
                     class="remove-image"
                   >
-                    Remove <span class="image-title">Uploaded Image</span>
+                    Remove 
                   </button>
                 </div>
               </div>
             </div>
             <br />
+            <span class = "error"><?php echo $imageErr;?></span>
             <h5>Qualification:</h5>
+            
             <textarea name="Qualification" rows="10" cols="50"></textarea>
-            <br />
-            <br />
+            
+            <br>
+            <div class="qual">
+            <span class = "error"><?php echo $qualErr;?></span>
+            </div>
+            
             <h5>Subjects you can teach:</h5>
 
             <div class="inputs-set" id="email-list" class="input-field">
               <div class="email-input__w">
                 <input
                   class="input-field"
-                  type="email"
-                  name="email_field"
-                  required
+                  type="text"
+                  name="sub_field"
+                  
                 />
                 <button
                   class="btn-add-input"
@@ -119,23 +198,32 @@
                 </button>
               </div>
             </div>
+            <div class="qual">
+            <span class = "error"><?php echo $subErr;?></span>
+            </div>
             <br />
             <h5>Upload your CV here (required):</h5>
             <br />
             <div class="cvup">
-              <input type="file" />
+              <input type="file" name="cv" />
             </div>
             <br />
-
+            <div class="qual">
+            <span class = "error"><?php echo $cvErr;?></span>
+            </div>
             <h5>Additional comment:</h5>
             <textarea name="Qualification" rows="10" cols="50"></textarea>
             <br />
             <br />
 
             <h6>
-              <input type="checkbox" checked=" " /> I agree to the
+              <input name="agree" type="checkbox" checked=" " /> I agree to the
               <a href="#" id="input">terms and conditions</a>
+              <div class="qual">
+            <span class = "error"><?php echo $agreeErr;?></span>
+            </div>
             </h6>
+            
             <br />
             <button
               type="button"
@@ -143,7 +231,7 @@
             >
               Back
             </button>
-            <a href="#" class="btn btn-primary action-button">Submit</a>
+            <input type="submit" name="submit" href="#" class="btn btn-primary action-button"></input>
           </tr>
         </fieldset>
       </form>
