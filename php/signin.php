@@ -44,6 +44,7 @@
           $_SESSION["FName"]=$row["FirstName"];
           $_SESSION["LName"]=$row["LastName"];
           $_SESSION["Email"]=$row["Email"];
+          $_SESSION["Phone"]=$row["Phonenumber"];
           $_SESSION["Password"]=$row["Password"];
           $_SESSION["Age"]=$row["Age"];
           header("Location:Home.php?login=success");

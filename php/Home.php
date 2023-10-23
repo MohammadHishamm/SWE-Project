@@ -115,7 +115,56 @@
       <!-- section products -->
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col mb-3">
-          <div class="card" style="width: 450px;">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/111.webp" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  <div class="col-7 d-flex justify-content-start align-items-center">
+                    <img src="../Images/avatar-2.webp"
+                      alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                      style="width: 40px;">
+                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                  </div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
@@ -164,8 +213,10 @@
           </div>
         </div>
 
+        
+
         <div class="col mb-3">
-          <div class="card" style="width: 450px;">
+          <div class="card" style="width: 300px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
             <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
@@ -215,7 +266,7 @@
         </div>
 
         <div class="col mb-3">
-          <div class="card" style="width: 450px;">
+          <div class="card" style="width: 300px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
@@ -303,45 +354,52 @@
     </div>
 
     <div class="d-flex flex-wrap flex-sm-nowrap ">
-     <a href="categories.php">  
+     
         <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
         <img src="../Images/web_design back image.png" class="w-100 h-100" />
         <div class="mask text-light d-flex justify-content-center  flex-column text-center"
           style="background-color: rgba(0, 0, 0, 0.5) ">
+          <a href="categories.php" style="color:white;">  
           <h4>Web Design</h4>
           <p class="m-0">100 Courses</p>
+          </a>
         </div>
-      </div> 
-    </a>
-    
-    <a href="categories.php"> 
-      <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
-        <img src="../Images/devolopment back image.png" class="w-100 h-100" />
-        <div class="mask text-light d-flex justify-content-center flex-column text-center"
+        </div> 
+
+        <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
+        <img src="../Images/web_design back image.png" class="w-100 h-100" />
+        <div class="mask text-light d-flex justify-content-center  flex-column text-center"
           style="background-color: rgba(0, 0, 0, 0.5) ">
-          <h4>Devolopment</h4>
+          <a href="categories.php" style="color:white;">  
+          <h4>Web Design</h4>
           <p class="m-0">100 Courses</p>
+          </a>
         </div>
-      </div>
-      </a>
+        </div> 
 
-      <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
-        <img src="../Images/marketing back image.png" class="w-100 h-100" />
-        <div class="mask text-light d-flex justify-content-center flex-column text-center"
+        <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
+        <img src="../Images/web_design back image.png" class="w-100 h-100" />
+        <div class="mask text-light d-flex justify-content-center  flex-column text-center"
           style="background-color: rgba(0, 0, 0, 0.5) ">
-          <h4>Martketing</h4>
-          <p class="m-0">200 Courses</p>
+          <a href="categories.php" style="color:white;">  
+          <h4>Web Design</h4>
+          <p class="m-0">100 Courses</p>
+          </a>
         </div>
-      </div>
+        </div> 
 
-      <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
-        <img src="../Images/Ceo back image.png" class="w-100 h-100" />
-        <div class="mask text-light d-flex justify-content-center flex-column text-center"
+        <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
+        <img src="../Images/web_design back image.png" class="w-100 h-100" />
+        <div class="mask text-light d-flex justify-content-center  flex-column text-center"
           style="background-color: rgba(0, 0, 0, 0.5) ">
-          <h4>Ceo</h4>
-          <p class="m-0">500 Courses</p>
+          <a href="categories.php" style="color:white;">  
+          <h4>Web Design</h4>
+          <p class="m-0">100 Courses</p>
+          </a>
         </div>
-      </div>
+        </div> 
+    
+
 
 
     </div>

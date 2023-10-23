@@ -1,3 +1,34 @@
+<?php
+          session_start();
+         include "dbh.inc.php";
+      
+         if($_SERVER['REQUEST_METHOD']== "POST"){ //check if form was submitted
+          $Fname=$_POST["FName"];
+          $Lname=$_POST["LName"];
+          $Email=$_POST["Email"];
+          $Password=$_POST["Password"];
+          $Phone=$_POST["Phone"];
+        
+          $sql="update  users set FirstName='$Fname', LastName='$Lname', Email='$Email', Password='$Password',Phonenumber='$Phone' 
+          where ID =".$_SESSION['ID'];
+        
+          $result=mysqli_query($conn,$sql);
+          if($result)	{
+            $_SESSION["FName"]=$Fname;
+            $_SESSION["LName"]=$Lname;
+            $_SESSION["Email"]=$Email;
+            $_SESSION["Password"]=$Password;
+            $_SESSION["Phone"]=$Phone;
+            header("Location:Home.php");
+          }
+          else {
+        //error popup
+          }
+
+        }
+
+      ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +44,7 @@
     <link rel="stylesheet" href="../css/edit-page.css" />
   </head>
   <body style="background-color: #ebeff4">
+  <form action="" method="post">
     <div class="wrapper bg-white mt-sm-5">
       <h4 class="pb-4 border-bottom">Account settings</h4>
       <div class="d-flex align-items-start py-3 border-bottom">
@@ -37,15 +69,17 @@
             <input
               type="text"
               class="bg-light form-control"
-              placeholder="Steve"
+              name="FName"
+              placeholder="<?php echo $_SESSION["FName"] ; ?>"
             />
           </div>
           <div class="col-md-6 pt-md-0 pt-3">
-            <label for="lastname">Last Name</label>
+            <label for "lastname">Last Name</label>
             <input
               type="text"
               class="bg-light form-control"
-              placeholder="Smith"
+              name="LName"
+              placeholder="<?php echo $_SESSION["LName"] ; ?>"
             />
           </div>
         </div>
@@ -55,7 +89,8 @@
             <input
               type="text"
               class="bg-light form-control"
-              placeholder="steve_@email.com"
+              name="Email"
+              placeholder="<?php echo $_SESSION["Email"] ; ?>"
             />
           </div>
           <div class="col-md-6 pt-md-0 pt-3">
@@ -63,24 +98,35 @@
             <input
               type="tel"
               class="bg-light form-control"
-              placeholder="+1 213-548-6015"
+              name="Phone"
+              placeholder="<?php echo $_SESSION["Phone"] ; ?>"
             />
           </div>
         </div>
         <div class="row py-2">
-          <div class="col-md-6">
-            <label for="country">Country</label>
-            <select name="country" id="country" class="bg-light">
-              <option value="india">India</option>
-              <option value="usa" selected>USA</option>
-              <option value="uk">UK</option>
-              <option value="uae">UAE</option>
-            </select>
+          <div class="col-md-6 pt-md-0 pt-3">
+            <label for="newpassword">New Password</label>
+            <input
+              type="password"
+              class="bg-light form-control"
+              name="Password"
+              placeholder="New Password"
+            />
+          </div>
+          <div class="col-md-6 pt-md-0 pt-3">
+            <label for="confirmpassword">Confirm Password</label>
+            <input
+              type="password"
+              class="bg-light form-control"
+              name="ConfirmPassword"
+              placeholder="Confirm Password"
+            />
           </div>
         </div>
         <div class="py-3 pb-4 border-bottom">
-          <button class="btn btn-primary mr-3">Save Changes</button>
-          <button class="btn border button">Cancel</button>
+        
+          <input type="submit" class="btn btn-primary mr-3:" value="Save Changes" name="Submit">
+          <input type="reset" class="btn border button" value="Reset"></input>
         </div>
         <div class="d-sm-flex align-items-center pt-3" id="deactivate">
           <div>
@@ -93,5 +139,6 @@
         </div>
       </div>
     </div>
-  </body>
+  </form>
+</body>
 </html>

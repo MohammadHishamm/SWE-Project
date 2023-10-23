@@ -8,14 +8,14 @@
 <body style="background-color: #CED8E3;"> 
 
 <?php include "Topnav.php" ?>
-    <section >
-        <div class=" container-fluid  h-100  mb-11">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-              <div>
+    <section>
+        <div >
+          <div class=" d-flex justify-content-center align-items-center ">
+              <div class="col-12">
                 <!-- Profile Image section -->
                 <div class=" text-white d-flex flex-row" style="background-color: #000; height:200px;">
                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                    <img src="../Images/web_design back image.png"
                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                       style="width: 150px; z-index: 1">
                   </div>
@@ -38,31 +38,213 @@
                     <p class="lead fw-normal mb-0">Recent Courses</p>
                     <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
                   </div>
-                  <div class="row g-2">
-                    <div class="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                        alt="image 1" class="w-100 rounded-3">
-                    </div>
-                    <div class="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                        alt="image 1" class="w-100 rounded-3">
-                    </div>
+                  <div class="row d-flex justify-content-center align-items-center">
+                  <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/111.webp" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  <div class="col-7 d-flex justify-content-start align-items-center">
+                    <img src="../Images/avatar-2.webp"
+                      alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                      style="width: 40px;">
+                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
                   </div>
-                  <div class="row g-2">
-                    <div class="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                        alt="image 1" class="w-100 rounded-3">
-                    </div>
-                    <div class="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                        alt="image 1" class="w-100 rounded-3">
-                    </div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </section>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/111.webp" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  <div class="col-7 d-flex justify-content-start align-items-center">
+                    <img src="../Images/avatar-2.webp"
+                      alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                      style="width: 40px;">
+                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                  </div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src="../Images/111.webp" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  <div class="col-7 d-flex justify-content-start align-items-center">
+                    <img src="../Images/avatar-2.webp"
+                      alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                      style="width: 40px;">
+                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                  </div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/111.webp" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  <div class="col-7 d-flex justify-content-start align-items-center">
+                    <img src="../Images/avatar-2.webp"
+                      alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                      style="width: 40px;">
+                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                  </div>
+                  <div class="col-5 d-flex justify-content-end align-items-center">
+                    <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                      <li>
+                        <i class="fas fa-star fa-xs"></i>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
       <?php include "Bottomnav.php" ?>
 </body>
 </html>
