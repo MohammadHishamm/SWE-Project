@@ -17,6 +17,8 @@
 </head>
 
 <body style="background-color: #EBEFF4;">
+
+    <?php include "Topnav.php" ?>
     <!-- Course Image section -->
     <div class="p-5 "
         style="background-image: url(../Images/Ceo\ back\ image.png); background-repeat: no-repeat ; background-size: cover; width: 100%; height: 330px;">
@@ -31,10 +33,9 @@
     </div>
 
     <!-- Course Introduction section -->
-    <div class="container-fluid">
+    <div class="container-fluid mb-11">
         <div class="row">
-
-            <div class="col-9 ms-5 mt-5" style="background-color: #EBEFF4;  height: 500px;">
+            <div class="col-9 ms-5 mt-5" style=" ">
                 <div>
                     <span class="courses_content_title">
                         Introduction
@@ -56,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="row ms-5 mt-5">
+                <div class="d-flex flex-wrap ms-5 mt-5">
                     <div class="col-lg-3 col-12 mb-4 me-4">
                         <!-- Card -->
                         <div class="card">
@@ -203,10 +204,10 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
     </div>
+
+    <?php include "Bottomnav.php" ?>
 </body>
 
 </html>
