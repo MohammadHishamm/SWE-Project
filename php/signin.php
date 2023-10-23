@@ -1,5 +1,40 @@
+<?php
+         // define variables and set to empty values
+         $passErr = $emailErr = $genderErr = $websiteErr = "";
+         $pass = $email = $gender = $comment = $website = "";
+         
+         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["password"])) {
+               $passErr = "Password is required";
+            }else {
+               $pass = test_input($_POST["password"]);
+            }
+            
+            if (empty($_POST["email"])) {
+               $emailErr = "Email is required";
+            }else {
+               $email = test_input($_POST["email"]);
+               
+               // check if e-mail address is well-formed
+               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                  $emailErr = "Invalid email format"; 
+               }
+            }
+         }
+         
+         function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+         }
+      ?>
+
 <!DOCTYPE html>
 <html lang="en">
+<style>  
+.error {color: #FF0001;}  
+</style>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,7 +65,8 @@
             />
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form>
+            <form method="post"action = "<?php 
+         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
               <div
                 class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
               >
@@ -45,24 +81,24 @@
               <div class="form-outline mb-4">
                 <input
                   type="email"
+                  name="email"
                   id="form3Example3"
                   class="form-control form-control-lg"
                   placeholder="Enter a valid email address"
-                />
-                <label class="form-label" for="form3Example3"
-                  >Email address</label
-                >
+                />  
+                <span class="error"><?php echo $emailErr; ?> </span>  
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-3">
                 <input
                   type="password"
+                  name="password"
                   id="form3Example4"
                   class="form-control form-control-lg"
                   placeholder="Enter password"
                 />
-                <label class="form-label" for="form3Example4">Password</label>
+                <span class="error"><?php echo $passErr; ?> </span> 
               </div>
 
               <div class="d-flex justify-content-between align-items-center">
@@ -82,13 +118,16 @@
               </div>
 
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button
-                  type="button"
+                <input
+                  type="submit"
+                  name="submit"
+                  value="submit"
                   class="btn btn-primary btn-lg"
                   style="padding-left: 2.5rem; padding-right: 2.5rem"
+                  
                 >
-                  Login
-                </button>
+                  
+        </input>
                 <p class="small fw-bold mt-2 pt-1 mb-0">
                   Don't have an account?
                   <a href="signup.php" class="link-danger">Register</a>
@@ -99,5 +138,6 @@
         </div>
       </div>
     </section>
+    
   </body>
 </html>
