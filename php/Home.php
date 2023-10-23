@@ -184,7 +184,7 @@
         <div class="col mb-3">
           <div class="card" style="width: 450px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
+              <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -193,7 +193,7 @@
               <div class="card-title">
                 <div class="row mb-3">
                   <div class="col-7 d-flex justify-content-start align-items-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
+                    <img src="../Images/avatar-2.webp"
                       alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
                       style="width: 40px;">
                     <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
@@ -234,7 +234,7 @@
         <div class="col mb-3">
           <div class="card" style="width: 450px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
+            <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -243,7 +243,7 @@
               <div class="card-title">
                 <div class="row mb-3">
                   <div class="col-7 d-flex justify-content-start align-items-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
+                    <img src="../Images/avatar-2.webp"
                       alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
                       style="width: 40px;">
                     <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
@@ -284,7 +284,7 @@
         <div class="col mb-3">
           <div class="card" style="width: 450px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
+              <img src="../Images/111.webp" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -293,7 +293,7 @@
               <div class="card-title">
                 <div class="row mb-3">
                   <div class="col-7 d-flex justify-content-start align-items-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
+                    <img src="../Images/avatar-2.webp"
                       alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
                       style="width: 40px;">
                     <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
