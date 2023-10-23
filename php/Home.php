@@ -2,7 +2,10 @@
 <html lang="en">
 
 <?php include "Header.php" ?>
-
+<head>
+        <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+        <script src="../js/MDB java/mdb.min.js"></script>
+</head>
 <body style="background-color: #EBEFF4;">
   <!-- Loaders -->
   <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
