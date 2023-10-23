@@ -1,4 +1,43 @@
 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$DB = "SWE";
+
+$conn = mysqli_connect($servername,$username,$password,$DB);
+
+
+if(!$conn){
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){ 
+	$Fname=htmlspecialchars($_POST["FName"]);
+	$Lname=htmlspecialchars($_POST["LName"]);
+	$Email=htmlspecialchars($_POST["Email"]);
+	$Password=htmlspecialchars($_POST["Password"]);
+	$Phone=htmlspecialchars($_POST["Phone"]);
+  $Age=htmlspecialchars($_POST["Age"]);
+  
+	$sql="insert into users(FirstName,LastName,Email,Password,Phonenumber,Age) 
+	values('$Fname','$Lname','$Email','$Password','$Phone','$Age')";
+	$result=mysqli_query($conn,$sql);
+
+  
+	if($result)	{
+		//done popup
+    header("Location: Home.php");
+	}
+  else{
+   //error popup 
+  }
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +286,7 @@
           >
             Back
           </button>
-          <a href="Home.php"> <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit"> </a>
+          <a > <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit"> </a>
      
         </fieldset>
       </form>
@@ -264,50 +303,3 @@
   </body>
 </html>
 
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$DB = "SWE";
-
-$conn = mysqli_connect($servername,$username,$password,$DB);
-
-
-if(!$conn){
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-
-if($_SERVER["REQUEST_METHOD"]=="POST"){ 
-	$Fname=htmlspecialchars($_POST["FName"]);
-	$Lname=htmlspecialchars($_POST["LName"]);
-	$Email=htmlspecialchars($_POST["Email"]);
-	$Password=htmlspecialchars($_POST["Password"]);
-	$Phone=htmlspecialchars($_POST["Phone"]);
-  $Age=htmlspecialchars($_POST["Age"]);
-  
-	$sql="insert into users(FirstName,LastName,Email,Password,Phonenumber,Age) 
-	values('$Fname','$Lname','$Email','$Password','$Phone','$Age')";
-	$result=mysqli_query($conn,$sql);
-
-  
-	if($result)	{
-		//done popup
-	}
-  else{
-   //error popup 
-  }
-}
-
-
-
-
-
-
-
-
-
-
-?>
