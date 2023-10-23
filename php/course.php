@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php include "Header.php" ?>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DISCOVER</title>
-    <script src="java.js"></script>
-    <link rel="stylesheet" href="../css/All.css">
-    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <script src="js/mdb.min.js"></script>
+        <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+        <script src="../js/MDB java/mdb.min.js"></script>
 </head>
-
 <body style="background-color: #EBEFF4;">
 
     <?php include "Topnav.php" ?>

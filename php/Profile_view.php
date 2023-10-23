@@ -9,7 +9,7 @@
 
 <?php include "Topnav.php" ?>
     <section >
-        <div class=" container-fluid  h-100">
+        <div class=" container-fluid  h-100  mb-11">
           <div class="row d-flex justify-content-center align-items-center h-100">
               <div>
                 <!-- Profile Image section -->
