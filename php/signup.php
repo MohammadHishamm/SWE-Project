@@ -244,7 +244,7 @@
           >
             Back
           </button>
-          <a href="Home.html" class="btn btn-primary action-button">Finish</a>
+          <a href="Home.php" class="btn btn-primary action-button">Finish</a>
         </fieldset>
       </form>
     </section>

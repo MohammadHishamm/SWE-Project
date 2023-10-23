@@ -73,14 +73,17 @@
       <div class="mx-auto " >
         <div class="row">
           <div class="col">
-            <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
+           <a href="signin.php">  <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
               Login
             </button>
+          </a>
           </div>
           <div class="col">
+          <a href="signup.php">
             <button class="btn" style="background-color: #58779D; color: white;">
               SignUp
             </button>
+          </a>
           </div>
         </div>
       </div>
@@ -370,15 +373,18 @@
     </div>
 
     <div class="d-flex flex-wrap flex-sm-nowrap ">
-      <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
+     <a href="categories.php">  
+        <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
         <img src="../Images/web_design back image.png" class="w-100 h-100" />
         <div class="mask text-light d-flex justify-content-center  flex-column text-center"
           style="background-color: rgba(0, 0, 0, 0.5) ">
           <h4>Web Design</h4>
           <p class="m-0">100 Courses</p>
         </div>
-      </div>
-
+      </div> 
+    </a>
+    
+    <a href="categories.php"> 
       <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
         <img src="../Images/devolopment back image.png" class="w-100 h-100" />
         <div class="mask text-light d-flex justify-content-center flex-column text-center"
@@ -387,6 +393,7 @@
           <p class="m-0">100 Courses</p>
         </div>
       </div>
+      </a>
 
       <div class="bg-image  me-3 mb-3 ripple" style="width: 400; height: 250;">
         <img src="../Images/marketing back image.png" class="w-100 h-100" />
