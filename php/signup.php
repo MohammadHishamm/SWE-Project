@@ -2,6 +2,8 @@
 <?php
 include "dbh.inc.php";
 
+$ageErr = $nameErr = $passErr = $emailErr = $genderErr = $websiteErr = "";
+$age = $name = $pass = $email = $gender = $comment = $website = "";
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){ 
 	$Fname=htmlspecialchars($_POST["FName"]);
@@ -23,7 +25,86 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   else{
    //error popup 
   }
+  //****************************Validation************************/
+  if (empty($_POST["FName"])) {
+
+    $nameErr = "Please enter a valid name";
+
+} else {
+
+    $name = test_input($_POST["FName"]);
+
+    // check if name only contains letters and whitespace
+
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+
+    $nameErr = "Only letters and white space allowed";
+
+    }
+
 }
+if (empty($_POST["LName"])) {
+
+  $nameErr = "Please enter a valid name";
+
+} else {
+
+  $name = test_input($_POST["LName"]);
+
+  // check if name only contains letters and whitespace
+
+  if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+
+  $nameErr = "Only letters and white space allowed";
+
+  }
+
+}
+if (empty($_POST["Age"])) {
+
+  $ageErr = "Please enter a valid name";
+
+} else {
+
+  $age = test_input($_POST["Age"]);
+}
+
+
+if (empty($_POST["Email"])) {
+
+    $emailErr = "valid Email address";
+
+} else {
+
+    $email = test_input($_POST["Email"]);
+
+    // check if e-mail address is well-formed
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+    $emailErr = "The email address is incorrect";
+
+    }
+
+}  
+
+}
+
+function test_input($data) {
+
+$data = trim($data);
+
+$data = stripslashes($data);
+
+$data = htmlspecialchars($data);
+
+return $data;
+
+}
+
+
+
+
 
 
 ?>
@@ -62,11 +143,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       crossorigin="anonymous"
     />
   </head>
+  <style>
+    .multi_step_form #msform {
+  text-align: center;
+  position: relative;
+  padding-top: 50px;
+  height: 910px;
+  width: 820px;
+  margin: 0 auto;
+  background: #ffffff;
+  z-index: 1;
+}
+    </style>
   <body>
     <!-- partial:index.partial.html -->
     <!-- Multi step form -->
     <section class="multi_step_form">
-      <form action="" method="post" id="msform" >
+      <form  method="post" id="msform" action="<?php 
+         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
         <!-- Tittle -->
         <div class="tittle">
           <h2>Registration Process</h2>
@@ -84,25 +178,31 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         </ul>
         <!-- fieldsets -->
         <fieldset>
+          
           <div class="question">
             <input type="text" required  name="FName"/>
             <label>First Name</label>
+            <span class="error"><?php echo $nameErr; ?> </span>  
           </div>
           <div class="question">
             <input type="text" required name="LName" />
             <label>Last Name</label>
+            <span class="error"><?php echo $nameErr; ?> </span>
           </div>
           <div class="question">
             <input type="text" required name="Age" />
             <label>Age</label>
+            <span class="error"><?php echo $ageErr; ?> </span> 
           </div>
           <div class="question">
             <input type="text" required  name="Email"/>
             <label>Email Address</label>
+            <span class="error"><?php echo $emailErr; ?> </span>  
           </div>
           <div class="question">
             <input type="password" required  name="Password"/>
             <label> Password</label>
+            <span class="error"><?php echo $passErr; ?> </span>
           </div>
           <div class="question">
             <input type="password" required name="confirmpass" />
@@ -115,9 +215,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           >
             Back
           </button>
-          <button type="button" class="btn btn-primary next action-button">
-            Continue
-          </button>
+          <input type="submit" class="btn btn-primary next action-button">
+            
+</input>
+
         </fieldset>
 
         <fieldset>
