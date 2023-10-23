@@ -1,7 +1,3 @@
-a {
-  text-decoration: none;
-}
-
 #sidebar .h6 {
   color: #fff;
 }
@@ -95,12 +91,4 @@ a {
 #sidebar .custom-menu .btn.btn-primary:focus {
   background: transparent !important;
   border-color: transparent !important;
-}
-body {
-  font-family: "Poppins", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.8;
-  font-weight: normal;
-  background: #fff;
-  color: gray;
 }

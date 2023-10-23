@@ -2,23 +2,10 @@
 <html lang="en">
   <?php include "Header.php" ?>
   <head>
-          <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="../css/profile.css" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
-          rel="stylesheet"
-        />
-
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-  </head>
+        <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+        <script src="../js/MDB java/mdb.min.js"></script>
+        <link rel="stylesheet" href="../css/profile.css">
+</head>
   <body style="background-color: #ebeff4">
 
     <?php include "Topnav.php" ?>
@@ -31,12 +18,12 @@
                 <div class="d-flex flex-column align-items-center text-center">
                   <img
                     src="img1.jpg"
-                    alt="Admin"
+                    alt="img"
                     class="rounded-circle"
                     width="150"
                   />
                   <div class="mt-3">
-                    <h4>John Doe</h4>
+                  <h4><?php echo $_SESSION["FName"] . ' ' . $_SESSION["LName"]; ?></h4>
                   </div>
                 </div>
               </div>
@@ -81,14 +68,14 @@
                   <div class="col-sm-3">
                     <h6 class="mb-0">Full Name</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary">Kenneth Valdez</div>
+                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["FName"] . ' ' . $_SESSION["LName"]; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Email</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary">fip@jukmuh.al</div>
+                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["Email"] ; ?></div>
                 </div>
                 <hr />
 
@@ -96,7 +83,7 @@
                   <div class="col-sm-3">
                     <h6 class="mb-0">Mobile</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary">(320) 380-4539</div>
+                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["Phone"]; ?></div>
                 </div>
                 <hr />
                 <div class="row">
@@ -108,7 +95,7 @@
                 <hr />
                 <div class="row">
                   <div class="col-sm-12">
-                    <a class="btn btn-info" target="__blank" href="#"
+                    <a class="btn btn-info" target="__blank" href="edit-page.php"
                       >Edit Profile</a
                     >
                   </div>
