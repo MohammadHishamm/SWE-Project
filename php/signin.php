@@ -1,4 +1,6 @@
 <?php
+          session_start();
+         include "dbh.inc.php";
          // define variables and set to empty values
          $passErr = $emailErr = $genderErr = $websiteErr = "";
          $pass = $email = $gender = $comment = $website = "";
@@ -28,6 +30,33 @@
             $data = htmlspecialchars($data);
             return $data;
          }
+
+           //grab data from user and see if it exists in database
+
+         if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+          $Email=$_POST["email"];
+        $Password=$_POST["password"];
+        $sql="Select * from users where Email ='$Email' and Password='$Password'";
+        $result = mysqli_query($conn,$sql);
+          if($row=mysqli_fetch_array($result))	{
+          $_SESSION["ID"]=$row[0];
+          $_SESSION["FName"]=$row["FirstName"];
+          $_SESSION["LName"]=$row["LastName"];
+          $_SESSION["Email"]=$row["Email"];
+          $_SESSION["Password"]=$row["Password"];
+          $_SESSION["Age"]=$row["Age"];
+          header("Location:Home.php?login=success");
+        }
+        else	{
+        //error popup
+        }
+         }
+
+
+
+
+
       ?>
 
 <!DOCTYPE html>

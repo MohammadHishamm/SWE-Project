@@ -1,17 +1,6 @@
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$DB = "SWE";
-
-$conn = mysqli_connect($servername,$username,$password,$DB);
-
-
-if(!$conn){
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+include "dbh.inc.php";
 
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){ 
@@ -286,7 +275,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           >
             Back
           </button>
-          <a > <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit"> </a>
+           <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit">
      
         </fieldset>
       </form>
