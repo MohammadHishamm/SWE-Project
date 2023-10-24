@@ -139,7 +139,6 @@
   console.log(sidebarBtn);
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
-    body.style.
   });
   sidebarbtn_close.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
