@@ -8,12 +8,15 @@
    
     <link rel="stylesheet" href="../css/categories.css" />
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+    <link rel="stylesheet" href="../css/Sidenav.css">
     
    
   </head>
 
   <body style="background-color: #ebeff4">
   <?php include "Topnav.php" ?>
+  <?php include "Sidenav.php" ?>
+   
     <div class="filter">
       <button
         class="btn btn-default"
