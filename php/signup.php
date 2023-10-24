@@ -1,339 +1,114 @@
-
-<?php
-include "dbh.inc.php";
-
-$ageErr = $nameErr = $passErr = $emailErr = $genderErr = $websiteErr = "";
-$age = $name = $pass = $email = $gender = $comment = $website = "";
-
-if($_SERVER["REQUEST_METHOD"]=="POST"){ 
-	$Fname=htmlspecialchars($_POST["FName"]);
-	$Lname=htmlspecialchars($_POST["LName"]);
-	$Email=htmlspecialchars($_POST["Email"]);
-	$Password=htmlspecialchars($_POST["Password"]);
-	$Phone=htmlspecialchars($_POST["Phone"]);
-  $Age=htmlspecialchars($_POST["Age"]);
-  
-	$sql="insert into users(FirstName,LastName,Email,Password,Phonenumber,Age) 
-	values('$Fname','$Lname','$Email','$Password','$Phone','$Age')";
-	$result=mysqli_query($conn,$sql);
-
-  
-	if($result)	{
-		//done popup
-    header("Location: Home.php");
-	}
-  else{
-   //error popup 
-  }
-  //****************************Validation************************/
-  if (empty($_POST["FName"])) {
-
-    $nameErr = "Please enter a valid name";
-
-} else {
-
-    $name = test_input($_POST["FName"]);
-
-    // check if name only contains letters and whitespace
-
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-
-    $nameErr = "Only letters and white space allowed";
-
-    }
-
-}
-if (empty($_POST["LName"])) {
-
-  $nameErr = "Please enter a valid name";
-
-} else {
-
-  $name = test_input($_POST["LName"]);
-
-  // check if name only contains letters and whitespace
-
-  if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-
-  $nameErr = "Only letters and white space allowed";
-
-  }
-
-}
-if (empty($_POST["Age"])) {
-
-  $ageErr = "Please enter a valid name";
-
-} else {
-
-  $age = test_input($_POST["Age"]);
-}
-
-
-if (empty($_POST["Email"])) {
-
-    $emailErr = "valid Email address";
-
-} else {
-
-    $email = test_input($_POST["Email"]);
-
-    // check if e-mail address is well-formed
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-    $emailErr = "The email address is incorrect";
-
-    }
-
-}  
-
-}
-
-function test_input($data) {
-
-$data = trim($data);
-
-$data = stripslashes($data);
-
-$data = htmlspecialchars($data);
-
-return $data;
-
-}
-
-
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sign up</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/css/intlTelInput.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
-    />
-
-    <link rel="stylesheet" href="../css/signup.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
-    />
+    ></script>
+    <link rel="stylesheet" href="../css/signuppage.css" />
+    <title>Sign in & Sign up Form</title>
   </head>
-  <style>
-    .multi_step_form #msform {
-  text-align: center;
-  position: relative;
-  padding-top: 50px;
-  height: 910px;
-  width: 820px;
-  margin: 0 auto;
-  background: #ffffff;
-  z-index: 1;
-}
-    </style>
   <body>
-    <!-- partial:index.partial.html -->
-    <!-- Multi step form -->
-    <section class="multi_step_form">
-      <form  method="post" id="msform" action="<?php 
-         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  >
-        <!-- Tittle -->
-        <div class="tittle">
-          <h2>Registration Process</h2>
-          <p>
-            In order to use this service, you have to complete this Registration
-            process
-          </p>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="#" class="sign-in-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+            <p class="social-text">Or Sign in with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="First name" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Confirm password" />
+            </div>
+            <input type="submit" class="btn" value="Sign up" />
+            <p class="social-text">Or Sign up with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
         </div>
-        <!-- progressbar -->
-        <ul id="progressbar">
-          <li class="active">Fill informations</li>
+      </div>
 
-          <li>Account setup</li>
-          <li>Verify phone number</li>
-        </ul>
-        <!-- fieldsets -->
-        <fieldset>
-          
-          <div class="question">
-            <input type="text" required  name="firstname" id="firstname"/>
-            <label>First Name</label>
-            <span class="error"><?php echo $nameErr; ?> </span>  
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>New here ?</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button>
           </div>
-          <div class="question">
-            <input type="text" required name="lastname" id="lastname" />
-            <label>Last Name</label>
-            <span class="error"><?php echo $nameErr; ?> </span>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>One of us ?</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              laboriosam ad deleniti.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
           </div>
-          <div class="question">
-            <input type="text" required name="Age" />
-            <label>Age</label>
-            <span class="error"><?php echo $ageErr; ?> </span> 
-          </div>
-          <br>
-          <br>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
 
-          <button
-            type="button"
-            class="btn btn-danger action-button previous_button"
-          >
-            Back
-          </button>
-          <Button  name="submit" class="btn btn-primary next action-button">
-            Continue
-</button>
-            
-</input>
-
-        </fieldset>
-
-        <fieldset>
-          
-          
-          <div class="question">
-            <input type="text" required  name="email" id="email"/>
-            <label>Email Address</label>
-            <span class="error"><?php echo $emailErr; ?> </span>  
-          </div>
-          <div class="question">
-            <input type="password" required  name="password" id="password"/>
-            <label> Password</label>
-            <span class="error"><?php echo $passErr; ?> </span>
-          </div>
-          <div class="question">
-            <input type="password" required name="confirm_password" id="confirm_password"/>
-            <label>Confirm password</label>
-          </div>
-
-          <button
-            type="button"
-            class="btn btn-danger action-button previous previous_button"
-          >
-            Back
-          </button>
-          <button type="button" class="btn btn-primary next action-button">
-            Continue
-          </button>
-</fieldset>
-        <fieldset>
-          
-          <h3>Setup your phone</h3>
-          <h6>We will send you a SMS. Input the code to verify.</h6>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <input
-                type="tel"
-                id="phone"
-                class="form-control"
-                placeholder="+880"
-              />
-            </div>
-            <div class="form-group col-md-6">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="1123456789"
-                name="Phone"
-              />
-            </div>
-          </div>
-          <div class="verify">
-            <button type="button" class="btn btn-primary">Send code</button>
-          </div>
-          <div class="done_text">
-            <a href="#" class="don_icon"><i class="ion-android-done"></i></a>
-            <h6>
-              A secret code is sent to your phone. <br />Please enter it here.
-            </h6>
-          </div>
-          <div class="code_group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="0"
-              size="1"
-              minlength="1"
-              maxlength="1"
-            />
-            <input
-              type="text"
-              class="form-control"
-              placeholder="0"
-              size="1"
-              minlength="1"
-              maxlength="1"
-            />
-            <input
-              type="text"
-              class="form-control"
-              placeholder="0"
-              size="1"
-              minlength="1"
-              maxlength="1"
-            />
-            <input
-              type="text"
-              class="form-control"
-              placeholder="0"
-              size="1"
-              minlength="1"
-              maxlength="1"
-            />
-            <br />
-            <label
-              >If you didn't receive a code, re-press "Send code" button
-            </label>
-          </div>
-
-          <button
-            type="button"
-            class="btn btn-danger action-button previous previous_button"
-          >
-            Back
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary next action-button"
-            id="visa"
-          >
-            Continue
-          </button>
-        </fieldset>
-      </form>
-    </section>
-    <!-- End Multi step form -->
-    <!-- partial -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-    <script src="../js/signup.js"></script>
+    <script src="../js/signuppage.js"></script>
   </body>
 </html>
-
