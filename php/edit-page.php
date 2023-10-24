@@ -134,10 +134,9 @@
             <p>Details about your company account and password</p>
           </div>
           <div class="ml-auto">
-            <button style="margin: 10px" class="btn danger">Delete</button>
+            <a href="delete.php" style="margin: 10px" class="btn danger">Delete</a>
           </div>
-        </div>
-      </div>
+        </div>      </div>
     </div>
   </form>
 </body>
