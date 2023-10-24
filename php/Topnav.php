@@ -21,7 +21,9 @@
 
         if(!empty($_SESSION['ID'])) {
 
-          echo '<div class="row">
+          echo '
+            <div class="mx-auto " >
+              <div class="row">
                     <div class="col">
                       <a href="profile.php">
                         <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
@@ -36,38 +38,32 @@
                         </button>
                       </a>
                     </div>
+                    </div>
                   </div>';
      
       } else {
         
-          echo '<div class="row">
-                    <div class="col">
-                      <a href="signin.php">
-                        <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
-                          Login
-                        </button>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <a href="signup.php">
-                        <button class="btn" style="background-color: #58779D; color: white;">
-                          SignUp
-                        </button>
-                      </a>
-                    </div>
-                  </div>';
-      }
-      
-	
+          echo '
+              <div class="mx-auto " >
+                <div class="row">
+                <div class="col">
+                  <a href="signin.php">
+                    <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
+                      Login
+                    </button>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="signup.php">
+                    <button class="btn" style="background-color: #58779D; color: white;">
+                      SignUp
+                    </button>
+                  </a>
+                </div>
+              </div>
+              </div>';
+            }
           ?>
-          
-
-
-
-
-      <div class="mx-auto " >
-       
-      </div>
     </div>
   </nav>
 
