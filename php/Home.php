@@ -5,6 +5,7 @@
 <head>
         <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
         <script src="../js/MDB java/mdb.min.js"></script>
+        <link rel="stylesheet" href="../css/Sidenav.css">
 </head>
 <body style="background-color: #EBEFF4;">
   <!-- Loaders -->
@@ -19,7 +20,7 @@
 
 
   <?php include "Topnav.php" ?>
-
+  <?php include "Sidenav.php" ?>
   <!-- First Section -->
   <div style="position: relative;width: 100%;height: 47rem; background-image: url(../Images/blue\ wave\ back.png);
     background-size: contain; background-repeat: no-repeat;  margin-top: 100px; padding-left: 60px;" >
