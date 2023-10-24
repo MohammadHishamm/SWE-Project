@@ -46,13 +46,7 @@
           echo '
               <div class="mx-auto " >
                 <div class="row">
-                <div class="col">
-                  <a href="signin.php">
-                    <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
-                      Login
-                    </button>
-                  </a>
-                </div>
+              
                 <div class="col">
                   <a href="signup.php">
                     <button class="btn" style="background-color: #58779D; color: white;">

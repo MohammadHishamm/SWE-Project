@@ -1,3 +1,34 @@
+<?php
+include "dbh.inc.php";
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){ 
+	$Name=htmlspecialchars($_POST["Name"]);
+  $Email=htmlspecialchars($_POST["Email"]);
+	$Password=htmlspecialchars($_POST["Password"]);
+
+  
+	$sql="insert into users(FullName,Email,Password) 
+	values('$Name','$Email','$Password')";
+	$result=mysqli_query($conn,$sql);
+
+  
+	if($result)	{
+		//done popup
+    header("Location: Home.php");
+	}
+  else{
+   //error popup 
+  }
+
+
+
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,15 +45,15 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="signin.php" method = "POST" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Email" />
+              <input type="text" placeholder="Email" name="login-Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="login-Password"/>
             </div>
             <input type="submit" value="Login" class="btn solid" />
             <p class="social-text">Or Sign in with social platforms</p>
@@ -41,23 +72,23 @@
               </a>
             </div>
           </form>
-          <form action="#" class="sign-up-form">
+          <form action="" method = "POST" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full name" />
+              <input type="text" placeholder="Full name" name="Name" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" name="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" name="Password" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm password" />
+              <input type="password" placeholder="Confirm password" name="Confirmpass" />
             </div>
             <input type="submit" class="btn" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
