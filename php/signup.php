@@ -160,7 +160,7 @@ return $data;
     <!-- Multi step form -->
     <section class="multi_step_form">
       <form  method="post" id="msform" action="<?php 
-         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  >
         <!-- Tittle -->
         <div class="tittle">
           <h2>Registration Process</h2>
@@ -173,19 +173,19 @@ return $data;
         <ul id="progressbar">
           <li class="active">Fill informations</li>
 
+          <li>Account setup</li>
           <li>Verify phone number</li>
-          <li>Verify payment</li>
         </ul>
         <!-- fieldsets -->
         <fieldset>
           
           <div class="question">
-            <input type="text" required  name="FName"/>
+            <input type="text" required  name="firstname" id="firstname"/>
             <label>First Name</label>
             <span class="error"><?php echo $nameErr; ?> </span>  
           </div>
           <div class="question">
-            <input type="text" required name="LName" />
+            <input type="text" required name="lastname" id="lastname" />
             <label>Last Name</label>
             <span class="error"><?php echo $nameErr; ?> </span>
           </div>
@@ -194,20 +194,8 @@ return $data;
             <label>Age</label>
             <span class="error"><?php echo $ageErr; ?> </span> 
           </div>
-          <div class="question">
-            <input type="text" required  name="Email"/>
-            <label>Email Address</label>
-            <span class="error"><?php echo $emailErr; ?> </span>  
-          </div>
-          <div class="question">
-            <input type="password" required  name="Password"/>
-            <label> Password</label>
-            <span class="error"><?php echo $passErr; ?> </span>
-          </div>
-          <div class="question">
-            <input type="password" required name="confirmpass" />
-            <label>Confirm password</label>
-          </div>
+          <br>
+          <br>
 
           <button
             type="button"
@@ -215,15 +203,44 @@ return $data;
           >
             Back
           </button>
-          <button type="button" class="btn btn-primary next action-button">
+          <Button  name="submit" class="btn btn-primary next action-button">
             Continue
-          </button>
+</button>
             
 </input>
 
         </fieldset>
 
         <fieldset>
+          
+          
+          <div class="question">
+            <input type="text" required  name="email" id="email"/>
+            <label>Email Address</label>
+            <span class="error"><?php echo $emailErr; ?> </span>  
+          </div>
+          <div class="question">
+            <input type="password" required  name="password" id="password"/>
+            <label> Password</label>
+            <span class="error"><?php echo $passErr; ?> </span>
+          </div>
+          <div class="question">
+            <input type="password" required name="confirm_password" id="confirm_password"/>
+            <label>Confirm password</label>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-danger action-button previous previous_button"
+          >
+            Back
+          </button>
+          <button type="button" class="btn btn-primary next action-button">
+            Continue
+          </button>
+</fieldset>
+        <fieldset>
+          
           <h3>Setup your phone</h3>
           <h6>We will send you a SMS. Input the code to verify.</h6>
           <div class="form-row">
@@ -305,81 +322,6 @@ return $data;
           >
             Continue
           </button>
-        </fieldset>
-        <fieldset>
-          <div class="container-fluid px-1 px-md-2 px-lg-4 py-5 mx-auto">
-            <div class="row d-flex justify-content-center">
-              <div class="col-xl-7 col-lg-8 col-md-9 col-sm-11">
-                <div class="card border-0">
-                  <div class="row justify-content-center"></div>
-                  <div class="row">
-                    <div class="col-sm-7 border-line pb-3">
-                      <div class="form-group">
-                        <p class="text-muted text-sm mb-0">Name on the card</p>
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Name"
-                          size="15"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <p class="text-muted text-sm mb-0">Card Number</p>
-                        <div class="row px-3">
-                          <input
-                            type="text"
-                            name="card-num"
-                            placeholder="0000 0000 0000 0000"
-                            size="18"
-                            id="cr_no"
-                            minlength="19"
-                            maxlength="19"
-                          />
-                          <p class="mb-0 ml-3"></p>
-                          <img
-                            class="image ml-1"
-                            src="https://i.imgur.com/WIAP9Ku.jpg"
-                          />
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <p class="text-muted text-sm mb-0">Expiry date</p>
-                        <input
-                          type="text"
-                          name="exp"
-                          placeholder="MM/YY"
-                          size="6"
-                          id="exp"
-                          minlength="5"
-                          maxlength="5"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <p class="text-muted text-sm mb-0">CVV/CVC</p>
-                        <input
-                          type="password"
-                          name="cvv"
-                          placeholder="000"
-                          size="1"
-                          minlength="3"
-                          maxlength="3"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            class="btn btn-danger action-button previous previous_button"
-          >
-            Back
-          </button>
-           <input type="submit" class="btn btn-primary action-button" value="Finish" name="Submit">
-     
         </fieldset>
       </form>
     </section>
