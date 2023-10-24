@@ -1,9 +1,4 @@
-
-  <head>
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  </head>
-
-  <div class="sidebar close">
+<div class="sidebar close">
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus logo_name'></i>
       <span class="logo_name">CodingLab</span>
