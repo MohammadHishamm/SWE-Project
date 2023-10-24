@@ -25,7 +25,7 @@
                     width="150"
                   />
                   <div class="mt-3">
-                  <h4><?php echo $_SESSION["FName"] . ' ' . $_SESSION["LName"]; ?></h4>
+                  <h4><?php echo $_SESSION["Name"] ; ?></h4>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                   <div class="col-sm-3">
                     <h6 class="mb-0">Full Name</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["FName"] . ' ' . $_SESSION["LName"]; ?></div>
+                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["Name"] ; ?></div>
                 </div>
                 <hr />
                 <div class="row">
@@ -81,13 +81,8 @@
                 </div>
                 <hr />
 
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Mobile</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary"><?php echo $_SESSION["Phone"]; ?></div>
-                </div>
-                <hr />
+              
+             
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0">Billing Information</h6>

@@ -3,22 +3,20 @@
          include "dbh.inc.php";
       
          if($_SERVER['REQUEST_METHOD']== "POST"){ //check if form was submitted
-          $Fname=$_POST["FName"];
-          $Lname=$_POST["LName"];
+          $Name=$_POST["Name"];
           $Email=$_POST["Email"];
           $Password=$_POST["Password"];
-          $Phone=$_POST["Phone"];
+         
         
-          $sql="update  users set FirstName='$Fname', LastName='$Lname', Email='$Email', Password='$Password',Phonenumber='$Phone' 
+          $sql="update  users set FullName='$Name', Email='$Email', Password='$Password'
           where ID =".$_SESSION['ID'];
         
           $result=mysqli_query($conn,$sql);
           if($result)	{
-            $_SESSION["FName"]=$Fname;
-            $_SESSION["LName"]=$Lname;
+            $_SESSION["Name"]=$Name;
             $_SESSION["Email"]=$Email;
             $_SESSION["Password"]=$Password;
-            $_SESSION["Phone"]=$Phone;
+      
             header("Location:Home.php");
           }
           else {
@@ -65,27 +63,16 @@
       <div class="py-2">
         <div class="row py-2">
           <div class="col-md-6">
-            <label for="firstname">First Name</label>
+            <label for="firstname">Full Name</label>
             <input
               type="text"
               class="bg-light form-control"
               name="FName"
-              placeholder="<?php echo $_SESSION["FName"] ; ?>"
+              placeholder="<?php echo $_SESSION["Name"] ; ?>"
             />
           </div>
           <div class="col-md-6 pt-md-0 pt-3">
-            <label for "lastname">Last Name</label>
-            <input
-              type="text"
-              class="bg-light form-control"
-              name="LName"
-              placeholder="<?php echo $_SESSION["LName"] ; ?>"
-            />
-          </div>
-        </div>
-        <div class="row py-2">
-          <div class="col-md-6">
-            <label for="email">Email Address</label>
+          <label for="email">Email Address</label>
             <input
               type="text"
               class="bg-light form-control"
@@ -93,16 +80,8 @@
               placeholder="<?php echo $_SESSION["Email"] ; ?>"
             />
           </div>
-          <div class="col-md-6 pt-md-0 pt-3">
-            <label for="phone">Phone Number</label>
-            <input
-              type="tel"
-              class="bg-light form-control"
-              name="Phone"
-              placeholder="<?php echo $_SESSION["Phone"] ; ?>"
-            />
-          </div>
         </div>
+   
         <div class="row py-2">
           <div class="col-md-6 pt-md-0 pt-3">
             <label for="newpassword">New Password</label>
