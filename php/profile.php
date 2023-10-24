@@ -5,10 +5,12 @@
         <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
         <script src="../js/MDB java/mdb.min.js"></script>
         <link rel="stylesheet" href="../css/profile.css">
+        <link rel="stylesheet" href="../css/Sidenav.css">
 </head>
   <body style="background-color: #ebeff4">
 
     <?php include "Topnav.php" ?>
+    <?php include "Sidenav.php" ?>
     <div class="container">
       <div class="main-body" style="margin: 10px">
         <div class="row gutters-sm">

@@ -6,29 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>category</title>
    
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="../css/categories.css" />
-    <link
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
-  
+    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+    
+   
   </head>
 
   <body style="background-color: #ebeff4">
@@ -109,73 +90,177 @@
       </div>
     </section>
     <!-- products section -->
+    <div class="container-fluid">
+    <div class="p-5">
+      <!-- Section name -->
+   
+      <!-- section products -->
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid" style="width:300px; height: 200px" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 
-    <div class="row">
-      <div
-        style="margin: 10px"
-        class="border border-5 rounded-3 shadow card"
-        style="width: 18rem"
-      >
-        <img src="../Images/img.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        style="margin: 10px"
-        class="border border-5 rounded-3 shadow card"
-        style="width: 18rem"
-      >
-        <img src="../Images/img.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+
+     
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        style="margin: 10px"
-        class="border border-5 rounded-3 shadow card"
-        style="width: 18rem"
-      >
-        <img src="../Images/img.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid"   style="width:300px; height: 200px"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        style="margin: 10px"
-        class="border border-5 rounded-3 shadow card"
-        style="width: 18rem"
-      >
-        <img src="../Images/img.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        style="margin: 10px"
-        class="border border-5 rounded-3 shadow card"
-        style="width: 18rem"
-      >
-        <img src="../Images/img.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+        <div class="col mb-3">
+          <div class="card" style="width: 300px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row mb-3">
+                  
+              
+                </div>
+                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <div>
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
+                    <p class="fw-bold mb-0">$90</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        
       </div>
     </div>
+  </div>
+
+  
   </body>
 </html>
