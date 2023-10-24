@@ -45,17 +45,24 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="signin.php" method = "POST" class="sign-in-form">
+          <form action="#" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Email" name="login-Email" />
+              <input type="text" placeholder="Email" id="email"/>
+</br>
+              <span class="alert" id="alert1"></span>
+
             </div>
+</br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="login-Password"/>
+              <input type="password" placeholder="Password" id="password" />
+</br>
+              <span class="alert" id="alert2"></span>
             </div>
-            <input type="submit" value="Login" class="btn solid" />
+</br>
+            <button   class="btn solid" id="login" >login</button>
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -72,25 +79,41 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
               </a>
             </div>
           </form>
-          <form action="" method = "POST" class="sign-up-form">
+          <form action="#" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full name" name="Name" />
+              <input type="text" placeholder="Full name" id="name1" />
+</br>
+              <span class="alert" id="alert3"></span>
+
             </div>
+            </br>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name="Email" />
+              <input type="text" placeholder="Email" id="email1" />
+              </br>
+              <span class="alert" id="alert4"></span>
+
             </div>
+            </br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="Password" />
+              <input type="password" placeholder="Password" id="password1" />
+              </br>
+              <span class="alert" id="alert5"></span>
+
             </div>
+            </br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm password" name="Confirmpass" />
+              <input type="password" placeholder="Confirm password" id="password2"/>
+              </br>
+              <span class="alert" id="alert6"></span>
+
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            </br>
+            <button  class="btn" id="signup">Sign up</button>
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
