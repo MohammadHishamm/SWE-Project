@@ -1,11 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<?php include "Header.php" ?>
 <head>
-        <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-        <script src="../js/MDB java/mdb.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+    <link rel="stylesheet" href="../css/Sidenav.css">
+    <link rel="stylesheet" href="../css/All.css">
+    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="../js/Loaders.js"></script>
 </head>
+
+
+
 <body style="background-color: #EBEFF4;">
   <!-- Loaders -->
   <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
@@ -19,7 +32,7 @@
 
 
   <?php include "Topnav.php" ?>
-
+  <?php include "Sidenav.php" ?>
   <!-- First Section -->
   <div style="position: relative;width: 100%;height: 47rem; background-image: url(../Images/blue\ wave\ back.png);
     background-size: contain; background-repeat: no-repeat;  margin-top: 100px; padding-left: 60px;" >
@@ -666,6 +679,8 @@
     document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
         if (textArray.length) setTimeout(type, newTextDelay + 250);
     });
+
+    
 </script>
 
 </body>
