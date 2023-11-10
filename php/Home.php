@@ -111,13 +111,13 @@
     </div>
   </div> -->
   
-  <div class="container-fluid ps-5 pe-5 mb-9">
+  <div class="container-fluid ps-5 pe-5 mb-6">
     <div class="row d-flex justify-content-between align-content-center">
-      <img src="../Images/dhl-3.svg" alt="" srcset="" style="width: 150px;">
-      <img src="../Images/dropbox.svg" alt="" srcset="" style="width: 150px;">
-      <img src="../Images/airbnb.svg" alt="" srcset="" style="width: 150px;">
-      <img src="../Images/fedex-express-6.svg" alt="" srcset="" style="width: 150px;">
-      <img src="../Images/juniper-networks-logo-4.svg" alt="" srcset="" style="width: 150px;">
+      <img src="../Images/dhl-3.svg" alt="" srcset="" style="width: 150px; margin-bottom: 50px;">
+      <img src="../Images/dropbox.svg" alt="" srcset="" style="width: 150px; margin-bottom: 50px;">
+      <img src="../Images/airbnb.svg" alt="" srcset="" style="width: 150px; margin-bottom: 50px;">
+      <img src="../Images/fedex-express-6.svg" alt="" srcset="" style="width: 150px; margin-bottom: 50px;">
+      <img src="../Images/juniper-networks-logo-4.svg" alt="" srcset="" style="width: 150px; margin-bottom: 50px;">
     </div>
  
   </div>
