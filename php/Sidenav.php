@@ -1,4 +1,4 @@
-<div class="sidebar close">
+<div class="sidebar close" >
     <div class="logo-details">
       <i class='bx bxl-c-plus-plus logo_name'></i>
       <span class="logo_name">CodingLab</span>
