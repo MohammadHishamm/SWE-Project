@@ -1,48 +1,9 @@
 <?php
 
 
-
-
-
-
-
-
-
-//   $cvErr = $pass1Err = $subErr = $subErr = $qualErr = $imageErr = $passErr = $email1Err = $genderErr = $websiteErr = "";
-// $agree = $cv = $sub = $qual = $image = $pass1 = $email1 = $gender = $comment = $website = "";
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   if (empty($_POST["login-Password"])) {
-//     $pass1Err = "Password is required";
-//  }else {
-//     $pass1 = test_input($_POST["login-Password"]);
- 
-//  }
-//    if (empty($_POST["login-Email"])) {
-//       $email1Err = "Email is required";
-//    }else {
-//       $email1 = test_input($_POST["login-Email"]);
-      
-//       // check if e-mail address is well-formed
-//       if (!filter_var($email1, FILTER_VALIDATE_EMAIL)) {
-//          $email1Err = "Invalid email format"; 
-//       }
-//    }
-// }
-
-// function test_input($data) {
-//    $data = trim($data);
-//    $data = stripslashes($data);
-//    $data = htmlspecialchars($data);
-//    return $data;
-// }
-
-
-
-
+include"signin.php"
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,13 +21,13 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="signin.php" method="post" class="sign-in-form">
+          <form action="" method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Email" id="email"  name="login-Email"/>
 </br>
-              <!-- <span class="alert" id="alert1"><?php echo $email1Err;?></span> -->
+              <span class="alert" id="alert1"><?php echo $email1Err;?></span>
 
             </div>
 </br>
@@ -74,7 +35,7 @@
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" id="password"  name="login-Password" />
 </br>
-                <!-- <span class="alert" id="alert1"><?php echo $pass1Err;?></span> -->
+                <span class="alert" id="alert1"><?php echo $pass1Err;?></span>
             </div>
 </br> 
             <input type="submit" name="submit" value="Login" class="btn solid" />
