@@ -34,35 +34,46 @@
   <?php include "Topnav.php" ?>
   <?php include "Sidenav.php" ?>
   <!-- First Section -->
-  <div style="position: relative;width: 100%;height: 47rem; background-image: url(../Images/blue\ wave\ back.png);
-    background-size: contain; background-repeat: no-repeat;  margin-top: 100px; padding-left: 60px;" >
-    <span style="font-size: 64px; font-weight:bold; ">
-      Build your first step
-      <br>
-      of knowledge with
-      <br> 
-      <span class="typed-text"></span><span class="cursor typing">&nbsp;</span> 
-    </span>
+  <div class="  mb-10" style="height: min-content; margin-top: 100px; " >
 
-    <div style="margin-left: 10px; width: fit-content; height: auto;">
-        <img src="../Images/bar.png" alt="" style="height: 64px;width: 11px; margin-top: 20px;">
-        <span style="margin-left: 10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </span> 
+        <img src="../Images/blue wave back.png" alt="" class=" position-absolute main-img img-fluid" style="z-index: -1000;  transition: 1.0s ease-in-out; ">
+      <div class="container w-100 " >
+      
+        <div class="row  align-items-center " >
+        
+          <div class="col-lg-6 pb-5  order-lg-1 order-5 " >
+  
+            <h1 class=" fw-bold  mb-5 " style="font-size: 50px; font-weight: bold;">
+              Build your first step
+              of knowledge with
+              <br>
+              <span class="typed-text"></span><span class="cursor typing">&nbsp;</span> 
+            </h1>
+            
+            <p class="lead fs-6 mb-6">  <img src="../Images/bar.png" alt="" style="height: 64px;width: 11px; margin-top: 20px; ">
+              <span style="margin-left: 10px; ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </span> </p>
+              
+              <div style="margin-top: 70px;  width: fit-content; height: fit-content;">
+                <button class="btn p-3 fs-7 rounded-9" style="background-color: #58779D; color: white; letter-spacing: 3px;">
+                  Get Started
+                </button>
+                <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
+                  <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>
+                  Watch Our Courses
+                </button>
+              </div>
+          </div>
+         
+          <div class="col-10 pt-5 col-sm-8 col-lg-6  order-2 p-5 "  >
+            <span class="dot" ></span>
+            <img src="../Images/image.png" class="d-block  img-fluid " alt="Bootstrap Themes" width="600" height="600" loading="lazy" >
+          </div>
+    
+        </div>
+      </div>
     </div>
+  
 
-    <div style="margin-top: 70px; margin-left: 40px; width: fit-content; height: fit-content;">
-      <button class="btn p-3 fs-7 rounded-9" style="background-color: #58779D; color: white; letter-spacing: 3px;">
-        Get Started
-      </button>
-      <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
-        <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>
-        Watch Our Courses
-      </button>
-    </div>
-
-  <div style=" position: absolute;width: 685px;right: 70px; height: 524px;  top: 60px; background-image: url(../Images/image.png);
-  background-size: contain; background-repeat: no-repeat;">
-  </div>
-  </div>
 
   <!-- <div class="container-fluid" >
     <div class="d-flex flex-wrap flex-lg-nowrap ">
