@@ -10,7 +10,7 @@ $sql="Select * from users where Email ='$Email' and Password='$Password'";
 $result = mysqli_query($conn,$sql);
 if($row=mysqli_fetch_array($result))	{
 $_SESSION["ID"]=$row[0];
-$_SESSION["Name"]=$row["Fullname"];
+$_SESSION["Name"]=$row["FullName"];
 $_SESSION["Email"]=$row["Email"];
 $_SESSION["Password"]=$row["Password"];
 
