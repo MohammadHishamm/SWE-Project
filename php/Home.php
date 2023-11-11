@@ -30,7 +30,7 @@
     </div>
   </div>
 
-
+  <?php include "Top_button.php" ?>
   <?php include "Topnav.php" ?>
   <?php include "Sidenav.php" ?>
   <!-- First Section -->
@@ -45,6 +45,7 @@
   
             <h1 class=" fw-bold  mb-5 " style="font-size: 50px; font-weight: bold;">
               Build your first step
+              <br>
               of knowledge with
               <br>
               <span class="typed-text"></span><span class="cursor typing">&nbsp;</span> 
@@ -123,7 +124,7 @@
   </div>
 
   <div class="container-fluid">
-    <div class="p-5">
+    <div class="p-5 ">
       <!-- Section name -->
       <div class="row mb-8">
         <div class="col-6 d-flex justify-content-start  align-items-center">
@@ -364,7 +365,7 @@
 
   <!-- Courses section -->
   <div class="container-fluid px-4 py-5 " style="background-color: #CED8E3;">
-    <div class="mb-7">
+    <div class="mb-7 ">
       <div class="row">
         <div class="col">
           <h4 class="text text-center">Our <span style="color: white;">Courses</span></h4>
