@@ -1,7 +1,10 @@
 <?php
 
 
-include"signin.php"
+
+include "signup-db.php";
+
+
 
 ?>
 
@@ -21,7 +24,7 @@ include"signin.php"
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" method="post" class="sign-in-form">
+          <form action="signin.php" method="post" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -55,7 +58,7 @@ include"signin.php"
               </a>
             </div>
           </form>
-          <form action="signup-db.php" method="post" class="sign-up-form">
+          <form action="" method="post" class="sign-up-form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -69,7 +72,7 @@ include"signin.php"
               <i class="fas fa-envelope"></i>
               <input type="text" placeholder="Email" id="email1" name="Email" />
               </br>
-              <span class="alert" id="alert4"></span>
+              <span class="alert" id="alert1"><?php echo $email2Err;?></span>
 
             </div>
             </br>
@@ -77,7 +80,7 @@ include"signin.php"
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" id="password1" name="Password"  />
               </br>
-              <span class="alert" id="alert5"></span>
+              <span class="alert" id="alert1"><?php echo $pass2Err;?></span>
 
             </div>
             </br>

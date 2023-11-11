@@ -1,6 +1,7 @@
 <?php
    session_start();
    include "dbh.inc.php";
+   
 
 
    $pass1Err =  $email1Err  = "";
