@@ -16,8 +16,8 @@
   <body style="background-color: #ebeff4">
   <?php include "Topnav.php" ?>
   <?php include "Sidenav.php" ?>
-   
-    <div class="filter">
+
+    <div class="filter ">
       <button
         class="btn btn-default"
         type="button"
@@ -32,7 +32,7 @@
   
     <!-- Sidebar filter section -->
 
-    <section id="sidebar">
+    <section id="sidebar" class="ps-5 pt-5">
       <h2>Courses</h2>
       <div class="border-bottom pb-2 ml-2">
         <h4 id="burgundy">Filters</h4>
@@ -93,7 +93,7 @@
       </div>
     </section>
     <!-- products section -->
-    <div class="container-fluid">
+    <div class="container-fluid pt-4">
     <div class="p-5">
       <!-- Section name -->
    
@@ -262,7 +262,6 @@
         
       </div>
     </div>
-  </div>
 
   
   </body>
