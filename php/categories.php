@@ -10,7 +10,22 @@
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
     <link rel="stylesheet" href="../css/Sidenav.css">
     
-   
+    <script>
+function showUser(str) {
+
+  
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","Search_card.php?q="+str,true);
+    xmlhttp.send();
+  
+}
+</script>
   </head>
 
   <body style="background-color: #ebeff4">
@@ -41,18 +56,27 @@
         <h6 class="font-weight-bold">Categories</h6>
         <div id="orange"><span class="fa fa-minus"></span></div>
         <form>
-          <div class="form-group">
-            <input type="checkbox" id="artisan" />
-            <label for="artisan">Web Design</label>
+          <div class='form-group'>
+                <input type='checkbox' id='artisan' onclick='showUser("-1")' />
+                <label for='artisan'>ALL</label>
           </div>
-          <div class="form-group">
-            <input type="checkbox" id="breakfast" />
-            <label for="breakfast">Devolopment</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" id="healthy" />
-            <label for="healthy">Marketing</label>
-          </div>
+          <?php
+            include "dbh.inc.php";
+  
+            $sql="Select * from categories ";
+            $result = mysqli_query($conn,$sql);
+            if (mysqli_num_rows($result) > 0) {
+              while($row=mysqli_fetch_array($result))	
+              {
+                echo "
+                <div class='form-group'>
+                <input type='checkbox' id='artisan' onclick='showUser($row[0])' />
+                <label for='artisan'>$row[1]</label>
+                </div>
+                ";
+              }
+            }
+          ?>
         </form>
       </div>
       <div class="py-2 border-bottom ml-3">
@@ -98,169 +122,11 @@
       <!-- Section name -->
    
       <!-- section products -->
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid" style="width:300px; height: 200px" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+      <div class="row d-flex justify-content-center align-items-center"  id="txtHint">
+      <?php include "Search_card.php" ?>
 
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-     
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid"   style="width:300px; height: 200px"/>
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-3">
-          <div class="card" style="width: 300px;">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="../Images/img.jpg" class="img-fluid"  style="width:300px; height: 200px" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="row mb-3">
-                  
-              
-                </div>
-                <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-                <div>
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                    <p class="fw-bold mb-0">$90</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
       </div>
+    </div>
     </div>
 
   

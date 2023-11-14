@@ -9,10 +9,10 @@
 
         <ul class="navbar-nav mx-auto   mb-4 mb-lg-0 mt-2 ">
           <li class="nav-item ">
-            <form class="d-flex" role="search">
+            <form class="d-flex" action="categories.php" method="post" role="search">
 
-              <input class="form-control me-2 rounded-9 rounded-pill" type="search" placeholder="Find a specfic course ?" aria-label="Search"
-                style="width: 400px;">
+              <input class="form-control me-2 rounded-9 rounded-pill" name="search" type="search" placeholder="Find a specfic course ?" aria-label="Search"
+                style="width: 100%;">
             </form>
           </li>
         </ul>
