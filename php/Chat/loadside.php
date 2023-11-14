@@ -10,7 +10,7 @@
                                     if($row[0] != $_SESSION["ID"] )
                                     {
                                         $id = $_SESSION['ID'] ;
-                                        $sql2="Select Message,Time,Seen,Message_id_from from chat where Message_id_to = $row[0] and  Message_id_from = $id    or Message_id_from = $row[0] and Message_id_to = $id " ;
+                                        $sql2="Select Message,Time,Message_id_from,Seen from chat where Message_id_to = $row[0] and  Message_id_from = $id  or Message_id_from = $row[0] and Message_id_to = $id " ;
                                         $result2 = mysqli_query($conn,$sql2);
                                         $date = "";
                                         $last_message = "";
@@ -19,7 +19,7 @@
                                         {
                                             $date = $row2[1];
                                             $last_message = $row2[0];
-                                            if($row2[2] == FALSE &&  $row2[3] == $row[0])
+                                            if($row2[3] == "FALSE" && $row2[2] == $row[0])
                                             {
                                                 $count = $count + 1;
                                             }
