@@ -51,6 +51,9 @@
    $_SESSION["Email"]=$row["Email"];
    $_SESSION["Password"]=$row["Password"];
 
+   $sql2 = "update users set Status='active' where ID =".$_SESSION["ID"] ;
+   $result = mysqli_query($conn,$sql2);
+   
    header("Location:Home.php?login=success");
   
    }

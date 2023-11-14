@@ -5,7 +5,7 @@
       aria-controls="offcanvasExample">
         <i class="fa-solid fa-bars-staggered fa-2xl btn-open"  style="color: #0f141a; overflow: visible;"></i>
       </button>
-      <a class="text navbar-brand mx-auto mb-lg-0 mb-3" href="Home.php" style=" font-size: 30px; font-weight: bolder;">Arab Data Hub</a>
+      <a class="text navbar-brand mx-auto mb-lg-0 mb-3" href="../Home.php" style=" font-size: 30px; font-weight: bolder;">Arab Data Hub</a>
 
         <ul class="navbar-nav mx-auto   mb-4 mb-lg-0 mt-2 ">
           <li class="nav-item ">
