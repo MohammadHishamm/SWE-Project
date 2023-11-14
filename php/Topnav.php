@@ -23,19 +23,17 @@
 
           echo '
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
-              <div class="row">
+              <div class="row align-items-center">
                     <div class="col">
-                      <a href="profile.php">
-                        <button class="btn" style="background-color: #CED8E3; color: #0F141A;">
-                          Profile
-                        </button>
+                      <a href="chat/chat.php">
+                      <i class="fas fa-comment" style="color: #000000;"></i>
                       </a>
                     </div>
                     <div class="col">
                       <a href="signout.php">
-                        <button class="btn" style="background-color: #58779D; color: white;">
-                          Logout
-                        </button>
+
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>
+
                       </a>
                     </div>
                     </div>
