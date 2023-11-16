@@ -1,6 +1,7 @@
 <?php
 
 include '../components/connect.php';
+// include "../../dbh.inc.php";
 
 if(isset($_POST['submit'])){
 

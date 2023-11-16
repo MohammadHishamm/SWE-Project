@@ -2,6 +2,8 @@
 
 include '../components/connect.php';
 
+// include "../../dbh.inc.php";
+
 if(isset($_COOKIE['tutor_id'])){
    $tutor_id = $_COOKIE['tutor_id'];
 }else{
@@ -109,7 +111,7 @@ $total_comments = $select_comments->rowCount();
 
 
 
-<!-- <?php include '../components/footer.php'; ?> -->
+
 
 <script src="../js/admin_script.js"></script>
 

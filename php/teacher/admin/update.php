@@ -1,6 +1,8 @@
 <?php
 
    include '../components/connect.php';
+   // include "../../dbh.inc.php";
+
 
    if(isset($_COOKIE['tutor_id'])){
       $tutor_id = $_COOKIE['tutor_id'];
@@ -173,7 +175,7 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- <?php include '../components/footer.php'; ?> -->
+
 
 <script src="../js/admin_script.js"></script>
    
