@@ -9,6 +9,10 @@ if(isset($message)){
       ';
    }
 }
+   require_once('connect.php');
+   $database_object = new Database_connection;
+   $connect = $database_object->connect();
+
 ?>
 
 <header class="header">
@@ -31,7 +35,7 @@ if(isset($message)){
 
       <div class="profile">
          <?php
-            $select_profile = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+            $select_profile = $connect->prepare("SELECT * FROM `tutors` WHERE id = ?");
             $select_profile->execute([$tutor_id]);
             if($select_profile->rowCount() > 0){
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
@@ -74,7 +78,7 @@ if(isset($message)){
 
    <div class="profile">
          <?php
-            $select_profile = $conn->prepare("SELECT * FROM `tutors` WHERE id = ?");
+            $select_profile = $connect->prepare("SELECT * FROM `tutors` WHERE id = ?");
             $select_profile->execute([$tutor_id]);
             if($select_profile->rowCount() > 0){
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);

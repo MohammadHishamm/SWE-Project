@@ -6,7 +6,6 @@ class User
 	private $user_name;
 	private $user_email;
 	private $user_password;
-
 	private $user_status;
 	private $user_created_on;
 	private $user_verification_code;
@@ -63,9 +62,6 @@ class User
 	{
 		return $this->user_password;
 	}
-
-	
-	
 
 	function setUserStatus($user_status)
 	{
