@@ -25,7 +25,7 @@
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
               <div class="row align-items-center">
                     <div class="col">
-                      <a href="chat/chat.php">
+                      <a href="chat/privatechat.php">
                       <i class="fas fa-comment" style="color: #000000;"></i>
                       </a>
                     </div>

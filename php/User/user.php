@@ -161,5 +161,51 @@ class User
 			return false;
 		}
 	}
+
+	function get_user_data_by_email()
+	{
+		$query = "
+		SELECT * FROM user
+		WHERE user_email = :user_email
+		";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_email', $this->user_email);
+
+		if($statement->execute())
+		{
+			$user_data = $statement->fetch(PDO::FETCH_ASSOC);
+		}
+		return $user_data;
+	}
+
+	
+	function update_user_login_data()
+	{
+		$query = "
+
+		UPDATE user 
+		SET user_login_status = :user_login_status, user_token = :user_token  
+		WHERE user_id = :user_id
+		";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_login_status', $this->user_login_status);
+
+		$statement->bindParam(':user_token', $this->user_token);
+
+		$statement->bindParam(':user_id', $this->user_id);
+
+		if($statement->execute())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 	?>
