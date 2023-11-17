@@ -1,19 +1,21 @@
 <?php
 session_start();
+require_once('User/user.php');
+
 $error = '';
 
 $success_message = '';
 //signup
 if(isset($_POST["register"]))
 {
-    session_start();
+   
 
     if(isset($_SESSION['user_data']))
     {
         header('location:home.php');
     }
 
-    require_once('User/user.php');
+    
 
     $user_object = new User;
 
@@ -48,7 +50,7 @@ if(isset($_POST["register"]))
 //signin 
 if(isset($_POST['login']))
 {
-    require_once('User/user.php');
+
 
     $user_object = new User;
 

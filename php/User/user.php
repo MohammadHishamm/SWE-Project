@@ -1,5 +1,5 @@
 <?php
-
+	
 class User
 {
 	private $user_id;
@@ -17,7 +17,7 @@ class User
 
 	public function __construct()
 	{
-		require_once('Database_connection.php');
+		require_once 'Database_connection.php';
 
 		$database_object = new Database_connection;
 
@@ -207,5 +207,24 @@ class User
 			return false;
 		}
 	}
+
+	function get_user_all_data_with_status_count()
+	{
+		$query = "
+		SELECT user_id, user_name, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
+		";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_id', $this->user_id);
+
+		$statement->execute();
+
+		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+		return $data;
+	}
+
+
 }
 	?>

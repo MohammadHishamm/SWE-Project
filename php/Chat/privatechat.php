@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_data']))
 	header('location:index.php');
 }
 
-require('../User/user.php');
+require_once('../User/user.php');
 
 ?>
 
@@ -95,7 +95,7 @@ require('../User/user.php');
 					$token = $value['token'];
 				}
 				?>
-				<a href="index.php" class="btn btn-dark mt-3"><i class="fa-solid fa-backward" style="color: white;"></i></a>
+				<a href="../home.php" class="btn btn-dark mt-3"><i class="fa-solid fa-backward" style="color: white;"></i></a>
 				<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
 
 				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
@@ -399,26 +399,26 @@ require('../User/user.php');
 		});
 
 		$('#logout').click(function(){
+    user_id = $('#login_user_id').val();
 
-			user_id = $('#login_user_id').val();
+    $.ajax({
+        url:"action.php",
+        method:"POST",
+        data:{user_id:user_id, action:'leave'},
+        success:function(data) {
+            var response = JSON.parse(data);
+            if(response.status == 1) {
+                // Check if the WebSocket connection is open before closing it
+                if (conn.readyState === WebSocket.OPEN) {
+                    conn.close();
+                }
+                location = '../home.php';
+            }
+        }
+    });
+});
 
-			$.ajax({
-				url:"action.php",
-				method:"POST",
-				data:{user_id:user_id, action:'leave'},
-				success:function(data)
-				{
-					var response = JSON.parse(data);
-					if(response.status == 1)
-					{
-						conn.close();
 
-						location = 'index.php';
-					}
-				}
-			})
-
-		});
 
 	})
 </script>
