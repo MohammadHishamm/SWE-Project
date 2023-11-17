@@ -1,10 +1,9 @@
 <?php
-
-
+session_start();
 $error = '';
 
 $success_message = '';
-
+//signup
 if(isset($_POST["register"]))
 {
     session_start();
@@ -46,6 +45,61 @@ if(isset($_POST["register"]))
 
 }
 
+//signin 
+if(isset($_POST['login']))
+{
+    require_once('User/user.php');
+
+    $user_object = new User;
+
+    $user_object->setUserEmail($_POST['user_email']);
+
+    $user_data = $user_object->get_user_data_by_email();
+
+    if(is_array($user_data) && count($user_data) > 0)
+    {
+        if($user_data['user_status'] == 'Enable')
+        {
+            if($user_data['user_password'] == $_POST['user_password'])
+            {
+                $user_object->setUserId($user_data['user_id']);
+
+                $user_object->setUserLoginStatus('Login');
+
+                $user_token = md5(uniqid());
+
+                $user_object->setUserToken($user_token);
+                $_SESSION["ID"]=$user_data['user_id'];
+
+                if($user_object->update_user_login_data())
+                {
+                    $_SESSION['user_data'][$user_data['user_id']] = [
+                        'id'    =>  $user_data['user_id'],
+                        'name'  =>  $user_data['user_name'],
+                      
+                        'token' =>  $user_token
+                    ];
+
+                   header("Location:Home.php?login=success");
+
+                }
+            }
+            else
+            {
+                $error = 'Wrong Password';
+            }
+        }
+        else
+        {
+            $error = 'Please Verify Your Email Address';
+        }
+    }
+    else
+    {
+        $error = 'Wrong Email Address';
+    }
+}
+
 
 ?>
 
@@ -65,11 +119,11 @@ if(isset($_POST["register"]))
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="signin.php" method="post" class="sign-in-form">
+          <form  method="post" class="sign-in-form" id="login_form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Email" id="email"  name="login-Email"/>
+              <input type="text" placeholder="Email" id="email"  name="user_email"/>
 </br>
               
 
@@ -77,12 +131,12 @@ if(isset($_POST["register"]))
 </br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" id="password"  name="login-Password" />
+              <input type="password" placeholder="Password" id="password"  name="user_password" />
 </br>
                
             </div>
 </br> 
-            <input type="submit" name="submit" value="Login" class="btn solid" />
+      <input type="submit" name="login" id="login" class="btn btn-primary" value="signin" />
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
