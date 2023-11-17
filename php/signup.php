@@ -1,9 +1,50 @@
 <?php
 
 
+$error = '';
 
-include "signup-db.php";
+$success_message = '';
 
+if(isset($_POST["register"]))
+{
+    session_start();
+
+    if(isset($_SESSION['user_data']))
+    {
+        header('location:home.php');
+    }
+
+    require_once('User/user.php');
+
+    $user_object = new User;
+
+    $user_object->setUserName($_POST['user_name']);
+
+    $user_object->setUserEmail($_POST['user_email']);
+
+    $user_object->setUserPassword($_POST['user_password']);
+
+   
+
+    $user_object->setUserStatus('Disabled');
+
+    $user_object->setUserCreatedOn(date('Y-m-d H:i:s'));
+
+    $user_object->setUserVerificationCode(md5(uniqid()));
+
+  
+        if($user_object->save_data())
+        {
+          header("Location: Home.php");
+
+        }
+        else
+        {
+            $error = 'Something went wrong try again';
+        }
+    
+
+}
 
 
 ?>
@@ -30,7 +71,7 @@ include "signup-db.php";
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Email" id="email"  name="login-Email"/>
 </br>
-              <span class="alert" id="alert1"><?php echo $email1Err;?></span>
+              
 
             </div>
 </br>
@@ -38,7 +79,7 @@ include "signup-db.php";
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Password" id="password"  name="login-Password" />
 </br>
-                <span class="alert" id="alert1"><?php echo $pass1Err;?></span>
+               
             </div>
 </br> 
             <input type="submit" name="submit" value="Login" class="btn solid" />
@@ -58,11 +99,11 @@ include "signup-db.php";
               </a>
             </div>
           </form>
-          <form action="" method="post" class="sign-up-form">
+          <form  method="post" class="sign-up-form" id="register_form">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full name" id="name1" name="Name" />
+              <input type="text" placeholder="Full name" id="name1" name="user_name" />
 </br>
               <span class="alert" id="alert3"></span>
      
@@ -70,17 +111,17 @@ include "signup-db.php";
             </br>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="text" placeholder="Email" id="email1" name="Email" />
+              <input type="text" placeholder="Email" id="email1" name="user_email" />
               </br>
-              <span class="alert" id="alert1"><?php echo $email2Err;?></span>
+              
 
             </div>
             </br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" id="password1" name="Password"  />
+              <input type="password" placeholder="Password" id="password1" name="user_password"  />
               </br>
-              <span class="alert" id="alert1"><?php echo $pass2Err;?></span>
+             
 
             </div>
             </br>
@@ -92,7 +133,7 @@ include "signup-db.php";
 
             </div>
             </br>
-            <button  class="btn" id="signup">Sign up</button>
+            <input type="submit" name="register" class="btn btn-success" value="sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -143,5 +184,7 @@ include "signup-db.php";
     </div>
 
     <script src="../js/sign-up.js"></script>
+  
+    
   </body>
 </html>
