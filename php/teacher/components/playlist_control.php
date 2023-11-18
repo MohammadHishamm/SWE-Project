@@ -79,9 +79,18 @@
             return $statement;
         }
 
-        public function get__playlist_by_id($id)
+        public function get_All_playlist_()
         {
-            $query = "SELECT * FROM `playlist` WHERE id = ? ORDER BY date DESC";
+            $query = "SELECT * FROM `playlist` ORDER BY date DESC";
+            $statement = $this->connect->prepare($query);
+            $statement->execute();
+         
+            return $statement;
+        }
+
+        public function get_playlist_by_id($id)
+        {
+            $query = "SELECT * FROM `playlist` WHERE id = ? ";
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
          
