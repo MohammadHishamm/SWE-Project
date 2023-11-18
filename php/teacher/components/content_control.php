@@ -136,9 +136,32 @@ class content {
             return $statement;
         }
 
-        public function Delete_playlist($playlist_id, $tutor_id)
+        public function remove_content($video_id)
         {
+            $verify_video = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+            $verify_video->execute([$video_id]);
 
+            if($verify_video->rowCount() > 0){
+               
+               $delete_video_thumb = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+               $delete_video_thumb->execute([$video_id]);
+               $fetch_thumb = $delete_video_thumb->fetch(PDO::FETCH_ASSOC);
+               unlink('../uploaded_files/'.$fetch_thumb['thumb']);
+         
+               $delete_video = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+               $delete_video->execute([$video_id]);
+               $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
+               unlink('../uploaded_files/'.$fetch_video['video']);
+                
+               $delete_playlist =$this->connect->prepare("DELETE FROM `content` WHERE id = ?");
+               $delete_playlist->execute([$video_id]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public function Update_playlist($playlist_id , $tutor_id )

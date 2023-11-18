@@ -1,9 +1,7 @@
 <?php
 
-require_once('../components/connect.php');
-$database_object = new Database_connection;
-$conn = $database_object->connect();
-// include "../../dbh.inc.php";
+require_once('../components/content_control.php');
+$content = new content;
 
 session_start();
 foreach($_SESSION['user_data'] as $key => $value)
@@ -11,28 +9,18 @@ foreach($_SESSION['user_data'] as $key => $value)
    $tutor_id = $value['id'];
 }
 
-if(isset($_POST['delete_video'])){
+if(isset($_POST['delete_video']))
+{
    $delete_id = $_POST['video_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
-   $verify_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
-   $verify_video->execute([$delete_id]);
-   if($verify_video->rowCount() > 0){
-      $delete_video_thumb = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
-      $delete_video_thumb->execute([$delete_id]);
-      $fetch_thumb = $delete_video_thumb->fetch(PDO::FETCH_ASSOC);
-      unlink('../uploaded_files/'.$fetch_thumb['thumb']);
-      $delete_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
-      $delete_video->execute([$delete_id]);
-      $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
-      unlink('../uploaded_files/'.$fetch_video['video']);
-      $delete_likes = $conn->prepare("DELETE FROM `likes` WHERE content_id = ?");
-      $delete_likes->execute([$delete_id]);
-      $delete_comments = $conn->prepare("DELETE FROM `comments` WHERE content_id = ?");
-      $delete_comments->execute([$delete_id]);
-      $delete_content = $conn->prepare("DELETE FROM `content` WHERE id = ?");
-      $delete_content->execute([$delete_id]);
+
+   if($content->remove_content($delete_id))
+   {
+
       $message[] = 'video deleted!';
-   }else{
+   }
+   else
+   {
       $message[] = 'video already deleted!';
    }
 
@@ -71,7 +59,7 @@ if(isset($_POST['delete_video'])){
    </div>
 
    <?php
-      $select_videos = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC");
+      $select_videos = $content->get_connect()->prepare("SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC");
       $select_videos->execute([$tutor_id]);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 

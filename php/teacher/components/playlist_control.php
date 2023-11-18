@@ -103,8 +103,12 @@
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
                 unlink('../uploaded_files/'.$fetch_thumb['thumb']);
 
-                // $delete_bookmark = $connect->prepare("DELETE FROM `bookmark` WHERE playlist_id = ?");
-                // $delete_bookmark->execute([$delete_id]);
+
+                $delete_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+                $delete_video->execute([$delete_id]);
+
+                $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
+                unlink('../uploaded_files/'.$fetch_video['video']);
 
                 $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
                 $delete_playlist->execute([$playlist_id]);
