@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 if(isset($_GET["id"]))
 {
@@ -10,9 +9,6 @@ if(isset($_GET["id"]))
    print_r($wish);
    echo $_COOKIE["desire"];
 }
-=======
-session_start();
->>>>>>> 2f21290486c5a1bcc1ae7f894967a16e00951466
 
 ?>
 <!DOCTYPE html>
