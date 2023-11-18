@@ -97,5 +97,14 @@
             }
 
         }
+
+        public function Update_playlist($playlist_id, $tutor_id)
+        {
+            $update_playlist = $this->connect->prepare("UPDATE `playlist` SET title = ?, description = ? WHERE id = ? AND tutor_id = ?");
+            $update_playlist->execute([$this->playlist_title, $this->playlist_description, $playlist_id, $tutor_id]);
+
+            
+        }
+
     }
 ?>

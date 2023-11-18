@@ -1,8 +1,9 @@
 <?php
 
 include '../components/connect.php';
+require_once('../components/playlist_control.php');
+$playlist = new playlist;
 
-// include "../../dbh.inc.php";
 
 if(isset($_COOKIE['tutor_id'])){
    $tutor_id = $_COOKIE['tutor_id'];
@@ -27,47 +28,55 @@ if(isset($_POST['submit'])){
    $status = $_POST['status'];
    $status = filter_var($status, FILTER_SANITIZE_STRING);
 
-   $update_playlist = $conn->prepare("UPDATE `playlist` SET title = ?, description = ?, status = ? WHERE id = ?");
-   $update_playlist->execute([$title, $description, $status, $get_id]);
+   
 
-   $old_image = $_POST['old_image'];
-   $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
+
+   // $old_image = $_POST['old_image'];
+   // $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
    $image = $_FILES['image']['name'];
-   $image = filter_var($image, FILTER_SANITIZE_STRING);
-   $ext = pathinfo($image, PATHINFO_EXTENSION);
-   $rename = unique_id().'.'.$ext;
-   $image_size = $_FILES['image']['size'];
-   $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../uploaded_files/'.$rename;
+   // $image = filter_var($image, FILTER_SANITIZE_STRING);
+   // $ext = pathinfo($image, PATHINFO_EXTENSION);
+   // $rename = unique_id().'.'.$ext;
+   // $image_size = $_FILES['image']['size'];
+   // $image_tmp_name = $_FILES['image']['tmp_name'];
+   // $image_folder = '../uploaded_files/'.$rename;
 
-   if(!empty($image)){
-      if($image_size > 2000000){
-         $message[] = 'image size is too large!';
-      }else{
-         $update_image = $conn->prepare("UPDATE `playlist` SET thumb = ? WHERE id = ?");
-         $update_image->execute([$rename, $get_id]);
-         move_uploaded_file($image_tmp_name, $image_folder);
-         if($old_image != '' AND $old_image != $rename){
-            unlink('../uploaded_files/'.$old_image);
-         }
-      }
-   } 
+   $playlist->setPlaylistTitle($title);
+   $playlist->setPlaylistDescription($description);
+   $playlist->setPlaylistStatus($status);
+   $playlist->setPlaylistImage($image);
+
+
+
+   // if(!empty($image)){
+   //    if($image_size > 2000000){
+   //       $message[] = 'image size is too large!';
+   //    }else{
+   //       $update_image = $conn->prepare("UPDATE `playlist` SET thumb = ? WHERE id = ?");
+   //       $update_image->execute([$rename, $get_id]);
+   //       move_uploaded_file($image_tmp_name, $image_folder);
+   //       if($old_image != '' AND $old_image != $rename){
+   //          unlink('../uploaded_files/'.$old_image);
+   //       }
+   //    }
+   // } 
 
    $message[] = 'playlist updated!';  
 
 }
 
 if(isset($_POST['delete'])){
+   
+   // $delete_bookmark = $conn->prepare("DELETE FROM `bookmark` WHERE playlist_id = ?");
+   // $delete_bookmark->execute([$delete_id]);
    $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
-   $delete_playlist_thumb = $conn->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
-   $delete_playlist_thumb->execute([$delete_id]);
-   $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
-   unlink('../uploaded_files/'.$fetch_thumb['thumb']);
-   $delete_bookmark = $conn->prepare("DELETE FROM `bookmark` WHERE playlist_id = ?");
-   $delete_bookmark->execute([$delete_id]);
-   $delete_playlist = $conn->prepare("DELETE FROM `playlist` WHERE id = ?");
-   $delete_playlist->execute([$delete_id]);
+
+   $playlist->Delete_playlist($delete_id,$tutor_id);
+   $message[] = 'playlist deleted!';
+   }else{
+      $message[] = 'playlist already deleted!';
+   
    header('location:playlists.php');
 }
 
@@ -97,8 +106,9 @@ if(isset($_POST['delete'])){
    <h1 class="heading">update playlist</h1>
 
    <?php
-         $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
-         $select_playlist->execute([$get_id]);
+         // $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
+         // $select_playlist->execute([$get_id]);
+         $select_playlist = $playlist->get_All_playlist($tutor_id);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];
@@ -138,21 +148,6 @@ if(isset($_POST['delete'])){
    ?>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="../js/admin_script.js"></script>
