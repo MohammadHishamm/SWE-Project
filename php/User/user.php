@@ -294,6 +294,7 @@ class User
 		}
 		return $user_data;
 	}
+	
 	function is_valid_email_verification_code()
 	{
 		$query = "

@@ -1,8 +1,5 @@
 <?php
 
-require_once('../components/connect.php');
-$database_object = new Database_connection;
-$conn = $database_object->connect();
 
 // include "../../dbh.inc.php";
 session_start();
@@ -11,21 +8,20 @@ foreach($_SESSION['user_data'] as $key => $value)
    $tutor_id = $value['id'];
 }
 
-$select_contents = $conn->prepare("SELECT * FROM `content` WHERE tutor_id = ?");
-$select_contents->execute([$tutor_id]);
-$total_contents = $select_contents->rowCount();
+require_once('../../User/user.php');
+require_once('../components/playlist_control.php');
+require_once('../components/content_control.php');
 
-$select_playlists = $conn->prepare("SELECT * FROM `playlist` WHERE tutor_id = ?");
-$select_playlists->execute([$tutor_id]);
-$total_playlists = $select_playlists->rowCount();
+$User = new User();
+$playlist = new playlist();
+$content = new content();
 
-$select_likes = $conn->prepare("SELECT * FROM `likes` WHERE tutor_id = ?");
-$select_likes->execute([$tutor_id]);
-$total_likes = $select_likes->rowCount();
+$User->setUserId($tutor_id);
 
-$select_comments = $conn->prepare("SELECT * FROM `comments` WHERE tutor_id = ?");
-$select_comments->execute([$tutor_id]);
-$total_comments = $select_comments->rowCount();
+
+$total_playlists = $playlist->get_All_playlist($tutor_id)->rowCount();
+
+$total_contents = $content-> get_All_content($tutor_id)->rowCount();
 
 ?>
 
@@ -56,9 +52,19 @@ $total_comments = $select_comments->rowCount();
 
       <div class="box">
          <h3>welcome!</h3>
-         <p><?= $fetch_profile['name']; ?></p>
-         <a href="profile.php" class="btn">view profile</a>
-      </div>
+
+         <?php           
+           $Data = $User->get_user_by_id();
+           if($Data->rowCount() > 0){
+             while($fetch_user = $Data->fetch(PDO::FETCH_ASSOC)){
+               ?>
+            <p><?= $fetch_user['user_name']; ?></p>
+            <a href="profile.php" class="btn">view profile</a>
+            </div>
+         <?php 
+             }
+         }
+         ?>
 
       <div class="box">
          <h3><?= $total_contents; ?></h3>
@@ -72,26 +78,7 @@ $total_comments = $select_comments->rowCount();
          <a href="add_playlist.php" class="btn">add new playlist</a>
       </div>
 
-      <div class="box">
-         <h3><?= $total_likes; ?></h3>
-         <p>total likes</p>
-         <a href="contents.php" class="btn">view contents</a>
-      </div>
 
-      <div class="box">
-         <h3><?= $total_comments; ?></h3>
-         <p>total comments</p>
-         <a href="comments.php" class="btn">view comments</a>
-      </div>
-
-      <div class="box">
-         <h3>quick select</h3>
-         <p>login or register</p>
-         <div class="flex-btn">
-            <a href="login.php" class="option-btn">login</a>
-            <a href="register.php" class="option-btn">register</a>
-         </div>
-      </div>
 
    </div>
 

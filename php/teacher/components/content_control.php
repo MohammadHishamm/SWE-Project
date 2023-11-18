@@ -118,7 +118,7 @@ class content {
 
 
 
-        public function get_All_playlist($tutor_id)
+        public function get_All_content($tutor_id)
         {
             $query = "SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC";
             $statement = $this->connect->prepare($query);

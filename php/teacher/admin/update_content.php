@@ -4,11 +4,10 @@ include '../components/connect.php';
 
 // include "../../dbh.inc.php";
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
-}else{
-   $tutor_id = '';
-   header('location:login.php');
+session_start();
+foreach($_SESSION['user_data'] as $key => $value)
+{
+   $tutor_id = $value['id'];
 }
 
 if(isset($_GET['get_id'])){
@@ -31,6 +30,8 @@ if(isset($_POST['update'])){
    $playlist = $_POST['playlist'];
    $playlist = filter_var($playlist, FILTER_SANITIZE_STRING);
 
+
+   
    $update_content = $conn->prepare("UPDATE `content` SET title = ?, description = ?, status = ? WHERE id = ?");
    $update_content->execute([$title, $description, $status, $video_id]);
 

@@ -16,14 +16,12 @@ if(isset($_POST['delete_video']))
 
    if($content->remove_content($delete_id))
    {
-
       $message[] = 'video deleted!';
    }
    else
    {
       $message[] = 'video already deleted!';
    }
-
 }
 
 ?>
