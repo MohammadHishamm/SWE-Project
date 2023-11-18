@@ -1,3 +1,16 @@
+<?php
+
+if(isset($_GET["id"]))
+{
+   require_once("conn.php");
+   $wish=new wishlist;
+   $wish->setcourseid($_GET["id"]);
+   $wish->adddesire($_GET["id"]);
+   print_r($wish);
+   echo $_COOKIE["desire"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -196,7 +209,7 @@
                                     </div>
                                     <div class="fav">
   <i></i>
-  <span>liked!</span>
+  <a href="Home.php?id=5 ">liked!</a>
 </div>
                                 </div>
                             </div>
@@ -247,6 +260,10 @@
                                     <div class="d-flex align-items-center justify-content-between mb-3">
                                         <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
                                         <p class="fw-bold mb-0">$90</p>
+                                        <div class="fav">
+  <i></i>
+  <a href="Home.php?id=7 ">liked!</a>
+</div>
                                     </div>
                                 </div>
                             </div>

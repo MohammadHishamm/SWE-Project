@@ -1,7 +1,12 @@
 <?php
-  
-
-
+if(isset($_GET["id"]))
+{
+   require_once("conn.php");
+   $wish=new wishlist;
+   $wish->deletedesire($_GET["id"]);
+   echo $_COOKIE["desire"];
+   
+}
 
 ?>
 
@@ -69,7 +74,7 @@
                 <p class="lead fw-normal mb-2">Data science</p>
                 <p><span class="text-muted">Instructor: </span>Omar Hosny
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -82,9 +87,9 @@
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                   <i class="fas fa-plus"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
+              <h5 class="mb-0">$499.00 <a class="delete" href="wishlist.php?id=5" >delete</a></h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -105,7 +110,7 @@
               <p class="lead fw-normal mb-2">Web development</p>
                 <p><span class="text-muted">Instructor: </span>Omar Hosny
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -118,7 +123,7 @@
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                   <i class="fas fa-plus"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
               <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
               </div>
@@ -141,7 +146,7 @@
               <p class="lead fw-normal mb-2">Software engineer</p>
                 <p><span class="text-muted">Instructor: </span>Omar Hosny
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -154,7 +159,7 @@
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                   <i class="fas fa-plus"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
               <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
                 
@@ -178,7 +183,7 @@
               <p class="lead fw-normal mb-2">Data security</p>
                 <p><span class="text-muted">Instructor: </span>Omar Hosny
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -191,7 +196,7 @@
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                   <i class="fas fa-plus"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
               <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
               </div>
