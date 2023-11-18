@@ -1,9 +1,9 @@
 <?php
 
 
-if(!empty($_SESSION['user_data']))
+if(empty($_SESSION['user_data']))
 {
-	header('location:index.php');
+	header('location:signup.php');
 }
 
 
