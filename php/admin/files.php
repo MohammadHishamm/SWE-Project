@@ -50,7 +50,7 @@
           </a>
         </li>
         <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="friends.php">
+          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="users.php">
             <i class="fa-regular fa-circle-user fa-fw"></i>
             <span>Users</span>
           </a>
