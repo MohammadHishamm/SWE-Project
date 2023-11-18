@@ -1,10 +1,14 @@
 <?php
 
+session_start();
 
 if(empty($_SESSION['user_data']))
 {
-	header('location:signup.php');
+  header('location:signup.php');
 }
+
+
+
 
 
 require_once('User/user.php');
