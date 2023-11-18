@@ -1,6 +1,7 @@
 <?php
 
-include '../components/connect.php';
+require_once('../components/content_control.php');
+$content = new content;
 // include "../../dbh.inc.php";
 
 if(isset($_COOKIE['tutor_id'])){
@@ -100,21 +101,6 @@ if(isset($_POST['delete_video'])){
    </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="../js/admin_script.js"></script>
