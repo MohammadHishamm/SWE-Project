@@ -192,7 +192,12 @@
                                     <div class="d-flex align-items-center justify-content-between mb-3">
                                         <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
                                         <p class="fw-bold mb-0">$90</p>
+                                        
                                     </div>
+                                    <div class="fav">
+  <i></i>
+  <span>liked!</span>
+</div>
                                 </div>
                             </div>
                         </div>
