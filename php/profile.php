@@ -53,7 +53,7 @@
                       >
                     </li>
                     <li>
-                      <a href="#"
+                      <a href="signout.php"
                         ><i style="font-size: 24px" class="fa">&#xf08b;</i> Sign
                         out</a
                       >
