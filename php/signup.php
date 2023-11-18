@@ -108,9 +108,7 @@ if(isset($_POST['login']))
                 $user_token = md5(uniqid());
 
                 $user_object->setUserToken($user_token);
-                $_SESSION["ID"]=$user_data['user_id'];
-                $_SESSION["Name"]=$user_data['user_name'];
-                $_SESSION["Email"]=$user_data['user_email'];
+
 
                 if($user_object->update_user_login_data())
                 {

@@ -19,7 +19,8 @@
         <?php
         session_start();
 
-        if(!empty($_SESSION['ID'])) {
+        if(!empty($_SESSION['user_data']))
+        {
 
           echo '
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >

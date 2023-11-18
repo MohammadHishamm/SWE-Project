@@ -1,5 +1,12 @@
 <?php
 
+
+if(!empty($_SESSION['user_data']))
+{
+	header('location:index.php');
+}
+
+
 require_once('User/user.php');
 
 $user_object = new User;
@@ -35,7 +42,7 @@ $user_object->setUserId($_GET['user_id']);
                         while($fetch_user = $Data->fetch(PDO::FETCH_ASSOC)){
                     ?>
                   <div class="ms-3" style="margin-top: 130px;">
-                    <h5><?= $fetch_user["FullName"]; ?></h5>
+                    <h5><?= $fetch_user["user_name"]; ?></h5>
                     <p>New York</p>
                   </div>
                   <?php 

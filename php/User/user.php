@@ -209,7 +209,7 @@ class User
 
 	function get_user_by_id()
 	{
-		$query = "SELECT * FROM `users` WHERE ID = ? ";
+		$query = "SELECT * FROM `user` WHERE user_id = ? ";
 		$statement = $this->connect->prepare($query);
 		$statement->execute([$this->user_id]);
 	 

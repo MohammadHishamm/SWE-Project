@@ -108,7 +108,7 @@ if(isset($_POST['delete']))
    <h1 class="heading">update playlist</h1>
 
    <?php
-         $select_playlist = $playlist->get__playlist_by_id($get_id);
+         $select_playlist = $playlist->get_playlist_by_id($get_id);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];
