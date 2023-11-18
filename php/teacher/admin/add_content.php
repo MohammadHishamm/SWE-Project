@@ -2,11 +2,10 @@
 require_once('../components/content_control.php');
 $content = new content;
 
-if (isset($_COOKIE['tutor_id'])) {
-   $tutor_id = $_COOKIE['tutor_id'];
-} else {
-   $tutor_id = '';
-   header('location:login.php');
+session_start();
+foreach($_SESSION['user_data'] as $key => $value)
+{
+   $tutor_id = $value['id'];
 }
 
 if (isset($_POST['submit'])) {

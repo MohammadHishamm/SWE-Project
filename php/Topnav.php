@@ -27,7 +27,7 @@
               <div class="row align-items-center">
 
               <div class="col">
-              <a href="profile.php">
+              <a href="teacher/admin/dashboard.php">
               <i class="fas fa-user-alt" style="color: #000000;"></i>
               </a>
               
