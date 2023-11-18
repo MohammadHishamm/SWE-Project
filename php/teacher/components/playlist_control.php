@@ -54,6 +54,11 @@
             move_uploaded_file($image_tmp_name, $image_folder);
         }
         public function getPlaylistImage(){return $this->playlist_image;}
+        
+        public function setPlaylistoldimg($playlist_old_img){return 
+             $this->playlist_image = $playlist_old_img;}
+        public function getPlaylistoldimg(){return $this->playlist_image;}
+
 
         public function get_connect()
         {
@@ -74,6 +79,15 @@
             return $statement;
         }
 
+        public function get__playlist_by_id($id)
+        {
+            $query = "SELECT * FROM `playlist` WHERE id = ? ORDER BY date DESC";
+            $statement = $this->connect->prepare($query);
+            $statement->execute([$id]);
+         
+            return $statement;
+        }
+
         public function Delete_playlist($playlist_id, $tutor_id)
         {
 
@@ -81,7 +95,8 @@
             $playlist->execute([$playlist_id, $tutor_id]);
 
          
-            if($playlist -> rowCount() > 0){
+            if($playlist -> rowCount() > 0)
+            {
 
                 $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
                 $delete_playlist_thumb->execute([$playlist_id]);
@@ -94,16 +109,20 @@
 
                 $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
                 $delete_playlist->execute([$playlist_id]);
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
 
         }
 
-        public function Update_playlist($playlist_id, $tutor_id)
+        public function Update_playlist($playlist_id , $tutor_id )
         {
-            $update_playlist = $this->connect->prepare("UPDATE `playlist` SET title = ?, description = ? WHERE id = ? AND tutor_id = ?");
-            $update_playlist->execute([$this->playlist_title, $this->playlist_description, $playlist_id, $tutor_id]);
-
-            
+            $update_playlist = $this->connect->prepare("UPDATE `playlist` SET title = ?, description = ? , thumb = ? , status = ? WHERE id = ? AND tutor_id = ?");
+            $update_playlist->execute([$this->playlist_title , $this->playlist_description , $this->playlist_image , $this->playlist_status , $playlist_id , $tutor_id]);   
         }
 
     }

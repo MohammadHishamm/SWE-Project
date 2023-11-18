@@ -25,8 +25,6 @@ if(isset($_POST["register"]))
 
     $user_object->setUserPassword($_POST['user_password']);
 
-   
-
     $user_object->setUserStatus('Disabled');
 
     $user_object->setUserCreatedOn(date('Y-m-d H:i:s'));
@@ -78,7 +76,6 @@ if(isset($_POST['login']))
                     $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
-                      
                         'token' =>  $user_token
                     ];
 

@@ -1,6 +1,8 @@
 <?php
 
-include '../components/connect.php';
+require_once('../components/connect.php');
+$database_object = new Database_connection;
+$conn = $database_object->connect();
 
 // include "../../dbh.inc.php";
 
