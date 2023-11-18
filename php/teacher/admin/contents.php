@@ -1,7 +1,8 @@
 <?php
 
-require_once('../components/content_control.php');
-$content = new content;
+require_once('../components/connect.php');
+$database_object = new Database_connection;
+$conn = $database_object->connect();
 // include "../../dbh.inc.php";
 
 if(isset($_COOKIE['tutor_id'])){

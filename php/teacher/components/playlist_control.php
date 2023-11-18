@@ -48,10 +48,9 @@
             $rename = $this->unique_id.'.'.$ext;
             $image_size = $_FILES['image']['size'];
             $image_tmp_name = $_FILES['image']['tmp_name'];
-            $image_folder = '../uploaded_files/'.$rename;         
-            $this->playlist_image = $rename;
-
-            move_uploaded_file($image_tmp_name, $image_folder);
+            $image_folder = '../uploaded_files/'.$rename;  
+            move_uploaded_file($image_tmp_name, $image_folder);       
+            $this->playlist_image = $rename;           
         }
         public function getPlaylistImage(){return $this->playlist_image;}
         

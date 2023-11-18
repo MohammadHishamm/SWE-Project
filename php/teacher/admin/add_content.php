@@ -33,31 +33,12 @@ if (isset($_POST['submit'])) {
    $content->setContentThumb($thumb);
    $content->setContentVideo($video);
 
-   // echo $content->getTutorId() ."<br>";
-   // echo $content->getContentId()."<br>";
-   // echo $content->getContentStatus()."<br>";
-   // echo $content->getContentTitle()."<br>";
-   // echo $content->getContentDescription()."<br>";
-   // echo $content->getContentPlaylist()."<br>";
-   // echo $content->getContentThumb()."<br>";
-   // echo $content->getContentVideo()."<br>";
 
    if($content->saveContent()){
       $message[] = 'new course uploaded!';
    }else{
       $message[] = 'failed to upload course!';
    }
-
-
-   // if ($thumb_size > 2000000) {
-   //    $message[] = 'image size is too large!';
-   // } else {
-   //    $add_playlist = $conn->prepare("INSERT INTO `content`(id, tutor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
-   //    $add_playlist->execute([$id, $tutor_id, $playlist, $title, $description, $rename_video, $rename_thumb, $status]);
-   //    move_uploaded_file($thumb_tmp_name, $thumb_folder);
-   //    move_uploaded_file($video_tmp_name, $video_folder);
-   //    $message[] = 'new course uploaded!';
-   // }
 }
 
 ?>

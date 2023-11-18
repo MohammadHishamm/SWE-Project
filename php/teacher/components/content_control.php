@@ -14,6 +14,21 @@ class content {
     public $unique_id;
     public $connect;
 
+
+    public function __construct()
+    {
+
+        require_once('connect.php');
+
+        $database_object = new Database_connection;
+
+
+        $this->connect = $database_object->connect();
+      
+        $this->unique_id = $database_object->unique_id();
+        
+    }
+    
     public function setContentId(){
         $this->content_id  =  $this->unique_id;
     }
@@ -45,10 +60,12 @@ class content {
     public function setContentVideo($content_video){
     $video = filter_var($content_video, FILTER_SANITIZE_STRING);
    $video_ext = pathinfo($video, PATHINFO_EXTENSION);
-   $rename_video = $this->unique_id . '.' . $video_ext;
+   $rename_video = $this->unique_id.'.'.$video_ext;
    $video_tmp_name = $_FILES['video']['tmp_name'];
-   $video_folder = '../uploaded_files/' . $rename_video;
 
+   $video_folder = '../uploaded_files/'.$rename_video;
+   move_uploaded_file($video_tmp_name, $video_folder);
+  
         $this->content_video  =  $rename_video;
     }
     public function getContentVideo(){
@@ -61,8 +78,9 @@ class content {
     $rename_thumb = $this-> unique_id . '.' . $thumb_ext;
     $thumb_size = $_FILES['thumb']['size'];
     $thumb_tmp_name = $_FILES['thumb']['tmp_name'];
-    $thumb_folder = '../uploaded_files/' . $rename_thumb;
-        $this->content_thumb  =  $rename_thumb;
+    $thumb_folder = '../uploaded_files/'.$rename_thumb;
+    move_uploaded_file($thumb_tmp_name, $thumb_folder);
+    $this->content_thumb  =  $rename_thumb;
     }
     public function getContentThumb(){
         return $this->content_thumb;
@@ -84,23 +102,6 @@ class content {
 
 
 
-    
-
-
-    public function __construct()
-	    {
-
-            require_once('connect.php');
-
-            $database_object = new Database_connection;
-
-
-            $this->connect = $database_object->connect();
-          
-            $this->unique_id = $database_object->unique_id();
-            
-	    }
-
         public function get_connect()
         {
             return $this->connect;
@@ -108,18 +109,11 @@ class content {
 
         public function saveContent()
         {
-
-            $add_playlist = $this->connect->prepare("INSERT INTO `content`(id, tutor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?)");
-            $add_playlist->execute([$this->content_id, $this->tutor_id, $this->content_playlist_id, $this->content_title, $this->content_description, $this->content_video, $this->content_thumb, $this->content_status]);
-
+            $add_content = $this->connect->prepare("INSERT INTO `content`(id, tutor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
+            $add_content->execute([$this->content_id,  $this->tutor_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]);
 
 
-            
-            if($add_playlist){
-                return true;
-            }else{
-                return false;
-            }
+
         }
 
 
@@ -156,4 +150,3 @@ class content {
  }
 
 ?>
-
