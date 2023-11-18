@@ -1,4 +1,6 @@
 <?php
+
+
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -9,11 +11,15 @@ if(isset($message)){
       ';
    }
 }
+
+
    require_once('connect.php');
    $database_object = new Database_connection;
    $connect = $database_object->connect();
 
-?>
+  
+   ?>
+
 
 <header class="header">
 

@@ -1,13 +1,14 @@
 <?php
 
-include '../components/connect.php';
 // include "../../dbh.inc.php";
+require_once('../components/connect.php');
+$database_object = new Database_connection;
+$conn = $database_object->connect();
 
-if(isset($_COOKIE['tutor_id'])){
-   $tutor_id = $_COOKIE['tutor_id'];
-}else{
-   $tutor_id = '';
-   header('location:login.php');
+session_start();
+foreach($_SESSION['user_data'] as $key => $value)
+{
+   $tutor_id = $value['id'];
 }
 
 if(isset($_GET['get_id'])){

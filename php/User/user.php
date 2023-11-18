@@ -209,7 +209,7 @@ class User
 
 	function get_user_by_id()
 	{
-		$query = "SELECT * FROM `users` WHERE ID = ? ";
+		$query = "SELECT * FROM `user` WHERE user_id = ? ";
 		$statement = $this->connect->prepare($query);
 		$statement->execute([$this->user_id]);
 	 
@@ -340,7 +340,36 @@ class User
 		}
 	}
 
+	function get_all_users_data()
+	{
+		$query = "SELECT * FROM user";
+		$statement = $this->connect->prepare($query);
+		$statement->execute();
+	
+		$users_data = $statement->fetchAll(PDO::FETCH_ASSOC);
+	
+		return $users_data;
+	}
 
+	function delete_user_by_id()
+    {
+        $query = "DELETE FROM user WHERE user_id = :user_id";
+        $statement = $this->connect->prepare($query);
+
+        $statement->bindParam(':user_id', $this->user_id);
+
+        try {
+            if ($statement->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $error) {
+            echo $error->getMessage();
+            return false;
+        }
+    }
+	
 }
 
 

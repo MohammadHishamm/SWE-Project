@@ -17,16 +17,17 @@
           </li>
         </ul>
         <?php
-        session_start();
+    
 
-        if(!empty($_SESSION['ID'])) {
+        if(!empty($_SESSION['user_data']))
+        {
 
           echo '
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
               <div class="row align-items-center">
 
               <div class="col">
-              <a href="profile.php">
+              <a href="teacher/admin/dashboard.php">
               <i class="fas fa-user-alt" style="color: #000000;"></i>
               </a>
               

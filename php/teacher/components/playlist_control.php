@@ -48,10 +48,9 @@
             $rename = $this->unique_id.'.'.$ext;
             $image_size = $_FILES['image']['size'];
             $image_tmp_name = $_FILES['image']['tmp_name'];
-            $image_folder = '../uploaded_files/'.$rename;         
-            $this->playlist_image = $rename;
-
-            move_uploaded_file($image_tmp_name, $image_folder);
+            $image_folder = '../uploaded_files/'.$rename;  
+            move_uploaded_file($image_tmp_name, $image_folder);       
+            $this->playlist_image = $rename;           
         }
         public function getPlaylistImage(){return $this->playlist_image;}
         
@@ -75,15 +74,6 @@
             $query = "SELECT * FROM `playlist` WHERE tutor_id = ? ORDER BY date DESC";
             $statement = $this->connect->prepare($query);
             $statement->execute([$tutor_id]);
-         
-            return $statement;
-        }
-
-        public function get_All_playlist_()
-        {
-            $query = "SELECT * FROM `playlist` ORDER BY date DESC";
-            $statement = $this->connect->prepare($query);
-            $statement->execute();
          
             return $statement;
         }
@@ -113,8 +103,12 @@
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
                 unlink('../uploaded_files/'.$fetch_thumb['thumb']);
 
-                // $delete_bookmark = $connect->prepare("DELETE FROM `bookmark` WHERE playlist_id = ?");
-                // $delete_bookmark->execute([$delete_id]);
+
+                $delete_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+                $delete_video->execute([$delete_id]);
+
+                $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
+                unlink('../uploaded_files/'.$fetch_video['video']);
 
                 $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
                 $delete_playlist->execute([$playlist_id]);
