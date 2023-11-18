@@ -20,7 +20,7 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="dashboard.php" class="logo">Teacher.</a>
+      <a href="dashboard.php" class="logo">Teacher.dashboard</a>
 
 
       <div class="icons">
@@ -67,9 +67,9 @@ if(isset($message)){
       </div>
 
    <nav class="navbar">
-      <a href="dashboard.php"><i class="fas fa-home"></i><span>home</span></a>
-      <a href="playlists.php"><i class="fa-solid fa-bars-staggered"></i><span>playlists</span></a>
-      <a href="contents.php"><i class="fas fa-graduation-cap"></i><span>contents</span></a>
+      <a href="dashboard.php"><i class="fas fa-home"></i><span>Analysis</span></a>
+      <a href="playlists.php"><i class="fa-solid fa-bars-staggered"></i><span>Playlists</span></a>
+      <a href="contents.php"><i class="fas fa-graduation-cap"></i><span>Contents</span></a>
       
    </nav>
 

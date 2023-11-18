@@ -104,13 +104,23 @@
                 unlink('../uploaded_files/'.$fetch_thumb['thumb']);
 
 
-                $delete_video = $conn->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
-                $delete_video->execute([$delete_id]);
+                $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
+                $delete_playlist_thumb->execute([$playlist_id]);
+
+                $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
+                unlink('../uploaded_files/'.$fetch_thumb['thumb']);
+
+
+                $delete_video = $this->connect->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
+                $delete_video->execute([$playlist_id]);
 
                 $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
                 unlink('../uploaded_files/'.$fetch_video['video']);
 
                 $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
+                $delete_playlist->execute([$playlist_id]);
+
+                $delete_playlist =$this->connect->prepare("DELETE FROM `content` WHERE playlist_id = ?");
                 $delete_playlist->execute([$playlist_id]);
 
                 return true;
