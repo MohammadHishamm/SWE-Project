@@ -1,3 +1,12 @@
+<?php
+
+require_once('User/user.php');
+
+$user_object = new User;
+$user_object->setUserId($_GET['user_id']);
+$Data = $user_object->get_user_all_data_with_status_count();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include "Header.php" ?>

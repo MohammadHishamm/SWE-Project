@@ -1,6 +1,5 @@
 <?php
 
-include '../components/connect.php';
 require_once('../components/playlist_control.php');
 $playlist = new playlist;
 
@@ -29,56 +28,59 @@ if(isset($_POST['submit'])){
    $status = filter_var($status, FILTER_SANITIZE_STRING);
 
    
-
-
-   // $old_image = $_POST['old_image'];
-   // $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
+   $old_image = $_POST['old_image'];
+   $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
    $image = $_FILES['image']['name'];
-   // $image = filter_var($image, FILTER_SANITIZE_STRING);
-   // $ext = pathinfo($image, PATHINFO_EXTENSION);
-   // $rename = unique_id().'.'.$ext;
-   // $image_size = $_FILES['image']['size'];
-   // $image_tmp_name = $_FILES['image']['tmp_name'];
-   // $image_folder = '../uploaded_files/'.$rename;
+   $image = filter_var($image, FILTER_SANITIZE_STRING);
+   $image_size = $_FILES['image']['size'];
+
 
    $playlist->setPlaylistTitle($title);
    $playlist->setPlaylistDescription($description);
    $playlist->setPlaylistStatus($status);
-   $playlist->setPlaylistImage($image);
-
-
-
-   // if(!empty($image)){
-   //    if($image_size > 2000000){
-   //       $message[] = 'image size is too large!';
-   //    }else{
-   //       $update_image = $conn->prepare("UPDATE `playlist` SET thumb = ? WHERE id = ?");
-   //       $update_image->execute([$rename, $get_id]);
-   //       move_uploaded_file($image_tmp_name, $image_folder);
-   //       if($old_image != '' AND $old_image != $rename){
-   //          unlink('../uploaded_files/'.$old_image);
-   //       }
-   //    }
-   // } 
-
+   
+   if (!empty($image)) 
+   {
+      if($image_size > 2000000)
+      {
+         $message[] = 'image size is too large!';
+      }
+      else
+      {
+         if($old_image != '')
+         {
+            unlink('../uploaded_files/'.$old_image);
+            $playlist->setPlaylistImage($image);
+         }
+      }
+    
+   }
+   else
+   {
+      $playlist->setPlaylistoldimg($old_image);
+   }
+   $playlist->Update_playlist( $get_id, $tutor_id);
    $message[] = 'playlist updated!';  
 
 }
 
-if(isset($_POST['delete'])){
-   
-   // $delete_bookmark = $conn->prepare("DELETE FROM `bookmark` WHERE playlist_id = ?");
-   // $delete_bookmark->execute([$delete_id]);
+if(isset($_POST['delete']))
+{
    $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
 
-   $playlist->Delete_playlist($delete_id,$tutor_id);
-   $message[] = 'playlist deleted!';
-   }else{
+   if($playlist->Delete_playlist($delete_id,$tutor_id))
+   {
+      header('location:playlists.php');
+   }
+   else
+   {
       $message[] = 'playlist already deleted!';
-   
-   header('location:playlists.php');
+   }
 }
+
+
+
 
 ?>
 
@@ -106,18 +108,17 @@ if(isset($_POST['delete'])){
    <h1 class="heading">update playlist</h1>
 
    <?php
-         // $select_playlist = $conn->prepare("SELECT * FROM `playlist` WHERE id = ?");
-         // $select_playlist->execute([$get_id]);
-         $select_playlist = $playlist->get_All_playlist($tutor_id);
+         $select_playlist = $playlist->get__playlist_by_id($get_id);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
             $playlist_id = $fetch_playlist['id'];
-            $count_videos = $conn->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
+            $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
             $count_videos->execute([$playlist_id]);
             $total_videos = $count_videos->rowCount();
       ?>
    <form action="" method="post" enctype="multipart/form-data">
       <input type="hidden" name="old_image" value="<?= $fetch_playlist['thumb']; ?>">
+      <input type="hidden" name="playlist_id" value="<?= $playlist_id; ?>">
       <p>playlist status <span>*</span></p>
       <select name="status" class="box" required>
          <option value="<?= $fetch_playlist['status']; ?>" selected><?= $fetch_playlist['status']; ?></option>
@@ -137,7 +138,7 @@ if(isset($_POST['delete'])){
       <input type="submit" value="update playlist" name="submit" class="btn">
       <div class="flex-btn">
          <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
-         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">view playlist</a>
+         <a href="view_playlist.php?get_id=<?=$playlist_id;?>" class="option-btn">view playlist</a>
       </div>
    </form>
    <?php

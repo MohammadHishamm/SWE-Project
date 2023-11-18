@@ -206,6 +206,23 @@ class User
 		}
 	}
 
+
+	function get_user_by_id()
+	{
+		$query = "
+		SELECT FullName, Email, Status FROM `users`  WHERE user_id = :user_id ";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_id', $this->user_id);
+
+		$statement->execute();
+
+		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+		return $data;
+	}
+
 	function get_user_all_data_with_status_count()
 	{
 		$query = "

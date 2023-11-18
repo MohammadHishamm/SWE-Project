@@ -154,7 +154,7 @@
                     <img src="../Images/avatar-2.webp"
                       alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
                       style="width: 40px;">
-                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                    <a class="ps-2" href="profile_view.php?user_id=15" style="font-size: 13px;">@zayaty750</a>
                   </div>
                   <div class="col-5 d-flex justify-content-end align-items-center">
                     <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">

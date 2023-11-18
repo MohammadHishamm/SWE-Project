@@ -12,16 +12,22 @@ if(isset($_COOKIE['tutor_id'])){
    header('location:login.php');
 }
 
-if(isset($_POST['delete'])){
+if(isset($_POST['delete']))
+{
    $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
 
-   $playlist->Delete_playlist($delete_id,$tutor_id);
-   $message[] = 'playlist deleted!';
-   }else{
+   if(  $playlist->Delete_playlist($delete_id,$tutor_id))
+   {
+      $message[] = 'playlist deleted!';
+   }
+   else
+   {
       $message[] = 'playlist already deleted!';
    }
-
+ 
+  
+}
 
 ?>
 
@@ -78,10 +84,10 @@ if(isset($_POST['delete'])){
          <p class="description"><?= $fetch_playlist['description']; ?></p>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="playlist_id" value="<?= $playlist_id; ?>">
-            <a href="update_playlist.php?get_id=<?= $playlist_id; ?>" class="option-btn">update</a>
+            <a href="update_playlist.php?get_id=<?=$playlist_id;?>" class="option-btn">update</a>
             <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this playlist?');" name="delete">
          </form>
-         <a href="view_playlist.php?get_id=<?= $playlist_id; ?>" class="btn">view playlist</a>
+         <a href="view_playlist.php?get_id=<?=$playlist_id;?>" class="btn">view playlist</a>
       </div>
       <?php
          } 
