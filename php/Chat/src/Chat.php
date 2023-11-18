@@ -5,7 +5,10 @@
 namespace MyApp;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-require dirname(__DIR__) . "/php/User/user.php";
+require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "User" . DIRECTORY_SEPARATOR . "user.php";
+
+
+
 
 require dirname(__DIR__) . "/database/PrivateChat.php";
 

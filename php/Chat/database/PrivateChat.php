@@ -14,7 +14,8 @@ class PrivateChat
 
 	public function __construct()
 	{
-		require_once('../Database_connection.php');
+		require_once('Database_connection.php');
+
 
 		$db = new Database_connection();
 

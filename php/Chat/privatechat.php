@@ -175,6 +175,8 @@ require_once('../User/user.php');
 		var receiver_userid = '';
 
 		var conn = new WebSocket('ws://localhost:8080?token=<?php echo $token; ?>');
+		console.log('WebSocket Token:', '<?php echo $token; ?>');
+
 
 		conn.onopen = function(event)
 		{
@@ -250,10 +252,9 @@ require_once('../User/user.php');
 			}
 		};
 
-		conn.onclose = function(event)
-		{
-			console.log('connection close');
-		};
+		conn.onclose = function (event) {
+    console.log('Connection closed:', event);
+};
 
 		function make_chat_area(user_name)
 		{
@@ -377,46 +378,51 @@ require_once('../User/user.php');
 		});
 
 		$(document).on('submit', '#chat_form', function(event){
+    event.preventDefault();
 
-			event.preventDefault();
+    if ($('#chat_form').parsley().isValid()) {
+        var user_id = parseInt($('#login_user_id').val());
+        var message = $('#chat_message').val();
 
-			if($('#chat_form').parsley().isValid())
-			{
-				var user_id = parseInt($('#login_user_id').val());
+        if (conn.readyState === WebSocket.OPEN) {
+            var data = {
+                userId: user_id,
+                msg: message,
+                receiver_userid: receiver_userid,
+                command: 'private'
+            };
 
-				var message = $('#chat_message').val();
+            conn.send(JSON.stringify(data));
+        } else {
+            console.error('WebSocket connection is not open. Current readyState:', conn.readyState);
+        }
+    }
+});
 
-				var data = {
-					userId: user_id,
-					msg: message,
-					receiver_userid:receiver_userid,
-					command:'private'
-				};
 
-				conn.send(JSON.stringify(data));
-			}
 
-		});
-
-		$('#logout').click(function(){
-    user_id = $('#login_user_id').val();
+$('#logout').click(function(){
+    var user_id = $('#login_user_id').val();
 
     $.ajax({
-        url:"action.php",
-        method:"POST",
-        data:{user_id:user_id, action:'leave'},
-        success:function(data) {
+        url: "action.php",
+        method: "POST",
+        data: {user_id: user_id, action: 'leave'},
+        success: function (data) {
             var response = JSON.parse(data);
-            if(response.status == 1) {
+            if (response.status == 1) {
                 // Check if the WebSocket connection is open before closing it
                 if (conn.readyState === WebSocket.OPEN) {
                     conn.close();
+                } else {
+                    console.error('WebSocket connection is not open.');
                 }
                 location = '../home.php';
             }
         }
     });
 });
+
 
 
 

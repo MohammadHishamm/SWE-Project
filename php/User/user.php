@@ -1,4 +1,6 @@
 <?php
+
+
 	
 class User
 {
@@ -16,9 +18,9 @@ class User
 
 	public function __construct()
 	{
-		require_once 'Database_connection.php';
+		require_once('Database_connection.php');
 
-		$database_object = new Database_connection;
+		$database_object = new Database_connection1;
 
 		$this->connect = $database_object->connect();
 	}
@@ -221,6 +223,72 @@ class User
 		return $data;
 	}
 
+	function update_user_connection_id()
+	{
+		$query = "
+		UPDATE user 
+		SET user_connection_id = :user_connection_id 
+		WHERE user_token = :user_token
+		";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_connection_id', $this->user_connection_id);
+
+		$statement->bindParam(':user_token', $this->user_token);
+
+		$statement->execute();
+	}
+
+	function get_user_id_from_token()
+	{
+		$query = "
+		SELECT user_id FROM user
+		WHERE user_token = :user_token
+		";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_token', $this->user_token);
+
+		$statement->execute();
+
+		$user_id = $statement->fetch(PDO::FETCH_ASSOC);
+
+		return $user_id;
+	}
+	function get_user_data_by_id()
+	{
+		$query = "
+		SELECT * FROM user
+		WHERE user_id = :user_id";
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_id', $this->user_id);
+
+		try
+		{
+			if($statement->execute())
+			{
+				$user_data = $statement->fetch(PDO::FETCH_ASSOC);
+			}
+			else
+			{
+				$user_data = array();
+			}
+		}
+		catch (Exception $error)
+		{
+			echo $error->getMessage();
+		}
+		return $user_data;
+	}
+
 
 }
+
+
+
+
 	?>

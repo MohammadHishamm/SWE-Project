@@ -2,7 +2,7 @@
 
 //Database_connection.php
 
-class Database_connection
+class Database_connection1
 {
 	function connect()
 	{
