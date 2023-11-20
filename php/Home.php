@@ -1,5 +1,10 @@
 <?php
+session_start();
 
+if(empty($_SESSION['user_data']))
+{
+  header('location:signup.php');
+}
 if(isset($_GET["id"]))
 {
    require_once("conn.php");

@@ -1,5 +1,6 @@
 /* width */
 body {
+
   overflow-x: hidden !important;
 }
 ::-webkit-scrollbar {
@@ -32,6 +33,7 @@ body {
   transition: 0.5s ease-in-out;
   transform: translate(0px, 60px);
 }
+
 
 .dot {
   z-index: -2000;

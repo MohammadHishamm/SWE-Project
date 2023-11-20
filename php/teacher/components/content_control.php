@@ -109,8 +109,8 @@ class content {
 
         public function saveContent()
         {
-            $add_content = $this->connect->prepare("INSERT INTO `content`(id, tutor_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
-            $add_content->execute([$this->content_id,  $this->tutor_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]);
+            $add_content = $this->connect->prepare("INSERT INTO `content`(id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?)");
+            $add_content->execute([$this->content_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]);
 
 
 
@@ -120,7 +120,12 @@ class content {
 
         public function get_All_content($tutor_id)
         {
-            $query = "SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC";
+            $query =
+            "SELECT  content.*
+             FROM content 
+             INNER JOIN playlist
+             ON  content.playlist_id = playlist.id and playlist.tutor_id = ?";
+
             $statement = $this->connect->prepare($query);
             $statement->execute([$tutor_id]);
          
@@ -164,7 +169,7 @@ class content {
             }
         }
 
-        public function Update_playlist($playlist_id , $tutor_id )
+        public function Update_content($playlist_id , $tutor_id )
         {
             
         }

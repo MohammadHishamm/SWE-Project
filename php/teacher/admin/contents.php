@@ -57,8 +57,7 @@ if(isset($_POST['delete_video']))
    </div>
 
    <?php
-      $select_videos = $content->get_connect()->prepare("SELECT * FROM `content` WHERE tutor_id = ? ORDER BY date DESC");
-      $select_videos->execute([$tutor_id]);
+      $select_videos = $content->get_All_content($tutor_id);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
             $video_id = $fecth_videos['id'];
@@ -75,7 +74,7 @@ if(isset($_POST['delete_video']))
             <a href="update_content.php?get_id=<?= $video_id; ?>" class="option-btn">update</a>
             <input type="submit" value="delete" class="delete-btn" onclick="return confirm('delete this video?');" name="delete_video">
          </form>
-         <a href="view_content.php?get_id=<?= $video_id; ?>" class="btn">view content</a>
+         <a href="view_content.php?get_id=<?=$video_id;?>" class="btn">view content</a>
       </div>
    <?php
          }

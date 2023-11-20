@@ -1,13 +1,27 @@
 <?php
 
-   include '../components/connect.php';
-   // include "../../dbh.inc.php";
-
-
    session_start();
-   foreach($_SESSION['user_data'] as $key => $value)
+
+   require_once('../components/connect.php');
+
+   require_once('../../User/user.php');
+
+   if(!empty($_SESSION['user_data']))
    {
-      $tutor_id = $value['id'];
+      foreach($_SESSION['user_data'] as $key => $value)
+      {
+         $tutor_id = $value['id'];
+      }
+
+      $User = new User;
+      $User->setUserId($tutor_id );
+      $select_profile = $User->get_user_by_id();
+      $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+
+      if($fetch_profile['user_type'] != "Teacher")
+      {
+         header('location:/SWE-PROJECT/php/home.php');
+      }
    }
 
 if(isset($_POST['submit'])){
@@ -128,10 +142,10 @@ if(isset($_POST['submit'])){
       <div class="flex">
          <div class="col">
             <p>your name </p>
-            <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" maxlength="50"  class="box">
+            <input type="text" name="name" placeholder="<?= $fetch_profile['user_name']; ?>" maxlength="50"  class="box">
             <p>your profession </p>
             <select name="profession" class="box">
-               <option value="" selected><?= $fetch_profile['profession']; ?></option>
+               <option value="" selected><?= $fetch_profile['user_type']; ?></option>
                <option value="developer">developer</option>
                <option value="desginer">desginer</option>
                <option value="musician">musician</option>
@@ -145,7 +159,7 @@ if(isset($_POST['submit'])){
                <option value="photographer">photographer</option>
             </select>
             <p>your email </p>
-            <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" maxlength="20"  class="box">
+            <input type="email" name="email" placeholder="<?= $fetch_profile['user_email']; ?>" maxlength="20"  class="box">
          </div>
          <div class="col">
             <p>old password :</p>

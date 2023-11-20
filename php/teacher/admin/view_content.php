@@ -1,9 +1,8 @@
 <?php
 
-// include "../../dbh.inc.php";
-require_once('../components/connect.php');
-$database_object = new Database_connection;
-$conn = $database_object->connect();
+require_once('../components/content_control.php');
+$content = new content;
+
 
 session_start();
 foreach($_SESSION['user_data'] as $key => $value)
@@ -18,30 +17,19 @@ if(isset($_GET['get_id'])){
    header('location:contents.php');
 }
 
-if(isset($_POST['delete_video'])){
-
-   $delete_id = $_POST['video_id'];
+if(isset($_POST['delete_video']))
+{
+   $delete_id = $_POST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
 
-   $delete_video_thumb = $conn->prepare("SELECT thumb FROM `content` WHERE id = ? LIMIT 1");
-   $delete_video_thumb->execute([$delete_id]);
-   $fetch_thumb = $delete_video_thumb->fetch(PDO::FETCH_ASSOC);
-   unlink('../uploaded_files/'.$fetch_thumb['thumb']);
-
-   $delete_video = $conn->prepare("SELECT video FROM `content` WHERE id = ? LIMIT 1");
-   $delete_video->execute([$delete_id]);
-   $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
-   unlink('../uploaded_files/'.$fetch_video['video']);
-
-   $delete_likes = $conn->prepare("DELETE FROM `likes` WHERE content_id = ?");
-   $delete_likes->execute([$delete_id]);
-   $delete_comments = $conn->prepare("DELETE FROM `comments` WHERE content_id = ?");
-   $delete_comments->execute([$delete_id]);
-
-   $delete_content = $conn->prepare("DELETE FROM `content` WHERE id = ?");
-   $delete_content->execute([$delete_id]);
-   header('location:contents.php');
-    
+   if(  $playlist->Delete_playlist($delete_id,$tutor_id))
+   {
+      $message[] = 'playlist deleted!';
+   }
+   else
+   {
+      $message[] = 'playlist already deleted!';
+   }
 }
 
 
@@ -72,8 +60,7 @@ if(isset($_POST['delete_video'])){
 <section class="view-content">
 
    <?php
-      $select_content = $conn->prepare("SELECT * FROM `content` WHERE id = ? AND tutor_id = ?");
-      $select_content->execute([$get_id, $tutor_id]);
+      $select_content = $content->get_All_content($tutor_id);
       if($select_content->rowCount() > 0){
          while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){
             $video_id = $fetch_content['id'];
@@ -104,19 +91,6 @@ if(isset($_POST['delete_video'])){
 
    
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="../js/admin_script.js"></script>
 

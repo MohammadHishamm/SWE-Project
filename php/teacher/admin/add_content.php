@@ -23,7 +23,6 @@ if (isset($_POST['submit'])) {
    $thumb = $_FILES['thumb']['name'];
    $video = $_FILES['video']['name'];
    
-   $content->setTutorId($tutor_id);
    $content->setContentId();
    $content->setContentStatus($status);
    $content->setContentTitle($title);

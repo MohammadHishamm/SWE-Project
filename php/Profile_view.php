@@ -99,7 +99,7 @@ $user_object->setUserId($_GET['user_id']);
           <div class="card" style="width: 300px;">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb'];?>" class="img-fluid" />
-              <a href="#!">
+              <a href="course.php?course_id=<?= $fetch_playlist['id']; ?>">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
             </div>

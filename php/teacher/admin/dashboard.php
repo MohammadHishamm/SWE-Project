@@ -66,19 +66,17 @@ $total_contents = $content-> get_All_content($tutor_id)->rowCount();
          }
          ?>
 
-      <div class="box">
-         <h3><?= $total_contents; ?></h3>
-         <p>total contents</p>
-         <a href="add_content.php" class="btn">add new content</a>
-      </div>
 
       <div class="box">
          <h3><?= $total_playlists; ?></h3>
-         <p>total playlists</p>
+         <p>Courses</p>
          <a href="add_playlist.php" class="btn">add new playlist</a>
       </div>
 
-
+      <div class="box">
+         <h3></h3>
+         <p>Students</p>
+      </div>
 
    </div>
 

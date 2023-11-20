@@ -90,6 +90,7 @@
         public function Delete_playlist($playlist_id, $tutor_id)
         {
 
+            // data exist in playlist table
             $playlist= $this->connect->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ? LIMIT 1");
             $playlist->execute([$playlist_id, $tutor_id]);
 
@@ -97,6 +98,7 @@
             if($playlist -> rowCount() > 0)
             {
 
+                // thumb for playlist
                 $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
                 $delete_playlist_thumb->execute([$playlist_id]);
 
@@ -104,6 +106,7 @@
                 unlink('../uploaded_files/'.$fetch_thumb['thumb']);
 
 
+                // thumb for content
                 $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
                 $delete_playlist_thumb->execute([$playlist_id]);
 
@@ -111,16 +114,15 @@
                 unlink('../uploaded_files/'.$fetch_thumb['thumb']);
 
 
+                // video for contant
                 $delete_video = $this->connect->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
                 $delete_video->execute([$playlist_id]);
 
                 $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
                 unlink('../uploaded_files/'.$fetch_video['video']);
 
+                // delete playlist
                 $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
-                $delete_playlist->execute([$playlist_id]);
-
-                $delete_playlist =$this->connect->prepare("DELETE FROM `content` WHERE playlist_id = ?");
                 $delete_playlist->execute([$playlist_id]);
 
                 return true;

@@ -4,10 +4,10 @@
    --main-color: #58779D;
    --red: #e74c3c;
    --oragen: #f39c12;
-   --white: #fff;
-   --black: #2c3e50;
+   --white: #CED8E3;
+   --black: #0F141A;
    --light-color: #888;
-   --light-bg: #eee;
+   --light-bg: #EBEFF4;
    --border: .1rem solid rgba(0, 0, 0, .2);
 }
 
@@ -46,13 +46,13 @@ html {
 
 body {
    background-color: var(--light-bg);
-   padding-left: 30rem;
+   padding-left: 20rem;
    /* padding-bottom: 7rem; */
 }
 
 body.dark {
-   --white: #222;
-   --black: #fff;
+   --white: #0B0F14;
+   --black: #6281A7;
    --light-color: #aaa;
    --light-bg: #333;
    --border: .1rem solid rgba(255, 255, 255, .2);
@@ -76,7 +76,7 @@ section {
 .inline-delete-btn {
    border-radius: .5rem;
    padding: 1rem 3rem;
-   font-size: 1.8rem;
+   font-size: 1.3rem;
    color: #fff;
    margin-top: 1rem;
    text-transform: capitalize;
@@ -205,33 +205,6 @@ section {
    font-weight: bolder;
 }
 
-.header .flex .search-form {
-   width: 50rem;
-   border-radius: .5rem;
-   display: flex;
-   align-items: center;
-   gap: 2rem;
-   padding: 1.5rem 2rem;
-   background-color: var(--light-bg);
-}
-
-.header .flex .search-form input {
-   width: 100%;
-   background: none;
-   font-size: 2rem;
-   color: var(--black);
-}
-
-.header .flex .search-form button {
-   font-size: 2rem;
-   color: var(--black);
-   cursor: pointer;
-   background: none;
-}
-
-.header .flex .search-form button:hover {
-   color: var(--main-color);
-}
 
 .header .flex .icons div {
    font-size: 2rem;
@@ -239,7 +212,7 @@ section {
    border-radius: .5rem;
    height: 4.5rem;
    cursor: pointer;
-   width: 4.5rem;
+   width: 4rem;
    line-height: 4.4rem;
    background-color: var(--light-bg);
    text-align: center;
@@ -249,10 +222,6 @@ section {
 .header .flex .icons div:hover {
    background-color: var(--black);
    color: var(--white);
-}
-
-#search-btn {
-   display: none;
 }
 
 .header .flex .profile {
@@ -300,7 +269,7 @@ section {
    top: 0;
    left: 0;
    height: 100vh;
-   width: 30rem;
+   width: 20rem;
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1200;
@@ -360,7 +329,7 @@ section {
    display: block;
    padding: 2rem;
    margin: .5rem 0;
-   font-size: 1.8rem;
+   font-size: 1.6rem;
 }
 
 .side-bar .navbar a i {
@@ -398,13 +367,6 @@ section {
    padding: 2rem;
 }
 
-.form-container .login {
-   width: 50rem;
-}
-
-.form-container .register {
-   width: 80rem;
-}
 
 .form-container form h3 {
    text-align: center;
