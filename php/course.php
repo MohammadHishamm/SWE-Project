@@ -5,6 +5,7 @@
 <head>
         <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
         <script src="../js/MDB java/mdb.min.js"></script>
+        <link rel="stylesheet" href="../css/All.css">
 </head>
 <body style="background-color: #EBEFF4;">
 

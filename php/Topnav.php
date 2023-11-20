@@ -3,16 +3,15 @@
     <div class="container-fluid ">
       <button class="btn btn-link ms-lg-5  mb-lg-0 mb-3" data-mdb-toggle="offcanvas" href="#offcanvasExample" role="button"
       aria-controls="offcanvasExample">
-        <i class="fa-solid fa-bars-staggered fa-2xl btn-open"  style="color: #0f141a; overflow: visible;"></i>
+        <i class="fa-solid fa-bars-staggered  btn-open hero_main_text2"  ></i>
       </button>
-      <a class="text navbar-brand mx-auto mb-lg-0 mb-3" href="../Home.php" style=" font-size: 30px; font-weight: bolder;">Arab Data Hub</a>
+      <a class=" navbar-brand mx-auto mb-lg-0 mb-3 logo_name" href="../Home.php" >Arab Data Hub</a>
 
         <ul class="navbar-nav mx-auto   mb-4 mb-lg-0 mt-2 ">
           <li class="nav-item ">
             <form class="d-flex" action="categories.php" method="post" role="search">
 
-              <input class="form-control me-2 rounded-9 rounded-pill" name="search" type="search" placeholder="Find a specfic course ?" aria-label="Search"
-                style="width: 100%;">
+              <input class="form-control me-2 rounded-9 rounded-pill search" name="search" type="search" placeholder="Find a specfic course ?" aria-label="Search">
             </form>
           </li>
         </ul>

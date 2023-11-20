@@ -25,9 +25,9 @@ if(isset($_GET["id"]))
     <title>Document</title>
 
     <link rel="stylesheet" href="../css/Sidenav.css">
-    <link rel="stylesheet" href="../css/All.css">
-    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
 
+    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+    <link rel="stylesheet" href="../css/All.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -38,7 +38,7 @@ if(isset($_GET["id"]))
 
 
 
-<body style="background-color: #EBEFF4;">
+<body >
     <!-- Loaders -->
     <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
         <div>
@@ -63,7 +63,7 @@ if(isset($_GET["id"]))
 
                 <div class="col-lg-6 pb-5  order-lg-1 order-5 ">
 
-                    <h1 class=" fw-bold  mb-5 " style="font-size: 50px; font-weight: bold;">
+                    <h1 class="mb-5 hero_main_text" >
                         Build your first step
                         <br>
                         of knowledge with
@@ -73,7 +73,7 @@ if(isset($_GET["id"]))
 
                     <p class="lead fs-6 mb-6"> <img src="../Images/bar.png" alt=""
                             style="height: 64px;width: 11px; margin-top: 20px; ">
-                        <span style="margin-left: 10px; ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        <span class ="hero_main_text2" style="margin-left: 10px; ">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                         </span>
                     </p>
 
@@ -154,7 +154,7 @@ if(isset($_GET["id"]))
             <!-- Section name -->
             <div class="row mb-8">
                 <div class="col-6 d-flex justify-content-start  align-items-center">
-                    <span class="fs-1">Featured <span style="color: #58779D;">Courses</span></span>
+                    <span class="fs-1 text">Featured <span style="color: #58779D;">Courses</span></span>
                 </div>
                 <div class="col-6 d-flex justify-content-end align-items-center">
                     <button class="btn btn-light ">

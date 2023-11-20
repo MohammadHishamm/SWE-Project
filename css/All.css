@@ -1,8 +1,34 @@
 /* width */
-body {
+*
+{
+  transition: 1.0s ease-in-out;
+}
 
+:root {
+  --main-color: #58779D;
+  --red: #e74c3c;
+  --primary: #58779D;
+  --bg: #EBEFF4;
+  --text: #0F141A;
+
+}
+
+body 
+{
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg) ;
   overflow-x: hidden !important;
 }
+
+body.dark 
+{
+  --white: #0B0F14;
+  --black: #6281A7;
+  --light-color: #aaa;
+  --bg: #0B0F14;
+  --border: .1rem solid rgba(255, 255, 255, .2);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -30,15 +56,52 @@ body {
   right: 20px;
 
   z-index: 9999999999;
-  transition: 0.5s ease-in-out;
+
   transform: translate(0px, 60px);
 }
 
+.logo_name
+{
+
+  color: #0f141a;
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+
+.hero_main_text
+{
+
+  color: #0f141a;
+  font-size: 3.3rem;
+  font-weight: 300;
+}
+.hero_main_text2
+{
+
+  color: #0f141a;
+  font-size: 1.1rem;
+}
+
+.text {
+
+  color: #0f141a;
+}
+
+.search
+{
+
+  width: 400px;
+}
+
+#btn-back-to-top
+{
+  transition: 1.0s ease-in-out;
+}
 
 .dot {
+  transition: 0.6s ease-in-out;
   z-index: -2000;
   position: absolute;
-  transition: 0.5s ease-in-out;
   width: 0px;
   height: 0px;
   background-color: #abc9f5;
@@ -47,20 +110,30 @@ body {
   transform: translate(0px, 0px);
 }
 
-@media (max-width: 1124px) {
+@media (max-width: 1130px) {
   .main-img {
     opacity: 0;
     width: 0%;
   }
   .dot {
-    width: 900px;
-    height: 800px;
+    width: 870px;
+    height: 900px;
 
-    transform: translate(0px, -500px);
+    transform: translate(-700px, -500px);
 
     border-radius: 50%;
     opacity: 1;
   }
+  .hero_main_text
+  {
+    font-size: 2.8rem;
+  }
+  .hero_main_text2
+  {
+    font-size: 0.9rem;
+  }
+
+
 }
 
 @media (max-width: 870px) {
@@ -77,6 +150,19 @@ body {
     border-radius: 50%;
     opacity: 1;
   }
+  .logo_name
+  {
+    font-size: 1.8rem;
+  }
+  .hero_main_text
+  {
+    font-size: 2.5rem;
+  }
+  .search
+  {
+
+   width: 100%;
+  }
 }
 
 @media (max-width: 570px) {
@@ -89,9 +175,7 @@ body {
   }
 }
 
-.text {
-  color: #0f141a;
-}
+
 
 .card {
   border-radius: 0.7rem;
