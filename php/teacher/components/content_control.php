@@ -137,7 +137,7 @@ class content {
             $query = "SELECT  content.*
             FROM content 
             INNER JOIN playlist
-            ON  content.playlist_id = ? ";
+            ON  content.playlist_id = ? and playlist.playlist_id = content.playlist_id";
 
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
@@ -147,7 +147,7 @@ class content {
 
         public function get_content_by_id($id)
         {
-            $query = "SELECT * FROM `content` where  content_id = ? ";
+            $query = "SELECT * FROM `content` where content_id = ? ";
 
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
