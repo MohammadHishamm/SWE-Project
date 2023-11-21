@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
    
    if (!empty($image)) 
    {
-      if($image_size > 2000000)
+      if($image_size > 200000000)
       {
          $message[] = 'image size is too large!';
       }
@@ -110,7 +110,7 @@ if(isset($_POST['delete']))
          $select_playlist = $playlist->get_playlist_by_id($get_id);
          if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
-            $playlist_id = $fetch_playlist['id'];
+            $playlist_id = $fetch_playlist['playlist_id'];
             $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
             $count_videos->execute([$playlist_id]);
             $total_videos = $count_videos->rowCount();

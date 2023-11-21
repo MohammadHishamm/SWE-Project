@@ -109,7 +109,7 @@ class content {
 
         public function saveContent()
         {
-            $add_content = $this->connect->prepare("INSERT INTO `content`(id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?)");
+            $add_content = $this->connect->prepare("INSERT INTO `content`(content_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?)");
             $add_content->execute([$this->content_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]);
 
 
@@ -124,7 +124,7 @@ class content {
             "SELECT  content.*
              FROM content 
              INNER JOIN playlist
-             ON  content.playlist_id = playlist.id and playlist.tutor_id = ?";
+             ON  content.playlist_id = playlist.playlist_id and playlist.tutor_id = ?";
 
             $statement = $this->connect->prepare($query);
             $statement->execute([$tutor_id]);
@@ -134,7 +134,21 @@ class content {
 
         public function get__playlist_by_id($id)
         {
-            $query = "SELECT * FROM `content` WHERE id = ? LIMIT 1";
+            $query = "SELECT  content.*
+            FROM content 
+            INNER JOIN playlist
+            ON  content.playlist_id = ? ";
+
+            $statement = $this->connect->prepare($query);
+            $statement->execute([$id]);
+         
+            return $statement;
+        }
+
+        public function get_content_by_id($id)
+        {
+            $query = "SELECT * FROM `content` where  content_id = ? ";
+
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
          
@@ -143,22 +157,22 @@ class content {
 
         public function remove_content($video_id)
         {
-            $verify_video = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+            $verify_video = $this->connect->prepare("SELECT * FROM `content` WHERE content_id = ? LIMIT 1");
             $verify_video->execute([$video_id]);
 
             if($verify_video->rowCount() > 0){
                
-               $delete_video_thumb = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+               $delete_video_thumb = $this->connect->prepare("SELECT * FROM `content` WHERE content_id = ? LIMIT 1");
                $delete_video_thumb->execute([$video_id]);
                $fetch_thumb = $delete_video_thumb->fetch(PDO::FETCH_ASSOC);
                unlink('../uploaded_files/'.$fetch_thumb['thumb']);
          
-               $delete_video = $this->connect->prepare("SELECT * FROM `content` WHERE id = ? LIMIT 1");
+               $delete_video = $this->connect->prepare("SELECT * FROM `content` WHERE content_id = ? LIMIT 1");
                $delete_video->execute([$video_id]);
                $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
                unlink('../uploaded_files/'.$fetch_video['video']);
                 
-               $delete_playlist =$this->connect->prepare("DELETE FROM `content` WHERE id = ?");
+               $delete_playlist =$this->connect->prepare("DELETE FROM `content` WHERE content_id = ?");
                $delete_playlist->execute([$video_id]);
 
                 return true;

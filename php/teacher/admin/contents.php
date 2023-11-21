@@ -60,7 +60,7 @@ if(isset($_POST['delete_video']))
       $select_videos = $content->get_All_content($tutor_id);
       if($select_videos->rowCount() > 0){
          while($fecth_videos = $select_videos->fetch(PDO::FETCH_ASSOC)){ 
-            $video_id = $fecth_videos['id'];
+            $video_id = $fecth_videos['content_id'];
    ?>
       <div class="box">
          <div class="flex">

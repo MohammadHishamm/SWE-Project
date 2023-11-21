@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "Header.php" ?>
+<?php
+
+require_once('teacher/components/playlist_control.php');
+$playlist = new playlist;
+$playlist_data =$playlist->get_playlist_by_id($_GET['playlist_id']);
+
+if($playlist_data->rowCount() > 0){
+    $fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC);
+}
+?>
+
 <head>
-        <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-        <script src="../js/MDB java/mdb.min.js"></script>
-        <link rel="stylesheet" href="../css/All.css">
+    <link rel="stylesheet" href="../css/Sidenav.css">
+
+    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+    <link rel="stylesheet" href="../css/All.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="../js/Loaders.js"></script>
 </head>
+
 <body style="background-color: #EBEFF4;">
 
     <?php include "Topnav.php" ?>
+    <?php include "Sidenav.php" ?>
     <!-- Course Image section -->
     <div class="p-5 "
-        style="background-image: url(../Images/Ceo\ back\ image.png); background-repeat: no-repeat ; background-size: cover; width: 100%; height: 330px;">
+        style="background-image: url(teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>); background-repeat: no-repeat ;   background-size: cover;  width: 100%; height: 330px;">
         <div class="row" style="margin-top: 130px;">
             <div class="col-12">
-                <span class="courses_content_name">Artificial Intelligence I - 23F</span>
+                <span class="courses_content_name"><?= $fetch_playlist['title'] ?></span>
             </div>
             <div class="col-12" style="margin-top: 40px; margin-left: 20px;">
                 <span class="courses_content_teacher">Zeyad Abdelnasser Elzayaty</span>
@@ -36,132 +55,41 @@
                             Course information
                         </p>
                         <p class="courses_content_information">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore ma
-                            gna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequ
-                            at. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                            officia deserunt mollit anim id est laborum."
+                        <?= $fetch_playlist['description'] ?>
                         </p>
                     </div>
                 </div>
 
                 <div class="d-flex flex-wrap ms-5 mt-5">
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
-                                <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    require_once('teacher/components/content_control.php');
+                    $content = new content;
+                    $content_data =$content->get__playlist_by_id($_GET['playlist_id']);
 
+                    if($content_data->rowCount() > 0)
+                    {
+                        while($fetch_content = $content_data->fetch(PDO::FETCH_ASSOC)){
+                    ?>
                     <div class="col-lg-3 col-12 mb-4 me-4">
                         <!-- Card -->
-                        <div class="card">
+                        <div class="card" >
                             <!-- Card content -->
                             <div class="card-body">
                                 <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
+                                <h4 class="card-title"><?= $fetch_content['title'] ?></h4>
                                 <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
+                                <p class="card-text"><?= $fetch_content['description'] ?></p>
                                 <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
+                                <a href="course_view.php?content_id=<?= $fetch_content['content_id'] ?> " class="btn" style="background-color: #58779D; color: white;">
                                     View Content
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
-                                <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
-                                <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
-                                <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title">Lecture</h4>
-                                <!-- Text -->
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's
-                                    content.</p>
-                                <!-- Button -->
-                                <button class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                        }
+                    }
+                    ?>
 
                 </div>
             </div>

@@ -7,12 +7,12 @@
   display: inline-block;
 }
 #burgundy {
-  color: rgb(153, 40, 59);
+  color: #58779D;
 }
 #orange,
 select,
 .btn {
-  color: orange;
+  color: #58779D;
 }
 .fa-search {
   font-size: 20px;

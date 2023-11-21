@@ -63,7 +63,7 @@ if(isset($_POST['delete_video']))
       $select_content = $content->get_All_content($tutor_id);
       if($select_content->rowCount() > 0){
          while($fetch_content = $select_content->fetch(PDO::FETCH_ASSOC)){
-            $video_id = $fetch_content['id'];
+            $video_id = $fetch_content['content_id'];
 
    ?>
    <div class="container">

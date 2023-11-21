@@ -138,6 +138,7 @@ body.dark
 
 @media (max-width: 870px) {
   .main-img {
+    
     opacity: 0;
     width: 0%;
   }
@@ -260,3 +261,8 @@ body.dark
 }
 
 /* End Features */
+
+
+
+
+

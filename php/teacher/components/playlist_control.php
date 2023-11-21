@@ -65,7 +65,7 @@
         }
         public function Save()
         {
-            $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(id, tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?,?)");
+            $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?,?)");
             $add_playlist->execute([$this->playlist_id,$this->playlist_tutor ,$this->playlist_title, $this->playlist_description, $this->playlist_image, $this->playlist_status]);
         }
 
@@ -78,9 +78,18 @@
             return $statement;
         }
 
+        public function get_playlist_table_row_5()
+        {
+            $query = "SELECT * FROM `playlist`  ORDER BY RAND() LIMIT 4 ";
+            $statement = $this->connect->prepare($query);
+            $statement->execute([]);
+         
+            return $statement;
+        }
+
         public function get_playlist_by_id($id)
         {
-            $query = "SELECT * FROM `playlist` WHERE id = ? ";
+            $query = "SELECT * FROM `playlist` WHERE playlist_id = ? ";
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
          
@@ -91,7 +100,7 @@
         {
 
             // data exist in playlist table
-            $playlist= $this->connect->prepare("SELECT * FROM `playlist` WHERE id = ? AND tutor_id = ? LIMIT 1");
+            $playlist= $this->connect->prepare("SELECT * FROM `playlist` WHERE playlist_id = ? AND tutor_id = ? LIMIT 1");
             $playlist->execute([$playlist_id, $tutor_id]);
 
          
@@ -99,7 +108,7 @@
             {
 
                 // thumb for playlist
-                $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `playlist` WHERE id = ? LIMIT 1");
+                $delete_playlist_thumb = $this->connect->prepare("SELECT * FROM `playlist` WHERE playlist_id = ? LIMIT 1");
                 $delete_playlist_thumb->execute([$playlist_id]);
 
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
@@ -122,7 +131,7 @@
                 unlink('../uploaded_files/'.$fetch_video['video']);
 
                 // delete playlist
-                $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE id = ?");
+                $delete_playlist =$this->connect->prepare("DELETE FROM `playlist` WHERE playlist_id = ?");
                 $delete_playlist->execute([$playlist_id]);
 
                 return true;
@@ -136,7 +145,7 @@
 
         public function Update_playlist($playlist_id , $tutor_id )
         {
-            $update_playlist = $this->connect->prepare("UPDATE `playlist` SET title = ?, description = ? , thumb = ? , status = ? WHERE id = ? AND tutor_id = ?");
+            $update_playlist = $this->connect->prepare("UPDATE `playlist` SET title = ?, description = ? , thumb = ? , status = ? WHERE playlist_id = ? AND tutor_id = ?");
             $update_playlist->execute([$this->playlist_title , $this->playlist_description , $this->playlist_image , $this->playlist_status , $playlist_id , $tutor_id]);   
         }
 

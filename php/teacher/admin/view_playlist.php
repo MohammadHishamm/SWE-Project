@@ -80,7 +80,7 @@ if(isset($_POST['delete_video']))
       $select_playlist = $playlist->get_All_playlist($tutor_id);
       if($select_playlist->rowCount() > 0){
          while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
-            $playlist_id = $fetch_playlist['id'];
+            $playlist_id = $fetch_playlist['playlist_id'];
             $count_videos = $content->get_All_content($tutor_id);
             $total_videos = $count_videos->rowCount();
    ?>

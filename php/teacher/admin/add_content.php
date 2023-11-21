@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
                   
             ?>
 
-                  <option value="<?= $fetch_playlist['id']; ?>"><?= $fetch_playlist['title']; ?></option>
+                  <option value="<?= $fetch_playlist['playlist_id']; ?>"><?= $fetch_playlist['title']; ?></option>
                <?php
                }
                ?>
