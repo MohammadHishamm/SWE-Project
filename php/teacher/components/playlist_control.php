@@ -7,7 +7,10 @@
         public $playlist_tutor;
         public $playlist_title;
         public $playlist_description;
+        public $playlist_requirements;
+        public $playlist_map;
         public $playlist_status;
+        public $playlist_price;
         public $playlist_image;
         public $unique_id;
         public $connect;
@@ -39,6 +42,12 @@
         public function getPlaylistTitle(){return $this->playlist_title;}
         public function setPlaylistDescription($playlist_description){$this->playlist_description = $playlist_description;}
         public function getPlaylistDescription(){return $this->playlist_description;}
+        public function setPlaylistRequirements($playlist_requirements){$this->playlist_requirements = $playlist_requirements;}
+        public function getPlaylistRequirements(){return $this->playlist_requirements;}
+        public function setPlaylistMap($playlist_map){$this->playlist_map = $playlist_map;}
+        public function getPlaylistMap(){return $this->playlist_map;}
+        public function setPlaylistPrice($playlist_price){$this->playlist_price = $playlist_price;}
+        public function getPlaylistPrice(){return $this->playlist_price;}
         public function setPlaylistStatus($playlist_status){$this->playlist_status = $playlist_status;}
         public function getPlaylistStatus(){return $this->playlist_status;}
         public function setPlaylistImage($playlist_image)
@@ -65,8 +74,8 @@
         }
         public function Save()
         {
-            $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, thumb, status) VALUES(?,?,?,?,?,?)");
-            $add_playlist->execute([$this->playlist_id,$this->playlist_tutor ,$this->playlist_title, $this->playlist_description, $this->playlist_image, $this->playlist_status]);
+            $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description,requirements,map,price, thumb, status) VALUES(?,?,?,?,?,?,?,?,?)");
+            $add_playlist->execute([$this->playlist_id,$this->playlist_tutor ,$this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_map, $this->playlist_price , $this->playlist_image, $this->playlist_status]);
         }
 
         public function get_All_playlist($tutor_id)
@@ -80,7 +89,11 @@
 
         public function get_playlist_table_row_5()
         {
-            $query = "SELECT * FROM `playlist`  ORDER BY RAND() LIMIT 4 ";
+            $query = "SELECT * FROM playlist  
+            INNER JOIN tutors ON playlist.tutor_id = tutors.tutor_id 
+            INNER JOIN user ON tutors.user_id = user.user_id
+            ORDER BY RAND() LIMIT 4 ";
+
             $statement = $this->connect->prepare($query);
             $statement->execute([]);
          
@@ -100,7 +113,10 @@
         public function get_playlist_table_limit($this_page_first_result , $results_per_page)
         {
 
-            $query = "SELECT * FROM playlist LIMIT :this_page_first_result,:results_per_page";
+            $query = "SELECT * FROM playlist 
+            INNER JOIN tutors ON playlist.tutor_id = tutors.tutor_id 
+            INNER JOIN user ON tutors.user_id = user.user_id
+             LIMIT :this_page_first_result,:results_per_page";
     
             $statement = $this->connect->prepare($query);
     
@@ -118,7 +134,7 @@
 
         public function get_playlist_by_id($id)
         {
-            $query = "SELECT * FROM `playlist` WHERE playlist_id = ? ";
+            $query = "SELECT * FROM playlist INNER JOIN tutors ON playlist.playlist_id = ? and  playlist.tutor_id = tutors.tutor_id INNER JOIN user on tutors.tutor_id = user.user_id   ";
             $statement = $this->connect->prepare($query);
             $statement->execute([$id]);
          

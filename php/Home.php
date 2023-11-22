@@ -178,8 +178,8 @@ if(isset($_GET["id"]))
                  
                 ?>
                                 <div class="col  mb-3">
-                                    <div class="card" style="width: 20rem; height: 30rem;  ">
-                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="width: 20rem; height: 30rem;  ">
+                                    <div class="card" style="width: 20rem; height: 25rem;  ">
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="width: 20rem; height: 25rem;  ">
                                             <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>" style="object-fit: cover ; height: 100%; width: 100%;" />
                                             <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>">
                                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
@@ -190,11 +190,11 @@ if(isset($_GET["id"]))
                                             <div class="card-title">
                                                 <div class="row mb-3">
                                                     <div class="col-7 d-flex justify-content-start align-items-center">
-                                                        <img src="../Images/avatar-2.webp"
+                                                        <img src="teacher/uploaded_files/<?= $fetch_playlist['user_img'] ?>"
                                                             alt="Generic placeholder image"
-                                                            class="img-fluid rounded-circle border border-dark border-3"
-                                                            style="width: 40px;">
-                                                        <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                                                            class="img-fluid rounded-circle border  border-3"
+                                                            style="width: 45px; height: 45px;">
+                                                        <span class="ps-2" style="font-size: 13px;"><?= $fetch_playlist['user_name'] ?></span>
                                                     </div>
                                                     <div class="col-5 d-flex justify-content-end align-items-center">
                                                         <ul class="mb-0 list-unstyled d-flex flex-row  "

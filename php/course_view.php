@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(empty($_SESSION['user_data']))
+{
+  header('location:signup.php');
+}
                     require_once('teacher/components/content_control.php');
                     $content = new content;
                     $content_data =$content->get_content_by_id($_GET['content_id']);

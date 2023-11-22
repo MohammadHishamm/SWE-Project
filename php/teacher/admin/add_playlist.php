@@ -24,6 +24,9 @@ if(isset($_POST['submit']))
    $playlist->setPlaylistId();
    $playlist->setPlaylistTitle($title);
    $playlist->setPlaylistDescription($description);
+   $playlist->setPlaylistRequirements($description);
+   $playlist->setPlaylistMap($description);
+   $playlist->setPlaylistPrice($price);
    $playlist->setPlaylistImage($image);
    $playlist->setPlaylistTutor($tutor_id);
    $playlist->setPlaylistStatus($status);
@@ -79,6 +82,14 @@ if(isset($_POST['submit']))
             <p>playlist description <span>*</span></p>
             <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30"
                 rows="10"></textarea>
+            <p>playlist requirements <span>*</span></p>
+            <textarea name="description" class="box" required placeholder="write requirements" maxlength="1000" cols="30"
+                rows="10"></textarea> 
+            <p>playlist Map <span>*</span></p>
+            <textarea name="description" class="box" required placeholder="write course map" maxlength="1000" cols="30"
+                rows="10"></textarea> 
+            <p>playlist Price <span>*</span></p>
+            <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box">
             <p>playlist thumbnail <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
             <input type="submit" value="create playlist" name="submit" class="btn">

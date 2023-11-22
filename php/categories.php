@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(empty($_SESSION['user_data']))
+{
+  header('location:signup.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include "Header.php" ?>
@@ -7,10 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>category</title>
 
-    <link rel="stylesheet" href="../css/categories.css" />
+
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
     <link rel="stylesheet" href="../css/Sidenav.css">
-
+    <link rel="stylesheet" href="../css/All.css">
     <script>
     function showUser(str) {
 
@@ -26,97 +34,78 @@
     }
     </script>
 </head>
+<style>
+@media (max-width: 767.98px) {
+    .border-sm-start-none {
+        border-left: none !important;
+    }
+}
+</style>
 
 <body style="background-color: #ebeff4">
     <?php include "Topnav.php" ?>
     <?php include "Sidenav.php" ?>
 
-    <div class="filter ">
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter"
-            aria-expanded="true" aria-controls="mobile-filter">
-            Filters<span class="fa fa-filter pl-1"></span>
-        </button>
-    </div>
-
     <!-- Sidebar filter section -->
-
-    <section id="sidebar" class="ps-5 pt-5">
-        <h2>Courses</h2>
-        <div class="border-bottom pb-2 ml-2">
-            <h4 id="burgundy">Filters</h4>
-        </div>
-        <div class="py-2 border-bottom ml-3">
-            <h6 class="font-weight-bold">Categories</h6>
-            <div id="orange"><span class="fa fa-minus"></span></div>
-            <form>
-                <div class='form-group'>
-                    <input type='checkbox' id='artisan' onclick='showUser("-1")' />
-                    <label for='artisan'>ALL</label>
+    <div class="row">
+    <section id="sidebar" class="col-3 ps-5 pt-5">
+                <h2>Courses</h2>
+                <div class="border-bottom pb-2 ml-2">
+                    <h4 id="burgundy">Filters</h4>
                 </div>
-        <?php
-            include "dbh.inc.php";
-  
-            $sql="Select * from categories ";
-            $result = mysqli_query($conn,$sql);
-            if (mysqli_num_rows($result) > 0) {
-              while($row=mysqli_fetch_array($result))	
-              {
-                echo "
-                <div class='form-group'>
-                <input type='checkbox' id='artisan' onclick='showUser($row[0])' />
-                <label for='artisan'>$row[1]</label>
+                <div class="py-2 border-bottom ml-3">
+                    <h6 class="font-weight-bold">Categories</h6>
+                    <div id="orange"><span class="fa fa-minus"></span></div>
+                    <form>
+                        <div class='form-group'>
+                            <input type='checkbox' id='artisan' onclick='showUser("-1")' />
+                            <label for='artisan'>ALL</label>
+                        </div>
+                    </form>
                 </div>
-                ";
-              }
-            }
-      ?>
-            </form>
-        </div>
-        <div class="py-2 border-bottom ml-3">
-            <h6 class="font-weight-bold">Instructors</h6>
-            <div id="orange"><span class="fa fa-minus"></span></div>
-            <form>
-                <div class="form-group">
-                    <input type="checkbox" id="tea" />
-                    <label for="tea">Alden Fabian</label>
+                <div class="py-2 border-bottom ml-3">
+                    <h6 class="font-weight-bold">Instructors</h6>
+                    <div id="orange"><span class="fa fa-minus"></span></div>
+                    <form>
+                        <div class="form-group">
+                            <input type="checkbox" id="tea" />
+                            <label for="tea">Alden Fabian</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="cookies" />
+                            <label for="cookies">Ricky Jimmie</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="pastries" />
+                            <label for="pastries">Alden Fabian</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="dough" />
+                            <label for="dough">Ricky Jimmie</label>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="cookies" />
-                    <label for="cookies">Ricky Jimmie</label>
+                <div class="py-2 ml-3">
+                    <h6 class="font-weight-bold">Offers</h6>
+                    <div id="orange"><span class="fa fa-minus"></span></div>
+                    <form>
+                        <div class="form-group">
+                            <input type="checkbox" id="25off" />
+                            <label for="25">25% off</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="25off" />
+                            <label for="25">10% off</label>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="pastries" />
-                    <label for="pastries">Alden Fabian</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="dough" />
-                    <label for="dough">Ricky Jimmie</label>
-                </div>
-            </form>
-        </div>
-        <div class="py-2 ml-3">
-            <h6 class="font-weight-bold">Offers</h6>
-            <div id="orange"><span class="fa fa-minus"></span></div>
-            <form>
-                <div class="form-group">
-                    <input type="checkbox" id="25off" />
-                    <label for="25">25% off</label>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="25off" />
-                    <label for="25">10% off</label>
-                </div>
-            </form>
-        </div>
-    </section>
+            </section>
     <!-- products section -->
-    <div class="container-fluid pt-4">
-        <div class="p-5">
-            <!-- Section name -->
-
-            <!-- section products -->
-            <div class="row">
-                <?php
+    <section class="col-9" style="background-color: #eee;">
+        <div class="container py-5">
+            
+            <?php
+                
                 require_once('teacher/components/playlist_control.php');
                 $playlist = new playlist;
                 $playlist_data =$playlist->get_playlist_table_row();
@@ -141,68 +130,77 @@
 
               // retrieve selected results from database and display them on page
               $limit_data = $playlist->get_playlist_table_limit($this_page_first_result , $results_per_page);
-
+              ?>
+            <p class="fs-4  ">Number of Results -<?=$number_of_results?>- </p>
+            <?php
               while($fetch_playlist = $limit_data->fetch(PDO::FETCH_ASSOC) )
               {   
                 ?>
-                <div class="col-xxl-4 col-lg-6 col-12  mb-3 ">
-                    <div class="card" style="width: 19rem; height: 30rem;  ">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light"
-                            style="width: 19rem; height: 30rem;  ">
-                            <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>"
-                                style="object-fit: cover ; height: 100%; width: 100%;" />
-                            <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                                </div>
-                            </a>
-                        </div>
+
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-10">
+                    <div class="card shadow-0 border rounded-3">
                         <div class="card-body">
-                            <div class="card-title">
-                                <div class="row mb-3">
-                                    <div class="col-7 d-flex justify-content-start align-items-center">
-                                        <img src="../Images/avatar-2.webp" alt="Generic placeholder image"
-                                            class="img-fluid rounded-circle border border-dark border-3"
-                                            style="width: 40px;">
-                                        <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
-                                    </div>
-                                    <div class="col-5 d-flex justify-content-end align-items-center">
-                                        <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                        </ul>
+                            <div class="row">
+                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                        <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>"
+                                            class="w-100" />
+                                        <a  href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>">
+                                            <div class="hover-overlay">
+                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);">
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <p class="card-text mb-3"><?= $fetch_playlist['title'] ?></p>
-                                <div>
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                                        <p class="fw-bold mb-0">$90</p>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <h5><?= $fetch_playlist['title'] ?></h5>
+                                    <div class="d-flex flex-row">
+                                        <div class="text-danger mb-1 me-2">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <span>310</span>
+                                    </div>
+                                    <a class="text-dark" href="profile_view.php?user_id=<?= $fetch_playlist['user_id'] ?>" style="font-size: 13px;"><?= $fetch_playlist['user_name'] ?></a>
+
+                                    <p class="text-truncate mb-4 mt-3 mb-md-0">
+                                        <?= $fetch_playlist['description'] ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                    <div class="d-flex flex-row align-items-center mb-1">
+                                        <h4 class="mb-1 me-1">$13.99</h4>
+                                        <span class="text-danger"><s>$20.99</s></span>
+                                    </div>
+                                    <h6 class="text-success">Free shipping</h6>
+                                    <div class="d-flex flex-column mt-4">
+                                        <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>"
+                                            class="btn btn-outline-primary btn-sm mt-2">
+                                            View
+                                        </a>
+                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                                            Add to wishlist
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
+            </div>
+
+
+            <?php
                 }
                 ?>
-            </div>
         </div>
+    </section>
     </div>
-
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">

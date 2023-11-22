@@ -3,9 +3,20 @@
 
 <?php
 
+session_start();
+
+if(empty($_SESSION['user_data']))
+{
+  header('location:signup.php');
+}
+
 require_once('teacher/components/playlist_control.php');
 $playlist = new playlist;
 $playlist_data =$playlist->get_playlist_by_id($_GET['playlist_id']);
+
+require_once('teacher/components/content_control.php');
+$content = new content;
+$content_data =$content->get__playlist_by_id($_GET['playlist_id']);
 
 if($playlist_data->rowCount() > 0){
     $fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC);
@@ -31,21 +42,24 @@ if($playlist_data->rowCount() > 0){
     <?php include "Sidenav.php" ?>
     <!-- Course Image section -->
     <div class="p-5 "
-        style="background-image: url(teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>); background-repeat: no-repeat ;   background-size: cover;  width: 100%; height: 330px;">
+        style="background-color: #2d2f31; width: 100%; height: 330px;">
         <div class="row" style="margin-top: 130px;">
-            <div class="col-12">
-                <span class="courses_content_name"><?= $fetch_playlist['title'] ?></span>
+        <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb']; ?>" alt="" srcset="" style="width: 20%; height: 200px; position: absolute;">
+            <div class="col-12 text-center">
+                <span class="courses_content_name "><?= $fetch_playlist['title'] ?></span>
             </div>
-            <div class="col-12" style="margin-top: 40px; margin-left: 20px;">
-                <span class="courses_content_teacher">Zeyad Abdelnasser Elzayaty</span>
+            <div class="col-12 text-center" style="margin-top: 40px;">
+                <span class="courses_content_teacher"><?= $fetch_playlist['user_name'] ?></span>
             </div>
         </div>
     </div>
 
     <!-- Course Introduction section -->
     <div class="container-fluid mb-11">
+        
         <div class="row">
             <div class="col-9 ms-5 mt-5" style=" ">
+
                 <div>
                     <span class="courses_content_title">
                         Introduction
@@ -55,16 +69,38 @@ if($playlist_data->rowCount() > 0){
                             Course information
                         </p>
                         <p class="courses_content_information">
+                        <?= $content_data->rowCount() ?> lectures
+                        </p>
+                    </div>
+                    <div class=" mt-3">
+                        <p class="sidnav_courses_content ">
+                            Description
+                        </p>
+                        <p class="courses_content_information">
                         <?= $fetch_playlist['description'] ?>
+                        </p>
+                    </div>
+                    <div class=" mt-3">
+                        <p class="sidnav_courses_content ">
+                            Requirments
+                        </p>
+                        <p class="courses_content_information">
+                        <?= $fetch_playlist['requirements'] ?>
+                        </p>
+                    </div>
+                    <div class=" mt-3">
+                        <p class="sidnav_courses_content ">
+                            course map
+                        </p>
+                        <p class="courses_content_information">
+                        <?= $fetch_playlist['map'] ?>
                         </p>
                     </div>
                 </div>
 
                 <div class="d-flex flex-wrap ms-5 mt-5">
                     <?php
-                    require_once('teacher/components/content_control.php');
-                    $content = new content;
-                    $content_data =$content->get__playlist_by_id($_GET['playlist_id']);
+
 
                     if($content_data->rowCount() > 0)
                     {
