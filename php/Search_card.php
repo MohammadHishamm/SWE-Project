@@ -11,12 +11,12 @@ include "dbh.inc.php";
 
 if(isset($_POST["search"]))
 {
-$word = $_POST["search"];
-$sql="Select * from course where Course_Name ='$word' ";
-$result = mysqli_query($conn,$sql);
-if (mysqli_num_rows($result) > 0) {
-while($row=mysqli_fetch_array($result))	
-{
+  $word = $_POST["search"];
+  $sql="Select * from playlist where Course_Name ='$word' ";
+  $result = mysqli_query($conn,$sql);
+  if (mysqli_num_rows($result) > 0) {
+  while($row=mysqli_fetch_array($result))	
+  {
     
     echo " 
 
@@ -69,7 +69,7 @@ while($row=mysqli_fetch_array($result))
         </div>
     
     ";
-}
+  }
 }
 else
 {

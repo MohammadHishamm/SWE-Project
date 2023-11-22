@@ -87,6 +87,35 @@
             return $statement;
         }
 
+        
+        public function get_playlist_table_row()
+        {
+            $query = "SELECT * FROM `playlist`";
+            $statement = $this->connect->prepare($query);
+            $statement->execute([]);
+         
+            return $statement;
+        }
+
+        public function get_playlist_table_limit($this_page_first_result , $results_per_page)
+        {
+
+            $query = "SELECT * FROM playlist LIMIT :this_page_first_result,:results_per_page";
+    
+            $statement = $this->connect->prepare($query);
+    
+            // byzawd ' fakro string 
+            // fa bazwed PDO::PARAM_INT 3ashan 22olo eno int 
+            $statement->bindParam(':this_page_first_result', $this_page_first_result , PDO::PARAM_INT);
+    
+            $statement->bindParam(':results_per_page', $results_per_page , PDO::PARAM_INT);
+
+            $statement->execute();
+
+
+            return $statement;
+        }
+
         public function get_playlist_by_id($id)
         {
             $query = "SELECT * FROM `playlist` WHERE playlist_id = ? ";
