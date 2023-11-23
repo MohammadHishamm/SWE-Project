@@ -5,16 +5,7 @@ if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
 }
-if(isset($_GET["id"]))
-{
 
-   require_once("conn.php");
-   $wish=new wishlist;
-   $wish->setcourseid($_GET["id"]);
-   $wish->adddesire($_GET["id"]);
-   print_r($wish);
-   echo $_COOKIE["desire"];
-}
 
 ?>
 <!DOCTYPE html>

@@ -1,12 +1,5 @@
 <?php
-if(isset($_GET["id"]))
-{
-   require_once("conn.php");
-   $wish=new wishlist;
-   $wish->deletedesire($_GET["id"]);
-   echo $_COOKIE["desire"];
-   
-}
+
 
 ?>
 
@@ -89,7 +82,7 @@ if(isset($_GET["id"]))
                 </button>
               </div> -->
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <h5 class="mb-0">$499.00 <a class="delete" href="wishlist.php?id=5" >delete</a></h5>
+              <h5 class="mb-0">$499.00 <button class="delete" >delete</button></h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
