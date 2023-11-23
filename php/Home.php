@@ -25,7 +25,7 @@ if(empty($_SESSION['user_data']))
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="../js/Loaders.js"></script>
+    
 </head>
 
 
@@ -159,10 +159,11 @@ if(empty($_SESSION['user_data']))
             <!-- section products -->
             <div class="row d-flex justify-content-center align-items-center">
 
-            <button class="addtocart">
-  <div class="pretext">
+            <button class="addtocart" value="5" id="addtocart">
+  <div class="pretext" >
     <i class="fas fa-cart-plus"></i> Add to wishlist
-  </div></button>
+  </div>
+            </button>
                                 <?php
                 require_once('teacher/components/playlist_control.php');
                 $playlist = new playlist;
@@ -600,11 +601,9 @@ if(empty($_SESSION['user_data']))
                     });
 
 
-                    function addwishlist() {
-
-                    }
+                    
                     </script>
-
+<script src="../js/Loaders.js"></script>
 </body>
 
 </html>

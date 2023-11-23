@@ -1,4 +1,31 @@
 <?php
+session_start();
+if(isset($_POST["register"]))
+{
+  if(isset($_POST['scope']))
+  {
+  $scope= $_POST['scope'];
+         switch($scope)
+         {
+           case "add":
+            $Course_ID=$_POST['Course_ID'];
+            $User_ID=$_SESSION['User_ID'];
+
+            $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID',$Course_ID')";
+            $insert_query_run= mysqli_query($conn,$insert_query);
+
+            break;
+
+
+            default:
+            echo 500;
+         }
+  }  
+}
+else
+{
+
+}
 
 
 ?>
