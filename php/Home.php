@@ -158,6 +158,11 @@ if(empty($_SESSION['user_data']))
             </div>
             <!-- section products -->
             <div class="row d-flex justify-content-center align-items-center">
+
+            <button class="addtocart">
+  <div class="pretext">
+    <i class="fas fa-cart-plus"></i> Add to wishlist
+  </div></button>
                                 <?php
                 require_once('teacher/components/playlist_control.php');
                 $playlist = new playlist;
@@ -168,6 +173,9 @@ if(empty($_SESSION['user_data']))
                 {
                  
                 ?>
+
+
+
                                 <div class="col  mb-3">
                                     <div class="card" style="width: 20rem; height: 25rem;  ">
                                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="width: 20rem; height: 25rem;  ">

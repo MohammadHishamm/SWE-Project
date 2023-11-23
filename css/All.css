@@ -1,28 +1,23 @@
-
-
 :root {
-  --main-color: #58779D;
+  --main-color: #58779d;
   --red: #e74c3c;
-  --primary: #58779D;
-  --bg: #EBEFF4;
-  --text: #0F141A;
-
+  --primary: #58779d;
+  --bg: #ebeff4;
+  --text: #0f141a;
 }
 
-body 
-{
-  font-family: 'Nunito', sans-serif;
-  background-color: var(--bg) ;
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--bg);
   overflow-x: hidden !important;
 }
 
-body.dark 
-{
-  --white: #0B0F14;
-  --black: #6281A7;
+body.dark {
+  --white: #0b0f14;
+  --black: #6281a7;
   --light-color: #aaa;
-  --bg: #0B0F14;
-  --border: .1rem solid rgba(255, 255, 255, .2);
+  --bg: #0b0f14;
+  --border: 0.1rem solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar {
@@ -56,42 +51,32 @@ body.dark
   transform: translate(0px, 60px);
 }
 
-.logo_name
-{
-
+.logo_name {
   color: #0f141a;
   font-size: 1.8rem;
   font-weight: bolder;
 }
 
-.hero_main_text
-{
-
+.hero_main_text {
   color: #0f141a;
   font-size: 3.3rem;
   font-weight: 300;
 }
-.hero_main_text2
-{
-
+.hero_main_text2 {
   color: #0f141a;
   font-size: 1.1rem;
 }
 
 .text {
-
   color: #0f141a;
 }
 
-.search
-{
-
+.search {
   width: 400px;
 }
 
-#btn-back-to-top
-{
-  transition: 1.0s ease-in-out;
+#btn-back-to-top {
+  transition: 1s ease-in-out;
 }
 
 .dot {
@@ -120,21 +105,16 @@ body.dark
     border-radius: 50%;
     opacity: 1;
   }
-  .hero_main_text
-  {
+  .hero_main_text {
     font-size: 2.8rem;
   }
-  .hero_main_text2
-  {
+  .hero_main_text2 {
     font-size: 0.9rem;
   }
-
-
 }
 
 @media (max-width: 870px) {
   .main-img {
-    
     opacity: 0;
     width: 0%;
   }
@@ -147,18 +127,14 @@ body.dark
     border-radius: 50%;
     opacity: 1;
   }
-  .logo_name
-  {
+  .logo_name {
     font-size: 1.8rem;
   }
-  .hero_main_text
-  {
+  .hero_main_text {
     font-size: 2.5rem;
   }
-  .search
-  {
-
-   width: 100%;
+  .search {
+    width: 100%;
   }
 }
 
@@ -171,8 +147,6 @@ body.dark
     transform: translate(-400px, 0px);
   }
 }
-
-
 
 .card {
   border-radius: 0.7rem;
@@ -256,9 +230,41 @@ body.dark
   height: 20px;
 }
 
+.fa-cart-plus {
+  background: #0652dd;
+}
+
+.addtocart {
+  display: block;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 100px;
+  border: none;
+  font-size: 2em;
+  position: relative;
+  background: #0652dd;
+  cursor: pointer;
+  height: 100%;
+  width: 18%;
+  overflow: hidden;
+  transition: transform 0.1s;
+  z-index: 1;
+}
+.addtocart:hover {
+  transform: scale(1.1);
+}
+.pretext {
+  color: #fff;
+  background: #0652dd;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+}
+
 /* End Features */
-
-
-
-
-
