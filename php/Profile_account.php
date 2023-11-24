@@ -18,31 +18,11 @@ else
   $user_object = new User;
   $user_object->setUserId( $user_id);
 
-
-  if(isset($_POST['update_user']))
-  {
-    $user_object->setUserName($_POST['user_name']);
-    $user_object->setUserBio($_POST['user_bio']);
-    $user_object->setUserSocial1($_POST['user_social1']);
-    $user_object->setUserSocial2($_POST['user_social2']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    if($user_object->update_user_data())
-    {
-        echo '<div class="alert alert-success" role="alert"> Updated successfully </div>';
-    }
-    else
-    {
-        echo '<div class="alert alert-danger" role="alert"> Error </div>';
-    }
-  }
-
   $Data = $user_object->get_user_by_id();
   if($Data->rowCount() > 0)
   {
     $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
   }
-
 }
 
 
@@ -53,7 +33,7 @@ else
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Your profile</title>
+    <title>Account settings</title>
 </head>
 
 <body>
@@ -136,21 +116,15 @@ else
 
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="" class="btn btn-light mb-0 ps-3 active "
-                                                        style="width: 100%;"> <i
-                                                            class="fa-regular fa-user pe-3"></i>Profile</a>
+                                                    <a href="/SWE-PROJECT/php/profile.php" class="btn btn-light mb-0 ps-3  " style="width: 100%;"> <i class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_account.php"
-                                                        class="btn btn-light mb-0 ps-3 " style="width: 100%;"><i
-                                                            class="fa-solid fa-gear pe-3"></i>Account</a>
+                                                    <a href="/SWE-PROJECT/php/Profile_account.php" class="btn btn-light mb-0 ps-3 active" style="width: 100%;"><i class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_courses.php"
-                                                        class="btn btn-light mb-0 ps-3 " style="width: 100%;"><i
-                                                            class="fa-solid fa-book pe-3"></i></i>My Courses</a>
+                                                    <a href="/SWE-PROJECT/php/Profile_courses.php" class="btn btn-light mb-0 ps-3  " style="width: 100%;"><i class="fa-solid fa-book pe-3"></i></i>My Courses</a>
 
                                                 </li>
                                             </ul>
@@ -162,80 +136,33 @@ else
                                         <div class="">
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <p class="mb-0" style="font-size: 1.5rem;">Public profile</p>
+                                                    <p class="mb-0" style="font-size: 1.5rem;">Change email</p>
                                                 </div>
                                             </div>
                                             <hr>
-
-                                            <form  method="post" enctype="multipart/form-data">
-                                            <div class="row mb-4">
+                                            <div class="row">
                                                 <div class="col-sm-3">
-                                                    <img src="teacher/uploaded_files/<?php echo $fetch_user['user_img'] ?>"
-                                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48"
-                                                        height="120" width="120" class="rounded rounded-5">
-                                                    <button class="btn btn-primary mt-3">Change profile picture</button>
-                                                </div>
+                                                    <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">Email
+                                                    </p>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">
-                                                            Name
-                                                        </p>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <input class="text-muted mb-0" name="user_name"
-                                                                value="<?= $fetch_user['user_name'] ?>"></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">Bio
-                                                        </p>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <textarea class="text-muted mb-0" maxlength=" 1000"  name="user_bio"
-                                                                cols="30"
-                                                                rows="10"><?= $fetch_user['user_bio'] ?></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">
-                                                            Social
-                                                            accounts</p>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <i class="fa-brands fa-linkedin fs-6"></i>
-                                                            <input class="text-muted mb-2" name="user_social1"
-                                                                value="<?= $fetch_user['user_social1'] ?>"></input>
-                                                            <br>
-                                                            <i class="fa-brands fa-github fs-6"></i>
-                                                            <input class="text-muted mb-2" name="user_social2"
-                                                                value="<?= $fetch_user['user_social2'] ?>"></input>
-                                                            <br>
-                                                            <i class="fa-brands fa-facebook fs-6"></i>
-                                                            <input class="text-muted mb-2" name="user_social3"
-                                                                value="<?= $fetch_user['user_social3'] ?>"></input>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-12 offset-sm-9">
-                                                        <button type="submit" name="update_user"
-                                                            class="mb-0 btn btn-success">Update</button>
+                                                    <div class="col-sm-6">
+                                                        <input class="text-muted mb-0"
+                                                            value="<?= $fetch_user['user_email'] ?>"></input>
                                                     </div>
                                                 </div>
                                             </div>
-                                            </form>
+                                            <div class="row">
+                                                <div class="col-sm-12 offset-sm-9">
+                                                <button type="submit" class="mb-0 btn btn-danger">Delete Account</button>
+                                                    <button type="submit" class="mb-0 btn btn-success">Update mail</button>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
+                            </div>
         </section>
 
 

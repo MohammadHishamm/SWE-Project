@@ -6,15 +6,40 @@ if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
 }
+else
+{
+  foreach($_SESSION['user_data'] as $key => $value)
+  {
+    $user_id = $value['id'];
+  }
+
+  require_once('User/user.php');
+
+  if(isset($_GET['user_id']))
+  {
+    $user_object = new User;
+    $user_object->setUserId($_GET['user_id']);
+  
+    $Data = $user_object->get_user_by_id();
+    if($Data->rowCount() > 0)
+    {
+      $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
+    }
+    else
+    {
+      header('location:home.php');
+    }
+  }
+  else
+  {
+    header('location:home.php');
+  }
+
+}
 
 
 
 
-
-require_once('User/user.php');
-
-$user_object = new User;
-$user_object->setUserId($_GET['user_id']);
 
 
 
@@ -40,19 +65,12 @@ $user_object->setUserId($_GET['user_id']);
                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                       style="width: 150px; z-index: 1">
                     </div>
-                    <?php 
-                     $Data = $user_object->get_user_by_id();
-                      if($Data->rowCount() > 0){
-                        while($fetch_user = $Data->fetch(PDO::FETCH_ASSOC)){
-                    ?>
+     
                   <div class="ms-3" style="margin-top: 130px;">
                     <h5><?= $fetch_user["user_name"]; ?></h5>
                     <p>New York</p>
                   </div>
-                  <?php 
-                        }
-                      }
-                ?>
+ 
             </div>
 
                 <!-- Profile Information section -->

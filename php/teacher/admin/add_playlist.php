@@ -59,6 +59,9 @@ if(isset($_POST['submit']))
     <!-- custom css file link  -->
     <link rel="stylesheet" href="../css/admin_style.css">
 
+
+
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -83,13 +86,14 @@ if(isset($_POST['submit']))
             <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30"
                 rows="10"></textarea>
             <p>playlist requirements <span>*</span></p>
-            <textarea name="description" class="box" required placeholder="write requirements" maxlength="1000" cols="30"
-                rows="10"></textarea> 
-            <p>playlist Map <span>*</span></p>
-            <textarea name="description" class="box" required placeholder="write course map" maxlength="1000" cols="30"
-                rows="10"></textarea> 
+            <textarea name="description" class="box" required placeholder="write requirements" maxlength="1000"
+                cols="30" rows="10"></textarea>
+
+            <p>what the student will learn from these course <span>*</span></p>
+            <input name='tags' value='html,css' class="box" required  maxlength="1000" minlength="100">
+        
             <p>playlist Price <span>*</span></p>
-            <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box">
+            <input type="text" name="title" maxlength="100" required placeholder="enter playlist Price" class="box">
             <p>playlist thumbnail <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
             <input type="submit" value="create playlist" name="submit" class="btn">
@@ -99,21 +103,20 @@ if(isset($_POST['submit']))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="../js/admin_script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
+    <script>
+    // The DOM element you wish to replace with Tagify
+    var input = document.querySelector('input[name=tags]');
 
+    // initialize Tagify on the above input node reference
+    new Tagify(input)
+
+
+    console.log(input);
+    </script>
 </body>
 
 </html>

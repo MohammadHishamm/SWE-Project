@@ -9,6 +9,10 @@ class User
 	private $user_email;
 	private $user_password;
 	private $user_status;
+	private $user_bio;
+	private $user_social1;
+	private $user_social2;
+	private $user_social3;
 	private $user_created_on;
 	private $user_verification_code;
 	private $user_login_status;
@@ -74,7 +78,38 @@ class User
 	{
 		return $this->user_status;
 	}
-
+	function setUserBio($user_bio)
+	{
+		$this->user_bio = $user_bio;
+	}
+	function getUserBio()
+	{
+		return $this->user_bio;
+	}
+	function setUserSocial1($user_social1)
+	{
+		$this->user_social1 = $user_social1;
+	}
+	function getUserSocial1()
+	{
+		return $this->user_social1;
+	}
+	function setUserSocial2($user_social2)
+	{
+		$this->user_social2 = $user_social2;
+	}
+	function getUserSocial2()
+	{
+		return $this->user_social2;
+	}
+	function setUserSocial3($user_social3)
+	{
+		$this->user_social3 = $user_social3;
+	}
+	function getUserSocial3()
+	{
+		return $this->user_social3;
+	}
 	function setUserCreatedOn($user_created_on)
 	{
 		$this->user_created_on = $user_created_on;
@@ -370,6 +405,40 @@ class User
             return false;
         }
     }
+
+	function update_user_data()
+	{
+		$query = "
+
+		UPDATE user 
+		SET user_name = :user_name, user_bio = :user_bio, user_social1 = :user_social1, user_social2 = :user_social2, user_social3 = :user_social3
+		WHERE user_id = :user_id
+		";
+
+
+		$statement = $this->connect->prepare($query);
+
+		$statement->bindParam(':user_name', $this->user_name);
+		
+		$statement->bindParam(':user_bio', $this->user_bio);
+
+		$statement->bindParam(':user_social1', $this->user_social3);
+
+		$statement->bindParam(':user_social2', $this->user_social3);
+
+		$statement->bindParam(':user_social3', $this->user_social3);
+
+		$statement->bindParam(':user_id', $this->user_id);
+
+		if($statement->execute())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 }
 
