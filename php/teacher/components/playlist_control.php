@@ -12,7 +12,7 @@
         public $playlist_status;
         public $playlist_price;
         public $playlist_image;
-    
+        public $playlist_approval;
         public $unique_id;
         public $connect;
        
@@ -203,5 +203,45 @@
             $update_playlist->execute([$this->playlist_title , $this->playlist_description , $this->playlist_image , $this->playlist_status , $playlist_id , $tutor_id]);   
         }
 
+
+
+
+
+        public function approve_playlist($playlist_id)
+        {
+            $query = "UPDATE playlist SET playlist_approval = 'True' WHERE playlist_id = :playlist_id;";
+            $statement = $this->connect->prepare($query);
+        
+            // Bind the playlist_id parameter
+            $statement->bindParam(':playlist_id', $playlist_id);
+        
+            if ($statement->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function get_All_playlists()
+        {
+             $query = "SELECT * FROM `playlist` ORDER BY date DESC";
+             $statement = $this->connect->prepare($query);
+             $statement->execute();
+
+            return $statement;
+
+      }
+
+
+
+
+        
     }
+
+
+    
+
+
+
+
 ?>

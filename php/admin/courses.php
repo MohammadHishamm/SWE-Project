@@ -46,6 +46,7 @@ if(isset($_POST['delete']))
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -122,45 +123,57 @@ if(isset($_POST['delete']))
       <h1 class="p-relative">Courses</h1>
       
       <div class="courses-page d-grid m-20 gap-20">
-  <?php
-  $select_courses = $playlist->get_All_playlist($tutor_id);
-  if ($select_courses->rowCount() > 0) {
-    while ($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)) {
-      $course_id = $fetch_course['playlist_id'];
-    
-      $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
-      $count_videos->execute([$course_id]);
-      $total_videos = $count_videos->rowCount();
-  ?>
-      <div class="course bg-white rad-6 p-relative">
-        <img class="cover" src="../teacher/uploaded_files/<?= $fetch_course['thumb']; ?>" alt="" />
-     
-       
-        <div class="p-20">
-          <h4 class="m-0"><?= $fetch_course['title']; ?></h4>
-          <p class="description c-grey mt-15 fs-14">
-            <?= $fetch_course['description']; ?>
-          </p>
+      <?php
+$select_courses = $playlist->get_All_playlists();
+
+      if ($select_courses->rowCount() > 0) {
+        while ($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)) {
+        $course_id = $fetch_course['playlist_id'];
+
+        $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
+        $count_videos->execute([$course_id]);
+        $total_videos = $count_videos->rowCount();
+?>
+        <div class="course bg-white rad-6 p-relative">
+            <img class="cover" src="../teacher/uploaded_files/<?= $fetch_course['thumb']; ?>" alt="" />
+
+            <div class="p-20">
+                <h4 class="m-0"><?= $fetch_course['title']; ?></h4>
+                <p class="description c-grey mt-15 fs-14">
+                    <?= $fetch_course['description']; ?>
+                </p>
+            </div>
+
+            <div class="info p-15 p-relative between-flex">
+                <span class="title bg-blue c-white btn-shape">Course Info</span>
+                
+                <?php
+           $playlistApprove = $fetch_course['playlist_approval'];
+          ?>
+
+            <?php if ($playlistApprove === 'True'): ?>
+            <h4><span class="label label-success">Approved</span></h4>
+            <?php elseif ($playlistApprove === 'False'): ?>
+            <h4><a class="label label-danger" href="?approve_playlist=<?= $fetch_course['playlist_id']; ?>">Disapproved</a></h4>
+              <?php endif; ?>
+
+
+
+                <?php
+                if (isset($_GET['approve_playlist']) && $_GET['approve_playlist'] == $fetch_course['playlist_id']) {
+                    $playlist_id = $fetch_course['playlist_id'];
+                    $playlist->approve_playlist($playlist_id);
+                }
+                ?>
+            </div>
         </div>
-        <div class="info p-15 p-relative between-flex">
-          <span  class="title bg-blue c-white btn-shape">Course Info</span>
-          <span class="c-grey">
-            <i class="fa-regular fa-user"></i>
-            <?= $total_videos; ?> 
-          </span>
-       
-          
-       
-        
-          
-        </div>
-      </div>
-  <?php
+<?php
     }
-  } else {
+} else {
     echo '<p class="empty">No courses added yet!</p>';
-  }
-  ?>
+}
+?>
+
 </div>
 
          
