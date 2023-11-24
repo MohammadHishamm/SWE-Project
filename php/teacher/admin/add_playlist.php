@@ -20,6 +20,7 @@ if(isset($_POST['submit']))
    $status = $_POST['status'];
    $status = filter_var($status, FILTER_SANITIZE_STRING);
    $image = $_FILES['image']['name'];
+   $price= $_POST['price'];
 
    $playlist->setPlaylistId();
    $playlist->setPlaylistTitle($title);
@@ -93,7 +94,7 @@ if(isset($_POST['submit']))
             <input name='tags' type='text' value='html,css' class="box" required  maxlength="10" size="10">
         
             <p>playlist Price <span>*</span></p>
-            <input type="text" name="title" maxlength="100" required placeholder="enter playlist Price" class="box">
+            <input type="text" name="price" maxlength="100" required placeholder="enter playlist Price" class="box">
             <p>playlist thumbnail <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
             <input type="submit" value="create playlist" name="submit" class="btn">

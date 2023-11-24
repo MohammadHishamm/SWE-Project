@@ -12,6 +12,7 @@
         public $playlist_status;
         public $playlist_price;
         public $playlist_image;
+    
         public $unique_id;
         public $connect;
        
@@ -73,10 +74,18 @@
             return $this->connect;
         }
         public function Save()
-        {
-            $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description,requirements,map,price, thumb, status) VALUES(?,?,?,?,?,?,?,?,?)");
-            $add_playlist->execute([$this->playlist_id,$this->playlist_tutor ,$this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_map, $this->playlist_price , $this->playlist_image, $this->playlist_status]);
-        }
+{
+    $add_playlist = $this->connect->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, requirements, price, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
+    if ($add_playlist->execute([$this->playlist_id, $this->playlist_tutor, $this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_price, $this->playlist_image, $this->playlist_status])) {
+        // Insert successful
+        return true;
+    } else {
+        // Insert failed, display error information
+        var_dump($add_playlist->errorInfo());
+        return false;
+    }
+}
+
 
         public function get_All_playlist($tutor_id)
         {
