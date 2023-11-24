@@ -90,7 +90,7 @@ if(isset($_POST['submit']))
                 cols="30" rows="10"></textarea>
 
             <p>what the student will learn from these course <span>*</span></p>
-            <input name='tags' value='html,css' class="box" required  maxlength="1000" minlength="100">
+            <input name='tags' type='text' value='html,css' class="box" required  maxlength="10" size="10">
         
             <p>playlist Price <span>*</span></p>
             <input type="text" name="title" maxlength="100" required placeholder="enter playlist Price" class="box">

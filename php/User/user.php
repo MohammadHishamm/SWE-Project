@@ -422,9 +422,9 @@ class User
 		
 		$statement->bindParam(':user_bio', $this->user_bio);
 
-		$statement->bindParam(':user_social1', $this->user_social3);
+		$statement->bindParam(':user_social1', $this->user_social1);
 
-		$statement->bindParam(':user_social2', $this->user_social3);
+		$statement->bindParam(':user_social2', $this->user_social2);
 
 		$statement->bindParam(':user_social3', $this->user_social3);
 
