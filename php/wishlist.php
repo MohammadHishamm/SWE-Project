@@ -1,35 +1,13 @@
 <?php
 include "dbh.inc.php";
+include "wishlistclass";
 session_start();
 
-  if(isset($_GET['scope']))
-  {
-  $scope= $_GET['scope'];
-  echo $scope;
-         switch($scope)
-         {
-           case "add":
-            $Course_ID=intval($_GET['Course_ID']);
-            foreach($_SESSION['user_data'] as $key => $value)
-            {
-              $User_ID = $value['id'];
-            }
-
-            $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID','$Course_ID')";
-            $insert_query_run= mysqli_query($conn,$insert_query);
-
-            break;
 
 
-            default:
-            echo 500;
-         }
-  }  
+$wishlist= new wishlistclass;
+$wishlist->addwishlist($Course_ID,$User_ID);
 
-else
-{
-
-}
 
 
 ?>

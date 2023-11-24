@@ -29,17 +29,15 @@ document.getElementById("addtocart").addEventListener("click", function () {
   var scope = "add";
 
   function showHint(Course_ID, scope) {
-
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) 
-      {
-        console.log("eshta");
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
       }
-    }
+    };
     xmlhttp.open(
       "GET",
-      "wishlist.php?Course_ID=" + Course_ID + "&scope=" + scope , true
+      "wishlist.php?Course_ID=" + Course_ID + "&scope=" + scope,
+      true
     );
     xmlhttp.send();
   }
