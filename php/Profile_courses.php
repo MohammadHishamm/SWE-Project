@@ -102,7 +102,7 @@ else
                                         class="rounded rounded-5">
 
                                 </div>
-                                <div class="col-lg-2 col-5 ">
+                                <div class="col-lg-3 col-5 ">
                                     <p class="fs-1 "><?php echo $fetch_user['user_name'] ?></p>
                                     <p class="text-muted">Your personal account</p>
                                 </div>
