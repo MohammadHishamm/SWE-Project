@@ -2,32 +2,46 @@
 
 class wishlist{
 
+    public $wishlist_id;
     public $Course_ID;
     public $User_ID;
-    public $unique_id;
+
 
 
     public function __construct()
     {
 
-        require_once('connect.php');
+        require_once('teacher/components/connect.php');
 
         $database_object = new Database_connection;
 
 
         $this->connect = $database_object->connect();
       
-        $this->unique_id = $database_object->unique_id();
+      
         
     }
 
-    public function addwishlist($Course_ID,$User_ID)
+    public function addToWishlist($courseId, $userId)
     {
-        
-           
-            $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID','$Course_ID')";
-            $insert_query_run= mysqli_query($conn,$insert_query);
+        $this->Course_ID = $courseId;
+        $this->User_ID = $userId;
 
-         }
-  }  
+       
+        $query = "INSERT INTO wishlist (Course_ID ,User_ID) VALUES ('$courseId', '$userId' )";
+        
+        $stmt = $this->connect->prepare($query);
+      
+        
+        if ($stmt->execute()) {
+            echo "Added to wishlist successfully!";
+        } else {
+            echo "Error adding to wishlist: " . $stmt->error;
+        }
+
+      
+    }
+}
+
+ 
 ?>

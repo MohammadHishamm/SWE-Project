@@ -1,6 +1,7 @@
 <?php
 
 require_once('../teacher/components/playlist_control.php');
+require_once('../wishlistclass.php');
 
 $playlist = new playlist;
 
@@ -125,7 +126,7 @@ if(isset($_POST['delete']))
   $select_courses = $playlist->get_All_playlist($tutor_id);
   if ($select_courses->rowCount() > 0) {
     while ($fetch_course = $select_courses->fetch(PDO::FETCH_ASSOC)) {
-      $course_id = $fetch_course['id'];
+      $course_id = $fetch_course['playlist_id'];
     
       $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
       $count_videos->execute([$course_id]);
@@ -147,6 +148,10 @@ if(isset($_POST['delete']))
             <i class="fa-regular fa-user"></i>
             <?= $total_videos; ?> 
           </span>
+       
+          
+       
+        
           
         </div>
       </div>
