@@ -1,11 +1,11 @@
 <?php
 include "dbh.inc.php";
 session_start();
-// if(isset($_POST["register"]))
-// {
-//   if(isset($_GET['scope']))
-//   {
-  $scope= intval($_GET['scope']);
+
+  if(isset($_GET['scope']))
+  {
+  $scope= $_GET['scope'];
+  echo $scope;
          switch($scope)
          {
            case "add":
@@ -15,7 +15,7 @@ session_start();
               $User_ID = $value['id'];
             }
 
-            $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID',$Course_ID')";
+            $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID','$Course_ID')";
             $insert_query_run= mysqli_query($conn,$insert_query);
 
             break;
@@ -24,12 +24,12 @@ session_start();
             default:
             echo 500;
          }
-//   }  
-// }
-// else
-// {
+  }  
 
-// }
+else
+{
+
+}
 
 
 ?>

@@ -31,6 +31,7 @@ if(empty($_SESSION['user_data']))
 
 
 <body>
+
     <!-- Loaders -->
     <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
         <div>
