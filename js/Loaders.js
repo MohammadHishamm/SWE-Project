@@ -24,35 +24,18 @@ function backToTop() {
   document.documentElement.scrollTop = 0;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  $("i").click(function () {
-    $("i,span").toggleClass("press", 1000);
-  });
-});
-
 document.getElementById("addtocart").addEventListener("click", function () {
   var Course_ID = document.getElementById("addtocart").value;
+  var scope = "add";
 
-  function run() {
-    // Creating Our XMLHttpRequest object
-    let xhr = new XMLHttpRequest();
-
-    // Making our connection
-    let url = "../php/Home.php";
-    let data = {
-      " Course_ID": Course_ID,
-      scope: "add",
-    };
-    xhr.open("POST", url, data, true);
-
-    // function execute after request is successful
-    xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-      }
-    };
-    // Sending our request
-    xhr.send();
+  function showHint(Course_ID, scope) {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {};
+    xmlhttp.open(
+      "GET",
+      "wishlist.php?Course_ID=" + Course_ID + "scope=" + scope
+    );
+    xmlhttp.send();
   }
-  run();
+  showHint(Course_ID, scope);
 });

@@ -1,15 +1,19 @@
 <?php
+include "dbh.inc.php";
 session_start();
-if(isset($_POST["register"]))
-{
-  if(isset($_POST['scope']))
-  {
-  $scope= $_POST['scope'];
+// if(isset($_POST["register"]))
+// {
+//   if(isset($_GET['scope']))
+//   {
+  $scope= intval($_GET['scope']);
          switch($scope)
          {
            case "add":
-            $Course_ID=$_POST['Course_ID'];
-            $User_ID=$_SESSION['User_ID'];
+            $Course_ID=intval($_GET['Course_ID']);
+            foreach($_SESSION['user_data'] as $key => $value)
+            {
+              $User_ID = $value['id'];
+            }
 
             $insert_query=" INSERT INTO wishlist (User_ID, Course_ID) VALUES ('$User_ID',$Course_ID')";
             $insert_query_run= mysqli_query($conn,$insert_query);
@@ -20,12 +24,12 @@ if(isset($_POST["register"]))
             default:
             echo 500;
          }
-  }  
-}
-else
-{
+//   }  
+// }
+// else
+// {
 
-}
+// }
 
 
 ?>
