@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $image = test_input($_POST["image"]);
 }
 
-if (empty($_POST["sub_field"])) {
+if (empty($_POST["field"])) {
   $subErr = "Required";
 }else {
-  $sub = test_input($_POST["sub_field"]);
+  $sub = test_input($_POST["field"]);
 }
 if (empty($_POST["cv"])) {
   $cvErr = "Required";
@@ -186,7 +186,7 @@ function test_input($data) {
                 <input
                   class="input-field"
                   type="text"
-                  name="sub_field"
+                  name="field"
                   
                 />
                 <button

@@ -1,11 +1,18 @@
 <?php
 session_start();
-
+require_once('wishlistclass.php');
 if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
 }
 
+$wishlist = new wishlist;
+foreach($_SESSION['user_data'] as $key => $value)
+         {
+           $User_ID = $value['id'];
+         }
+
+        
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +21,7 @@ if(empty($_SESSION['user_data']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 
     <link rel="stylesheet" href="../css/Sidenav.css">
 
@@ -160,22 +167,24 @@ if(empty($_SESSION['user_data']))
             <!-- section products -->
             <div class="row d-flex justify-content-center align-items-center">
 
-            <button class="addtocart" value="5" id="addtocart">
-  <div class="pretext" >
-    <i class="fas fa-cart-plus"></i> Add to wishlist
-  </div>
-            </button>
+           
                                 <?php
                 require_once('teacher/components/playlist_control.php');
+
+                
+                
                 $playlist = new playlist;
                 $playlist_data =$playlist->get_playlist_table_row_5();
+                
                 if($playlist_data->rowCount() > 0)
                 {
                  while($fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC) )
                 {
-                 
-                ?>
+                    
 
+                    
+                ?>
+                        
 
 
                                 <div class="col  mb-3">
@@ -186,7 +195,7 @@ if(empty($_SESSION['user_data']))
                                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
                                                 </div>
                                             </a>
-                                        </div>
+                                        </div>                                
                                         <div class="card-body" >
                                             <div class="card-title">
                                                 <div class="row mb-3">
@@ -224,6 +233,14 @@ if(empty($_SESSION['user_data']))
                                                         <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
                                                         <p class="fw-bold mb-0">$90</p>
                                                     </div>
+
+
+                                                    
+                                                    <a class="addtocart" href="?add_to_wishlist=true" id="addtocart">
+                                                         <div class="pretext" >
+                                                          <i class="fas fa-cart-plus"></i> Add to wishlist
+                                                          </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -231,8 +248,19 @@ if(empty($_SESSION['user_data']))
                                 </div>
 
                                 <?php
+                                           $Course_ID = $fetch_playlist['playlist_id'];
                 }
+                
                 }
+                
+                if (isset($_GET['add_to_wishlist'])) {
+
+                    $wishlist->addwishlist($Course_ID, $User_ID);
+                }
+
+
+
+
                 ?>
 
                             </div>

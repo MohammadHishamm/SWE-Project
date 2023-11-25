@@ -22,7 +22,7 @@ class wishlist{
         
     }
 
-    public function addToWishlist($courseId, $userId)
+    public function addwishlist($courseId, $userId)
     {
         $this->Course_ID = $courseId;
         $this->User_ID = $userId;

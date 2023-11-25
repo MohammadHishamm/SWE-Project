@@ -244,7 +244,7 @@ body.dark {
   background: #0652dd;
   cursor: pointer;
   height: 100%;
-  width: 18%;
+  width: 100%;
   overflow: hidden;
   transition: transform 0.1s;
   z-index: 1;
