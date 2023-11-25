@@ -6,11 +6,6 @@ if(empty($_SESSION['user_data']))
   header('location:signup.php');
 }
 
-$wishlist = new wishlist;
-foreach($_SESSION['user_data'] as $key => $value)
-         {
-           $User_ID = $value['id'];
-         }
 
         
 
@@ -234,6 +229,20 @@ foreach($_SESSION['user_data'] as $key => $value)
                                                         <p class="fw-bold mb-0">$90</p>
                                                     </div>
 
+                                                    <?php
+                                                    $wishlist = new wishlist;
+                                                    foreach($_SESSION['user_data'] as $key => $value)
+                                                             {
+                                                               $User_ID = $value['id'];
+                                                             }
+                                                             $Course_ID = $fetch_playlist['playlist_id'];
+                                                             if (isset($_GET['add_to_wishlist'])) {
+
+                                                                $wishlist->addwishlist($Course_ID, $User_ID);
+                                                            }
+                                                    
+                                                    ?>
+
 
                                                     
                                                     <a class="addtocart" href="?add_to_wishlist=true" id="addtocart">
@@ -248,15 +257,12 @@ foreach($_SESSION['user_data'] as $key => $value)
                                 </div>
 
                                 <?php
-                                           $Course_ID = $fetch_playlist['playlist_id'];
+                                           
                 }
                 
                 }
                 
-                if (isset($_GET['add_to_wishlist'])) {
-
-                    $wishlist->addwishlist($Course_ID, $User_ID);
-                }
+               
 
 
 
