@@ -64,6 +64,24 @@ class wishlist{
         $stmt = $this->connect->prepare($query);
 }
     }
+
+    public function get_All_wishlist()
+    {
+         $query = "SELECT * FROM `wishlist` ";
+         $statement = $this->connect->prepare($query);
+         $statement->execute();
+
+        return $statement;
+
+    }
+       
+
+
+
+
+
+
+
     }
 
 
