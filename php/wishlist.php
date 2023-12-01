@@ -70,8 +70,8 @@ session_start();
                 $wishlistt=$wishlist->get_All_wishlist($User_ID);
                 $playlist_data =$playlist->get_playlist_table_row_5();
                 
-                foreach ($wishlistt as $wishlist):
-                  $courseid=$wishlist['Course_ID'];
+                foreach ($wishlistt as $wishlistitem):
+                  $courseid=$wishlistitem['Course_ID'];
                 
                
                 $playlist->get_playlist_by_id($courseid);

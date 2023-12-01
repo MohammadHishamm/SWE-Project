@@ -54,16 +54,23 @@ class wishlist{
         $this->Course_ID = $courseId;
         $this->User_ID = $userId;
 
-        $chck_existing= "SELECT * FROM wishlist  WHERE Course_ID='$course_Id' AND User_ID='$user_Id' ";
-        $chck_existing_run= mysqli_query($conn,$chck_existing);
+        $chck_existing= "SELECT * FROM wishlist  WHERE Course_ID='$courseId' AND User_ID='$userId' ";
+        $stmt1 = $this->connect->prepare($chck_existing);
+        $stmt1->execute();
        
-        if(mysqli_num_rows( $chck_existing_run) > 0 )
-{
-    $query = "DELETE FROM wishlist (Course_ID ,User_ID) VALUES ('$courseId', '$userId' )";
+   
+
+         $query = "DELETE FROM wishlist WHERE Course_ID='$courseId' AND User_ID='$userId'";
         
         $stmt = $this->connect->prepare($query);
+        if ($stmt->execute()) {
+            echo "deleted successfully!";
+        } else {
+            echo "Error deleting: " . $stmt->error;
+        }
+    
 }
-    }
+    
 
     public function get_All_wishlist($User_ID)
     {
