@@ -25,11 +25,8 @@ class User extends Model
 
 	public function __construct()
 	{
-		require_once('Database_connection.php');
-
-		$database_object = new Database_connection1;
-
-		$this->connect = $database_object->connect();
+		
+		$this->db = $this->connect();
 	}
 
 	function setUserId($user_id)
@@ -167,36 +164,25 @@ class User extends Model
 
 
 	function save_data()
-	{
-		$query = "
-		INSERT INTO user (user_name, user_email, user_password, user_status, user_created_on, user_verification_code) 
-		VALUES (:user_name, :user_email, :user_password,  :user_status, :user_created_on, :user_verification_code)
-		";
-		$statement = $this->connect->prepare($query);
+{
+    $sql = "
+    INSERT INTO user (user_name, user_email, user_password, user_status, user_created_on, user_verification_code) 
+    VALUES (?, ?, ?, ?, ?, ?)
+    ";
 
-		$statement->bindParam(':user_name', $this->user_name);
+    $dbh = new DBh();
+    $statement = $dbh->getConn()->prepare($sql);
 
-		$statement->bindParam(':user_email', $this->user_email);
+    $statement->bind_param('ssssss', $this->user_name, $this->user_email, $this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code);
 
-		$statement->bindParam(':user_password', $this->user_password);
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-		
 
-		$statement->bindParam(':user_status', $this->user_status);
-
-		$statement->bindParam(':user_created_on', $this->user_created_on);
-
-		$statement->bindParam(':user_verification_code', $this->user_verification_code);
-
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 
 	function get_user_data_by_email()
 	{
