@@ -5,7 +5,6 @@ use PHPMailer\PHPMailer\Exception;
 
 require_once(__ROOT__ . "../php/Chat/vendor/autoload.php");
 require_once(__ROOT__ . "controller/controller.php");
-require_once(__ROOT__ . "model/user.php");
 
 
 class UsersController extends Controller{
@@ -14,10 +13,7 @@ class UsersController extends Controller{
         $error = '';
 
         $success_message = '';
-        //signup
-        if(isset($_POST["register"]))
-        {
-           
+
         
             if(isset($_SESSION['user_data']))
             {
@@ -26,22 +22,20 @@ class UsersController extends Controller{
         
             
         
-            $user_object = new User;
+           
         
-            $user_object->setUserName($_POST['user_name']);
+            $this->model->setUserEmail($_POST['user_email']);
         
-            $user_object->setUserEmail($_POST['user_email']);
+            $this->model->setUserPassword($_POST['user_password']);
         
-            $user_object->setUserPassword($_POST['user_password']);
+            $this->model->setUserStatus('Disabled');
         
-            $user_object->setUserStatus('Disabled');
+            $this->model->setUserCreatedOn(date('Y-m-d H:i:s'));
         
-            $user_object->setUserCreatedOn(date('Y-m-d H:i:s'));
-        
-            $user_object->setUserVerificationCode(md5(uniqid()));
+            $this->model->setUserVerificationCode(md5(uniqid()));
         
           
-                if($user_object->save_data())
+                if($this->model->save_data())
                 {
                   
                   
@@ -58,12 +52,12 @@ class UsersController extends Controller{
                     $mail->Username = "mohammad2109652@miuegypt.edu.eg";
                     $mail->Password = "18962283";
                     $mail->setFrom('mohammad2109652@miuegypt.edu.eg', 'Arab Data Hub');
-                    $mail->addAddress($user_object->getUserEmail());
+                    $mail->addAddress($this->model->getUserEmail());
                     $mail->Subject = "PHPMailer GMail SMTP test";
                       $mail->Body = '
                       <p>Thank you for registering for Arab Data Hub.</p>
                           <p>This is a verification email, please click the link to verify your email address.</p>
-                          <p><a href="http://localhost/SWE%20project/SWE-Project/php/verify.php?code='.$user_object->getUserVerificationCode().'">Click to Verify</a></p>
+                          <p><a href="http://localhost/SWE%20project/SWE-Project/php/verify.php?code='.$this->model->getUserVerificationCode().'">Click to Verify</a></p>
                           <p>Thank you...</p>
                       ';
                     $mail->IsHTML(true);
@@ -87,20 +81,17 @@ class UsersController extends Controller{
                   
                   }
         
-        }
+        
         
     }
 
     public function signin() {
-       if(isset($_POST['login']))
-{
 
 
-    $user_object = new User;
 
-    $user_object->setUserEmail($_POST['user_email']);
+    $this->model->setUserEmail($_POST['user_email']);
 
-    $user_data = $user_object->get_user_data_by_email();
+    $user_data = $this->model->get_user_data_by_email();
 
     if(is_array($user_data) && count($user_data) > 0)
     {
@@ -108,16 +99,16 @@ class UsersController extends Controller{
         {
             if($user_data['user_password'] == $_POST['user_password'])
             {
-                $user_object->setUserId($user_data['user_id']);
+                $this->model->setUserId($user_data['user_id']);
 
-                $user_object->setUserLoginStatus('Login');
+                $this->model->setUserLoginStatus('Login');
 
                 $user_token = md5(uniqid());
 
-                $user_object->setUserToken($user_token);
+                $this->model->setUserToken($user_token);
 
 
-                if($user_object->update_user_login_data())
+                if($this->model->update_user_login_data())
                 {
                     $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
@@ -147,5 +138,5 @@ class UsersController extends Controller{
     }
 
 
-}
+
 ?>
