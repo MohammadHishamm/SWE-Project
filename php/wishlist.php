@@ -4,6 +4,7 @@ include "wishlistclass.php";
 session_start();
 
 
+
 ?>
 
 
@@ -66,11 +67,10 @@ session_start();
          }  
                 $playlist = new playlist;
                 $wishlist= new wishlist;
-                $wishlist->get_All_wishlist($User_ID);
+                $wishlistt=$wishlist->get_All_wishlist($User_ID);
                 $playlist_data =$playlist->get_playlist_table_row_5();
                 
-               
-                foreach ($wishlist as $wishlist):
+                foreach ($wishlistt as $wishlist):
                   $courseid=$wishlist['Course_ID'];
                 
                
@@ -123,12 +123,12 @@ session_start();
 
                 if (isset($_GET['delete_wishlist'])) {
 
-                    $wishlist->deletewishlist($Course_ID, $User_ID);
+                    $wishlist->deletewishlist($Course_ID,$User_ID);
                 }
 
 
 
-                ?>
+        ?>
 
        
           <div class="buttonarea">
