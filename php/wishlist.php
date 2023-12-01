@@ -1,13 +1,7 @@
 <?php
 include "dbh.inc.php";
-include "wishlistclass";
+include "wishlistclass.php";
 session_start();
-
-
-
-$wishlist= new wishlistclass;
-$wishlist->addwishlist($Course_ID,$User_ID);
-
 
 
 ?>
@@ -63,153 +57,78 @@ $wishlist->addwishlist($Course_ID,$User_ID);
           <h3 class="fw-normal mb-0 text-black">Wishlist</h3>
           
         </div>
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-                <img
-                src="../images/img1.webp"
-                  class="img-fluid rounded-3" alt="Cotton T-shirt">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Data science</p>
-                <p><span class="text-muted">Instructor: </span>Omar Hosny
-              </div>
-              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div> -->
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <h5 class="mb-0">$499.00 <button class="delete" >delete</button></h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-                <img
-                src="../images/img1.webp"
-                  class="img-fluid rounded-3" alt="Cotton T-shirt">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-              <p class="lead fw-normal mb-2">Web development</p>
-                <p><span class="text-muted">Instructor: </span>Omar Hosny
-              </div>
-              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div> -->
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2">
-                <img
-                src="../images/img1.webp"
-                  class="img-fluid rounded-3" alt="Cotton T-shirt">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-              <p class="lead fw-normal mb-2">Software engineer</p>
-                <p><span class="text-muted">Instructor: </span>Omar Hosny
-              </div>
-              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div> -->
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
+       <!-- Data section -->
+       <?php
+                require_once('teacher/components/playlist_control.php');
+                foreach($_SESSION['user_data'] as $key => $value)
+         {
+           $User_ID = $value['id'];
+         }  
+                $playlist = new playlist;
+                $wishlist= new wishlist;
+                $wishlist->get_All_wishlist($User_ID);
+                $playlist_data =$playlist->get_playlist_table_row_5();
                 
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+               
+                foreach ($wishlist as $wishlist):
+                  $courseid=$wishlist['Course_ID'];
+                
+               
+                $playlist->get_playlist_by_id($courseid);
+                $fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC);
+                    
+
+                    
+                ?>
 
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2">
                 <img
-                  src="../images/img1.webp"
+                src="teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-              <p class="lead fw-normal mb-2">Data security</p>
-                <p><span class="text-muted">Instructor: </span>Omar Hosny
+                <p class="lead fw-normal mb-2"><?= $fetch_playlist['title'] ?></p>
+                <p><span class="text-muted">Instructor: </span><?= $fetch_playlist['user_name'] ?>
               </div>
-              <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-
-                <button class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div> -->
+             
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-              <h5 class="mb-0">$499.00 <button class="delete">delete</button></h5>
+              <h5 class="mb-0">$499.00  <div class="buttonarea">
+            <a  class="button1" href="?delete_wishlist=true">Delete</a>
+          </div></h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+
+
+               
+
+
+
+                <!-- End of data section -->
+
+
               </div>
             </div>
           </div>
         </div>
+        <?php
+                endforeach;
+                                           $Course_ID = $fetch_playlist['playlist_id'];
+                
 
-       
+                
+
+                if (isset($_GET['delete_wishlist'])) {
+
+                    $wishlist->deletewishlist($Course_ID, $User_ID);
+                }
+
+
+
+                ?>
 
        
           <div class="buttonarea">

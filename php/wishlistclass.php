@@ -65,9 +65,9 @@ class wishlist{
 }
     }
 
-    public function get_All_wishlist()
+    public function get_All_wishlist($User_ID)
     {
-         $query = "SELECT * FROM `wishlist` ";
+         $query = "SELECT * FROM `wishlist` WHERE User_ID = '$User_ID' ";
          $statement = $this->connect->prepare($query);
          $statement->execute();
 
