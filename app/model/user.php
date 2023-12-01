@@ -170,8 +170,7 @@ class User extends Model
     VALUES (?, ?, ?, ?, ?, ?)
     ";
 
-    $dbh = new DBh();
-    $statement = $dbh->getConn()->prepare($sql);
+    $statement = $this->db->getConn()->prepare($sql);
 
     $statement->bind_param('ssssss', $this->user_name, $this->user_email, $this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code);
 
@@ -184,250 +183,213 @@ class User extends Model
 
 
 
-	function get_user_data_by_email()
-	{
-		$query = "
-		SELECT * FROM user
-		WHERE user_email = :user_email
-		";
+public function get_user_data_by_email()
+{
+    $sql = "
+    SELECT * FROM user
+    WHERE user_email = ?
+    ";
 
-		$statement = $this->connect->prepare($query);
+    $statement = $this->db->getConn()->prepare($sql);
 
-		$statement->bindParam(':user_email', $this->user_email);
+    $statement->bind_param('s', $this->user_email);  // 's' for string, adjust if needed
 
-		if($statement->execute())
-		{
-			$user_data = $statement->fetch(PDO::FETCH_ASSOC);
-		}
-		return $user_data;
-	}
+    if ($statement->execute()) {
+        $result = $statement->get_result();
+        $user_data = $result->fetch_assoc();
+        return $user_data;
+    } else {
+        return false;
+    }
+}
+
 
 	
-	function update_user_login_data()
-	{
-		$query = "
+public function update_user_login_data()
+{
+    $sql = "
+    UPDATE user 
+    SET user_login_status = ?, user_token = ?  
+    WHERE user_id = ?
+    ";
 
-		UPDATE user 
-		SET user_login_status = :user_login_status, user_token = :user_token  
-		WHERE user_id = :user_id
-		";
+    $statement = $this->db->getConn()->prepare($sql);
 
-		$statement = $this->connect->prepare($query);
+    $statement->bind_param('iss', $this->user_login_status, $this->user_token, $this->user_id);
 
-		$statement->bindParam(':user_login_status', $this->user_login_status);
-
-		$statement->bindParam(':user_token', $this->user_token);
-
-		$statement->bindParam(':user_id', $this->user_id);
-
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
-	function get_user_by_id()
-	{
-		$query = "SELECT * FROM `user` WHERE user_id = ? ";
-		$statement = $this->connect->prepare($query);
-		$statement->execute([$this->user_id]);
-	 
-		return $statement;
-	}
 
-	function get_user_all_data_with_status_count()
-	{
-		$query = "
-		SELECT user_id, user_name, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
-		";
 
-		$statement = $this->connect->prepare($query);
 
-		$statement->bindParam(':user_id', $this->user_id);
+function get_user_by_id()
+{
+    $query = "SELECT * FROM `user` WHERE user_id = ?";
+    $statement = $this->db->getConn()->prepare($query);
+    $statement->bind_param('i', $this->user_id);
+    $statement->execute();
 
-		$statement->execute();
+    return $statement;
+}
+function get_user_all_data_with_status_count()
+{
+    $query = "
+    SELECT user_id, user_name, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = ? AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
+    ";
 
-		$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $statement = $this->db->getConn()->prepare($query);
 
-		return $data;
-	}
+    $statement->bind_param('i', $this->user_id);
 
-	function update_user_connection_id()
-	{
-		$query = "
-		UPDATE user 
-		SET user_connection_id = :user_connection_id 
-		WHERE user_token = :user_token
-		";
+    $statement->execute();
 
-		$statement = $this->connect->prepare($query);
+    $data = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
-		$statement->bindParam(':user_connection_id', $this->user_connection_id);
+    return $data;
+}
 
-		$statement->bindParam(':user_token', $this->user_token);
+function update_user_connection_id()
+{
+    $query = "
+    UPDATE user 
+    SET user_connection_id = ? 
+    WHERE user_token = ?
+    ";
 
-		$statement->execute();
-	}
+    $statement = $this->db->getConn()->prepare($query);
 
-	function get_user_id_from_token()
-	{
-		$query = "
-		SELECT user_id FROM user
-		WHERE user_token = :user_token
-		";
+    $statement->bind_param('ss', $this->user_connection_id, $this->user_token);
 
-		$statement = $this->connect->prepare($query);
+    $statement->execute();
+}
 
-		$statement->bindParam(':user_token', $this->user_token);
+function get_user_id_from_token()
+{
+    $query = "
+    SELECT user_id FROM user
+    WHERE user_token = ?
+    ";
 
-		$statement->execute();
+    $statement = $this->db->getConn()->prepare($query);
 
-		$user_id = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement->bind_param('s', $this->user_token);
 
-		return $user_id;
-	}
-	function get_user_data_by_id()
-	{
-		$query = "
-		SELECT * FROM user
-		WHERE user_id = :user_id";
+    $statement->execute();
 
-		$statement = $this->connect->prepare($query);
+    $result = $statement->get_result();
+    $user_id = $result->fetch_assoc();
 
-		$statement->bindParam(':user_id', $this->user_id);
+    return $user_id;
+}
 
-		try
-		{
-			if($statement->execute())
-			{
-				$user_data = $statement->fetch(PDO::FETCH_ASSOC);
-			}
-			else
-			{
-				$user_data = array();
-			}
-		}
-		catch (Exception $error)
-		{
-			echo $error->getMessage();
-		}
-		return $user_data;
-	}
-	
-	function is_valid_email_verification_code()
-	{
-		$query = "
-		SELECT * FROM user
-		WHERE user_verification_code = :user_verification_code
-		";
+function get_user_data_by_id()
+{
+    $query = "SELECT * FROM user WHERE user_id = ?";
+    $statement = $this->db->getConn()->prepare($query);
 
-		$statement = $this->connect->prepare($query);
+    $statement->bind_param('i', $this->user_id);
 
-		$statement->bindParam(':user_verification_code', $this->user_verification_code);
-
-		$statement->execute();
-
-		if($statement->rowCount() > 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	function enable_user_account()
-	{
-		$query = "
-		UPDATE user
-		SET user_status = :user_status 
-		WHERE user_verification_code = :user_verification_code
-		";
-
-		$statement = $this->connect->prepare($query);
-
-		$statement->bindParam(':user_status', $this->user_status);
-
-		$statement->bindParam(':user_verification_code', $this->user_verification_code);
-
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	function get_all_users_data()
-	{
-		$query = "SELECT * FROM user";
-		$statement = $this->connect->prepare($query);
-		$statement->execute();
-	
-		$users_data = $statement->fetchAll(PDO::FETCH_ASSOC);
-	
-		return $users_data;
-	}
-
-	function delete_user_by_id()
-    {
-        $query = "DELETE FROM user WHERE user_id = :user_id";
-        $statement = $this->connect->prepare($query);
-
-        $statement->bindParam(':user_id', $this->user_id);
-
-        try {
-            if ($statement->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception $error) {
-            echo $error->getMessage();
-            return false;
+    try {
+        if ($statement->execute()) {
+            $result = $statement->get_result();
+            $user_data = $result->fetch_assoc();
+        } else {
+            $user_data = array();
         }
+    } catch (Exception $error) {
+        echo $error->getMessage();
     }
 
-	function update_user_data()
-	{
-		$query = "
-
-		UPDATE user 
-		SET user_name = :user_name, user_bio = :user_bio, user_social1 = :user_social1, user_social2 = :user_social2, user_social3 = :user_social3
-		WHERE user_id = :user_id
-		";
+    return $user_data;
+}
 
 
-		$statement = $this->connect->prepare($query);
+function is_valid_email_verification_code()
+{
+    $query = "SELECT * FROM user WHERE user_verification_code = ?";
+    $statement = $this->db->getConn()->prepare($query);
 
-		$statement->bindParam(':user_name', $this->user_name);
-		
-		$statement->bindParam(':user_bio', $this->user_bio);
+    $statement->bind_param('s', $this->user_verification_code);
 
-		$statement->bindParam(':user_social1', $this->user_social1);
+    $statement->execute();
 
-		$statement->bindParam(':user_social2', $this->user_social2);
+    $result = $statement->get_result();
 
-		$statement->bindParam(':user_social3', $this->user_social3);
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-		$statement->bindParam(':user_id', $this->user_id);
 
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+function enable_user_account()
+{
+    $query = "UPDATE user SET user_status = ? WHERE user_verification_code = ?";
+    $statement = $this->db->getConn()->prepare($query);
+
+    $statement->bind_param('ss', $this->user_status, $this->user_verification_code);
+
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function get_all_users_data()
+{
+    $query = "SELECT * FROM user";
+    $statement = $this->db->getConn()->prepare($query);
+    $statement->execute();
+
+    $result = $statement->get_result();
+
+    $users_data = $result->fetch_all(MYSQLI_ASSOC);
+
+    return $users_data;
+}
+
+
+function delete_user_by_id()
+{
+    $query = "DELETE FROM user WHERE user_id = ?";
+    $statement = $this->db->getConn()->prepare($query);
+
+    $statement->bind_param('i', $this->user_id);
+
+    try {
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception $error) {
+        echo $error->getMessage();
+        return false;
+    }
+}
+
+function update_user_data()
+{
+    $query = "UPDATE user SET user_name = ?, user_bio = ?, user_social1 = ?, user_social2 = ?, user_social3 = ? WHERE user_id = ?";
+    $statement = $this->db->getConn()->prepare($query);
+
+    $statement->bind_param('sssssi', $this->user_name, $this->user_bio, $this->user_social1, $this->user_social2, $this->user_social3, $this->user_id);
+
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 	
 }
 
