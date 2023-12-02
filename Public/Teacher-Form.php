@@ -7,14 +7,32 @@ require_once('../app/model/tutor.php');
 $tutormodel = new tutor();
 $tutorcontroller = new TutorsController($tutormodel);
 
-
-if (isset($_POST['submit']))
+foreach($_SESSION['user_data'] as $key => $value)
 {
-    $tutorcontroller->Add_Tutor();
+  $user_id = $value['id'];
 }
 
+if(!isset($user_id))
+{
 
 
+    
+}
+else
+{
+    if( $tutorcontroller->Check_Tutor($user_id) == 1)
+    {
+        $_SESSION["error_message"] = "You already sent a request !";
+        header('location:index.php');
+    }
+    else
+    {
+        if (isset($_POST['submit']))
+        {
+            $tutorcontroller->Add_Tutor($user_id);
+        }
+    }
+}
 
 ?>
 
@@ -37,6 +55,7 @@ if (isset($_POST['submit']))
 <head>
     <meta charset="UTF-8" />
     <title>Teacher form</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" />
@@ -52,10 +71,10 @@ if (isset($_POST['submit']))
 </head>
 
 <body>
-    <!-- partial:index.partial.html -->
+
     <!-- Multi step form -->
     <section class="multi_step_form">
-        <form  method="post"  enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <!-- Tittle -->
             <div class="tittle">
                 <h2>Become a teacher with us!</h2>
@@ -75,7 +94,7 @@ if (isset($_POST['submit']))
                     <br />
 
                 </div>
-           
+
                 <tr>
 
                     <h5>Qualification:</h5>
@@ -83,7 +102,7 @@ if (isset($_POST['submit']))
                     <textarea name="Qualification" rows="10" cols="50"></textarea>
 
                     <br>
-    
+
 
                     <h5>Subjects you can teach:</h5>
 
@@ -95,24 +114,22 @@ if (isset($_POST['submit']))
                             </button>
                         </div>
                     </div>
-    
+
                     <br />
                     <h5>Upload your CV here (required):</h5>
                     <br />
 
-                   
-                            <input type="text" class="form-control"
-                                   placeholder="Enter your name" name="name">
-                        </div>                                  
-                        <div class="form-group">
-                            <input type="file" name="pdf_file"
-                                   class="form-control" accept=".pdf" required/>
-                        </div>
+
+                    <input type="text" class="form-control" placeholder="Enter your name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="pdf_file" class="form-control" accept=".pdf" required />
+                    </div>
                     <!-- <div class="cvup">
                         <input type="file" name="cv" />
                     </div> -->
                     <br />
-        
+
                     <h5>Additional comment:</h5>
                     <textarea name="Qualification" rows="10" cols="50"></textarea>
                     <br />
@@ -121,23 +138,23 @@ if (isset($_POST['submit']))
                     <h6>
                         <input name="agree" type="checkbox" checked=" " /> I agree to the
                         <a href="#" id="input">terms and conditions</a>
-             
+
                     </h6>
 
                     <br />
                     <div class="row d-flex justify-content-center ">
-                    <button type="button" class="btn btn-danger col-5 me-2 action-button previous ">
-                        Back
-                    </button>
-                    <button type="submit" name="submit" href="#" class="btn col-5 btn-primary ">Submit</button>
+                        <button type="button" class="btn btn-danger col-5 me-2 action-button previous ">
+                            Back
+                        </button>
+                        <button type="submit" name="submit" href="#" class="btn col-5 btn-primary ">Submit</button>
                     </div>
 
                 </tr>
             </fieldset>
         </form>
     </section>
-    <!-- End Multi step form -->
-    <!-- partial -->
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

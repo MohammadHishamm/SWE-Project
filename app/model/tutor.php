@@ -83,6 +83,27 @@
             return true;
         }
 
+        public function Check_Tutor()
+        {
+            $query = "SELECT * FROM `tutors` WHERE tutor_id  = :tutor_id";
+            $statement = $this->db->getConn()->prepare($query);
 
+            if($statement->execute([':tutor_id' => $this->tutor_id]))
+            {
+                if($statement->rowCount() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+               
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 ?>

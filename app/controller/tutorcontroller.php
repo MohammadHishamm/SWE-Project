@@ -9,25 +9,19 @@ require_once(__ROOT__ . "controller/controller.php");
 
 class TutorsController extends Controller{
 	
-    public function Add_Tutor() 
+    public function Add_Tutor($user_id) 
     {
-
-        foreach($_SESSION['user_data'] as $key => $value)
-        {
-          $user_id = $value['id'];
-        }
-      
-        $this->model->settutorid($user_id);
-        $this->model->setQualification($_REQUEST['Qualification']);
-        $this->model->setSubjects($_REQUEST['field']);
-        $this->model->setUser_status("Disabled");
-        $this->model->setcomment($_REQUEST['Qualification']);
         if (isset($_FILES['pdf_file']['name'])) 
         { 
-        $file_name = $_FILES['pdf_file']['name'];
-        $file_tmp = $_FILES['pdf_file']['tmp_name'];
-        move_uploaded_file($file_tmp,"./pdf/".$file_name);
-        $this->model->setcv($file_name);
+            $this->model->settutorid($user_id);
+            $this->model->setQualification($_REQUEST['Qualification']);
+            $this->model->setSubjects($_REQUEST['field']);
+            $this->model->setUser_status("Disabled");
+            $this->model->setcomment($_REQUEST['Qualification']);
+            $file_name = $_FILES['pdf_file']['name'];
+            $file_tmp = $_FILES['pdf_file']['tmp_name'];
+            move_uploaded_file($file_tmp,"./pdf/".$file_name);
+            $this->model->setcv($file_name);
         }
         
           
@@ -76,8 +70,10 @@ class TutorsController extends Controller{
                     if(!$mail->Send()) {
                       echo "Mailer Error: " . $mail->ErrorInfo;
                     } else {
-                      echo '
-                     ';
+                      echo 
+                      '
+                      
+                      ';
                     }
                   } catch (Exception $e) {
                       echo 'Message could not be sent. Mailer Error: '. $mail->ErrorInfo;
@@ -90,6 +86,18 @@ class TutorsController extends Controller{
         
     }
 
+    public function Check_Tutor($user_id)
+    {
+        $this->model->settutorid($user_id);
+        if($this->model->Check_Tutor())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
     }

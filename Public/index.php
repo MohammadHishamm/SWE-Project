@@ -35,10 +35,24 @@ foreach($_SESSION['user_data'] as $key => $value)
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-         
+
 </head>
 
 
+<script>
+       function showToast() 
+       {
+            document.getElementById('toast').classList.add('show');
+
+         
+            setTimeout(function () {
+                document.getElementById('toast').classList.remove('show');
+            }, 5000);
+            
+       }
+
+
+</script>
 
 <body>
 
@@ -52,9 +66,21 @@ foreach($_SESSION['user_data'] as $key => $value)
         </div>
     </div> -->
 
-    <?php include "Top_button.php" ?>
-    <?php include "Topnav.php" ?>
-    <?php include "Sidenav.php" ?>
+    <?php if(isset($_SESSION['error_message'])){  ?>
+    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto"id="toast">
+        <div class="toast-header">
+            <strong class="me-auto">Arab Data Hub</strong>
+            <small></small>
+        </div>
+        <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
+    </div>
+    <script>
+        showToast(); 
+    </script>
+    <?php unset($_SESSION['error_message']); } ?>
+    
+    <?php include "Partials/Top-Nav.php" ?>
+    <?php include "Partials/Side-Nav.php" ?>
     <!-- First Section -->
     <div class="  mb-10" style="height: min-content; margin-top: 100px; ">
 
@@ -102,7 +128,6 @@ foreach($_SESSION['user_data'] as $key => $value)
             </div>
         </div>
     </div>
-
 
 
     <!-- <div class="container-fluid" >
