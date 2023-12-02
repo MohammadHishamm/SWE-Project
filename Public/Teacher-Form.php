@@ -1,36 +1,16 @@
 <?php
 define('__ROOT__', "../app/");
-// require_once('../app/controller/usercontroller.php');
+require_once('../app/controller/tutorcontroller.php');
 require_once('../app/model/tutor.php');
 // require_once('../app/view/viewuser.php');
 
 $tutormodel = new tutor();
-
+$tutorcontroller = new TutorsController($tutormodel);
 
 
 if (isset($_POST['submit']))
 {
-
-
-   $tutormodel->settutorid("22");
-   $tutormodel->setQualification("aaa");
-   $tutormodel->setSubjects("aaa");
-   $tutormodel->setUser_status("Disabled");
-   $tutormodel->setcomment("aaa");
-   if (isset($_FILES['pdf_file']['name'])) 
-   { 
-   $file_name = $_FILES['pdf_file']['name'];
-   $file_tmp = $_FILES['pdf_file']['tmp_name'];
-   move_uploaded_file($file_tmp,"./pdf/".$file_name);
-   $tutormodel->setcv($file_name);
-   }
-
-
-   if($tutormodel->save())
-   {
-    echo    "done";
-   }
-   
+    $tutorcontroller->Add_Tutor();
 }
 
 

@@ -66,10 +66,21 @@
             return $this->comment;
         }
 
+        function get_email_by_id()
+        {
+            $query = "SELECT user.user_email FROM `tutors` INNER JOIN `user` ON user.user_id = :tutor_id";
+            $statement = $this->db->getConn()->prepare($query);
+
+            $statement->execute([':tutor_id' => $this->tutor_id]);
+
+            return $statement;
+        }
         public function Save()
         {
             $add_teacher = $this->db->getConn()->prepare("INSERT INTO `tutors`(tutor_id, User_status, CV, Language, About) VALUES(?,?,?,?,?)");
             $add_teacher->execute([$this->tutor_id  , $this->User_status ,$this->cv,$this->Subjects, $this->comment]);
+
+            return true;
         }
 
 

@@ -53,8 +53,8 @@ function addEmailField() {
   btnDel.innerText = "-";
 
   // set Input field
-  nef.type = "email";
-  nef.name = "email_field";
+  nef.type = "text";
+  nef.name = "field";
   nef.setAttribute("required", "");
   nef.classList.add("input-field");
 
