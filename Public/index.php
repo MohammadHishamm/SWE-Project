@@ -67,7 +67,7 @@ foreach($_SESSION['user_data'] as $key => $value)
     </div> -->
 
     <?php if(isset($_SESSION['error_message'])){  ?>
-    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto"id="toast">
+    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast" >
         <div class="toast-header">
             <strong class="me-auto">Arab Data Hub</strong>
             <small></small>
@@ -78,7 +78,7 @@ foreach($_SESSION['user_data'] as $key => $value)
         showToast(); 
     </script>
     <?php unset($_SESSION['error_message']); } ?>
-    
+
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
     <!-- First Section -->
