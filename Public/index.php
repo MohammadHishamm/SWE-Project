@@ -1,12 +1,16 @@
 <?php
+
+// define('__ROOT__', "../app/");
+
 session_start();
-require_once('wishlistclass.php');
+// require_once('wishlistclass.php');
+
 if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
 }
 
-$wishlist = new wishlist;
+// $wishlist = new wishlist;
 foreach($_SESSION['user_data'] as $key => $value)
          {
            $User_ID = $value['id'];
@@ -31,7 +35,7 @@ foreach($_SESSION['user_data'] as $key => $value)
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-
+         
 </head>
 
 
@@ -39,14 +43,14 @@ foreach($_SESSION['user_data'] as $key => $value)
 <body>
 
     <!-- Loaders -->
-    <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
+    <!-- <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
         <div>
             <i class="fa-solid fa-graduation-cap fa-beat-fade fs-1" style="color: #ffffff; margin-top: 300px;"></i>
         </div>
         <div>
             <h1 class="mt-4">DISCOVER</h1>
         </div>
-    </div>
+    </div> -->
 
     <?php include "Top_button.php" ?>
     <?php include "Topnav.php" ?>
@@ -257,7 +261,7 @@ foreach($_SESSION['user_data'] as $key => $value)
 
                 if (isset($_GET['add_to_wishlist'])) {
 
-                    $wishlist->addwishlist($Course_ID, $User_ID);
+                    // $wishlist->addwishlist($Course_ID, $User_ID);
                 }
 
 

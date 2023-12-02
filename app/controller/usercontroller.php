@@ -88,7 +88,6 @@ class UsersController extends Controller{
     public function signin() {
 
 
-
     $this->model->setUserEmail($_POST['user_email']);
 
     $user_data = $this->model->get_user_data_by_email();
@@ -116,7 +115,7 @@ class UsersController extends Controller{
                         'token' =>  $user_token
                     ];
 
-                   header("Location:Home.php?login=success");
+                //    header("Location:Home.php?login=success");
 
                 }
             }

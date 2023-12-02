@@ -1,6 +1,15 @@
 <?php
 
-session_start();
+define('__ROOT__', "../app/");
+
+require_once('../app/controller/usercontroller.php');
+require_once('../app/model/user.php');
+require_once('../app/view/viewuser.php');
+
+$user_model = new User();
+$user_controller = new UsersController($user_model);
+$user_view = new ViewUser($user_controller, $user_model);
+
 
 if(empty($_SESSION['user_data']))
 {
@@ -13,17 +22,15 @@ else
     $user_id = $value['id'];
   }
 
-  require_once('User/user.php');
-
   if(isset($_GET['user_id']))
   {
-    $user_object = new User;
-    $user_object->setUserId($_GET['user_id']);
+    
+    $user_model->setUserId($_GET['user_id']);
   
-    $Data = $user_object->get_user_by_id();
+    $Data = $user_model->get_user_by_id();
     if($Data->rowCount() > 0)
     {
-      $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
+      $fetch_user =  $Data->fetch(PDO::FETCH_ASSOC);
     }
     else
     {
@@ -46,7 +53,7 @@ else
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "Header.php" ?>
+<?php include "Partials/Header.php" ?>
 
 <head>
     <link rel="stylesheet" href="../css/Sidenav.css">
@@ -57,8 +64,8 @@ else
 
 <body style="background-color: #CED8E3;">
 
-    <?php include "Topnav.php" ?>
-    <?php include "Sidenav.php" ?>
+    <?php include "Partials/Top-Nav.php" ?>
+    <?php include "Partials/Side-Nav.php" ?>
     <section>
         <div>
             <div class=" d-flex justify-content-center align-items-center ">
@@ -88,7 +95,7 @@ else
                             <p class="text-muted">User joined on <?=  $fetch_user['user_created_on'] ?> </p>
                             <p class="text-muted"></p>
                         </div>
-                        <?php if($user_object->getUserId() == $user_id){ ?>
+                        <?php if($user_model->getUserId() == $user_id){ ?>
                         <div class="col-xxl-2 col-6  offset-1 offset-xxl-6 ">
                             <a href="profile.php" class="btn btn-light">Edit Profile</a>
                         </div>

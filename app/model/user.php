@@ -187,16 +187,13 @@ public function get_user_data_by_email()
 {
     $sql = "
     SELECT * FROM user
-    WHERE user_email = ?
+    WHERE user_email = :user_email
     ";
 
     $statement = $this->db->getConn()->prepare($sql);
 
-    $statement->bind_param('s', $this->user_email);  // 's' for string, adjust if needed
-
-    if ($statement->execute()) {
-        $result = $statement->get_result();
-        $user_data = $result->fetch_assoc();
+    if ( $statement->execute([':user_email' => $this->user_email])) {
+        $user_data = $statement->fetch(PDO::FETCH_ASSOC);
         return $user_data;
     } else {
         return false;
@@ -209,15 +206,14 @@ public function update_user_login_data()
 {
     $sql = "
     UPDATE user 
-    SET user_login_status = ?, user_token = ?  
-    WHERE user_id = ?
+    SET user_login_status = :user_login_status, user_token = :user_token  
+    WHERE user_id = :user_id
     ";
 
     $statement = $this->db->getConn()->prepare($sql);
 
-    $statement->bind_param('iss', $this->user_login_status, $this->user_token, $this->user_id);
 
-    if ($statement->execute()) {
+    if ($statement->execute([':user_login_status' => $this->user_login_status , ':user_token' => $this->user_token , ':user_id' => $this->user_id])) {
         return true;
     } else {
         return false;
@@ -230,10 +226,10 @@ public function update_user_login_data()
 
 function get_user_by_id()
 {
-    $query = "SELECT * FROM `user` WHERE user_id = ?";
+    $query = "SELECT * FROM `user` WHERE user_id = :user_id";
     $statement = $this->db->getConn()->prepare($query);
-    $statement->bind_param('i', $this->user_id);
-    $statement->execute();
+
+    $statement->execute([':user_id' => $this->user_id]);
 
     return $statement;
 }

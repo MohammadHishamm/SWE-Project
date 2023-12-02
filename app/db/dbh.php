@@ -11,7 +11,8 @@ class DBh{
 	private $result;
 	public $sql;
 
-	function __construct() {
+	function __construct() 
+	{
 		$this->servername = DB_SERVER;
 		$this->username = DB_USER;
 		$this->password = DB_PASS;
@@ -19,19 +20,20 @@ class DBh{
 		$this->connect();
 	}
 
-	public function connect(){
-		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-		if ($this->conn->connect_error) {
-			die("Connection failed: " . $this->conn->connect_error);
-		}
+	public function connect()
+	{
+		$this->conn = new PDO("mysql:host=localhost; dbname=swe", "root", "");
+
 		return $this->conn;
 	}
 
-	public function getConn(){
+	public function getConn()
+	{
 		return $this->conn;
 	}
 
-	function query($sql){
+	function query($sql)
+	{
 		if (!empty($sql)){
 			$this->sql = $sql;
 			$this->result = $this->conn->query($sql);
@@ -42,15 +44,17 @@ class DBh{
 		}
 	}
 
-	function fetchRow($result=""){
+	function fetchRow($result="")
+	{
 		if (empty($result)){ 
 			$result = $this->result; 
 		}
 		return $result->fetch_assoc();
 	}
 
-	function __destruct(){
-		$this->conn->close();
+	function __destruct()
+	{
+		$this->conn = NULL;
 	}
 }
 ?>
