@@ -87,13 +87,14 @@ class UsersController extends Controller{
 
     public function signin() {
 
-
+      
     $this->model->setUserEmail($_POST['user_email']);
 
     $user_data = $this->model->get_user_data_by_email();
 
     if(is_array($user_data) && count($user_data) > 0)
     {
+      
         if($user_data['user_status'] == 'Enable')
         {
             if($user_data['user_password'] == $_POST['user_password'])
@@ -115,7 +116,7 @@ class UsersController extends Controller{
                         'token' =>  $user_token
                     ];
 
-                //    header("Location:Home.php?login=success");
+                   header("Location:index.php?login=success");
 
                 }
             }

@@ -13,7 +13,7 @@ define('__ROOT__', "../app/");
 </head>
 
 <body>
-<?php
+    <?php
     require_once('../app/controller/usercontroller.php');
     require_once('../app/model/user.php');
     require_once('../app/view/viewuser.php');
@@ -26,27 +26,34 @@ define('__ROOT__', "../app/");
          {
            $User_ID = $value['id'];
          }  
-
-    if(isset($User_ID))
+        
+         
+    if(!isset($User_ID))
     {
+        if (isset($_POST["register"])) {
+            $controller->signup();
+        }
+    
+        if (isset($_POST["login"])) {
+          $controller->signin();
+    
+        }
+    }
+    else
+    {
+        $_SESSION["error_message"] = "You already signed in !";
         header('location:index.php');
     }
 
-    if (isset($_POST["register"])) {
-        $controller->signup();
-    }
 
-    if (isset($_POST["login"])) {
-        $controller->signin();
-    }
     ?>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Sign in -->
-                    <?= $view->signinForm(); ?>
+                <?= $view->signinForm(); ?>
                 <!-- Sign up -->
-                    <?= $view->signupForm(); ?>
+                <?= $view->signupForm(); ?>
             </div>
         </div>
 

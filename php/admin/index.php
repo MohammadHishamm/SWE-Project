@@ -85,6 +85,8 @@
       <!-- End Head -->
       <h1 class="p-relative">Dashboard</h1>
       <div class="wrapper d-grid gap-20">
+      <div>
+
         <!-- Start Welcome Widget -->
         <div class="welcome bg-white rad-10 txt-c-mobile block-mobile">
           <div class="intro p-20 d-flex space-between bg-eee">
