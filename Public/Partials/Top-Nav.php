@@ -18,7 +18,7 @@
         <?php
     
 
-        if(!empty($_SESSION['user_data']))
+        if(isset($_SESSION['user_data']))
         {
 
           echo '
@@ -39,7 +39,7 @@
                     </div>
                     
                     <div class="col">
-                      <a href="signout.php">
+                      <a href="Signout.php">
 
                         <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>
 

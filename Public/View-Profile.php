@@ -11,9 +11,9 @@ $user_controller = new UsersController($user_model);
 $user_view = new ViewUser($user_controller, $user_model);
 
 
-if(empty($_SESSION['user_data']))
+if(!isset($_SESSION['user_data']))
 {
-  header('location:signup.php');
+  header('location:signup-in.php');
 }
 else
 {
@@ -34,12 +34,12 @@ else
     }
     else
     {
-      header('location:home.php');
+      header('location:index.php');
     }
   }
   else
   {
-    header('location:home.php');
+    header('location:index.php');
   }
 
 }
@@ -97,7 +97,7 @@ else
                         </div>
                         <?php if($user_model->getUserId() == $user_id){ ?>
                         <div class="col-xxl-2 col-6  offset-1 offset-xxl-6 ">
-                            <a href="profile.php" class="btn btn-light">Edit Profile</a>
+                            <a href="Edit-Profile.php" class="btn btn-light">Edit Profile</a>
                         </div>
                         <?php }?>
                     </div>

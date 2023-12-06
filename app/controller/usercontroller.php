@@ -23,7 +23,8 @@ class UsersController extends Controller{
             
         
            
-        
+            $this->model->setUserName($_POST['user_name']);
+
             $this->model->setUserEmail($_POST['user_email']);
         
             $this->model->setUserPassword($_POST['user_password']);
@@ -57,7 +58,7 @@ class UsersController extends Controller{
                       $mail->Body = '
                       <p>Thank you for registering for Arab Data Hub.</p>
                           <p>This is a verification email, please click the link to verify your email address.</p>
-                          <p><a href="http://localhost/SWE%20project/SWE-Project/php/verify.php?code='.$this->model->getUserVerificationCode().'">Click to Verify</a></p>
+                          <p><a href="http://localhost/SWE-Project/php/verify.php?code='.$this->model->getUserVerificationCode().'">Click to Verify</a></p>
                           <p>Thank you...</p>
                       ';
                     $mail->IsHTML(true);

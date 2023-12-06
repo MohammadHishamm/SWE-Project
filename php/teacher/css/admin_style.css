@@ -11,7 +11,7 @@
    --border: .1rem solid rgba(0, 0, 0, .2);
 }
 
-* {
+/* * {
    transition: 1.5s ease-in-out;
    font-family: 'Nunito', sans-serif;
    margin: 0;
@@ -20,9 +20,9 @@
    outline: none;
    border: none;
    text-decoration: none;
-}
+} */
 
-*::selection {
+/* *::selection {
    background-color: var(--main-color);
    color: #fff;
 }
@@ -43,14 +43,14 @@
 html {
    font-size: 62.5%;
    overflow-x: hidden;
-}
+} */
 
 body {
-   background-color: var(--light-bg);
-   padding-left: 20rem;
+   /* background-color: var(--light-bg);
+   padding-left: 20rem; */
    /* padding-bottom: 7rem; */
 }
-
+/* 
 body.dark {
    
 
@@ -63,73 +63,20 @@ body.dark {
 
 body.active {
    padding-left: 0;
-}
+} */
 
 section {
-   padding: 2rem;
+   /* padding: 2rem;
    max-width: 1200px;
-   margin: 0 auto;
+   margin: 0 auto; */
 }
 
-.btn,
-.option-btn,
-.delete-btn,
-.inline-btn,
-.inline-option-btn,
-.inline-delete-btn {
-   border-radius: .5rem;
-   padding: 1rem 3rem;
-   font-size: 1.3rem;
-   color: #fff;
-   margin-top: 1rem;
-   text-transform: capitalize;
-   cursor: pointer;
-   text-align: center;
-}
-
-.btn,
-.option-btn,
-.delete-btn {
-   display: block;
-   width: 100%;
-}
-
-.inline-btn,
-.inline-option-btn,
-.inline-delete-btn {
-   display: inline-block;
-}
-
-.btn,
-.inline-btn {
-   background-color: var(--main-color);
-}
-
-.option-btn,
-.inline-option-btn {
-   background-color: var(--oragen);
-}
-
-.delete-btn,
-.inline-delete-btn {
-   background-color: var(--red);
-}
-
-.btn:hover,
-.option-btn:hover,
-.delete-btn:hover,
-.inline-btn:hover,
-.inline-option-btn:hover,
-.inline-delete-btn:hover {
-   background-color: var(--black);
-   color: var(--white);
-}
 
 .flex-btn {
    display: flex;
    gap: 1rem;
 }
-
+/*
 .message {
    position: sticky;
    top: 0;
@@ -173,7 +120,7 @@ section {
    width: 100%;
    font-size: 2rem;
    color: var(--red);
-}
+} */
 
 .heading {
    padding-bottom: 1.8rem;
@@ -514,7 +461,7 @@ section {
 
 .playlist-form form {
    background-color: var(--white);
-   border-radius: .5rem;
+   border-radius: .2rem;
    padding: 2rem;
    padding-top: 1rem;
    max-width: 50rem;
@@ -538,7 +485,7 @@ section {
    font-size: 1.8rem;
    color: var(--black);
    background: var(--light-bg);
-   width: 100%;
+   /* width: 100%; */
 }
 
 .playlist-form form textarea {
@@ -572,21 +519,21 @@ section {
 
 .playlists .box-container {
    display: grid;
-   grid-template-columns: repeat(auto-fit, 35rem);
+   grid-template-columns: repeat(auto-fit, 20rem);
    align-items: flex-start;
    justify-content: center;
-   gap: 1.5rem;
+   gap: 1.0rem;
 }
 
 .playlists .box-container .box {
    background-color: var(--white);
-   border-radius: .5rem;
-   padding: 2rem;
-   overflow-x: hidden;
+   border-radius: 1rem;
+   padding: 1rem;
+ 
 }
 
 .playlists .box-container .box .thumb {
-   height: 20rem;
+   height: 14rem;
    position: relative;
    margin: 1.5rem 0;
 }
@@ -599,14 +546,14 @@ section {
 }
 
 .playlists .box-container .box .flex i {
-   font-size: 1.5rem;
+   font-size: 1rem;
    color: var(--main-color);
-   margin-right: .7rem;
+   margin-right: .0rem;
 }
 
 .playlists .box-container .box .flex span {
    color: var(--light-color);
-   font-size: 1.7rem;
+   font-size: 1.0rem;
 }
 
 .playlists .box-container .box .thumb img {
@@ -624,21 +571,20 @@ section {
    top: 1rem;
    left: 1rem;
    padding: .5rem 1.5rem;
-   font-size: 2rem;
+   font-size: 1rem;
 }
 
 .playlists .box-container .box .title {
-   font-size: 2rem;
+   font-size: 1rem;
    color: var(--black);
    margin-bottom: 1rem;
    text-overflow: ellipsis;
    white-space: nowrap;
-   overflow-x: hidden;
 }
 
 .playlists .box-container .box .description {
    line-height: 2;
-   font-size: 1.7rem;
+   font-size: 1rem;
    color: var(--light-color);
 }
 
@@ -993,7 +939,7 @@ section {
    color: var(--main-color);
 }
 
-
+/* 
 @media (max-width:1200px) {
 
    body {
@@ -1082,4 +1028,4 @@ section {
       height: auto;
    }
 
-}
+} */

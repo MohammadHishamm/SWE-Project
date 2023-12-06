@@ -12,6 +12,7 @@ class User extends Model
 	private $user_email;
 	private $user_password;
 	private $user_status;
+	private $user_img;
 	private $user_bio;
 	private $user_social1;
 	private $user_social2;
@@ -166,15 +167,14 @@ class User extends Model
 	function save_data()
 {
     $sql = "
-    INSERT INTO user (user_name, user_email, user_password, user_status, user_created_on, user_verification_code) 
-    VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO user (user_name, user_email,user_img, user_password, user_status, user_created_on, user_verification_code) 
+    VALUES (?, ?, ?, ?, ?, ?,?)
     ";
 
     $statement = $this->db->getConn()->prepare($sql);
+	$this->user_img = "no-image.jpg";
 
-    $statement->bind_param('ssssss', $this->user_name, $this->user_email, $this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code);
-
-    if ($statement->execute()) {
+    if ($statement->execute([$this->user_name, $this->user_email,$this->user_img ,$this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code])) {
         return true;
     } else {
         return false;

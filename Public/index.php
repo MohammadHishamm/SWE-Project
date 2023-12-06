@@ -1,14 +1,19 @@
 <?php
 
-// define('__ROOT__', "../app/");
+define('__ROOT__', "../app/");
 
-session_start();
 // require_once('wishlistclass.php');
 
-if(empty($_SESSION['user_data']))
-{
-  header('location:signup.php');
-}
+
+require_once('../app/controller/usercontroller.php');
+require_once('../app/model/user.php');
+require_once('../app/view/viewuser.php');
+
+// if(empty($_SESSION['user_data']))
+// {
+//   header('location:signup.php');
+// }
+
 
 // $wishlist = new wishlist;
 foreach($_SESSION['user_data'] as $key => $value)

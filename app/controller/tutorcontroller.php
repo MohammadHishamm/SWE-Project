@@ -13,11 +13,21 @@ class TutorsController extends Controller{
     {
         if (isset($_FILES['pdf_file']['name'])) 
         { 
-            $this->model->settutorid($user_id);
-            $this->model->setQualification($_REQUEST['Qualification']);
-            $this->model->setSubjects($_REQUEST['field']);
+            $this->model->setTutor_id($user_id);
+            
+            if (isset($_REQUEST['gender_male']))
+            {
+              $this->model->setGender("Male");
+            }
+            else if(isset($_REQUEST['gender_female']))
+            {
+              $this->model->setGender("Female");
+            }
+            $this->model->setComment($_REQUEST['comment']);
+            $this->model->setPosition($_REQUEST['position']);
             $this->model->setUser_status("Disabled");
-            $this->model->setcomment($_REQUEST['Qualification']);
+            $this->model->setCountry($_REQUEST['country']);
+            $this->model->setLanguage($_REQUEST['language-picker-select']);
             $file_name = $_FILES['pdf_file']['name'];
             $file_tmp = $_FILES['pdf_file']['tmp_name'];
             move_uploaded_file($file_tmp,"./pdf/".$file_name);
@@ -88,7 +98,7 @@ class TutorsController extends Controller{
 
     public function Check_Tutor($user_id)
     {
-        $this->model->settutorid($user_id);
+        $this->model->setTutor_id($user_id);
         if($this->model->Check_Tutor())
         {
             return true;

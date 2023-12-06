@@ -22,14 +22,10 @@ define('__ROOT__', "../app/");
     $controller = new UsersController($model);
     $view = new ViewUser($controller, $model);
 
-    foreach($_SESSION['user_data'] as $key => $value)
-         {
-           $User_ID = $value['id'];
-         }  
-        
+
          
-    if(!isset($User_ID))
-    {
+    if(!isset($_SESSION["user_data"]))
+    {  
         if (isset($_POST["register"])) {
             $controller->signup();
         }

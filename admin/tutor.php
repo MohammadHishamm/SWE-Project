@@ -64,9 +64,9 @@ $Data = $admin_model->get_tutors_requests();
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.php">
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutor.php">
                         <i class="fa-solid fa-diagram-project fa-fw"></i>
-                        <span>Projects</span>
+                        <span>Tutors requests</span>
                     </a>
                 </li>
                 <li>
@@ -129,8 +129,9 @@ $Data = $admin_model->get_tutors_requests();
                                 <thead>
                                     <tr>
                                         <td>Name</td>
+                                        <td>Position</td>
+                                        <td>Country</td>
                                         <td>Language</td>
-                                        <td>About</td>
                                         <td>CV</td>
                                         <td>Tutor_Status</td>
                                         <td>Action</td>
@@ -139,8 +140,9 @@ $Data = $admin_model->get_tutors_requests();
                                 <tbody>
                                     <tr>
                                         <td><?= $fetch_playlist['user_name'] ?></td>
+                                        <td><?= $fetch_playlist['position'] ?></td>
+                                        <td><?= $fetch_playlist['country'] ?></td>
                                         <td><?= $fetch_playlist['language'] ?></td>
-                                        <td><?= $fetch_playlist['About'] ?></td>
                                         <td>
                                             <?=$fetch_playlist['CV']?>
                                         </td>
@@ -182,35 +184,24 @@ $Data = $admin_model->get_tutors_requests();
                                             <!-- Start Overview -->
                                             <div class="overview bg-white rad-10 d-flex align-center">
                                                 <div class="avatar-box txt-c p-20">
-                                                    <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
+                                                    <img class="rad-half mb-10" src="../Images/<?=$fetch_playlist['user_img']?>" alt="" />
                                                     <h3 class="m-0"><?= $fetch_playlist['user_name'] ?></h3>
-                                                    <div class="level rad-6 bg-eee p-relative">
-                                                        <span style="width: 70%"></span>
-                                                    </div>
-                                                    <div class="rating mt-10 mb-10">
-                                                        <i class="fa-solid fa-star c-orange fs-13"></i>
-                                                        <i class="fa-solid fa-star c-orange fs-13"></i>
-                                                        <i class="fa-solid fa-star c-orange fs-13"></i>
-                                                        <i class="fa-solid fa-star c-orange fs-13"></i>
-                                                        <i class="fa-solid fa-star c-orange fs-13"></i>
-                                                    </div>
-                                                    <p class="c-grey m-0 fs-13">550 Rating</p>
                                                 </div>
                                                 <div class="info-box w-full txt-c-mobile">
                                                     <!-- Start Information Row -->
                                                     <div class="box p-20 d-flex align-center">
                                                         <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
                                                         <div class="fs-14">
-                                                            <span class="c-grey">Full Name</span>
+                                                            <span class="c-grey">Name:</span>
                                                             <span><?= $fetch_playlist['user_name'] ?></span>
                                                         </div>
                                                         <div class="fs-14">
                                                             <span class="c-grey">Gender:</span>
-                                                            <span>Male</span>
+                                                            <span><?= $fetch_playlist['gender'] ?></span>
                                                         </div>
                                                         <div class="fs-14">
                                                             <span class="c-grey">Country:</span>
-                                                            <span>Egypt</span>
+                                                            <span><?= $fetch_playlist['country'] ?></span>
                                                         </div>
                                                         <div class="fs-14">
 
@@ -220,17 +211,13 @@ $Data = $admin_model->get_tutors_requests();
                                                     <!-- Start Information Row -->
                                                     <div class="box p-20 d-flex align-center">
                                                         <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
-                                                        <div class="fs-14">
+                                                        <div class="fs-14 " style="margin-right:50px;">
                                                             <span class="c-grey">Email:</span>
-                                                            <span>o@nn.sa</span>
+                                                            <span><?= $fetch_playlist['user_email'] ?></span>
                                                         </div>
                                                         <div class="fs-14">
-                                                            <span class="c-grey">Phone:</span>
-                                                            <span>019123456789</span>
-                                                        </div>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Date Of Birth:</span>
-                                                            <span>25/10/1982</span>
+                                                            <span class="c-grey">User Created on:</span>
+                                                            <span><?= $fetch_playlist['user_created_on'] ?></span>
                                                         </div>
                                                         <div class="fs-14">
 
@@ -242,36 +229,9 @@ $Data = $admin_model->get_tutors_requests();
                                                         <h4 class="c-grey w-full fs-15 m-0">Job Information</h4>
                                                         <div class="fs-14">
                                                             <span class="c-grey">Title:</span>
-                                                            <span>Full Stack Developer</span>
+                                                            <span><?= $fetch_playlist['position'] ?></span>
                                                         </div>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Programming Language:</span>
-                                                            <span>Python</span>
-                                                        </div>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Years Of Experience:</span>
-                                                            <span>15+</span>
-                                                        </div>
-                                                        <div class="fs-14">
 
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Information Row -->
-                                                    <!-- Start Information Row -->
-                                                    <div class="box p-20 d-flex align-center">
-                                                        <h4 class="c-grey w-full fs-15 m-0">Billing Information</h4>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Payment Method:</span>
-                                                            <span>Paypal</span>
-                                                        </div>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Email:</span>
-                                                            <span>email@website.com</span>
-                                                        </div>
-                                                        <div class="fs-14">
-                                                            <span class="c-grey">Subscription:</span>
-                                                            <span>Monthly</span>
-                                                        </div>
                                                         <div class="fs-14">
 
                                                         </div>

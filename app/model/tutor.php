@@ -3,67 +3,101 @@
 
     class tutor extends model
     {
-        public $tutor_id;
-        public $Qualification;
-        public $Subjects;
+        protected $Tutor_id;
+        public $Gender;
+        public $Position;
         public $User_status;
         public $cv;
-        public $comment;
+        public $Language;
+        public $Country;
+        public $Comment;
         public $connect;
        
        
+
 	    public function __construct()
 	    {
             $this->db = $this->connect();
 	    }
 
-        public function settutorid($tutor_id)
+        public function setTutor_id($Tutor_id)
         {
-            $this->tutor_id = $tutor_id;
+            $this->Tutor_id = $Tutor_id;
         }
-        public function gettutorid()
+
+        public function getTutor_id()
         {
-            return $this->tutor_id;
+            return $this->Tutor_id;
         }
-        public function setQualification($Qualification)
+
+        public function setGender($Gender)
         {
-            $this->Qualification = $Qualification;
+            $this->Gender = $Gender;
         }
-        public function getQualification()
+
+        public function getGender()
         {
-            return $this->Qualification;
+            return $this->Gender;
         }
-        public function setSubjects($Subjects)
+
+        public function setPosition($Position)
         {
-            $this->Subjects = $Subjects;
+            $this->Position = $Position;
         }
-        public function getSubjects()
+
+        public function getPosition()
         {
-            return $this->Subjects;
+            return $this->Position;
         }
+
         public function setUser_status($User_status)
         {
             $this->User_status = $User_status;
         }
+
         public function getUser_status()
         {
             return $this->User_status;
         }
-        public function setcv($cv)
+
+        public function setLanguage($Language)
         {
-            $this->cv = $cv;       
+            $this->Language = $Language;
         }
-        public function getcv()
+
+        public function getLanguage()
+        {
+            return $this->Language;
+        }
+
+        public function setCountry($Country)
+        {
+            $this->Country = $Country;
+        }
+
+        public function getCountry()
+        {
+            return $this->Country;
+        }
+
+        public function setCV($cv)
+        {
+            $this->cv = $cv;
+        }
+
+        public function getCV()
         {
             return $this->cv;
         }
-        public function setcomment($comment)
+
+        public function setComment($Comment)
         {
-            $this->comment = $comment;
+            $this->Comment = $Comment;
         }
-        public function getcomment()
+
+        public function getComment()
         {
-            return $this->comment;
+            return $this->Comment;
         }
 
         function get_email_by_id()
@@ -71,14 +105,14 @@
             $query = "SELECT user.user_email FROM `tutors` INNER JOIN `user` ON user.user_id = :tutor_id";
             $statement = $this->db->getConn()->prepare($query);
 
-            $statement->execute([':tutor_id' => $this->tutor_id]);
+            $statement->execute([':tutor_id' => $this->Tutor_id]);
 
             return $statement;
         }
         public function Save()
         {
-            $add_teacher = $this->db->getConn()->prepare("INSERT INTO `tutors`(tutor_id, User_status, CV, Language, About) VALUES(?,?,?,?,?)");
-            $add_teacher->execute([$this->tutor_id  , $this->User_status ,$this->cv,$this->Subjects, $this->comment]);
+            $add_teacher = $this->db->getConn()->prepare("INSERT INTO `tutors`(tutor_id, User_status, CV, language , position, country ,gender ,comment) VALUES(?,?,?,?,?,?,?,?)");
+            $add_teacher->execute([$this->Tutor_id  , $this->User_status ,$this->cv,$this->Language,$this->Position, $this->Country,$this->Gender,$this->Comment]);
 
             return true;
         }
@@ -88,7 +122,7 @@
             $query = "SELECT * FROM `tutors` WHERE tutor_id  = :tutor_id";
             $statement = $this->db->getConn()->prepare($query);
 
-            if($statement->execute([':tutor_id' => $this->tutor_id]))
+            if($statement->execute([':tutor_id' => $this->Tutor_id]))
             {
                 if($statement->rowCount() > 0)
                 {
