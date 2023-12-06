@@ -548,7 +548,7 @@ section {
 .playlists .box-container .box .flex i {
    font-size: 1rem;
    color: var(--main-color);
-   margin-right: .0rem;
+   margin-right: 1rem;
 }
 
 .playlists .box-container .box .flex span {
@@ -673,7 +673,7 @@ section {
    top: 1rem;
    left: 1rem;
    padding: .5rem 1.5rem;
-   font-size: 2rem;
+   font-size: 1rem;
 }
 
 .playlist-details .row .details {
@@ -681,7 +681,7 @@ section {
 }
 
 .playlist-details .row .details .date {
-   font-size: 1.5rem;
+   font-size: 1rem;
    margin: 1rem 0;
 }
 
@@ -695,14 +695,14 @@ section {
 }
 
 .playlist-details .row .details .title {
-   font-size: 2rem;
+   font-size: 1rem;
    color: var(--black);
    padding-bottom: .5rem;
 }
 
 .playlist-details .row .details .description {
    padding: .5rem 0;
-   font-size: 1.7rem;
+   font-size: 1rem;
    color: var(--light-color);
    line-height: 2;
    white-space: pre-line;
@@ -710,21 +710,21 @@ section {
 
 .contents .box-container {
    display: grid;
-   grid-template-columns: repeat(auto-fit, 35rem);
+   grid-template-columns: repeat(auto-fit, 20rem);
    align-items: flex-start;
    justify-content: center;
-   gap: 1.5rem;
+   gap: 1rem;
 }
 
 .contents .box-container .box {
-   border-radius: .5rem;
+   border-radius: 1rem;
    background-color: var(--white);
-   padding: 2rem;
+   padding: 1rem;
    overflow-x: hidden;
 }
 
 .contents .box-container .box .thumb {
-   height: 20rem;
+   height: 10rem;
    width: 100%;
    border-radius: .5rem;
    object-fit: cover;
@@ -735,23 +735,23 @@ section {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   gap: 1.5rem;
+   gap: 1rem;
    margin-bottom: .5rem;
 }
 
 .contents .box-container .box .flex i {
-   font-size: 1.5rem;
+   font-size: 1rem;
    color: var(--main-color);
    margin-right: 1rem;
 }
 
 .contents .box-container .box .flex span {
    color: var(--light-color);
-   font-size: 1.7rem;
+   font-size: 1rem;
 }
 
 .contents .box-container .box .title {
-   font-size: 2rem;
+   font-size: 1rem;
    color: var(--black);
    line-height: 1.5;
    text-overflow: ellipsis;
@@ -761,7 +761,7 @@ section {
 .view-content .container {
    background-color: var(--white);
    border-radius: .5rem;
-   padding: 2rem;
+   padding: 1rem;
 }
 
 .view-content .container .video {
