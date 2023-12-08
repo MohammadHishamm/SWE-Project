@@ -21,8 +21,8 @@ class content extends playlist
 
     public function __construct()
     {
-      
-        // $this->unique_id =  $this->db->unique_id();
+        $this->db = $this->connect();
+        $this->unique_id =  $this->db->unique_id();
         
     }
     

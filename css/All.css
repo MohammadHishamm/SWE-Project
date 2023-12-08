@@ -51,6 +51,20 @@ body.dark {
   transform: translate(0px, 60px);
 }
 
+.toast
+{
+  transition: 0.6s ease-in-out;
+  z-index: 2000;
+  width: 600px; 
+  height: 150px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.toast-header
+{
+
+  font-size: 1rem;
+}
 .logo_name {
   color: #0f141a;
   font-size: 1.8rem;

@@ -170,18 +170,26 @@
                 // thumb for content
                 $delete_playlist_thumb =  $this->db->getConn()->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
                 $delete_playlist_thumb->execute([$playlist_id]);
-
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
-                unlink('../Images/courses/'.$fetch_thumb['thumb']);
+
+                if(!empty($fetch_thumb))
+                {
+                    unlink('../Images/courses/'.$fetch_thumb['thumb']);
+                }
+                
 
 
                 // video for contant
                 $delete_video = $this->db->getConn()->prepare("SELECT * FROM `content` WHERE playlist_id = ? LIMIT 1");
                 $delete_video->execute([$playlist_id]);
-
                 $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
-                unlink('../Images/courses/'.$fetch_video['video']);
 
+                if(!empty($fetch_video))
+                {       
+                    unlink('../Images/courses/'.$fetch_thumb['video']);
+                }
+                
+               
                 // delete playlist
                 $delete_playlist = $this->db->getConn()->prepare("DELETE FROM `playlist` WHERE playlist_id = ?");
                 $delete_playlist->execute([$playlist_id]);

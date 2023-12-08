@@ -6,11 +6,10 @@ require_once('../app/model/tutor.php');
 require_once('../app/view/viewtutor.php');
 
 $tutor = new tutor();
-$playlist = $tutor->getplaylist();
+$playlist = $playlist = $tutor->getplaylist();
 
 $playliscontroller = new PlaylistController($playlist);
-$view = new ViewTutor($playliscontroller, $playlist);
-
+$view = new ViewTutor($playliscontroller, $tutor);
 
 foreach($_SESSION['user_data'] as $key => $value)
 {
@@ -29,6 +28,13 @@ if(isset($_POST['submit']))
 {
 
     $playliscontroller->add_playlist($tutor_id);
+
+}
+
+if(isset($_POST['update_submit']))
+{
+
+    $playliscontroller->update_playlist($_REQUEST['get_id'], $tutor_id);
 
 }
 
@@ -63,8 +69,16 @@ if(isset($_POST['submit']))
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
         <script src="../js/MDB java/mdb.min.js"></script>
     </head>
+    
+
     <script>
+
     function showToast() {
+
+        x = document.getElementById("Audio"); 
+
+        x.play();
+
         document.getElementById('toast').classList.add('show');
 
 
@@ -99,9 +113,14 @@ if(isset($_POST['submit']))
 
     <body style="background-color: #ebeff4">
 
+
+        <audio id="Audio" >
+            <source src="../images/alert.wav" >
+        </audio>
+
         <?php if(isset($_SESSION['error_message'])){  ?>
-        <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast">
-            <div class="toast-header">
+        <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto" id="toast" >
+            <div class="toast-header ">
                 <strong class="me-auto">Arab Data Hub</strong>
                 <small>Notfication</small>
             </div>
@@ -144,39 +163,55 @@ if(isset($_POST['submit']))
                                             <ul class=" ">
 
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3  " >
-                                                    <a href="profile.php" class="btn btn-light mb-0  active "
-                                                        style=""> <i
-                                                            class="fa-regular fa-user pe-3"></i>Profile</a>
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3  ">
+                                                    <a href="profile.php" class="btn btn-light mb-0  active " style="">
+                                                        <i class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
                                                     <a href="Profile_account.php" class="btn btn-light mb-0  "
-                                                        style=""><i
-                                                            class="fa-solid fa-gear pe-3"></i>Account</a>
+                                                        style=""><i class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
-                                                    <a href="Profile_courses.php" class="btn btn-light mb-0 "
-                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>My
+                                                    <a href="Courses.php?action=add" class="btn btn-light mb-0 "
+                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>Add
                                                         Courses</a>
 
                                                 </li>
-                                       
+                                                <li
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
+                                                    <a href="Courses.php?action=view" class="btn btn-light mb-0 "
+                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>View
+                                                        Courses</a>
+
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
 
-                                                    <?php
-                                
-                                                        // echo $view->add_course();
-
-
-                                                        $view->show_courses();
-                                                    ?>
-
-
+                                <?php
+                                if (isset($_GET['action']) && !empty($_GET['action'])) {
+                                switch($_GET['action']){
+                                    case 'view':
+                                        $view->show_courses();
+                                        break;
+                                    case 'add':
+                                        echo $view->add_course();
+                                        break;
+                                    case 'view_playlist':
+                                        echo $view->view_course_content();
+                                        break;
+                                    case 'update':
+                                        echo $view->update_course();
+                                }
+                                }
+                                else
+                                {
+                                    $view->show_courses();
+                                }                                              
+                                ?>
         </section>
 
 
