@@ -361,8 +361,9 @@ function delete_user_by_id()
 
     try {
         if ($statement->execute()) {
-            return true;
-            header("Location:../../php/home.php");
+            header("Location: ../public/partials/signout.php");
+            exit(); 
+        
         } else {
             return false;
         }
