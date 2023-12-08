@@ -78,7 +78,7 @@ public function cpassval($cpass)
     $cpassword = $this->test_input($cpass);
     if( $cpass != $pass || empty($cpass)) {
         
-        $this->cpasswordErr = "Not the same password entered";
+        $this->cpasswordErr = "Fill with the same password created";
         
     }
 else {
