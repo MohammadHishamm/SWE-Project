@@ -76,8 +76,8 @@ else
                         <div class="col-xxl-1 col-4 ms-5 me-5 ms-xxl-3 ">
 
 
-                            <img src="teacher/uploaded_files/<?php echo $fetch_user['user_img'] ?>"
-                                alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="150" width="150"
+                            <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
+                                alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="200" width="200"
                                 class="rounded rounded-5">
 
                         </div>

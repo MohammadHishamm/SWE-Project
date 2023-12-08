@@ -1,9 +1,16 @@
 <?php
-session_start();
+define('__ROOT__', "../app/");
+
+require_once('../app/controller/userController.php');
+require_once('../app/model/user.php');
+
+$model = new User();
+$controller = new UsersController($model);
+
 
 if(empty($_SESSION['user_data']))
 {
-  header('location:signup.php');
+  header('location:signup-in.php');
 }
 else
 {
@@ -12,38 +19,32 @@ else
     $user_id = $value['id'];
   }
 
-
-  require_once('User/user.php');
-
-  $user_object = new User;
-  $user_object->setUserId( $user_id);
+  $model->setUserId($user_id);
 
 
-  if(isset($_POST['update_user']))
-  {
-    $user_object->setUserName($_POST['user_name']);
-    $user_object->setUserBio($_POST['user_bio']);
-    $user_object->setUserSocial1($_POST['user_social1']);
-    $user_object->setUserSocial2($_POST['user_social2']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    if($user_object->update_user_data())
-    {
-        echo '<div class="alert alert-success" role="alert"> Updated successfully </div>';
-    }
-    else
-    {
-        echo '<div class="alert alert-danger" role="alert"> Error </div>';
-    }
-  }
+$Data = $model->get_user_by_id();
 
-  $Data = $user_object->get_user_by_id();
-  if($Data->rowCount() > 0)
-  {
+
+if ($Data->rowCount() > 0) {
     $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
-  }
+} 
 
+if (isset($_POST["update_user"])) { 
+    if($controller->updateUserData())
+    {
+        $Data = $model->get_user_by_id();
+
+
+        if ($Data->rowCount() > 0) {
+            $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
+        } 
+    }
 }
+
+  
+}
+
+
 
 
 ?>
@@ -101,10 +102,9 @@ else
 
     <body style="background-color: #ebeff4">
 
-        <?php include "Topnav.php" ?>
-        <?php include "Sidenav.php" ?>
 
-
+        <?php include "Partials/Top-Nav.php" ?>
+        <?php include "Partials/Side-Nav.php" ?>
         <section class="bg-white ">
 
             <div>
@@ -116,8 +116,8 @@ else
                             <div class="row" style="margin-left: 35px; ">
                                 <div class="col-lg-1 col-4 me-5">
 
-
-                                    <img src="teacher/uploaded_files/<?php echo $fetch_user['user_img'] ?>"
+                                 
+                                    <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
                                         alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="120" width="120"
                                         class="rounded rounded-5">
 
@@ -170,10 +170,12 @@ else
                                             <form  method="post" enctype="multipart/form-data">
                                             <div class="row mb-4">
                                                 <div class="col-sm-3">
-                                                    <img src="teacher/uploaded_files/<?php echo $fetch_user['user_img'] ?>"
+                                                <input type="text" hidden name="old_image" value="<?=$fetch_user['user_img']?>">
+                                                    <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
                                                         alt="<?php echo $fetch_user['user_img'] ?>" size="48"
-                                                        height="120" width="120" class="rounded rounded-5">
-                                                    <button class="btn btn-primary mt-3">Change profile picture</button>
+                                                        height="160" width="160" class="rounded rounded-5 mb-4">
+                                                    <input type="file" name="image" accept="image/*" >
+                                                
                                                 </div>
                                                 </div>
                                                 <div class="row">
@@ -210,15 +212,18 @@ else
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-3">
-                                                            <i class="fa-brands fa-linkedin fs-6"></i>
+                                                            <i class="fa-brands fa-linkedin fs-6 mb-2"></i>
+                                                            <br>
                                                             <input class="text-muted mb-2" name="user_social1"
                                                                 value="<?= $fetch_user['user_social1'] ?>"></input>
+                                                           
+                                                            <i class="fa-brands fa-github fs-6 mb-2"></i>
                                                             <br>
-                                                            <i class="fa-brands fa-github fs-6"></i>
                                                             <input class="text-muted mb-2" name="user_social2"
                                                                 value="<?= $fetch_user['user_social2'] ?>"></input>
+                                                           
+                                                            <i class="fa-brands fa-facebook fs-6 mb-2"></i>
                                                             <br>
-                                                            <i class="fa-brands fa-facebook fs-6"></i>
                                                             <input class="text-muted mb-2" name="user_social3"
                                                                 value="<?= $fetch_user['user_social3'] ?>"></input>
                                                         </div>
@@ -240,88 +245,8 @@ else
 
 
 
-        <?php include "Bottomnav.php" ?>
+        <?php include "Partials/Bottom-Nav.php" ?>
 
-        <script>
-        const colors = [{
-                font: '#990f0f',
-                background: '#ffbfbf'
-            },
-            {
-                font: '#99630f',
-                background: '#d6ffbf'
-            },
-            {
-                font: '#6f7d4e',
-                background: '#fff3bf'
-            },
-            {
-                font: '#4e7d74',
-                background: '#bff0ff'
-            },
-            {
-                font: '#594e7d',
-                background: '#c8bfff'
-            },
-            {
-                font: '#7d4e76',
-                background: '#ffbff0'
-            }
-        ]
-
-        const getRandomColor = () => {
-            const randomIndex = Math.floor(Math.random() * colors.length);
-            return colors[randomIndex];
-        }
-
-        count = 0;
-
-        const removeTag = (event) => {
-            if (event.target.classList.contains('tag-close')) {
-                event.target.parentElement.remove();
-                count = count - 1;
-            }
-        }
-
-
-
-
-        const addTag = (event) => {
-            if (event.keyCode === 13) {
-                const input = document.getElementById('input')
-                if (input.value.length != 0 && count != 10) {
-                    const tagsContainer = document.querySelector('.tags-container');
-                    const color = getRandomColor();
-                    const value = event.target.value;
-                    const spanElement = document.createElement('span');
-
-                    spanElement.innerHTML = `
-                    <input type="hidden" value="${value}">
-                    <span class="tag-text">${value}</span>
-                    <span class="tag-close"> ⌫ </span>
-                    `
-
-                    count++;
-                    spanElement.classList.add('tag');
-                    spanElement.style.backgroundColor = color.background;
-                    spanElement.style.color = color.font;
-
-                    tagsContainer.appendChild(spanElement);
-                    input.value = '';
-                } else {
-                    alert("Tag length should be less than 10");
-                }
-
-            }
-        }
-
-
-
-        window.onload = () => {
-            const tagsContainer = document.querySelector('.tags-container');
-            tagsContainer.addEventListener('click', removeTag);
-        }
-        </script>
     </body>
 
     </html>
