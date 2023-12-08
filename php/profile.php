@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+define('__ROOT__', "../app/");
+
 if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
@@ -13,36 +15,26 @@ else
   }
 
 
-  require_once('User/user.php');
+  require_once('../app/controller/userController.php');
+  require_once('../app/model/user.php');
+  
+  $model = new User();
+  $controller = new UsersController($model);
+  $fetch_user = null;
+  $model->setUserId($user_id);
+$Data = $model->get_user_by_id();
 
-  $user_object = new User;
-  $user_object->setUserId( $user_id);
 
-
-  if(isset($_POST['update_user']))
-  {
-    $user_object->setUserName($_POST['user_name']);
-    $user_object->setUserBio($_POST['user_bio']);
-    $user_object->setUserSocial1($_POST['user_social1']);
-    $user_object->setUserSocial2($_POST['user_social2']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    $user_object->setUserSocial3($_POST['user_social3']);
-    if($user_object->update_user_data())
-    {
-        echo '<div class="alert alert-success" role="alert"> Updated successfully </div>';
-    }
-    else
-    {
-        echo '<div class="alert alert-danger" role="alert"> Error </div>';
-    }
-  }
-
-  $Data = $user_object->get_user_by_id();
-  if($Data->rowCount() > 0)
-  {
+if ($Data->rowCount() > 0) {
     $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
-  }
+} 
 
+if (isset($_POST["update_user"])) { 
+    $controller->updateUserData($_POST);
+  
+}
+
+   
 }
 
 

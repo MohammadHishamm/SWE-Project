@@ -374,10 +374,15 @@ function delete_user_by_id()
 
 function update_user_data()
 {
-    $query = "UPDATE user SET user_name = ?, user_bio = ?, user_social1 = ?, user_social2 = ?, user_social3 = ? WHERE user_id = ?";
+    $query = "UPDATE user SET user_name = :user_name, user_bio = :user_bio, user_social1 = :user_social1, user_social2 = :user_social2, user_social3 = :user_social3 WHERE user_id = :user_id";
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('sssssi', $this->user_name, $this->user_bio, $this->user_social1, $this->user_social2, $this->user_social3, $this->user_id);
+    $statement->bindParam(':user_name', $this->user_name);
+    $statement->bindParam(':user_bio', $this->user_bio);
+    $statement->bindParam(':user_social1', $this->user_social1);
+    $statement->bindParam(':user_social2', $this->user_social2);
+    $statement->bindParam(':user_social3', $this->user_social3);
+	$statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
 
     if ($statement->execute()) {
         return true;
@@ -385,6 +390,7 @@ function update_user_data()
         return false;
     }
 }
+
 
 	
 }

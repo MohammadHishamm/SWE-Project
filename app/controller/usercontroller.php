@@ -136,6 +136,20 @@ class UsersController extends Controller{
         $error = 'Wrong Email Address';
     }
 }
+
+public function updateUserData($postData)
+{
+    $this->model->setUserName($postData['user_name']);
+    $this->model->setUserBio($postData['user_bio']);
+    $this->model->setUserSocial1($postData['user_social1']);
+    $this->model->setUserSocial2($postData['user_social2']);
+    $this->model->setUserSocial3($postData['user_social3']);
+    
+    return $this->model->update_user_data();
+}
+
+
+
     }
 
 
