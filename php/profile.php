@@ -30,11 +30,20 @@ if ($Data->rowCount() > 0) {
 } 
 
 if (isset($_POST["update_user"])) { 
-    $controller->updateUserData($_POST);
+    if($controller->updateUserData($_POST))
+    {
+        echo '<div class="alert alert-success" role="alert"> Updated successfully </div>';
+    }
+    else
+    {
+        echo '<div class="alert alert-danger" role="alert"> Error </div>';
+    } 
   
 }
 
-   
+  
+
+
 }
 
 
