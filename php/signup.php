@@ -17,12 +17,18 @@ define('__ROOT__', "../app/");
     require_once('../app/controller/userController.php');
     require_once('../app/model/user.php');
     require_once('signinval.php');
+    require_once('signupval.php');
     
     $model = new User();
     $controller = new UsersController($model);
     $signin=new signinval;
+    $signup=new signupval;
+
     if (isset($_POST["register"])) {
+        if($signup->testlogin())
+        {
         $controller->signup();
+        }
     }
 
     if (isset($_POST["login"])) {
@@ -85,7 +91,7 @@ define('__ROOT__', "../app/");
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Full name" id="name1" name="user_name" />
                         </br>
-                        <span class="alert" id="alert3"></span>
+                        <span class="alert"><?php echo $signup->getfieldErr();?> </span>
 
                     </div>
                     </br>
@@ -93,7 +99,7 @@ define('__ROOT__', "../app/");
                         <i class="fas fa-envelope"></i>
                         <input type="text" placeholder="Email" id="email1" name="user_email" />
                         </br>
-
+                        <span class="alert"><?php echo $signup->getemailErr();?> </span>
 
                     </div>
                     </br>
@@ -101,7 +107,7 @@ define('__ROOT__', "../app/");
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" id="password1" name="user_password" />
                         </br>
-
+                        <span class="alert"><?php echo $signup->getpassErr();?> </span>
 
                     </div>
                     </br>
@@ -109,7 +115,7 @@ define('__ROOT__', "../app/");
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Confirm password" id="password2" name="Confirmpass" />
                         </br>
-                        <span class="alert" id="alert6"></span>
+                        <span class="alert"><?php echo $signup->getcpassErr();?> </span>
 
                     </div>
                     </br>
