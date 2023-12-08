@@ -5,7 +5,7 @@
       aria-controls="offcanvasExample">
         <i class="fa-solid fa-bars-staggered  btn-open hero_main_text2"  ></i>
       </button>
-      <a class=" navbar-brand mx-auto mb-lg-0 mb-3 logo_name" href="/SWE-PROJECT/php/Home.php" >Arab Data Hub</a>
+      <a class=" navbar-brand mx-auto mb-lg-0 mb-3 logo_name" href="Home.php" >Arab Data Hub</a>
 
         <ul class="navbar-nav mx-auto   mb-4 mb-lg-0 mt-2 ">
           <li class="nav-item ">
@@ -26,7 +26,7 @@
               <div class="row align-items-center">
 
               <div class="col">
-              <a href="teacher/admin/dashboard.php">
+              <a href="profile.php">
               <i class="fas fa-user-alt" style="color: #000000;"></i>
               </a>
               

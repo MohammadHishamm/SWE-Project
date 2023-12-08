@@ -116,19 +116,19 @@ else
 
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/profile.php"
+                                                    <a href="profile.php"
                                                         class="btn btn-light mb-0 ps-3  " style="width: 100%;"> <i
                                                             class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_account.php"
+                                                    <a href="Profile_account.php"
                                                         class="btn btn-light mb-0 ps-3 " style="width: 100%;"><i
                                                             class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_courses.php"
+                                                    <a href="Profile_courses.php"
                                                         class="btn btn-light mb-0 ps-3 active " style="width: 100%;"><i
                                                             class="fa-solid fa-book pe-3"></i></i>My Courses</a>
 

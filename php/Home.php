@@ -1,13 +1,17 @@
 <?php
 session_start();
 require_once('wishlistclass.php');
+if(!empty($_SESSION['user_data']))
+{
+    $wishlist = new wishlist;
+    foreach($_SESSION['user_data'] as $key => $value)
+    {
+      $User_ID = $value['id'];
+    } 
+}
 
 
-$wishlist = new wishlist;
-foreach($_SESSION['user_data'] as $key => $value)
-         {
-           $User_ID = $value['id'];
-         }  
+ 
         
 
 ?>
