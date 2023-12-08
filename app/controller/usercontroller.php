@@ -137,14 +137,41 @@ class UsersController extends Controller{
     }
 }
 
-public function updateUserData($postData)
+public function updateUserData()
 {
-    $this->model->setUserName($postData['user_name']);
-    $this->model->setUserBio($postData['user_bio']);
-    $this->model->setUserSocial1($postData['user_social1']);
-    $this->model->setUserSocial2($postData['user_social2']);
-    $this->model->setUserSocial3($postData['user_social3']);
+    $this->model->setUserName($_REQUEST['user_name']);
+    $this->model->setUserBio($_REQUEST['user_bio']);
+    $this->model->setUserSocial1($_REQUEST['user_social1']);
+    $this->model->setUserSocial2($_REQUEST['user_social2']);
+    $this->model->setUserSocial3($_REQUEST['user_social3']);
     
+    $old_image = $_REQUEST['old_image'];
+    $old_image = filter_var($old_image, FILTER_SANITIZE_STRING);
+
+    $image = $_FILES['image']['name'];
+    $image = filter_var($image, FILTER_SANITIZE_STRING);
+    $image_size = $_FILES['image']['size'];
+
+    if (!empty($image)) 
+    {
+       if($image_size > 200000000)
+       {
+        $_SESSION["error_message"]  = 'image size is too large!';
+       }
+       else
+       {
+          if($old_image != '')
+          {
+             unlink('../images/users/'.$old_image);
+             $this->model->setUserimg($image);
+          }
+       }
+    }
+    else
+    {
+        $this->model->setoldimg($old_image);
+    }
+ 
     return $this->model->update_user_data();
 }
 

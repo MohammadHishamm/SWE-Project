@@ -40,6 +40,33 @@ class User extends Model
 		return $this->user_id;
 	}
 
+	function setUserimg($user_img)
+	{
+		$image = filter_var($user_img, FILTER_SANITIZE_STRING);
+		$ext = pathinfo($image, PATHINFO_EXTENSION);
+		$rename = $this->user_id.'.'.$ext;
+		$image_size = $_FILES['image']['size'];
+		$image_tmp_name = $_FILES['image']['tmp_name'];
+		$image_folder = '../Images/users/'.$rename;  
+		move_uploaded_file($image_tmp_name, $image_folder);       
+		$this->user_img = $rename; 
+	}
+
+	function getUserimg()
+	{
+		return $this->user_img;
+	}
+	function setoldimg($user_img)
+	{
+		$this->user_img = $user_img;
+	}
+
+	function getoldimg()
+	{
+		return $this->user_img;
+	}
+
+
 	function setUserName($user_name)
 	{
 		$this->user_name = $user_name;
@@ -373,17 +400,10 @@ function delete_user_by_id()
 
 function update_user_data()
 {
-    $query = "UPDATE user SET user_name = :user_name, user_bio = :user_bio, user_social1 = :user_social1, user_social2 = :user_social2, user_social3 = :user_social3 WHERE user_id = :user_id";
+    $query = "UPDATE user SET user_name = :user_name ,user_img = :user_img, user_bio = :user_bio, user_social1 = :user_social1, user_social2 = :user_social2, user_social3 = :user_social3 WHERE user_id = :user_id";
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bindParam(':user_name', $this->user_name);
-    $statement->bindParam(':user_bio', $this->user_bio);
-    $statement->bindParam(':user_social1', $this->user_social1);
-    $statement->bindParam(':user_social2', $this->user_social2);
-    $statement->bindParam(':user_social3', $this->user_social3);
-	$statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-
-    if ($statement->execute()) {
+    if ($statement->execute([":user_name" => $this->user_name, ":user_img" => $this->user_img, ":user_bio" => $this->user_bio, ":user_social1" => $this->user_social1, ":user_social2" => $this->user_social2, ":user_social3" => $this->user_social3 ,":user_id" => $this->user_id])) {
         return true;
     } else {
         return false;
