@@ -16,17 +16,28 @@ define('__ROOT__', "../app/");
 <?php
     require_once('../app/controller/userController.php');
     require_once('../app/model/user.php');
+    require_once('signinval.php');
     
     $model = new User();
     $controller = new UsersController($model);
-
+    $signin=new signinval;
     if (isset($_POST["register"])) {
         $controller->signup();
     }
 
     if (isset($_POST["login"])) {
+        
+        if($signin->testlogin()){
         $controller->signin();
+        }
+        
     }
+
+   
+
+     
+
+
     ?>
     <div class="container">
         <div class="forms-container">
@@ -35,9 +46,11 @@ define('__ROOT__', "../app/");
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
+                        
                         <input type="text" placeholder="Email" id="email" name="user_email" />
+                        
                         </br>
-
+                        <span class="alert"><?php echo $signin->getemailErr();?> </span>
 
                     </div>
                     </br>
