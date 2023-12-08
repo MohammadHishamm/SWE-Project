@@ -239,11 +239,9 @@ function get_user_all_data_with_status_count()
     SELECT user_id, user_name, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = ? AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
     ";
 
-    $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('i', $this->user_id);
 
-    $statement->execute();
+    $statement->execute([$this->user_id]);
 
     $data = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -401,7 +399,7 @@ function update_personal_data()
     $statement->bindParam(':user_password', $this->user_password);
     $statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
 
-    if ($statement->execute()) {
+    if ($statement->execute([])) {
         return true;
     } else {
         return false;
