@@ -1,7 +1,9 @@
-<?php require_once('model.php');?>
+<?php   
+require_once(__ROOT__ . "model/user.php");
+?>
 <?php
 
-    class tutor extends model
+    class tutor extends User
     {
         protected $Tutor_id;
         public $Gender;
@@ -13,12 +15,6 @@
         public $Comment;
         public $connect;
        
-       
-
-	    public function __construct()
-	    {
-            $this->db = $this->connect();
-	    }
 
         public function setTutor_id($Tutor_id)
         {

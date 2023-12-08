@@ -22,7 +22,7 @@ class DBh{
 
 	public function connect()
 	{
-		$this->conn = new PDO("mysql:host=localhost; dbname=swe", "root", "");
+		$this->conn = new PDO("mysql:host=$this->servername; dbname=$this->dbname", "$this->username", "$this->password");
 
 		return $this->conn;
 	}
