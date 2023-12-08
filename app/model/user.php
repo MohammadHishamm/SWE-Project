@@ -352,17 +352,17 @@ function get_all_users_data()
     return $users_data;
 }
 
-
 function delete_user_by_id()
 {
-    $query = "DELETE FROM user WHERE user_id = ?";
+    $query = "DELETE FROM user WHERE user_id = :user_id";
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('i', $this->user_id);
+    $statement->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
 
     try {
         if ($statement->execute()) {
             return true;
+            header("Location:../../php/home.php");
         } else {
             return false;
         }
@@ -383,6 +383,22 @@ function update_user_data()
     $statement->bindParam(':user_social2', $this->user_social2);
     $statement->bindParam(':user_social3', $this->user_social3);
 	$statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function update_personal_data()
+{
+    $query = "UPDATE user SET user_email = :user_email, user_password = :user_password WHERE user_id = :user_id";
+    $statement = $this->db->getConn()->prepare($query);
+
+    $statement->bindParam(':user_email', $this->user_email);
+    $statement->bindParam(':user_password', $this->user_password);
+    $statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
 
     if ($statement->execute()) {
         return true;

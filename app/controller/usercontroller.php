@@ -148,9 +148,23 @@ public function updateUserData($postData)
     return $this->model->update_user_data();
 }
 
+public function updatepersonaldata($postData)
+{
+    $this->model->setUserEmail($postData['user_email']);
+    $this->model->setUserPassword($postData['user_password']);
+
+    
+    return $this->model->update_personal_data();
+}
+
+public function deleteuser()
+{
+    return $this->model->delete_user_by_id();
+}
 
 
-    }
+
+}
 
 
 

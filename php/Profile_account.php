@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+define('__ROOT__', "../app/");
+
 if(empty($_SESSION['user_data']))
 {
   header('location:signup.php');
@@ -13,16 +15,45 @@ else
   }
 
 
-  require_once('User/user.php');
+  require_once('../app/controller/userController.php');
+  require_once('../app/model/user.php');
+  
+  $model = new User();
+  $controller = new UsersController($model);
+  $fetch_user = null;
+  $model->setUserId($user_id);
+$Data = $model->get_user_by_id();
 
-  $user_object = new User;
-  $user_object->setUserId( $user_id);
 
-  $Data = $user_object->get_user_by_id();
-  if($Data->rowCount() > 0)
-  {
+if ($Data->rowCount() > 0) {
     $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
-  }
+} 
+
+if (isset($_POST["update_personal_data"])) { 
+    if($controller->updatepersonaldata($_POST))
+    {
+        echo '<div class="alert alert-success" role="alert"> Updated successfully </div>';
+    }
+    else
+    {
+        echo '<div class="alert alert-danger" role="alert"> Error </div>';
+    } 
+  
+}
+if (isset($_POST["delete_user"]))
+{
+    if($controller->deleteuser())
+    {
+        echo '<div class="alert alert-success" role="alert"> Deleted successfully </div>';
+    }
+    else
+    {
+        echo '<div class="alert alert-danger" role="alert"> Error </div>';
+    }
+  
+
+
+}
 }
 
 
@@ -136,10 +167,11 @@ else
                                         <div class="">
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <p class="mb-0" style="font-size: 1.5rem;">Change email</p>
+                                                    <p class="mb-0" style="font-size: 1.5rem;">Personal Information</p>
                                                 </div>
                                             </div>
                                             <hr>
+                                            <form  method="post" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">Email
@@ -147,19 +179,31 @@ else
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <input class="text-muted mb-0"
+                                                        <input class="text-muted mb-0"name="user_email"
                                                             value="<?= $fetch_user['user_email'] ?>"></input>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <p class="mb-0" style="font-size: 1.3rem; text-weight: bold">Password
+                                                    </p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input class="text-muted mb-0"name="user_password"
+                                                            value="<?= $fetch_user['user_password'] ?>"></input>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12 offset-sm-9">
-                                                <button type="submit" class="mb-0 btn btn-danger">Delete Account</button>
-                                                    <button type="submit" class="mb-0 btn btn-success">Update mail</button>
+                                                <button type="submit" name="delete_user" class="mb-0 btn btn-danger">Delete Account</button>
+                                                   
+                                                    <button type="submit" name="update_personal_data"
+                                                            class="mb-0 btn btn-success">Update</button>
                                                 </div>
                                             </div>
                                         </div>
-
+                                            </form> 
                                     </div>
                                 </div>
                             </div>
