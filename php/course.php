@@ -3,12 +3,7 @@
 
 <?php
 
-session_start();
 
-if(empty($_SESSION['user_data']))
-{
-  header('location:signup.php');
-}
 
 require_once('teacher/components/playlist_control.php');
 $playlist = new playlist;
@@ -51,7 +46,12 @@ if($playlist_data->rowCount() > 0){
             <div class="col-12 text-center" style="margin-top: 40px;">
                 <span class="courses_content_teacher"><?= $fetch_playlist['user_name'] ?></span>
             </div>
+            
         </div>
+        
+                                  
+                                  
+                                 
     </div>
 
     <!-- Course Introduction section -->
@@ -64,6 +64,9 @@ if($playlist_data->rowCount() > 0){
                     <span class="courses_content_title">
                         Introduction
                     </span>
+
+                    
+                    
                     <div class=" mt-5">
                         <p class="sidnav_courses_content ">
                             Course information
@@ -129,8 +132,13 @@ if($playlist_data->rowCount() > 0){
 
                 </div>
             </div>
+            <div class="position-absolute top-50 start-50">
+            <button class="btn btn-primary btn-lg" name="enroll_course" type="button">Enroll</button>
+                </div>
+            
             <div class="flex-shrink-0 p-3  mt-5 border shadow col-3 d-none d-xxl-block"
                 style="width: 280px; height: 760px">
+              
                 <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                     <svg class="bi me-2" width="30" height="24">
                         <use xlink:href="#bootstrap"></use>
