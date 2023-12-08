@@ -52,7 +52,7 @@ public function passval($password)
         $this->passwordErr = "Please enter your password!";
         return false;
     }
-        if (strlen($password) <= '8') {
+        if (strlen($password) < 8) {
             $this->passwordErr = "Your Password Must Contain At Least 8 Characters!";
             return false;
         }
@@ -81,7 +81,9 @@ public function cpassval($cpass)
         $this->cpasswordErr = "Not the same password entered";
         
     }
-
+else {
+    return true;
+}
 
 
 }
