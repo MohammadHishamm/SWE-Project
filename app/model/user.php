@@ -199,7 +199,7 @@ class User extends Model
     ";
 
     $statement = $this->db->getConn()->prepare($sql);
-	$this->user_img = "no-image.jpg";
+	$this->user_img = "default.jpg";
 
     if ($statement->execute([$this->user_name, $this->user_email,$this->user_img ,$this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code])) {
         return true;

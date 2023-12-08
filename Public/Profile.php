@@ -118,7 +118,7 @@ if (isset($_POST["update_user"])) {
 
                                  
                                     <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
-                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="160" width="160"
+                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="120" width="120"
                                         class="rounded rounded-5">
 
                                 </div>
@@ -175,7 +175,7 @@ if (isset($_POST["update_user"])) {
                                                         alt="<?php echo $fetch_user['user_img'] ?>" size="48"
                                                         height="160" width="160" class="rounded rounded-5 mb-4">
                                                     <input type="file" name="image" accept="image/*" >
-                                                    <!-- <button class="btn btn-primary mt-3">Change profile picture</button> -->
+                                                
                                                 </div>
                                                 </div>
                                                 <div class="row">
@@ -212,19 +212,19 @@ if (isset($_POST["update_user"])) {
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-3">
-                                                            <i class="fa-brands fa-linkedin fs-6"></i>
+                                                            <i class="fa-brands fa-linkedin fs-6 mb-2"></i>
                                                             <br>
-                                                            <input class="text-muted " name="user_social1"
+                                                            <input class="text-muted mb-2" name="user_social1"
                                                                 value="<?= $fetch_user['user_social1'] ?>"></input>
                                                            
-                                                            <i class="fa-brands fa-github fs-6"></i>
+                                                            <i class="fa-brands fa-github fs-6 mb-2"></i>
                                                             <br>
-                                                            <input class="text-muted " name="user_social2"
+                                                            <input class="text-muted mb-2" name="user_social2"
                                                                 value="<?= $fetch_user['user_social2'] ?>"></input>
                                                            
-                                                            <i class="fa-brands fa-facebook fs-6"></i>
+                                                            <i class="fa-brands fa-facebook fs-6 mb-2"></i>
                                                             <br>
-                                                            <input class="text-muted " name="user_social3"
+                                                            <input class="text-muted mb-2" name="user_social3"
                                                                 value="<?= $fetch_user['user_social3'] ?>"></input>
                                                         </div>
                                                     </div>
