@@ -1,67 +1,4 @@
 
-<?php
-
-$cvErr = $agreeErr = $subErr = $subErr = $qualErr = $imageErr = $passErr = $emailErr = $genderErr = $websiteErr = "";
-$agree = $cv = $sub = $qual = $image = $pass = $email = $gender = $comment = $website = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
- }else {
-    $gender = test_input($_POST["gender"]);
- }
- if (empty($_POST["image"])) {
-  $imageErr = "Image is required";
-}else {
-  $image = test_input($_POST["image"]);
-}
-
-if (empty($_POST["field"])) {
-  $subErr = "Required";
-}else {
-  $sub = test_input($_POST["field"]);
-}
-if (empty($_POST["cv"])) {
-  $cvErr = "Required";
-}else {
-  $cv = test_input($_POST["cv"]);
-}
-if (empty($_POST["agree"])) {
-  $agreeErr = "Required";
-}else {
-  $agree = test_input($_POST["agree"]);
-}
-   
-   if (empty($_POST["email"])) {
-      $emailErr = "Email is required";
-   }else {
-      $email = test_input($_POST["email"]);
-      
-      // check if e-mail address is well-formed
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-         $emailErr = "Invalid email format"; 
-      }
-   }
-}
-
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-
-
-?>
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <style>  
@@ -108,8 +45,7 @@ function test_input($data) {
     <!-- partial:index.partial.html -->
     <!-- Multi step form -->
     <section class="multi_step_form">
-      <form id="msform" method="post" action="<?php 
-         echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <form id="msform" method="post" action="">
         <!-- Tittle -->
         <div class="tittle">
           <h2>Become a teacher with us!</h2>

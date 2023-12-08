@@ -2,7 +2,10 @@
 define('__ROOT__', "../app/");
 require_once('../app/controller/tutorcontroller.php');
 require_once('../app/model/tutor.php');
+require_once('../php/teacherformval.php');
 // require_once('../app/view/viewuser.php');
+
+$teacher=new teacherval;
 
 $tutormodel = new tutor();
 $tutorcontroller = new TutorsController($tutormodel);
@@ -27,9 +30,13 @@ else
     }
     else
     {
+
         if (isset($_POST['submit']))
         {
+           if($teacher->testform())
+           {
             $tutorcontroller->Add_Tutor($user_id);
+           }
         }
     }
 }
@@ -95,7 +102,7 @@ else
                     <input type="radio" id="female" name="gender_female" />
                     <label for="female">Female</label>
                     <br />
-
+                    <span class="alert"><?php echo $teacher->getgenderErr();?> </span>
                 </div>
 
                 <tr>
@@ -106,6 +113,7 @@ else
                     <input type="text" name="position" class="mb-3 border w-100 ">
 
                     <br />
+                    <span class="alert"><?php echo $teacher->getfieldErr();?> </span>
 
                     <div class="language-picker js-language-picker"
                         data-trigger-class="li4-btn li4-btn--subtle js-tab-focus mb-3">
@@ -384,14 +392,15 @@ else
                         name="name">
                     </div>
                     <div class="form-group ">
-                        <input type="file" name="pdf_file" class="form-control" accept=".pdf" required />
+                        <input type="file" name="pdf_file" class="form-control" accept=".pdf"  />
                     </div>
                     <!-- <div class="cvup">
                         <input type="file" name="cv" />
                     </div> -->
+                    <span class="alert"><?php echo $teacher->getcvErr();?> </span>
+
                     <br />
-
-
+                   
                     <label>Additional comment <span
                             style="color: red !important; display: inline; float: none;">*</span></label>
                     <br>
@@ -404,7 +413,7 @@ else
                         <a href="#" id="input">terms and conditions</a>
 
                     </h6>
-
+                    <span class="alert"><?php echo $teacher->getagreeErr();?> </span>
                     <br />
                     <div class="row d-flex justify-content-center ">
                         <a type="button" href="index.php" class="btn btn-danger col-5 me-2 action-button previous ">
