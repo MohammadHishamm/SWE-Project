@@ -1,29 +1,37 @@
 <?php
-require_once('../php/teacher/components/playlist_control.php');
+define('__ROOT__', "../app/");
+require_once('../app/controller/usercontroller.php');
+require_once('../app/controller/Playlistcontroller.php');
+require_once('../app/model/tutor.php');
+require_once('../app/view/viewtutor.php');
 
-$playlist = new playlist;
-// include "../../dbh.inc.php";
-session_start();
+$tutor = new tutor();
+$playlist = $tutor->getplaylist();
+
+$playliscontroller = new PlaylistController($playlist);
+$view = new ViewTutor($playliscontroller, $playlist);
+
+
 foreach($_SESSION['user_data'] as $key => $value)
 {
-   $tutor_id = $value['id'];
+  $tutor_id = $value['id'];
 }
-
 
 if(isset($_POST['delete']))
 {
-   $delete_id = $_POST['playlist_id'];
+   $delete_id = $_REQUEST['playlist_id'];
    $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
-
-   if(  $playlist->Delete_playlist($delete_id,$tutor_id))
-   {
-      $message[] = 'playlist deleted!';
-   }
-   else
-   {
-      $message[] = 'playlist already deleted!';
-   }
+   $playliscontroller->Delete_playlist($delete_id,$tutor_id);
 }
+
+
+if(isset($_POST['submit']))
+{
+
+    $playliscontroller->add_playlist($tutor_id);
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +63,17 @@ if(isset($_POST['delete']))
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
         <script src="../js/MDB java/mdb.min.js"></script>
     </head>
+    <script>
+    function showToast() {
+        document.getElementById('toast').classList.add('show');
 
+
+        setTimeout(function() {
+            document.getElementById('toast').classList.remove('show');
+        }, 5000);
+
+    }
+    </script>
     <style>
     .tags-container {
         width: 100%
@@ -81,6 +99,18 @@ if(isset($_POST['delete']))
 
     <body style="background-color: #ebeff4">
 
+        <?php if(isset($_SESSION['error_message'])){  ?>
+        <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast">
+            <div class="toast-header">
+                <strong class="me-auto">Arab Data Hub</strong>
+                <small>Notfication</small>
+            </div>
+            <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
+        </div>
+        <script>
+        showToast();
+        </script>
+        <?php unset($_SESSION['error_message']); } ?>
         <?php include "Partials/Top-Nav.php" ?>
         <?php include "Partials/Side-Nav.php" ?>
 
@@ -114,104 +144,40 @@ if(isset($_POST['delete']))
                                             <ul class=" ">
 
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="profile.php" class="btn btn-light mb-0 ps-3 active "
-                                                        style="width: 100%;"> <i
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3  " >
+                                                    <a href="profile.php" class="btn btn-light mb-0  active "
+                                                        style=""> <i
                                                             class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_account.php" class="btn btn-light mb-0 ps-3 "
-                                                        style="width: 100%;"><i
+                                                    class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
+                                                    <a href="Profile_account.php" class="btn btn-light mb-0  "
+                                                        style=""><i
                                                             class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_courses.php" class="btn btn-light mb-0 ps-3 "
-                                                        style="width: 100%;"><i class="fa-solid fa-book pe-3"></i></i>My
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
+                                                    <a href="Profile_courses.php" class="btn btn-light mb-0 "
+                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>My
                                                         Courses</a>
 
                                                 </li>
+                                       
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 ">
-                                    <div class=" mb-4">
-                                        <div class="">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0" style="font-size: 1.5rem;"> Your Course</p>
-                                                </div>
-                                            </div>
-                                            <hr>
-
-                                            <section class="playlists">
-
-                                                <div class="box-container">
-
-                                                    <div class="box" style="text-align: center;">
-                                                        <h3 class="title" style="margin-bottom: .5rem;">create new
-                                                            playlist</h3>
-                                                        <a href="add_playlist.php" class="btn">add playlist</a>
-                                                    </div>
 
                                                     <?php
-         
-         $select_playlist = $playlist->get_All_playlist($tutor_id);
-         if($select_playlist->rowCount() > 0){
-         while($fetch_playlist = $select_playlist->fetch(PDO::FETCH_ASSOC)){
-            $playlist_id = $fetch_playlist['playlist_id'];
-            $count_videos = $playlist->get_connect()->prepare("SELECT * FROM `content` WHERE playlist_id = ?");
-            $count_videos->execute([$playlist_id]);
-            $total_videos = $count_videos->rowCount();
-      ?>
-                                                    <div class="box">
-                                                        <div class="flex">
-                                                            <div><i class="fas fa-circle-dot"
-                                                                    style="<?php if($fetch_playlist['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"></i><span
-                                                                    style="<?php if($fetch_playlist['status'] == 'active'){echo 'color:limegreen'; }else{echo 'color:red';} ?>"><?= $fetch_playlist['status']; ?></span>
-                                                            </div>
-                                                            <div><i
-                                                                    class="fas fa-calendar"></i><span><?= $fetch_playlist['date']; ?></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="thumb">
-                                                            <span><?= $total_videos; ?></span>
-                                                            <img src="../php/teacher/uploaded_files/<?= $fetch_playlist['thumb']; ?>"
-                                                                alt="">
-                                                        </div>
-                                                        <h3 class="title"><?= $fetch_playlist['title']; ?></h3>
-                                                        <p class="description"><?= $fetch_playlist['description']; ?>
-                                                        </p>
-                                                        <form action="" method="post" class="flex-btn">
-                                                            <input type="hidden" name="playlist_id"
-                                                                value="<?= $playlist_id; ?>">
-                                                            <a href="update_playlist.php?get_id=<?=$playlist_id;?>"
-                                                                class="btn btn-warning w-100">update</a>
-                                                            <input type="submit" value="delete" class="btn btn-danger w-100"
-                                                                onclick="return confirm('delete this playlist?');"
-                                                                name="delete">
-                                                        </form>
-                                                        <a href="view_playlist.php?get_id=<?=$playlist_id;?>"
-                                                            class="btn btn-primary w-100 mt-3">view playlist</a>
-                                                    </div>
-                                                    <?php
-         } 
-      }else{
-         echo '<p class="empty">no playlist added yet!</p>';
-      }
-      ?>
+                                
+                                                        // echo $view->add_course();
 
-                                                </div>
 
-                                            </section>
+                                                        $view->show_courses();
+                                                    ?>
 
-                                        </div>
-                                    </div>
-                                </div>
+
         </section>
-
 
 
         <?php include "Partials/Bottom-Nav.php" ?>
@@ -244,7 +210,8 @@ if(isset($_POST['delete']))
         ]
 
         const getRandomColor = () => {
-            const randomIndex = Math.floor(Math.random() * colors.length);
+            const randomIndex = Math.floor(Math.random() * colors
+                .length);
             return colors[randomIndex];
         }
 
@@ -264,7 +231,8 @@ if(isset($_POST['delete']))
             if (event.keyCode === 13) {
                 const input = document.getElementById('input')
                 if (input.value.length != 0 && count != 10) {
-                    const tagsContainer = document.querySelector('.tags-container');
+                    const tagsContainer = document.querySelector(
+                        '.tags-container');
                     const color = getRandomColor();
                     const value = event.target.value;
                     const spanElement = document.createElement('span');
@@ -277,7 +245,8 @@ if(isset($_POST['delete']))
 
                     count++;
                     spanElement.classList.add('tag');
-                    spanElement.style.backgroundColor = color.background;
+                    spanElement.style.backgroundColor = color
+                        .background;
                     spanElement.style.color = color.font;
 
                     tagsContainer.appendChild(spanElement);
@@ -292,7 +261,8 @@ if(isset($_POST['delete']))
 
 
         window.onload = () => {
-            const tagsContainer = document.querySelector('.tags-container');
+            const tagsContainer = document.querySelector(
+                '.tags-container');
             tagsContainer.addEventListener('click', removeTag);
         }
         </script>
