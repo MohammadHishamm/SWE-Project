@@ -22,6 +22,26 @@ class ViewTutor extends View{
            $tutor_id = $value['id'];
         }
 
+echo '
+<div class="col-lg-8 ">
+<div class=" mb-4">
+    <div class="">
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0" style="font-size: 1.5rem;"> Your Course</p>
+            </div>
+        </div>
+        <hr>
+
+        <section class="playlists">
+
+            <div class="box-container">
+
+                <div class="box" style="text-align: center;">
+                    <h3 class="title" style="margin-bottom: .5rem;">create new
+                        playlist</h3>
+                    <a href="add_playlist.php" class="btn">add playlist</a>
+                </div>';
 
 $select_playlist = $this->model->get_All_playlist($tutor_id);
 if($select_playlist->rowCount() > 0){
@@ -67,62 +87,66 @@ else{
 echo '<p class="empty">no playlist added yet!</p>';
 }
 
+echo '                                           
+</div>
+</section>
+
+</div>
+</div>
+</div>';
 
 
 }
 
-function signupForm(){
-$str=' <form method="post" class="sign-up-form" id="register_form">
-    <h2 class="title">Sign up</h2>
-    <div class="input-field">
-        <i class="fas fa-user"></i>
-        <input type="text" placeholder="Full name" id="name1" name="user_name" />
-        </br>
-        <span class="alert" id="alert3"></span>
-
-    </div>
-    </br>
-    <div class="input-field">
-        <i class="fas fa-envelope"></i>
-        <input type="text" placeholder="Email" id="email1" name="user_email" />
-        </br>
+function add_course(){
+$str='    
+<div class="col-lg-8 ">
+<div class=" mb-4">
+    <div class="">
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0" style="font-size: 1.5rem;"> Add Course</p>
+            </div>
+        </div>
+        <hr>
+<section class="playlist-form">
 
 
-    </div>
-    </br>
-    <div class="input-field">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" id="password1" name="user_password" />
-        </br>
+<form action="" method="post" enctype="multipart/form-data">
+    <p>playlist status <span>*</span></p>
+    <select name="status" class="box" required>
+        <option value="" selected disabled>-- select status</option>
+        <option value="active">active</option>
+        <option value="deactive">deactive</option>
+    </select>
+    <p>playlist title <span>*</span></p>
+    <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box ">
+    <p>playlist description <span>*</span></p>
+    <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30"
+        rows="10"></textarea>
+    <p>playlist requirements <span>*</span></p>
+    <textarea name="description" class="box" required placeholder="write requirements" maxlength="1000"
+        cols="30" rows="10"></textarea>
 
+    <p>what the student will learn from these course <span>*</span></p>
+    <input name="tags" type="text" value="html,css" class="box" required  maxlength="10" size="10">
 
-    </div>
-    </br>
-    <div class="input-field">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Confirm password" id="password2" name="Confirmpass" />
-        </br>
-        <span class="alert" id="alert6"></span>
+    <p>playlist Price <span>*</span></p>
+    <input type="text" name="price" maxlength="100" required placeholder="enter playlist Price" class="box">
+    <p>playlist thumbnail <span>*</span></p>
+    <input type="file" name="image" accept="image/*" required class="box">
+    <br>
+    <button type="submit"  name="submit" class="btn btn-primary w-100">Create a playlist</button>
+</form>
 
-    </div>
-    </br>
-    <input type="submit" name="register" class="btn btn-success" value="sign up" />
-    <p class="social-text">Or Sign up with social platforms</p>
-    <div class="social-media">
-        <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-icon">
-            <i class="fab fa-google"></i>
-        </a>
-        <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-    </div>
-</form>';
+</section>
+                                          
+</div>
+</section>
+
+</div>
+</div>
+</div>';
 return $str;
 }
 

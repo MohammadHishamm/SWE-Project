@@ -24,6 +24,14 @@ if(isset($_POST['delete']))
    $playliscontroller->Delete_playlist($delete_id,$tutor_id);
 }
 
+
+if(isset($_POST['submit']))
+{
+
+    $playliscontroller->add_playlist($tutor_id);
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,59 +144,39 @@ if(isset($_POST['delete']))
                                             <ul class=" ">
 
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="profile.php" class="btn btn-light mb-0 ps-3 active "
-                                                        style="width: 100%;"> <i
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3  " >
+                                                    <a href="profile.php" class="btn btn-light mb-0  active "
+                                                        style=""> <i
                                                             class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_account.php" class="btn btn-light mb-0 ps-3 "
-                                                        style="width: 100%;"><i
+                                                    class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
+                                                    <a href="Profile_account.php" class="btn btn-light mb-0  "
+                                                        style=""><i
                                                             class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_courses.php" class="btn btn-light mb-0 ps-3 "
-                                                        style="width: 100%;"><i class="fa-solid fa-book pe-3"></i></i>My
+                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
+                                                    <a href="Profile_courses.php" class="btn btn-light mb-0 "
+                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>My
                                                         Courses</a>
 
                                                 </li>
+                                       
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-8 ">
-                                    <div class=" mb-4">
-                                        <div class="">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0" style="font-size: 1.5rem;"> Your Course</p>
-                                                </div>
-                                            </div>
-                                            <hr>
 
-                                            <section class="playlists">
-
-                                                <div class="box-container">
-
-                                                    <div class="box" style="text-align: center;">
-                                                        <h3 class="title" style="margin-bottom: .5rem;">create new
-                                                            playlist</h3>
-                                                        <a href="add_playlist.php" class="btn">add playlist</a>
-                                                    </div>
                                                     <?php
                                 
-                                $view->show_courses();
-                                ?>
+                                                        // echo $view->add_course();
 
-                                                </div>
 
-                                            </section>
+                                                        $view->show_courses();
+                                                    ?>
 
-                                        </div>
-                                    </div>
-                                </div>
+
         </section>
 
 

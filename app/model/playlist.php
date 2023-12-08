@@ -56,7 +56,7 @@
             $rename = $this->unique_id.'.'.$ext;
             $image_size = $_FILES['image']['size'];
             $image_tmp_name = $_FILES['image']['tmp_name'];
-            $image_folder = '../uploaded_files/'.$rename;  
+            $image_folder = '../Images/courses/'.$rename;  
             move_uploaded_file($image_tmp_name, $image_folder);       
             $this->playlist_image = $rename;           
         }
@@ -164,7 +164,7 @@
                 $delete_playlist_thumb->execute([$playlist_id]);
 
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
-                unlink('../uploaded_files/'.$fetch_thumb['thumb']);
+                unlink('../Images/courses/'.$fetch_thumb['thumb']);
 
 
                 // thumb for content
@@ -172,7 +172,7 @@
                 $delete_playlist_thumb->execute([$playlist_id]);
 
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
-                unlink('../uploaded_files/'.$fetch_thumb['thumb']);
+                unlink('../Images/courses/'.$fetch_thumb['thumb']);
 
 
                 // video for contant
@@ -180,7 +180,7 @@
                 $delete_video->execute([$playlist_id]);
 
                 $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
-                unlink('../uploaded_files/'.$fetch_video['video']);
+                unlink('../Images/courses/'.$fetch_video['video']);
 
                 // delete playlist
                 $delete_playlist = $this->db->getConn()->prepare("DELETE FROM `playlist` WHERE playlist_id = ?");
