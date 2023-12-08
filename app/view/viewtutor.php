@@ -125,7 +125,9 @@ $str='
         cols="30" rows="10"></textarea>
 
     <p>what the student will learn from these course <span>*</span></p>
-    <input name="tags" type="text" value="html,css" class="box" required  maxlength="10" size="10">
+    <input type="text" id="result" hidden name="result">
+    <input type="text" id="input" onkeydown="addTag(event)" class="box"  size="10" maxlength="10" placeholder="Press Enter to add a tag" name="tags">
+    <div class="tags-container"></div>
 
     <p>playlist Price <span>*</span></p>
     <input type="text" name="price" maxlength="100" required placeholder="enter playlist Price" class="box">

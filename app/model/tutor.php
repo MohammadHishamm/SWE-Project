@@ -23,6 +23,7 @@ require_once(__ROOT__ . "model/content.php");
 
         public function __construct()
         {
+            $this->db = $this->connect();
             $this->playlist = new playlist();
             $this->content = new content();
         }

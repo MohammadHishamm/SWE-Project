@@ -30,6 +30,8 @@ class PlaylistController extends Controller
         $description = filter_var($description, FILTER_SANITIZE_STRING);
         $status = $_POST['status'];
         $status = filter_var($status, FILTER_SANITIZE_STRING);
+        $tags = $_POST['result'];
+        $tags = filter_var($tags, FILTER_SANITIZE_STRING);
         $image = $_FILES['image']['name'];
         $price= $_POST['price'];
      
@@ -37,7 +39,7 @@ class PlaylistController extends Controller
         $this->model->setPlaylistTitle($title);
         $this->model->setPlaylistDescription($description);
         $this->model->setPlaylistRequirements($description);
-
+        $this->model->setPlaylisttag($tags);
         $this->model->setPlaylistPrice($price);
         $this->model->setPlaylistImage($image);
         $this->model->setPlaylistTutor($tutor_id);

@@ -13,7 +13,7 @@
         public $playlist_title;
         public $playlist_description;
         public $playlist_requirements;
-        public $playlist_map;
+        public $playlist_tag;
         public $playlist_status;
         public $playlist_price;
         public $playlist_image;
@@ -43,8 +43,8 @@
         public function getPlaylistDescription(){return $this->playlist_description;}
         public function setPlaylistRequirements($playlist_requirements){$this->playlist_requirements = $playlist_requirements;}
         public function getPlaylistRequirements(){return $this->playlist_requirements;}
-        public function setPlaylistMap($playlist_map){$this->playlist_map = $playlist_map;}
-        public function getPlaylistMap(){return $this->playlist_map;}
+        public function setPlaylisttag($playlist_tag){$this->playlist_tag = $playlist_tag;}
+        public function getPlaylisttag(){return $this->playlist_tag;}
         public function setPlaylistPrice($playlist_price){$this->playlist_price = $playlist_price;}
         public function getPlaylistPrice(){return $this->playlist_price;}
         public function setPlaylistStatus($playlist_status){$this->playlist_status = $playlist_status;}
@@ -73,8 +73,8 @@
         }
         public function Save()
 {
-    $add_playlist =  $this->db->getConn()->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, requirements, price, thumb, status) VALUES(?,?,?,?,?,?,?,?)");
-    if ($add_playlist->execute([$this->playlist_id, $this->playlist_tutor, $this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_price, $this->playlist_image, $this->playlist_status])) {
+    $add_playlist =  $this->db->getConn()->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, requirements,Tags, price, thumb, status) VALUES(?,?,?,?,?,?,?,?,?)");
+    if ($add_playlist->execute([$this->playlist_id, $this->playlist_tutor, $this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_tag, $this->playlist_price, $this->playlist_image, $this->playlist_status])) {
         // Insert successful
         return true;
     } else {

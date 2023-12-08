@@ -68,8 +68,9 @@ if(isset($_POST['update_submit']))
 
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
         <script src="../js/MDB java/mdb.min.js"></script>
+        <script src="../js/tag.js"></script>
     </head>
-    
+
 
     <script>
 
@@ -251,6 +252,7 @@ if(isset($_POST['update_submit']))
         }
 
         count = 0;
+        
 
         const removeTag = (event) => {
             if (event.target.classList.contains('tag-close')) {
@@ -261,6 +263,7 @@ if(isset($_POST['update_submit']))
 
 
 
+        const tag = [];
 
         const addTag = (event) => {
             if (event.keyCode === 13) {
@@ -277,6 +280,7 @@ if(isset($_POST['update_submit']))
                     <span class="tag-text">${value}</span>
                     <span class="tag-close"> ⌫ </span>
                     `
+                    tag.push(value);
 
                     count++;
                     spanElement.classList.add('tag');
@@ -286,6 +290,10 @@ if(isset($_POST['update_submit']))
 
                     tagsContainer.appendChild(spanElement);
                     input.value = '';
+
+                    document.getElementById('result').value = tag;
+                    
+                  
                 } else {
                     alert("Tag length should be less than 10");
                 }
@@ -308,3 +316,5 @@ if(isset($_POST['update_submit']))
 </body>
 
 </html>
+
+
