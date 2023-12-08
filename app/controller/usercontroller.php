@@ -117,7 +117,7 @@ class UsersController extends Controller{
                         'token' =>  $user_token
                     ];
 
-                   header("Location:index.php?login=success");
+                   header("Location:home.php?login=success");
 
                 }
             }
