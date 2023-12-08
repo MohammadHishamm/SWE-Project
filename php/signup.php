@@ -58,6 +58,7 @@ define('__ROOT__', "../app/");
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" id="password" name="user_password" />
                         </br>
+                        <span class="alert"><?php echo $signin->getpassErr();?> </span>
 
                     </div>
                     </br>

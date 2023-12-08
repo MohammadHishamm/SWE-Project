@@ -1,11 +1,11 @@
 <?php
-  require_once(__ROOT__ . "model/model.php");
+  require_once(__ROOT__ . "model/user.php");
 ?>
 <?php
 
 
 	
-class Admin extends Model
+class Admin extends User
 {
 	private $user_id;
 	private $user_name;
