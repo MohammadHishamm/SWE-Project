@@ -1,11 +1,16 @@
 <?php   
 require_once(__ROOT__ . "model/user.php");
+require_once(__ROOT__ . "model/playlist.php");
+require_once(__ROOT__ . "model/content.php");
 ?>
 <?php
 
     class tutor extends User
     {
+        
         protected $Tutor_id;
+        public $playlist;
+        public $content;
         public $Gender;
         public $Position;
         public $User_status;
@@ -15,6 +20,32 @@ require_once(__ROOT__ . "model/user.php");
         public $Comment;
         public $connect;
        
+
+        public function __construct()
+        {
+            $this->playlist = new playlist();
+            $this->content = new content();
+        }
+
+        public function setplaylist($playlist)
+        {
+            return $this->playlist = $playlist ;
+        }
+
+        public function setcontent($content)
+        {
+            return $this->content = $content;
+        }
+
+        public function getplaylist()
+        {
+            return $this->playlist;
+        }
+
+        public function getcontent()
+        {
+            return $this->content;
+        }
 
         public function setTutor_id($Tutor_id)
         {
