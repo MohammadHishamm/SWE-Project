@@ -79,7 +79,7 @@ else
     }
     </style>
 
-    <body style="background-color: #ebeff4">
+    <body style="background-color: #ebeff4 ; ">
 
         <?php include "Topnav.php" ?>
         <?php include "Sidenav.php" ?>

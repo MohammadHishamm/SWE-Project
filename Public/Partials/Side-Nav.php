@@ -6,12 +6,12 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
+        <a href="View-Profile.php?user_id=<?=$id?>">
           <i class='bx bx-grid-alt' ></i>
-          <span class="link_name">Dashboard</span>
+          <span class="link_name">Account</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Category</a></li>
+          <li><a class="link_name" href="View-Profile.php?user_id=<?=$id?>">Account</a></li>
         </ul>
       </li>
       <li>
@@ -96,12 +96,12 @@
         </ul>
       </li>
       <li>
-        <a href="#">
+        <a  href="Edit-Profile.php">
           <i class='bx bx-cog' ></i>
-          <span class="link_name">Setting</span>
+          <span class="link_name" >Setting</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
+          <li><a class="link_name" href="Edit-Profile.php">Setting</a></li>
         </ul>
       </li>
       <li>

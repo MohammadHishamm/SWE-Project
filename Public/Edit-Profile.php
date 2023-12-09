@@ -101,7 +101,7 @@ if (isset($_POST["update_user"])) {
     }
     </style>
 
-    <body style="background-color: #ebeff4">
+    <body style="background-color: #ebeff4; overflow: hidden;">
 
         <!-- Loaders -->
         <div class="text-center transition transition-1 is-active" id="preloading">

@@ -89,6 +89,19 @@ function showToast() {
         font-weight: bolder;">Arab Data Hub</p>
     </div>
 
+    <!-- Loaders -->
+    <!-- <div class="text-center transition transition-2 is-active" id="preloading">
+
+        <div style="margin-top: 100px">
+
+            <img src="../images/loader.gif">
+
+        </div>
+        <p style="margin-top: 20px;   
+color: #0f141a;
+font-size: 3.0rem;
+font-weight: bolder;">Arab Data Hub</p>
+    </div> -->
 
     <audio id="Audio">
         <source src="../images/alert.wav">
@@ -110,6 +123,7 @@ function showToast() {
 
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
+    <?php include "Partials/Top-Button.php" ?>
     <!-- First Section -->
     <div class="  mb-10" style="height: min-content; margin-top: 100px; ">
 
@@ -139,7 +153,7 @@ function showToast() {
                     <div style="margin-top: 70px;  width: fit-content; height: fit-content;">
                         <a class="btn p-3 fs-7 rounded-9" href="Teacher-Form.php"
                             style="background-color: #58779D; color: white; letter-spacing: 3px;">
-                            Get Started
+                            Apply Now
                         </a>
                         <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
                             <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>

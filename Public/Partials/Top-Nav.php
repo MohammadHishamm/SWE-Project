@@ -30,15 +30,16 @@
               <div class="row align-items-center">
 
               <div class="col">
-              <a href="View-Profile.php?user_id='.$id.'">
-              <i class="fas fa-user-alt" style="color: #000000;"></i>
-              profile
+              <a class="btn btn-primary p-2  rounded-2"  href="../php/chat/privatechat.php">
+                Chat
               </a>
+
               
             </div>
                     <div class="col">
-                      <a href="chat/privatechat.php">
+                      <a>
                       <i class="fas fa-comment" style="color: #000000;"></i>
+                      chat
                       </a>
                       
                     </div>

@@ -92,6 +92,43 @@ body.dark {
 #btn-back-to-top {
   transition: 1s ease-in-out;
 }
+.transition-2 {
+  background-color: #58779d;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 100%;
+  z-index: 100;
+  right: 0;
+  transition: 0.5s ease-out;
+}
+.btn.btn-primary
+ {
+  background-color: #58779D; 
+  color: white; 
+  letter-spacing: 3px;
+}
+.btn.btn-secondary
+ {
+  color:black;
+  letter-spacing: 3px;
+}
+.btn.btn-danger
+ {
+  color:white;
+  letter-spacing: 3px;
+}.btn.btn-warning
+{
+ color:white;
+ letter-spacing: 3px;
+}
+.transition-2.is-active 
+{
+  left: 0px;
+
+}
+
 .transition-1 {
   background-color: #58779d;
   opacity: 0;

@@ -91,7 +91,29 @@ if(isset($_POST['update_submit']))
 
     </script>
 
-    <body style="background-color: #ebeff4">
+<style>
+    .tags-container {
+        width: 100%
+    }
+
+    .tags-container .tag {
+        display: inline-block;
+        padding: 3px 12px;
+        font-size: 13px;
+        background: #eee;
+        margin: 3px;
+        border-radius: 5px;
+        text-transform: lowercase;
+        cursor: default;
+    }
+
+    .tags-container .tag .tag-close {
+        cursor: pointer;
+        margin-left: 5px;
+        font-size: 10px;
+    }
+    </style>
+    <body style="background-color: #ebeff4" >
 
 
         <audio id="Audio">
@@ -166,6 +188,91 @@ if(isset($_POST['update_submit']))
 
         <?php include "Partials/Bottom-Nav.php" ?>
 
+        <script>
+        const colors = [{
+                font: '#990f0f',
+                background: '#ffbfbf'
+            },
+            {
+                font: '#99630f',
+                background: '#d6ffbf'
+            },
+            {
+                font: '#6f7d4e',
+                background: '#fff3bf'
+            },
+            {
+                font: '#4e7d74',
+                background: '#bff0ff'
+            },
+            {
+                font: '#594e7d',
+                background: '#c8bfff'
+            },
+            {
+                font: '#7d4e76',
+                background: '#ffbff0'
+            }
+        ]
+
+        const getRandomColor = () => {
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+
+        count = 0;
+
+        const removeTag = (event) => {
+            if (event.target.classList.contains('tag-close')) {
+                event.target.parentElement.remove();
+                count = count - 1;
+            }
+        }
+
+
+        const tag = [];
+
+        const addTag = (event) => {
+            if (event.keyCode === 13) {
+                const input = document.getElementById('input')
+                if (input.value.length != 0 && count != 10) {
+                    const tagsContainer = document.querySelector('.tags-container');
+                    const color = getRandomColor();
+                    const value = event.target.value;
+                    const spanElement = document.createElement('span');
+
+                    spanElement.innerHTML = `
+                    <input type="hidden" value="${value}">
+                    <span class="tag-text">${value}</span>
+                    <span class="tag-close"> ⌫ </span>
+                    `
+
+                    tag.push(value);
+                    
+                    count++;
+                    spanElement.classList.add('tag');
+                    spanElement.style.backgroundColor = color.background;
+                    spanElement.style.color = color.font;
+
+                    tagsContainer.appendChild(spanElement);
+                    input.value = '';
+
+                    document.getElementById('result').value = tag;
+                    console.log(tag);
+                } else {
+                    alert("Tag length should be less than 10");
+                }
+
+            }
+        }
+
+
+
+        window.onload = () => {
+            const tagsContainer = document.querySelector('.tags-container');
+            tagsContainer.addEventListener('click', removeTag);
+        }
+        </script>
 </body>
 
 </html>

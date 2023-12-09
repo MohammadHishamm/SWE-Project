@@ -1,6 +1,6 @@
 window.onload = () => {
 
-  const anchors = document.querySelectorAll('a');
+  const anchors = document.querySelectorAll('.link-anchor');
   const transition =  document.querySelector(".transition");
  
 setTimeout(function () {

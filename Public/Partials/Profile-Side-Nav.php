@@ -10,7 +10,7 @@
                         Profile</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
-                    <a href="Profile_account.php" class="btn btn-light w-100  mb-0 " style="">Account</a>
+                    <a href="Edit-Profile-Email.php" class="btn btn-light w-100  mb-0 " style="">Account</a>
                 </li>
                 <li class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
                     <a href="Control-Courses.php?action=add" class="btn btn-light  w-100  mb-0 " style="">Add

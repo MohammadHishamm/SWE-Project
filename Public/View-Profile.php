@@ -62,7 +62,7 @@ else
     <script src="../js/MDB java/mdb.min.js"></script>
 </head>
 
-<body style="background-color: #CED8E3;">
+<body style="background-color: #CED8E3; overflow: hidden;">
 
     <!-- Loaders -->
     <div class="text-center transition transition-1 is-active" id="preloading">
