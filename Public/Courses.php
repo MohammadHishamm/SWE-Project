@@ -158,39 +158,9 @@ if(isset($_POST['update_submit']))
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-lg-3">
-                                    <div class=" mb-4 mb-lg-0">
-                                        <div class=" p-0">
-                                            <ul class=" ">
-
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3  ">
-                                                    <a href="profile.php" class="btn btn-light mb-0  active " style="">
-                                                        <i class="fa-regular fa-user pe-3"></i>Profile</a>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
-                                                    <a href="Profile_account.php" class="btn btn-light mb-0  "
-                                                        style=""><i class="fa-solid fa-gear pe-3"></i>Account</a>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
-                                                    <a href="Courses.php?action=add" class="btn btn-light mb-0 "
-                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>Add
-                                                        Courses</a>
-
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
-                                                    <a href="Courses.php?action=view" class="btn btn-light mb-0 "
-                                                        style=""><i class="fa-solid fa-book pe-3"></i></i>View
-                                                        Courses</a>
-
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?=
+                                $view->side_nav();
+                                ?>
 
                                 <?php
                                 if (isset($_GET['action']) && !empty($_GET['action'])) {

@@ -3,10 +3,11 @@ define('__ROOT__', "../app/");
 
 require_once('../app/controller/userController.php');
 require_once('../app/model/user.php');
+require_once('../app/view/viewtutor.php');
 
 $model = new User();
 $controller = new UsersController($model);
-
+$view = new ViewTutor($controller, $model);
 
 if(empty($_SESSION['user_data']))
 {
@@ -129,34 +130,10 @@ if (isset($_POST["update_user"])) {
                             </div>
 
                             <div class="row mt-4">
-                                <div class="col-lg-3">
-                                    <div class=" mb-4 mb-lg-0">
-                                        <div class=" p-0">
-                                            <ul class=" ">
-
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="profile.php" class="btn btn-light mb-0 ps-3 active "
-                                                        style="width: 100%;"> <i
-                                                            class="fa-regular fa-user pe-3"></i>Profile</a>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_account.php"
-                                                        class="btn btn-light mb-0 ps-3 " style="width: 100%;"><i
-                                                            class="fa-solid fa-gear pe-3"></i>Account</a>
-                                                </li>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="Profile_courses.php"
-                                                        class="btn btn-light mb-0 ps-3 " style="width: 100%;"><i
-                                                            class="fa-solid fa-book pe-3"></i></i>My Courses</a>
-
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <!-- side nav -->
+                                    <?=
+                                    $view->side_nav();
+                                    ?>
                                 <div class="col-lg-8 ">
                                     <div class=" mb-4">
                                         <div class="">
