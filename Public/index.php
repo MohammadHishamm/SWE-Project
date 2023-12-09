@@ -64,7 +64,6 @@ function showToast() {
 
     document.getElementById('toast').classList.add('show');
 
-
     setTimeout(function() {
         document.getElementById('toast').classList.remove('show');
     }, 5000);
@@ -89,18 +88,19 @@ function showToast() {
         <source src="../images/alert.wav">
     </audio>
 
+
     <?php if(isset($_SESSION['error_message'])){  ?>
-    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast">
-        <div class="toast-header">
-            <strong class="me-auto">Arab Data Hub</strong>
-            <small></small>
+        <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto" id="toast" >
+            <div class="toast-header ">
+                <strong class="me-auto">Arab Data Hub</strong>
+                <small>Notfication</small>
+            </div>
+            <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
         </div>
-        <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
-    </div>
-    <script>
-    showToast();
-    </script>
-    <?php unset($_SESSION['error_message']); } ?>
+        <script>
+        showToast();
+        </script>
+        <?php unset($_SESSION['error_message']); } ?>
 
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
@@ -125,16 +125,15 @@ function showToast() {
 
                     <p class="lead fs-6 mb-6"> <img src="../Images/bar.png" alt=""
                             style="height: 64px;width: 11px; margin-top: 20px; ">
-                        <span class="hero_main_text2" style="margin-left: 10px; ">Lorem ipsum dolor sit amet,
-                            consectetuer adipiscing elit.
+                        <span class="hero_main_text2" style="margin-left: 10px; ">Empower your learning journey with our online platform.
                         </span>
                     </p>
 
                     <div style="margin-top: 70px;  width: fit-content; height: fit-content;">
-                        <button class="btn p-3 fs-7 rounded-9"
+                        <a class="btn p-3 fs-7 rounded-9" href="Teacher-Form.php"
                             style="background-color: #58779D; color: white; letter-spacing: 3px;">
                             Get Started
-                        </button>
+                        </a>
                         <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
                             <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>
                             Watch Our Courses
