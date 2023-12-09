@@ -45,18 +45,20 @@ foreach($_SESSION['user_data'] as $key => $value)
 
 
 <script>
-       function showToast() 
-       {
-            document.getElementById('toast').classList.add('show');
+function showToast() {
 
-         
-            setTimeout(function () {
-                document.getElementById('toast').classList.remove('show');
-            }, 5000);
-            
-       }
+    x = document.getElementById("Audio");
+
+    x.play();
+    
+    document.getElementById('toast').classList.add('show');
 
 
+    setTimeout(function() {
+        document.getElementById('toast').classList.remove('show');
+    }, 5000);
+
+}
 </script>
 
 <body>
@@ -71,8 +73,13 @@ foreach($_SESSION['user_data'] as $key => $value)
         </div>
     </div> -->
 
+
+    <audio id="Audio">
+        <source src="../images/alert.wav">
+    </audio>
+
     <?php if(isset($_SESSION['error_message'])){  ?>
-    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast" >
+    <div class="toast fade fixed-bottom me-5 mb-5 ms-auto" id="toast">
         <div class="toast-header">
             <strong class="me-auto">Arab Data Hub</strong>
             <small></small>
@@ -80,7 +87,7 @@ foreach($_SESSION['user_data'] as $key => $value)
         <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
     </div>
     <script>
-        showToast(); 
+    showToast();
     </script>
     <?php unset($_SESSION['error_message']); } ?>
 
