@@ -64,6 +64,20 @@ else
 
 <body style="background-color: #CED8E3;">
 
+    <!-- Loaders -->
+    <div class="text-center transition transition-1 is-active" id="preloading">
+
+        <div style="margin-top: 100px">
+
+            <img src="../images/loader.gif">
+
+        </div>
+        <p style="margin-top: 20px;   
+        color: #0f141a;
+        font-size: 3.0rem;
+        font-weight: bolder;">Arab Data Hub</p>
+    </div>
+
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
     <section>
@@ -223,6 +237,7 @@ else
         </div>
     </section>
     <?php include "Bottomnav.php" ?>
+    <script src="../js/Loaders.js"></script>
 </body>
 
 </html>

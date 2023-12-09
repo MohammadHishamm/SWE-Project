@@ -57,26 +57,24 @@ if(isset($_POST['update_submit']))
 
         <link rel="stylesheet" href="../css/Sidenav.css">
         <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-
-
-
         <link rel="stylesheet" href="../css/All.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
             integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
-        <script src="../js/MDB java/mdb.min.js"></script>
-        <script src="../js/tag.js"></script>
+
+     
+
     </head>
 
 
     <script>
-
     function showToast() {
 
-        x = document.getElementById("Audio"); 
+        x = document.getElementById("Audio");
 
         x.play();
 
@@ -88,39 +86,20 @@ if(isset($_POST['update_submit']))
         }, 5000);
 
     }
+
+
+
     </script>
-    <style>
-    .tags-container {
-        width: 100%
-    }
-
-    .tags-container .tag {
-        display: inline-block;
-        padding: 3px 12px;
-        font-size: 13px;
-        background: #eee;
-        margin: 3px;
-        border-radius: 5px;
-        text-transform: lowercase;
-        cursor: default;
-    }
-
-    .tags-container .tag .tag-close {
-        cursor: pointer;
-        margin-left: 5px;
-        font-size: 10px;
-    }
-    </style>
 
     <body style="background-color: #ebeff4">
 
 
-        <audio id="Audio" >
-            <source src="../images/alert.wav" >
+        <audio id="Audio">
+            <source src="../images/alert.wav">
         </audio>
 
         <?php if(isset($_SESSION['error_message'])){  ?>
-        <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto" id="toast" >
+        <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto" id="toast">
             <div class="toast-header ">
                 <strong class="me-auto">Arab Data Hub</strong>
                 <small>Notfication</small>
@@ -158,9 +137,7 @@ if(isset($_POST['update_submit']))
                             </div>
 
                             <div class="row mt-4">
-                                <?=
-                                $view->side_nav();
-                                ?>
+                                <?php include "Partials/Profile-Side-Nav.php" ?>
 
                                 <?php
                                 if (isset($_GET['action']) && !empty($_GET['action'])) {
@@ -186,105 +163,9 @@ if(isset($_POST['update_submit']))
         </section>
 
 
+
         <?php include "Partials/Bottom-Nav.php" ?>
-
-        <script>
-        const colors = [{
-                font: '#990f0f',
-                background: '#ffbfbf'
-            },
-            {
-                font: '#99630f',
-                background: '#d6ffbf'
-            },
-            {
-                font: '#6f7d4e',
-                background: '#fff3bf'
-            },
-            {
-                font: '#4e7d74',
-                background: '#bff0ff'
-            },
-            {
-                font: '#594e7d',
-                background: '#c8bfff'
-            },
-            {
-                font: '#7d4e76',
-                background: '#ffbff0'
-            }
-        ]
-
-        const getRandomColor = () => {
-            const randomIndex = Math.floor(Math.random() * colors
-                .length);
-            return colors[randomIndex];
-        }
-
-        count = 0;
-        
-
-        const removeTag = (event) => {
-            if (event.target.classList.contains('tag-close')) {
-                event.target.parentElement.remove();
-                count = count - 1;
-            }
-        }
-
-
-
-        const tag = [];
-
-        const addTag = (event) => {
-            if (event.keyCode === 13) {
-                const input = document.getElementById('input')
-                if (input.value.length != 0 && count != 10) {
-                    const tagsContainer = document.querySelector(
-                        '.tags-container');
-                    const color = getRandomColor();
-                    const value = event.target.value;
-                    const spanElement = document.createElement('span');
-
-                    spanElement.innerHTML = `
-                    <input type="hidden" value="${value}">
-                    <span class="tag-text">${value}</span>
-                    <span class="tag-close"> ⌫ </span>
-                    `
-                    tag.push(value);
-
-                    count++;
-                    spanElement.classList.add('tag');
-                    spanElement.style.backgroundColor = color
-                        .background;
-                    spanElement.style.color = color.font;
-
-                    tagsContainer.appendChild(spanElement);
-                    input.value = '';
-
-                    document.getElementById('result').value = tag;
-                    
-                  
-                } else {
-                    alert("Tag length should be less than 10");
-                }
-
-            }
-        }
-
-
-
-        window.onload = () => {
-            const tagsContainer = document.querySelector(
-                '.tags-container');
-            tagsContainer.addEventListener('click', removeTag);
-        }
-        </script>
-    </body>
-
-    </html>
 
 </body>
 
 </html>
-
-

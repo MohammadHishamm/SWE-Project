@@ -47,7 +47,7 @@ echo '
                 <div class="box" style="text-align: center;">
                     <h3 class="title" style="margin-bottom: .5rem;">create new
                         playlist</h3>
-                    <a href="Courses.php?action=add" class="btn">add playlist</a>
+                    <a href="Control-Courses.php?action=add" class="btn">add playlist</a>
                 </div>';
 
 $select_playlist =   $playlist->get_All_playlist($tutor_id);
@@ -74,7 +74,7 @@ echo'
         <a href="Courses.php?action=update&get_id='.$playlist_id.'" class="btn btn-warning w-100">update</a>
         <button type="submit"  class="btn btn-danger w-100" name="delete">delete</button>
     </form>
-    <a href="Courses.php?action=view_playlist&get_id='.$playlist_id.'" class="btn btn-primary w-100 mt-3">view playlist</a>
+    <a href="Control-Courses.php?action=view_playlist&get_id='.$playlist_id.'" class="btn btn-primary w-100 mt-3">view playlist</a>
 </div>
 ';
 }
@@ -196,9 +196,8 @@ $total_videos = $playlist->get_videos_count($playlist_id);
     <input type="file" name="image" accept="image/*" class="box">
     <button type="submit" name="update_submit" class="btn btn-primary w-100 mb-3">update playlist</button>
     <div class="flex-btn">
-        <input type="submit" value="delete" class="btn btn-danger w-100" onclick="return confirm("delete this playlist?");"
-            name="delete">
-        <a href="Courses.php?action=view_playlist&get_id='.$playlist_id.'" class="btn btn-warning w-100">view playlist</a>
+        <button type="submit" class="btn btn-danger w-100" name="delete"> delete</button>
+        <a href="Control-Courses.php?action=view_playlist&get_id='.$playlist_id.'" class="btn btn-warning w-100">view playlist</a>
     </div>
 </form>
 ';
@@ -264,7 +263,7 @@ public function view_course_content()
         <div class="description"> '.$fetch_playlist['description'].'</div>
         <form action="" method="post" class="flex-btn">
             <input type="hidden" name="playlist_id" value="'.$playlist_id.'">
-            <a href="Courses.php?action=update&get_id='.$playlist_id.'" class="btn btn-warning w-100">update playlist</a>
+            <a href="Control-Courses.php?action=update&get_id='.$playlist_id.'" class="btn btn-warning w-100">update playlist</a>
             <button type="submit"  class="btn btn-danger w-100" name="delete">delete playlist </button>
         </form>
     </div>
@@ -325,44 +324,6 @@ echo'
 </section>
 ';
 }
-public function side_nav()
-{
-    echo'
 
-    <div class="col-lg-3">
-    <div class=" mb-4 mb-lg-0">
-        <div class=" p-0">
-            <ul class=" ">
-
-                <li
-                    class="list-group-item d-flex justify-content-start align-items-start pt-3  ">
-                    <a href="Edit-Profile.php" class="btn btn-light mb-0 w-100 active " style="">
-                        <i class="fa-regular fa-user pe-3"></i>Profile</a>
-                </li>
-                <li
-                    class="list-group-item d-flex justify-content-start align-items-start  pt-3  ">
-                    <a href="Profile_account.php" class="btn btn-light  w-100  mb-0  "
-                        style=""><i class="fa-solid fa-gear pe-3"></i>Account</a>
-                </li>
-                <li
-                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
-                    <a href="Courses.php?action=add" class="btn btn-light  w-100  mb-0 "
-                        style=""><i class="fa-solid fa-book pe-3"></i></i>Add
-                        Courses</a>
-
-                </li>
-                <li
-                    class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
-                    <a href="Courses.php?action=view" class="btn btn-light  w-100  mb-0 "
-                        style=""><i class="fa-solid fa-book pe-3"></i></i>View
-                        Courses</a>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-';
-}
 }
 ?>

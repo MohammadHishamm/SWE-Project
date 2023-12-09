@@ -1,7 +1,34 @@
-window.addEventListener("load", function () {
-  document.getElementById("preloading").style.display = "none";
-  document.body.style.overflow = "visible";
-});
+window.onload = () => {
+
+  const anchors = document.querySelectorAll('a');
+  const transition =  document.querySelector(".transition");
+ 
+setTimeout(function () {
+    transition.classList.remove('is-active');
+    document.body.style.overflow = "auto";
+}, 2000);
+
+for (let i = 0; i < anchors.length; i++) {
+  const anchor = anchors[i];
+
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    let target = e.target.href;
+
+    console.log(target);
+
+    transition.classList.add('is-active');
+
+    setInterval(() => {
+      window.location.href = target;
+    }, 500);
+  })
+  
+}
+
+}
+
+
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () {
@@ -43,3 +70,4 @@ document.getElementById("addtocart").addEventListener("click", function () {
   }
   showHint(Course_ID, scope);
 });
+

@@ -32,6 +32,7 @@
               <div class="col">
               <a href="View-Profile.php?user_id='.$id.'">
               <i class="fas fa-user-alt" style="color: #000000;"></i>
+              profile
               </a>
               
             </div>
@@ -59,7 +60,7 @@
                 <div class="row">
               
                 <div class="col">
-                  <a href="signup.php">
+                  <a href="Signup-in.php">
                     <button class="btn" style="background-color: #58779D; color: white;">
                       SignUp
                     </button>

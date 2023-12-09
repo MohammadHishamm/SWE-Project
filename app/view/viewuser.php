@@ -210,6 +210,7 @@ class ViewUser extends View{
 
           
 
-	}
+	
+}
 }
 ?>

@@ -51,7 +51,7 @@ foreach($_SESSION['user_data'] as $key => $value)
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-
+    <script src="../js/MDB java/mdb.min.js"></script>
 </head>
 
 
@@ -71,17 +71,23 @@ function showToast() {
 }
 </script>
 
-<body>
+
+
+<body style="overflow: hidden">
 
     <!-- Loaders -->
-    <!-- <div class="text-center bg-black vh-100 w-100 position-fixed " id="preloading" style="z-index: 100000000; ">
-        <div>
-            <i class="fa-solid fa-graduation-cap fa-beat-fade fs-1" style="color: #ffffff; margin-top: 300px;"></i>
+    <div class="text-center transition transition-1 is-active" id="preloading">
+
+        <div style="margin-top: 100px">
+
+            <img src="../images/loader.gif">
+
         </div>
-        <div>
-            <h1 class="mt-4">DISCOVER</h1>
-        </div>
-    </div> -->
+        <p style="margin-top: 20px;   
+        color: #0f141a;
+        font-size: 3.0rem;
+        font-weight: bolder;">Arab Data Hub</p>
+    </div>
 
 
     <audio id="Audio">
@@ -90,17 +96,17 @@ function showToast() {
 
 
     <?php if(isset($_SESSION['error_message'])){  ?>
-        <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto" id="toast" >
-            <div class="toast-header ">
-                <strong class="me-auto">Arab Data Hub</strong>
-                <small>Notfication</small>
-            </div>
-            <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
+    <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto " id="toast">
+        <div class="toast-header ">
+            <strong class="me-auto">Arab Data Hub</strong>
+            <small>Notfication</small>
         </div>
-        <script>
-        showToast();
-        </script>
-        <?php unset($_SESSION['error_message']); } ?>
+        <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
+    </div>
+    <script>
+    showToast();
+    </script>
+    <?php unset($_SESSION['error_message']); } ?>
 
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
@@ -125,7 +131,8 @@ function showToast() {
 
                     <p class="lead fs-6 mb-6"> <img src="../Images/bar.png" alt=""
                             style="height: 64px;width: 11px; margin-top: 20px; ">
-                        <span class="hero_main_text2" style="margin-left: 10px; ">Empower your learning journey with our online platform.
+                        <span class="hero_main_text2" style="margin-left: 10px; ">Empower your learning journey with our
+                            online platform.
                         </span>
                     </p>
 
@@ -220,7 +227,7 @@ function showToast() {
                 <?=
                 $view_playlist->view_courses();
                 ?>
-                
+
             </div>
         </div>
     </div>
@@ -536,7 +543,7 @@ function showToast() {
     <!-- End   Features -->
 
     <!-- Footer -->
-     <?php include "Partials/Bottom-Nav.php" ?> 
+    <?php include "Partials/Bottom-Nav.php" ?>
 
 
     <!-- Load library from the CDN -->

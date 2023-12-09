@@ -3,11 +3,11 @@ define('__ROOT__', "../app/");
 
 require_once('../app/controller/userController.php');
 require_once('../app/model/user.php');
-require_once('../app/view/viewtutor.php');
+
 
 $model = new User();
 $controller = new UsersController($model);
-$view = new ViewTutor($controller, $model);
+
 
 if(empty($_SESSION['user_data']))
 {
@@ -75,7 +75,7 @@ if (isset($_POST["update_user"])) {
             integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     
+
     </head>
 
     <style>
@@ -103,6 +103,20 @@ if (isset($_POST["update_user"])) {
 
     <body style="background-color: #ebeff4">
 
+        <!-- Loaders -->
+        <div class="text-center transition transition-1 is-active" id="preloading">
+
+            <div style="margin-top: 100px">
+
+                <img src="../images/loader.gif">
+
+            </div>
+            <p style="margin-top: 20px;    
+            color: #0f141a;
+            font-size: 3.0rem;
+            font-weight: bolder;">Arab Data Hub</p>
+        </div>
+
 
         <?php include "Partials/Top-Nav.php" ?>
         <?php include "Partials/Side-Nav.php" ?>
@@ -117,7 +131,7 @@ if (isset($_POST["update_user"])) {
                             <div class="row" style="margin-left: 35px; ">
                                 <div class="col-lg-1 col-4 me-5">
 
-                                 
+
                                     <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
                                         alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="120" width="120"
                                         class="rounded rounded-5">
@@ -130,10 +144,7 @@ if (isset($_POST["update_user"])) {
                             </div>
 
                             <div class="row mt-4">
-                                    <!-- side nav -->
-                                    <?=
-                                    $view->side_nav();
-                                    ?>
+                                <?php include "Partials/Profile-Side-Nav.php" ?>
                                 <div class="col-lg-8 ">
                                     <div class=" mb-4">
                                         <div class="">
@@ -144,16 +155,17 @@ if (isset($_POST["update_user"])) {
                                             </div>
                                             <hr>
 
-                                            <form  method="post" enctype="multipart/form-data">
-                                            <div class="row mb-4">
-                                                <div class="col-sm-3">
-                                                <input type="text" hidden name="old_image" value="<?=$fetch_user['user_img']?>">
-                                                    <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
-                                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48"
-                                                        height="160" width="160" class="rounded rounded-5 mb-4">
-                                                    <input type="file" name="image" accept="image/*" >
-                                                
-                                                </div>
+                                            <form method="post" enctype="multipart/form-data">
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-3">
+                                                        <input type="text" hidden name="old_image"
+                                                            value="<?=$fetch_user['user_img']?>">
+                                                        <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
+                                                            alt="<?php echo $fetch_user['user_img'] ?>" size="48"
+                                                            height="160" width="160" class="rounded rounded-5 mb-4">
+                                                        <input type="file" name="image" accept="image/*">
+
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-3">
@@ -175,8 +187,8 @@ if (isset($_POST["update_user"])) {
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <textarea class="text-muted mb-0" maxlength=" 1000"  name="user_bio"
-                                                                cols="30"
+                                                            <textarea class="text-muted mb-0" maxlength=" 1000"
+                                                                name="user_bio" cols="30"
                                                                 rows="10"><?= $fetch_user['user_bio'] ?></textarea>
                                                         </div>
                                                     </div>
@@ -193,12 +205,12 @@ if (isset($_POST["update_user"])) {
                                                             <br>
                                                             <input class="text-muted mb-2" name="user_social1"
                                                                 value="<?= $fetch_user['user_social1'] ?>"></input>
-                                                           
+
                                                             <i class="fa-brands fa-github fs-6 mb-2"></i>
                                                             <br>
                                                             <input class="text-muted mb-2" name="user_social2"
                                                                 value="<?= $fetch_user['user_social2'] ?>"></input>
-                                                           
+
                                                             <i class="fa-brands fa-facebook fs-6 mb-2"></i>
                                                             <br>
                                                             <input class="text-muted mb-2" name="user_social3"
@@ -213,11 +225,11 @@ if (isset($_POST["update_user"])) {
                                                             class="mb-0 btn btn-success">Update</button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            </form>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
+                            </div>
         </section>
 
 
@@ -227,6 +239,8 @@ if (isset($_POST["update_user"])) {
     </body>
 
     </html>
+
+    <script src="../js/Loaders.js"></script>
 
 </body>
 
