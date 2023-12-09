@@ -98,7 +98,7 @@
         {
             $query = "SELECT * FROM playlist  
             INNER JOIN tutors ON playlist.tutor_id = tutors.tutor_id 
-            INNER JOIN user ON tutors.user_id = user.user_id
+            INNER JOIN user ON tutors.tutor_id = user.user_id
             ORDER BY RAND() LIMIT 4 ";
 
             $statement =  $this->db->getConn()->prepare($query);

@@ -110,14 +110,106 @@ class ViewUser extends View{
 		return $str;
 	}
 
-	public function editForm(){
-		$str='<form action="profile.php?action=editaction" method="post">
-		<div>Name:</div><div> <input type="text" name="name" value="'.$this->model->getName().'"/></div><br>
-		<div>Password:</div><div> <input type="password" name="password" value="'.$this->model->getPassword().'"/></div><br>
-		<div>Age:</div><div> <input type="text" name="age" value="'.$this->model->getAge().'"/></div><br>
-		<div>Phone: </div><div><input type="text" name="phone" value="'.$this->model->getPhone().'"/></div><br>
-		<div><input type="submit" /></div>';
-		return $str;
+	public function view_courses(){
+
+				$playlist = $this->model->getplaylist();
+                $playlist_data =$playlist->get_playlist_table_row_5();
+                
+                if($playlist_data->rowCount() > 0)
+                {
+                 while($fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC) )
+                {
+                    
+				echo'
+
+                <div class="col  mb-3">
+                    <div class="card" style="width: 20rem; height: 25rem;  ">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light"
+                            style="width: 20rem; height: 25rem;  ">
+                            <img src="../images/courses/'.$fetch_playlist['thumb'].'"
+                                style="object-fit: cover ; height: 100%; width: 100%;" />
+                            <a href="course.php?playlist_id='.$fetch_playlist['playlist_id'].'">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div class="row mb-3">
+                                    <div class="col-7 d-flex justify-content-start align-items-center">
+                                        <img src="../images/users/'.$fetch_playlist['user_img'].'"
+                                            alt="Generic placeholder image"
+                                            class="img-fluid rounded-circle border  border-3"
+                                            style="width: 45px; height: 45px;">
+                                        <span class="ps-2"
+                                            style="font-size: 13px;">'.$fetch_playlist['user_name'].'</span>
+                                    </div>
+                                    <div class="col-5 d-flex justify-content-end align-items-center">
+                                        <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
+                                            <li>
+                                                <i class="fas fa-star fa-xs"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-star fa-xs"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-star fa-xs"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-star fa-xs"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-star fa-xs"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="card-text mb-3 text-muted">'.$fetch_playlist['title'].'</p>
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <p class="small mb-0"><i class="far fa-clock me-2"></i>'.$fetch_playlist['date'].'</p>
+                                        <p class="fw-bold mb-0">'.$fetch_playlist['Price'].'$</p>
+                                    </div>
+
+
+
+									<div class="d-flex row align-items-center justify-content-between mb-2">
+									
+										<div class="d-flex col-12 align-items-center w-100 mb-2">
+										
+
+                                    		<a class="addtocart btn btn-primary w-100" href="?add_to_wishlist=true" id="addtocart">
+                                           	Add to wishlist
+                                    		</a>
+										</div>
+										<div class="d-flex col-12 align-items-center w-100 ">
+
+											<a class="addtocart btn btn-secondry w-100" href="#" >
+											view course
+							 				</a>
+										</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+					';
+         
+                     $Course_ID = $fetch_playlist['playlist_id'];
+                
+					}
+
+                }
+
+                if (isset($_GET['add_to_wishlist'])) {
+
+                    // $wishlist->addwishlist($Course_ID, $User_ID);
+                }
+
+
+
+          
+
 	}
 }
 ?>

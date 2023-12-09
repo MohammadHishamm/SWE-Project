@@ -3,11 +3,22 @@
 define('__ROOT__', "../app/");
 
 // require_once('wishlistclass.php');
-
-
+require_once('../app/controller/Playlistcontroller.php');
 require_once('../app/controller/usercontroller.php');
 require_once('../app/model/user.php');
+require_once('../app/model/tutor.php');
 require_once('../app/view/viewuser.php');
+
+
+$tutor = new tutor();
+$playlist = $playlist = $tutor->getplaylist();
+$playliscontroller = new PlaylistController($playlist);
+
+$view_playlist = new ViewUser($playliscontroller, $tutor);
+
+$model = new User();
+$controller = new UsersController($model);
+
 
 // if(empty($_SESSION['user_data']))
 // {
@@ -50,7 +61,7 @@ function showToast() {
     x = document.getElementById("Audio");
 
     x.play();
-    
+
     document.getElementById('toast').classList.add('show');
 
 
@@ -190,7 +201,7 @@ function showToast() {
 
     </div>
 
-    <div class="container-fluid">
+    <div class="">
         <div class="p-5 ">
             <!-- Section name -->
             <div class="row mb-8">
@@ -207,104 +218,10 @@ function showToast() {
             <!-- section products -->
             <div class="row d-flex justify-content-center align-items-center">
 
-
-                <?php
-                require_once('../php/teacher/components/playlist_control.php');
-
-                
-                
-                $playlist = new playlist;
-                $playlist_data =$playlist->get_playlist_table_row_5();
-                
-                if($playlist_data->rowCount() > 0)
-                {
-                 while($fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC) )
-                {
-                    
-
-                    
+                <?=
+                $view_playlist->view_courses();
                 ?>
-
-
-
-                <div class="col  mb-3">
-                    <div class="card" style="width: 20rem; height: 25rem;  ">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light"
-                            style="width: 20rem; height: 25rem;  ">
-                            <img src="../php/teacher/uploaded_files/<?= $fetch_playlist['thumb'] ?>"
-                                style="object-fit: cover ; height: 100%; width: 100%;" />
-                            <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">
-                                <div class="row mb-3">
-                                    <div class="col-7 d-flex justify-content-start align-items-center">
-                                        <img src="teacher/uploaded_files/<?= $fetch_playlist['user_img'] ?>"
-                                            alt="Generic placeholder image"
-                                            class="img-fluid rounded-circle border  border-3"
-                                            style="width: 45px; height: 45px;">
-                                        <span class="ps-2"
-                                            style="font-size: 13px;"><?= $fetch_playlist['user_name'] ?></span>
-                                    </div>
-                                    <div class="col-5 d-flex justify-content-end align-items-center">
-                                        <ul class="mb-0 list-unstyled d-flex flex-row  " style="color: yellow;">
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-star fa-xs"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <p class="card-text mb-3"><?= $fetch_playlist['title'] ?></p>
-                                <div>
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                                        <p class="fw-bold mb-0">$90</p>
-                                    </div>
-
-
-
-
-                                    <a class="addtocart" href="?add_to_wishlist=true" id="addtocart">
-                                        <div class="pretext">
-                                            <i class="fas fa-cart-plus"></i> Add to wishlist
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <?php
-                                           $Course_ID = $fetch_playlist['playlist_id'];
-                }
-
-                }
-
-                if (isset($_GET['add_to_wishlist'])) {
-
-                    // $wishlist->addwishlist($Course_ID, $User_ID);
-                }
-
-
-
-                ?>
-
+                
             </div>
         </div>
     </div>
@@ -620,7 +537,7 @@ function showToast() {
     <!-- End   Features -->
 
     <!-- Footer -->
-    <?php include "Bottomnav.php" ?>
+     <?php include "Partials/Bottom-Nav.php" ?> 
 
 
     <!-- Load library from the CDN -->
