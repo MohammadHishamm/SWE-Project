@@ -36,13 +36,7 @@
 
               
             </div>
-                    <div class="col">
-                      <a>
-                      <i class="fas fa-comment" style="color: #000000;"></i>
-                      chat
-                      </a>
-                      
-                    </div>
+
                     
                     <div class="col">
                       <a href="Signout.php">

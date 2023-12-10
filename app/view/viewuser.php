@@ -128,7 +128,7 @@ class ViewUser extends View{
                             style="width: 20rem; height: 25rem;  ">
                             <img src="../images/courses/'.$fetch_playlist['thumb'].'"
                                 style="object-fit: cover ; height: 100%; width: 100%;" />
-                            <a href="course.php?playlist_id='.$fetch_playlist['playlist_id'].'">
+                            <a href="View-Course.php?playlist_id='.$fetch_playlist['playlist_id'].'">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
                                 </div>
                             </a>

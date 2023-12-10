@@ -144,7 +144,7 @@ body.dark {
 .transition.is-active 
 {
 
-  z-index: 100;
+  z-index: 10000000000;
   opacity: 1;
 }
 .dot {
