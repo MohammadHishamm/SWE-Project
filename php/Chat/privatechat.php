@@ -2,28 +2,34 @@
 
 //privatechat.php
 
-session_start();
+// session_start();
+define('__ROOT__', "../../app/");
+
+require_once(__ROOT__ . 'model/user.php');
 
 if(!isset($_SESSION['user_data']))
 {
 	header('location:index.php');
 }
 
-require_once('../User/user.php');
+
 
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Chat application in php using web scocket programming</title>
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Chat application in php using web scocket programming</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="vendor-front/bootstrap/bootstrap.min.css" rel="stylesheet">
 
     <link href="vendor-front/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="vendor-front/parsley/parsley.css"/>
+    <link rel="stylesheet" type="text/css" href="vendor-front/parsley/parsley.css" />
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor-front/jquery/jquery.min.js"></script>
@@ -33,399 +39,395 @@ require_once('../User/user.php');
     <script src="vendor-front/jquery-easing/jquery.easing.min.js"></script>
 
     <script type="text/javascript" src="vendor-front/parsley/dist/parsley.min.js"></script>
-	<style type="text/css">
-	
-		html,
-		body {
-		
-		  height: 100%;
-		  width: 100%;
-		  margin: 0;
-		}
-		#wrapper
-		{
-			display: flex;
-		  	flex-flow: column;
-		  	height: 100%;
-		}
-		#remaining
-		{
-			flex-grow : 1;
-		}
-		#messages {
-			height: 200px;
-			background: whitesmoke;
-			overflow: auto;
-		}
-		#chat-room-frm {
-			margin-top: 10px;
-		}
-		#user_list
-		{
-			height:450px;
-			overflow-y: auto;
-		}
+    <style type="text/css">
+    html,
+    body {
 
-		#messages_area
-		{
-			height: 75vh;
-			overflow-y: auto;
-			/*background-color:#e6e6e6;*/
-			/*background-color: #EDE6DE;*/
-		}
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
 
-	</style>
+    #wrapper {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    #remaining {
+        flex-grow: 1;
+    }
+
+    #messages {
+        height: 200px;
+        background: whitesmoke;
+        overflow: auto;
+    }
+
+    #chat-room-frm {
+        margin-top: 10px;
+    }
+
+    #user_list {
+        height: 450px;
+        overflow-y: auto;
+    }
+
+    #messages_area {
+        height: 75vh;
+        overflow-y: auto;
+        /*background-color:#e6e6e6;*/
+        /*background-color: #EDE6DE;*/
+    }
+    </style>
 </head>
+
 <body>
-	<div class="container-fluid">
-		
-		<div class="row">
+    <section class=" container-fluid w-100 h-100 " >
+        <div class="container py-5 ">
 
-			<div class="col-lg-3 col-md-4 col-sm-5" style="background-color: #f1f1f1; height: 100vh; border-right:1px solid #ccc;">
-				<?php
-				
-				$login_user_id = '';
+            <div class="row">
 
-				$token = '';
+                <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
-				foreach($_SESSION['user_data'] as $key => $value)
-				{
-					$login_user_id = $value['id'];
+                    <h5 class="font-weight-bold mb-3 text-center text-lg-start">Friends</h5>
 
-					$token = $value['token'];
-				}
-				?>
-				<a href="../home.php" class="btn btn-dark mt-3"><i class="fa-solid fa-backward" style="color: white;"></i></a>
-				<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
+                    <div class="card">
+                        <div class="card-body">
 
-				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
+                            <ul class="list-unstyled mb-0">
+                                <?php
+                                		$login_user_id = '';
 
-				<div class="mt-3 mb-3 text-center">
-					<h1>Friends</h1>
-				</div>
-				<?php
-				
+                                        $token = '';
+                                
+                                        foreach($_SESSION['user_data'] as $key => $value)
+                                        {
+                                            $login_user_id = $value['id'];
+                                
+                                            $token = $value['token'];
+                                        }
 
-				$user_object = new User;
+                                        $user_object = new User;
 
-				$user_object->setUserId($login_user_id);
+                                        $user_object->setUserId($login_user_id);
+                        
+                                        $user_data = $user_object->get_user_all_data_with_status_count();
 
-				$user_data = $user_object->get_user_all_data_with_status_count();
+                                        
+                                        
+                                        foreach($user_data as $key => $user)
+                                        {
+                                            if($user['user_id'] != $login_user_id)
+                                            {
+                                ?>
+                                <li class="p-2 border-bottom select_user" style="background-color: #eee;" data-userid = "<?=$user['user_id']?>">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row ">
+                                            <img src="../../Images/users/<?php echo $user['user_img']; ?>"
+                                                alt="avatar"
+                                                class="rounded-circle d-flex align-self-center me-3  shadow-1-strong"
+                                                width="40">
+                                            <div class="pt-1 " style="margin-left: 10px;">
+                                                <p class="fw-bold mb-0 " id="list_user_name_<?php echo $user["user_id"]; ?>"><?php echo $user['user_name']; ?></p>
+                                                <p class="small text-muted"></p>
+                                            </div>
+                                        </div>
+                                        <div class="pt-1">
+                                            <p class="small text-muted mb-1"><?php
+                                            if($user['user_login_status'])
+                                            {
+                                                echo "<span class='text-success'>Online</span>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class='text-danger'>Offline</span>";
+                                            
+                                            }
+                                            ?> </p>
+                                            <span
+                                                class="badge bg-danger text-white  float-end" style ="margin-left: 10px;"><?php echo $user['count_status'] ?></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <?php
+                                            }
+                                        }
+                                ?>
+                            </ul>
+                            <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
 
-				?>
-				<div class="list-group" style=" max-height: 100vh; margin-bottom: 10px; overflow-y:scroll; -webkit-overflow-scrolling: touch;">
-					<?php
-					
-					foreach($user_data as $key => $user)
-					{
-						$icon = '<i class=" text-danger">OFFLINE</i>';
+                            <input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
-						if($user['user_login_status'] == 'Login')
-						{
-							$icon = '<i class=" text-success">ONLINE</i>';
-						}
-
-						if($user['user_id'] != $login_user_id)
-						{
-							if($user['count_status'] > 0)
-							{
-								$total_unread_message = '<span class="badge badge-danger badge-pill">' . $user['count_status'] . '</span>';
-							}
-							else
-							{
-								$total_unread_message = '';
-							}
-
-						echo '
-
-						<div class="p-2 border-bottom select_user" style="background-color: #eee;" data-userid = '.$user['user_id'].'>
-                      	<a href="#!" class="d-flex justify-content-between">
-                        <div class="d-flex flex-row">
-                          
-                          <div class="pt-1 " style="margin-left: 30px;">
-                            <p class="fw-bold mb-0" id="list_user_name_'.$user["user_id"].'">'.$user["user_name"].'</p>
-                          </div>
                         </div>
-                        <div class="pt-1">
-                          <p class="small text-muted mb-1"  id="userstatus_'.$user["user_id"].'">'.$icon.'</p>
-                          <span class="badge bg-danger float-end"  id="userid_'.$user["user_id"].'">'.$total_unread_message.'</span>
-                        </div>
-                      </a>
                     </div>
 
-							';
-						}
-					}
+                </div>
 
+                <div class="col-md-6 col-lg-7 col-xl-8 bg-white p-3" style="overflow-y: auto" >
 
-					?>
-				</div>
-			</div>
-			
-			<div class="col-lg-9 col-md-8 col-sm-7">
-		        <div id="chat_area"></div>
-			</div>
-			
-		</div>
-	</div>
+                <div id="chat_area"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
 </body>
 <script type="text/javascript">
-	$(document).ready(function(){
+$(document).ready(function() {
 
-		var receiver_userid = '';
+    var receiver_userid = '';
 
-		var conn = new WebSocket('ws://localhost:8080?token=<?php echo $token; ?>');
-		console.log('WebSocket Token:', '<?php echo $token; ?>');
+    var conn = new WebSocket('ws://localhost:8080?token=<?php echo $token; ?>');
+    console.log('WebSocket Token:', '<?php echo $token; ?>');
 
 
-		conn.onopen = function(event)
-		{
-			console.log('Connection Established');
-		};
+    conn.onopen = function(event) {
+        console.log('Connection Established');
+    };
 
-		conn.onmessage = function(event)
-		{
-			var data = JSON.parse(event.data);
+    conn.onmessage = function(event) {
+        var data = JSON.parse(event.data);
 
-			if(data.status_type == 'Online')
-			{
-				$('#userstatus_'+data.user_id_status).html('<i class="fa fa-circle text-success"></i>');
-			}
-			else if(data.status_type == 'Offline')
-			{
-				$('#userstatus_'+data.user_id_status).html('<i class="fa fa-circle text-danger"></i>');
-			}
-			else
-			{
+        if (data.status_type == 'Online') {
+            $('#userstatus_' + data.user_id_status).html('<i class="fa fa-circle text-success"></i>');
+        } else if (data.status_type == 'Offline') {
+            $('#userstatus_' + data.user_id_status).html('<i class="fa fa-circle text-danger"></i>');
+        } else {
 
-				var row_class = '';
-				var background_class = '';
+            var row_class = '';
+            var background_class = '';
+            var text_class = '';
+            if (data.from == 'Me') {
+                row_class = 'row justify-content-start';
+                background_class = 'bg-secondary';
+                text_class = 'text-white';
+             
+            } else {
+                row_class = 'row justify-content-end';
+                background_class = 'bg-dark';
+                text_class = 'text-white';
+             
+            }
 
-				if(data.from == 'Me')
-				{
-					row_class = 'row justify-content-start';
-					background_class = 'alert-primary';
-				}
-				else
-				{
-					row_class = 'row justify-content-end';
-					background_class = 'alert-success';
-				}
+            if (receiver_userid == data.userId || data.from == 'Me') {
+                if ($('#is_active_chat').val() == 'Yes') {
+                    var html_data = `
+                    <li class="d-flex ` + row_class + `  mb-4 w-100   shadow  ">
+                            <div class="card w-100 `+ background_class + ` `+ text_class +`">
+                                <div class="card-header d-flex justify-content-between p-3">
+                                    <p class="fw-bold mb-0">` + data.from + `</p>
+                                    <p class="`+ text_class +` small mb-0"><i class="far fa-clock"></i> ` + data.datetime + `</p>
+                                </div>
+                                <div class="card-body ">
+                                    <p class="mb-0">
+                                    ` + data.msg + `
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
 
-				if(receiver_userid == data.userId || data.from == 'Me')
-				{
-					if($('#is_active_chat').val() == 'Yes')
-					{
-						var html_data = `
-						<div class="`+row_class+`">
-							<div class="col-sm-10">
-								<div class="shadow-sm alert `+background_class+`">
-									<b>`+data.from+` - </b>`+data.msg+`<br />
-									<div class="text-right">
-										<small><i>`+data.datetime+`</i></small>
-									</div>
-								</div>
-							</div>
-						</div>
 						`;
 
-						$('#messages_area').append(html_data);
+                    $('#messages_area').append(html_data);
 
-						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
+                    $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 
-						$('#chat_message').val("");
-					}
-				}
-				else
-				{
-					var count_chat = $('#userid'+data.userId).text();
+                    $('#chat_message').val("");
+                }
+            } else {
+                var count_chat = $('#userid' + data.userId).text();
 
-					if(count_chat == '')
-					{
-						count_chat = 0;
-					}
+                if (count_chat == '') {
+                    count_chat = 0;
+                }
 
-					count_chat++;
+                count_chat++;
 
-					$('#userid_'+data.userId).html('<span class="badge badge-danger badge-pill">'+count_chat+'</span>');
-				}
-			}
-		};
+                $('#userid_' + data.userId).html('<span class="badge badge-danger badge-pill">' +
+                    count_chat + '</span>');
+            }
+        }
+    };
 
-		conn.onclose = function (event) {
-    console.log('Connection closed:', event);
-};
+    conn.onclose = function(event) {
+        console.log('Connection closed:', event);
+    };
 
-		function make_chat_area(user_name)
-		{
-			var html = `
-			<div class="card">
-				<div class="card-header">
-					<div class="row">
-						<div class="col col-sm-6">
-							<b>Chat with <span class="text-danger" id="chat_user_name">`+user_name+`</span></b>
-						</div>
-					</div>
-				</div>
-				<div class="card-body" id="messages_area">
 
-				</div>
-			</div>
 
-			<form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
-				<div class="input-group mb-3" style="height:7vh">
-					<textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
-					<div class="input-group-append">
-						<button type="submit" name="send" id="send" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
-					</div>
-				</div>
-				<div id="validation_error"></div>
-				<br />
-			</form>
+    function make_chat_area(user_name) {
+        var html = `
+        <ul class="list-unstyled">
+                        <div class="card-header d-flex justify-content-between p-3">
+                            <p class="fw-bold mb-0">Chatting with  <span class="text-primary fs-6">` + user_name + `</span></p>
+                        </div>
+
+                        <div class="card-body" id="messages_area">
+
+                        </div>
+
+                        <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
+                        <li class="bg-white mb-3">
+                        <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
+                        </li>
+                        <div id="validation_error"></div>
+                        <button type="submit" name="send" id="send" class="btn btn-primary w-100">Send</button>
+                        </form>
+        </ul>
 			`;
 
-			$('#chat_area').html(html);
+        $('#chat_area').html(html);
 
-			$('#chat_form').parsley();
-		}
-
-		$(document).on('click', '.select_user', function(){
-
-			receiver_userid = $(this).data('userid');
-
-			var from_user_id = $('#login_user_id').val();
-
-			var receiver_user_name = $('#list_user_name_'+receiver_userid).text();
-
-			$('.select_user.active').removeClass('active');
-
-			$(this).addClass('active');
-
-			make_chat_area(receiver_user_name);
-
-			$('#is_active_chat').val('Yes');
-
-			$.ajax({
-				url:"action.php",
-				method:"POST",
-				data:{action:'fetch_chat', to_user_id:receiver_userid, from_user_id:from_user_id},
-				dataType:"JSON",
-				success:function(data)
-				{
-					if(data.length > 0)
-					{
-						var html_data = '';
-
-						for(var count = 0; count < data.length; count++)
-						{
-							var row_class= ''; 
-							var background_class = '';
-							var user_name = '';
-
-							if(data[count].from_user_id == from_user_id)
-							{
-								row_class = 'row justify-content-start';
-
-								background_class = 'alert-primary';
-
-								user_name = 'Me';
-							}
-							else
-							{
-								row_class = 'row justify-content-end';
-
-								background_class = 'alert-success';
-
-								user_name = data[count].from_user_name;
-							}
-
-							html_data += `
-							<div class="`+row_class+`">
-								<div class="col-sm-10">
-									<div class="shadow alert `+background_class+`">
-										<b>`+user_name+` - </b>
-										`+data[count].chat_message+`<br />
-										<div class="text-right">
-											<small><i>`+data[count].timestamp+`</i></small>
-										</div>
-									</div>
-								</div>
-							</div>
-							`;
-						}
-
-						$('#userid_'+receiver_userid).html('');
-
-						$('#messages_area').html(html_data);
-
-						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
-					}
-				}
-			})
-
-		});
-
-		$(document).on('click', '#close_chat_area', function(){
-
-			$('#chat_area').html('');
-
-			$('.select_user.active').removeClass('active');
-
-			$('#is_active_chat').val('No');
-
-			receiver_userid = '';
-
-		});
-
-		$(document).on('submit', '#chat_form', function(event){
-    event.preventDefault();
-
-    if ($('#chat_form').parsley().isValid()) {
-        var user_id = parseInt($('#login_user_id').val());
-        var message = $('#chat_message').val();
-
-        if (conn.readyState === WebSocket.OPEN) {
-            var data = {
-                userId: user_id,
-                msg: message,
-                receiver_userid: receiver_userid,
-                command: 'private'
-            };
-
-            conn.send(JSON.stringify(data));
-        } else {
-            console.error('WebSocket connection is not open. Current readyState:', conn.readyState);
-        }
+        $('#chat_form').parsley();
     }
-});
 
+    $(document).on('click', '.select_user', function() {
 
+        receiver_userid = $(this).data('userid');
 
-$('#logout').click(function(){
-    var user_id = $('#login_user_id').val();
+        var from_user_id = $('#login_user_id').val();
 
-    $.ajax({
-        url: "action.php",
-        method: "POST",
-        data: {user_id: user_id, action: 'leave'},
-        success: function (data) {
-            var response = JSON.parse(data);
-            if (response.status == 1) {
-                // Check if the WebSocket connection is open before closing it
-                if (conn.readyState === WebSocket.OPEN) {
-                    conn.close();
-                } else {
-                    console.error('WebSocket connection is not open.');
+        var receiver_user_name = $('#list_user_name_' + receiver_userid).text();
+
+        $('.select_user.active').removeClass('active');
+
+        $(this).addClass('active');
+
+        make_chat_area(receiver_user_name);
+
+        $('#is_active_chat').val('Yes');
+
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                action: 'fetch_chat',
+                to_user_id: receiver_userid,
+                from_user_id: from_user_id
+            },
+            dataType: "JSON",
+            success: function(data) {
+                if (data.length > 0) {
+                    var html_data = '';
+
+                    for (var count = 0; count < data.length; count++) {
+                        var row_class = '';
+                        var background_class = '';
+                        var text_class = '';
+                        var user_name = '';
+
+                        if (data[count].from_user_id == from_user_id) {
+                            row_class = 'row justify-content-end';
+
+                            background_class = 'bg-secondary';
+                            text_class = 'text-white';
+                            user_name = 'Me';
+                        } else {
+                            row_class = 'row justify-content-end';
+
+                            background_class = 'bg-dark';
+                            text_class = 'text-white';
+                            user_name = data[count].from_user_name;
+                        }
+
+                        html_data += 
+                        `
+                        <li class="d-flex ` + row_class + `  mb-4 w-100   shadow  ">
+                            <div class="card w-100 `+ background_class + ` `+ text_class +`">
+                                <div class="card-header d-flex justify-content-between p-3">
+                                    <p class="fw-bold mb-0">` + user_name + `</p>
+                                    <p class="`+ text_class +` small mb-0"><i class="far fa-clock"></i> ` + data[count].timestamp + `</p>
+                                </div>
+                                <div class="card-body ">
+                                    <p class="mb-0">
+                                    ` + data[count].chat_message + `
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+						`;
+                    }
+
+                    $('#userid_' + receiver_userid).html('');
+
+                    $('#messages_area').html(html_data);
+
+                    $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
                 }
-                location = '../home.php';
+            }
+        })
+
+    });
+
+    $(document).on('click', '#close_chat_area', function() {
+
+        $('#chat_area').html('');
+
+        $('.select_user.active').removeClass('active');
+
+        $('#is_active_chat').val('No');
+
+        receiver_userid = '';
+
+    });
+
+    $(document).on('submit', '#chat_form', function(event) {
+        event.preventDefault();
+
+        if ($('#chat_form').parsley().isValid()) {
+            var user_id = parseInt($('#login_user_id').val());
+            var message = $('#chat_message').val();
+
+            if (conn.readyState === WebSocket.OPEN) {
+                var data = {
+                    userId: user_id,
+                    msg: message,
+                    receiver_userid: receiver_userid,
+                    command: 'private'
+                };
+
+                conn.send(JSON.stringify(data));
+            } else {
+                console.error('WebSocket connection is not open. Current readyState:', conn.readyState);
             }
         }
     });
-});
+
+
+
+    $('#logout').click(function() {
+        var user_id = $('#login_user_id').val();
+
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                user_id: user_id,
+                action: 'leave'
+            },
+            success: function(data) {
+                var response = JSON.parse(data);
+                if (response.status == 1) {
+                    // Check if the WebSocket connection is open before closing it
+                    if (conn.readyState === WebSocket.OPEN) {
+                        conn.close();
+                    } else {
+                        console.error('WebSocket connection is not open.');
+                    }
+                    location = '../home.php';
+                }
+            }
+        });
+    });
 
 
 
 
-	})
+})
 </script>
+
 </html>

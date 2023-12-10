@@ -263,16 +263,14 @@ function get_user_by_id()
 function get_user_all_data_with_status_count()
 {
     $query = "
-    SELECT user_id, user_name, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = ? AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
+    SELECT user_id, user_name, user_login_status,user_img, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status FROM user
     ";
 
+	$statement = $this->db->getConn()->prepare($query);
 
+    $statement->execute([':user_id' => $this->user_id]);
 
-    $statement->execute([$this->user_id]);
-
-    $data = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-
-    return $data;
+    return $statement;
 }
 
 function update_user_connection_id()
@@ -285,9 +283,9 @@ function update_user_connection_id()
 
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('ss', $this->user_connection_id, $this->user_token);
+    $statement->execute([ $this->user_connection_id, $this->user_token]);
 
-    $statement->execute();
+  
 }
 
 function get_user_id_from_token()
@@ -299,14 +297,13 @@ function get_user_id_from_token()
 
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('s', $this->user_token);
 
-    $statement->execute();
+    $statement->execute([$this->user_token]);
 
-    $result = $statement->get_result();
-    $user_id = $result->fetch_assoc();
+    // $result = $statement->get_result();
+    // $user_id = $result->fetch_assoc();
 
-    return $user_id;
+    return $statement;
 }
 
 function get_user_data_by_id()
@@ -314,12 +311,9 @@ function get_user_data_by_id()
     $query = "SELECT * FROM user WHERE user_id = ?";
     $statement = $this->db->getConn()->prepare($query);
 
-    $statement->bind_param('i', $this->user_id);
-
     try {
-        if ($statement->execute()) {
-            $result = $statement->get_result();
-            $user_data = $result->fetch_assoc();
+        if ($statement->execute([ $this->user_id])) {
+            $user_data = $statement->fetch(PDO::FETCH_ASSOC);
         } else {
             $user_data = array();
         }

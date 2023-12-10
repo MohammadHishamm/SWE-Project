@@ -5,12 +5,17 @@
 namespace MyApp;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "User" . DIRECTORY_SEPARATOR . "user.php";
+
+
 
 
 
 
 require dirname(__DIR__) . "/database/PrivateChat.php";
+
+
+define('__ROOT__', "../../../app/");
+require_once(__ROOT__ . 'model/user.php');
 
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -44,7 +49,11 @@ class Chat implements MessageComponentInterface {
 
             $user_data = $user_object->get_user_id_from_token();
             
-            $user_id = $user_data['user_id'];
+            foreach($user_data as $key => $user)
+            {
+                $user_id = $user['user_id'];
+            }
+           
 
             $data['status_type'] = 'Online';
 
@@ -64,9 +73,9 @@ class Chat implements MessageComponentInterface {
         $numRecv = count($this->clients) - 1;
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
-
+        // from = l ana ba3tlo
         $data = json_decode($msg, true);
-
+        // data gwaha l command w user_id w msg w timestamp w kman l ana hab3atlo
         if($data['command'] == 'private')
         {
             //private chat
@@ -83,7 +92,7 @@ class Chat implements MessageComponentInterface {
 
             $private_chat_object->setTimestamp($timestamp);
 
-            $private_chat_object->setStatus('Yes');
+            $private_chat_object->setStatus('No');
 
             $chat_message_id = $private_chat_object->save_chat();
 
@@ -105,6 +114,7 @@ class Chat implements MessageComponentInterface {
 
             foreach($this->clients as $client)
             {
+                // bab3at ll front end 
                 if($from == $client)
                 {
                     $data['from'] = 'Me';
@@ -113,7 +123,7 @@ class Chat implements MessageComponentInterface {
                 {
                     $data['from'] = $sender_user_name;
                 }
-
+                // lw ana l receiver aw l sender
                 if($client->resourceId == $receiver_user_connection_id || $from == $client)
                 {   
                     $client->send(json_encode($data));
@@ -187,7 +197,11 @@ class Chat implements MessageComponentInterface {
 
             $user_data = $user_object->get_user_id_from_token();
 
-            $user_id = $user_data['user_id'];
+            foreach($user_data as $key => $user)
+            {
+                $user_id = $user['user_id'];
+            }
+           
 
             $data['status_type'] = 'Offline';
 
