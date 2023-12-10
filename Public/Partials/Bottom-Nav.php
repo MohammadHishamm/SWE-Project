@@ -1,7 +1,7 @@
 
   <!-- Footer -->
   <footer
-          class="text-center text-lg-start text-white"
+          class="text-center text-lg-start text-white" 
           style="background-color: #929fba"
           >
     <!-- Grid container -->

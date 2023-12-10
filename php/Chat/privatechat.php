@@ -22,6 +22,8 @@ if(!isset($_SESSION['user_data']))
 <head>
     <title>Chat application in php using web scocket programming</title>
     <!-- Bootstrap core CSS -->
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,12 +33,20 @@ if(!isset($_SESSION['user_data']))
 
     <link rel="stylesheet" type="text/css" href="vendor-front/parsley/parsley.css" />
 
+    <link rel="stylesheet" href="../../css/Sidenav.css">
+
+    <link rel="stylesheet" href="../../css/MDB css/mdb.min.css">
+    <link rel="stylesheet" href="../../css/All.css">
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor-front/jquery/jquery.min.js"></script>
     <script src="vendor-front/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="vendor-front/jquery-easing/jquery.easing.min.js"></script>
+
+
 
     <script type="text/javascript" src="vendor-front/parsley/dist/parsley.min.js"></script>
     <style type="text/css">
@@ -71,11 +81,13 @@ if(!isset($_SESSION['user_data']))
     #user_list {
         height: 450px;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     #messages_area {
-        height: 75vh;
+        height: 60vh;
         overflow-y: auto;
+        overflow-x: hidden;
         /*background-color:#e6e6e6;*/
         /*background-color: #EDE6DE;*/
     }
@@ -83,10 +95,12 @@ if(!isset($_SESSION['user_data']))
 </head>
 
 <body>
-    <section class=" container-fluid w-100 h-100 " >
-        <div class="container py-5 ">
+    <?php include "../../Public/Partials/Top-Nav.php" ?>
+    <?php include "../../Public/Partials/Side-Nav.php" ?>
+    <section class=" w-100 mb-10" style="height: fit-content;">
+        <div class="container py-5 " >
 
-            <div class="row">
+            <div class="row" >
 
                 <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
@@ -121,15 +135,17 @@ if(!isset($_SESSION['user_data']))
                                             if($user['user_id'] != $login_user_id)
                                             {
                                 ?>
-                                <li class="p-2 border-bottom select_user" style="background-color: #eee;" data-userid = "<?=$user['user_id']?>">
+                                <li class="p-2 border-bottom select_user" style="background-color: #eee;"
+                                    data-userid="<?=$user['user_id']?>">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row ">
-                                            <img src="../../Images/users/<?php echo $user['user_img']; ?>"
-                                                alt="avatar"
+                                            <img src="../../Images/users/<?php echo $user['user_img']; ?>" alt="avatar"
                                                 class="rounded-circle d-flex align-self-center me-3  shadow-1-strong"
                                                 width="40">
                                             <div class="pt-1 " style="margin-left: 10px;">
-                                                <p class="fw-bold mb-0 " id="list_user_name_<?php echo $user["user_id"]; ?>"><?php echo $user['user_name']; ?></p>
+                                                <p class="fw-bold mb-0 "
+                                                    id="list_user_name_<?php echo $user["user_id"]; ?>">
+                                                    <?php echo $user['user_name']; ?></p>
                                                 <p class="small text-muted"></p>
                                             </div>
                                         </div>
@@ -145,8 +161,8 @@ if(!isset($_SESSION['user_data']))
                                             
                                             }
                                             ?> </p>
-                                            <span
-                                                class="badge bg-danger text-white  float-end" style ="margin-left: 10px;"><?php echo $user['count_status'] ?></span>
+                                            <span class="badge bg-danger text-white  float-end"
+                                                style="margin-left: 10px;"><?php echo $user['count_status'] ?></span>
                                         </div>
                                     </div>
                                 </li>
@@ -155,7 +171,8 @@ if(!isset($_SESSION['user_data']))
                                         }
                                 ?>
                             </ul>
-                            <input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
+                            <input type="hidden" name="login_user_id" id="login_user_id"
+                                value="<?php echo $login_user_id; ?>" />
 
                             <input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
@@ -164,9 +181,9 @@ if(!isset($_SESSION['user_data']))
 
                 </div>
 
-                <div class="col-md-6 col-lg-7 col-xl-8 bg-white p-3" style="overflow-y: auto" >
+                <div class="col-md-6 col-lg-7 col-xl-8  " >
 
-                <div id="chat_area"></div>
+                    <div id="chat_area"  class="bg-white  " ></div>
 
                 </div>
 
@@ -174,7 +191,7 @@ if(!isset($_SESSION['user_data']))
 
         </div>
     </section>
-
+    <?php include "../../Public/Partials/Bottom-Nav.php" ?>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -205,22 +222,23 @@ $(document).ready(function() {
                 row_class = 'row justify-content-start';
                 background_class = 'bg-secondary';
                 text_class = 'text-white';
-             
+
             } else {
                 row_class = 'row justify-content-end';
                 background_class = 'bg-dark';
                 text_class = 'text-white';
-             
+
             }
 
             if (receiver_userid == data.userId || data.from == 'Me') {
                 if ($('#is_active_chat').val() == 'Yes') {
                     var html_data = `
                     <li class="d-flex ` + row_class + `  mb-4 w-100   shadow  ">
-                            <div class="card w-100 `+ background_class + ` `+ text_class +`">
+                            <div class="card w-100 ` + background_class + ` ` + text_class + `">
                                 <div class="card-header d-flex justify-content-between p-3">
                                     <p class="fw-bold mb-0">` + data.from + `</p>
-                                    <p class="`+ text_class +` small mb-0"><i class="far fa-clock"></i> ` + data.datetime + `</p>
+                                    <p class="` + text_class + ` small mb-0"><i class="far fa-clock"></i> ` + data
+                        .datetime + `</p>
                                 </div>
                                 <div class="card-body ">
                                     <p class="mb-0">
@@ -261,23 +279,25 @@ $(document).ready(function() {
 
     function make_chat_area(user_name) {
         var html = `
-        <ul class="list-unstyled">
-                        <div class="card-header d-flex justify-content-between p-3">
-                            <p class="fw-bold mb-0">Chatting with  <span class="text-primary fs-6">` + user_name + `</span></p>
+   
+        <div class="card-header d-flex justify-content-between p-3 ">
+            <p class="fw-bold mb-0">Chatting with  <span class="text-primary fs-6">` + user_name + `</span></p>
+        </div>
+        <ul class="list-unstyled" >
+
+
+                        <div class="card-body ms-2 me-2" id="messages_area">
+
                         </div>
-
-                        <div class="card-body" id="messages_area">
-
-                        </div>
-
-                        <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
-                        <li class="bg-white mb-3">
-                        <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
-                        </li>
-                        <div id="validation_error"></div>
-                        <button type="submit" name="send" id="send" class="btn btn-primary w-100">Send</button>
-                        </form>
         </ul>
+        <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
+                        <div class="bg-white mb-3 p-3">
+                        <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
+                        </div>
+                        <div id="validation_error"></div>
+                        <button type="submit" name="send" id="send" class="btn btn-primary w-100 ">Send</button>
+        </form>
+    
 			`;
 
         $('#chat_area').html(html);
@@ -327,20 +347,21 @@ $(document).ready(function() {
                             text_class = 'text-white';
                             user_name = 'Me';
                         } else {
-                            row_class = 'row justify-content-end';
+                            row_class = 'row justify-content-start';
 
                             background_class = 'bg-dark';
                             text_class = 'text-white';
                             user_name = data[count].from_user_name;
                         }
 
-                        html_data += 
-                        `
-                        <li class="d-flex ` + row_class + `  mb-4 w-100   shadow  ">
-                            <div class="card w-100 `+ background_class + ` `+ text_class +`">
+                        html_data +=
+                            `
+                        <li class="d-flex ` + row_class + `  mb-4      ">
+                            <div class="card   ` + background_class  + ` ` + text_class + `" style="max-width: 400px;">
                                 <div class="card-header d-flex justify-content-between p-3">
                                     <p class="fw-bold mb-0">` + user_name + `</p>
-                                    <p class="`+ text_class +` small mb-0"><i class="far fa-clock"></i> ` + data[count].timestamp + `</p>
+                                    <p class="` + text_class + ` small mb-0"><i class="far fa-clock"></i> ` + data[
+                                count].timestamp + `</p>
                                 </div>
                                 <div class="card-body ">
                                     <p class="mb-0">
