@@ -22,6 +22,18 @@
                         Courses</a>
 
                 </li>
+
+                <li class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
+                    <a href="Control-Content.php?action=add" class="btn btn-light  w-100  mb-0 " style="">Add
+                        Content</a>
+
+                </li>
+
+                <li class="list-group-item d-flex justify-content-start align-items-start pt-3 ">
+                    <a href="Control-Content.php?action=view" class="btn btn-light  w-100  mb-0 " style="">View
+                        Content</a>
+
+                </li>
               
         
             </ul>

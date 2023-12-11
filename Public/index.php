@@ -296,7 +296,7 @@ font-weight: bolder;">Arab Data Hub</p>
                 <img src="../Images/web_design back image.png" class="w-100 h-100" />
                 <div class="mask text-light d-flex justify-content-center  flex-column text-center"
                     style="background-color: rgba(0, 0, 0, 0.5) ">
-                    <a href="categories.php" style="color:white;">
+                    <a href="Categories.php" style="color:white;">
                         <h4>Web Design</h4>
                         <p class="m-0">100 Courses</p>
                     </a>
@@ -307,7 +307,7 @@ font-weight: bolder;">Arab Data Hub</p>
                 <img src="../Images/web_design back image.png" class="w-100 h-100" />
                 <div class="mask text-light d-flex justify-content-center  flex-column text-center"
                     style="background-color: rgba(0, 0, 0, 0.5) ">
-                    <a href="categories.php" style="color:white;">
+                    <a href="Categories.php" style="color:white;">
                         <h4>Web Design</h4>
                         <p class="m-0">100 Courses</p>
                     </a>

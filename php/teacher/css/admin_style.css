@@ -603,7 +603,7 @@ section {
 
 .video-form form p {
    padding-top: 1rem;
-   font-size: 1.7rem;
+   font-size: 1.2rem;
    color: var(--light-color);
 }
 
@@ -616,13 +616,13 @@ section {
    border-radius: .5rem;
    background-color: var(--light-bg);
    padding: 1.4rem;
-   font-size: 1.8rem;
+   font-size: 1rem;
    color: var(--black);
    margin: 1rem 0;
 }
 
 .video-form form textarea {
-   height: 20rem;
+   height: 15rem;
    resize: none;
 }
 

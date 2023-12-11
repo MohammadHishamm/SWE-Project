@@ -60,7 +60,7 @@ class content extends playlist
    $rename_video = $this->unique_id.'.'.$video_ext;
    $video_tmp_name = $_FILES['video']['tmp_name'];
 
-   $video_folder = '../uploaded_files/'.$rename_video;
+   $video_folder = '../Images/courses/videos/'.$rename_video;
    move_uploaded_file($video_tmp_name, $video_folder);
   
         $this->content_video  =  $rename_video;
@@ -75,7 +75,7 @@ class content extends playlist
     $rename_thumb = $this-> unique_id . '.' . $thumb_ext;
     $thumb_size = $_FILES['thumb']['size'];
     $thumb_tmp_name = $_FILES['thumb']['tmp_name'];
-    $thumb_folder = '../uploaded_files/'.$rename_thumb;
+    $thumb_folder = '../Images/courses/thumbs/'.$rename_thumb;
     move_uploaded_file($thumb_tmp_name, $thumb_folder);
     $this->content_thumb  =  $rename_thumb;
     }
@@ -101,10 +101,14 @@ class content extends playlist
         public function saveContent()
         {
             $add_content = $this->db->getConn()->prepare("INSERT INTO `content`(content_id, playlist_id, title, description, video, thumb, status) VALUES(?,?,?,?,?,?,?)");
-            $add_content->execute([$this->content_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]);
-
-
-
+            if($add_content->execute([$this->content_id, $this->content_playlist_id, $this->content_title, $this->content_description,  $this->content_video ,$this->content_thumb, $this->content_status]))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
@@ -123,11 +127,13 @@ class content extends playlist
             return $statement;
         }
 
+
+
         public function get__playlist_by_id($id)
         {
             $query = "SELECT  content.*
-            FROM content 
-            INNER JOIN playlist
+            FROM `content` 
+            INNER JOIN `playlist`
             ON  content.playlist_id = ? and playlist.playlist_id = content.playlist_id";
 
             $statement =  $this->db->getConn()->prepare($query);
@@ -174,9 +180,10 @@ class content extends playlist
             }
         }
 
-        public function Update_content($playlist_id , $tutor_id )
+        public function Update_content()
         {
-            
+            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET title = ?, description = ? , video = ? , thumb = ? , status = ? WHERE contetn_id = ?");
+            $update_content->execute([$this->content_title , $this->content_description ,$this->content_video, $this->content_image , $this->content_status , $this->content_id]);   
         }
 
 

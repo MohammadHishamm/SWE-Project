@@ -301,7 +301,7 @@ echo '
             </i><span style="';if($fecth_videos["status"] == "active"){echo "color:limegreen"; }else{echo "color:red";} echo'">'.$fecth_videos['status'].'</span></div>
             <div><i class="fas fa-calendar"></i><span>'.$fecth_videos['date'].'</span></div>
             </div>
-            <img src="../images/courses/'.$fecth_videos['thumb'].'" class="thumb" alt="">
+            <img src="../images/courses/thumbs/'.$fecth_videos['thumb'].'" class="thumb" alt="">
             <h3 class="title">'.$fecth_videos['title'].'</h3>
             <form action="" method="post" class="flex-btn">
                 <input type="hidden" name="video_id" value="'.$video_id.'">

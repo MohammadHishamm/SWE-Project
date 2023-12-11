@@ -122,18 +122,18 @@
 
             $query = "SELECT * FROM playlist 
             INNER JOIN tutors ON playlist.tutor_id = tutors.tutor_id 
-            INNER JOIN user ON tutors.user_id = user.user_id
-             LIMIT :this_page_first_result,:results_per_page";
+            INNER JOIN user ON tutors.tutor_id = user.user_id
+             LIMIT $this_page_first_result,$results_per_page";
     
             $statement =  $this->db->getConn()->prepare($query);
     
             // byzawd ' fakro string 
             // fa bazwed PDO::PARAM_INT 3ashan 22olo eno int 
-            $statement->bindParam(':this_page_first_result', $this_page_first_result , PDO::PARAM_INT);
+            // $statement->bindParam(':this_page_first_result', $this_page_first_result , PDO::PARAM_INT);
     
-            $statement->bindParam(':results_per_page', $results_per_page , PDO::PARAM_INT);
+            // $statement->bindParam(':results_per_page', $results_per_page , PDO::PARAM_INT);
 
-            $statement->execute();
+            $statement->execute([]);
 
 
             return $statement;
