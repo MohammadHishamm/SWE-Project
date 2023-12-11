@@ -162,12 +162,12 @@ class content extends playlist
                $delete_video_thumb =  $this->db->getConn()->prepare("SELECT * FROM `content` WHERE content_id = ? LIMIT 1");
                $delete_video_thumb->execute([$video_id]);
                $fetch_thumb = $delete_video_thumb->fetch(PDO::FETCH_ASSOC);
-               unlink('../uploaded_files/'.$fetch_thumb['thumb']);
+               unlink('../Images/courses/thumbs/'.$fetch_thumb['thumb']);
          
                $delete_video = $this->db->getConn()->prepare("SELECT * FROM `content` WHERE content_id = ? LIMIT 1");
                $delete_video->execute([$video_id]);
                $fetch_video = $delete_video->fetch(PDO::FETCH_ASSOC);
-               unlink('../uploaded_files/'.$fetch_video['video']);
+               unlink('../Images/courses/videos/'.$fetch_video['video']);
                 
                $delete_playlist = $this->db->getConn()->prepare("DELETE FROM `content` WHERE content_id = ?");
                $delete_playlist->execute([$video_id]);

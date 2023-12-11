@@ -6,18 +6,20 @@ require_once(__ROOT__ . "controller/controller.php");
 class ContentController extends Controller
 {
 
-    function delete_playlist($delete_id , $tutor_id)
+    function delete_playlist()
     {
 
-
-   if(  $this->model->Delete_playlist($delete_id,$tutor_id))
-   {
-    $_SESSION["error_message"] = "Playlist deleted successfully!";
-   }
-   else
-   {
-    $_SESSION["error_message"] = "Error !";
-   }
+        $delete_id = $_POST['video_id'];
+        $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
+     
+        if($this->model->remove_content($delete_id))
+        {
+            $_SESSION["error_message"] = 'Content deleted!';
+        }
+        else
+        {
+            $_SESSION["error_message"] = 'Content already deleted!';
+        }
         
     }
 

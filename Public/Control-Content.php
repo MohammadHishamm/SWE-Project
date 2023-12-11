@@ -8,8 +8,8 @@ require_once('../app/view/viewcontent.php');
 $tutor = new tutor();
 $content  = $tutor->getcontent();
 
-$playliscontent = new ContentController($content);
-$view = new ViewContent($playliscontent, $tutor);
+$contentcontroller = new ContentController($content);
+$view = new ViewContent($contentcontroller, $tutor);
 
 foreach($_SESSION['user_data'] as $key => $value)
 {
@@ -18,26 +18,13 @@ foreach($_SESSION['user_data'] as $key => $value)
 
 if(isset($_POST['delete_video']))
 {
-   $delete_id = $_POST['video_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
-
-   if($content->remove_content($delete_id))
-   {
-      $message[] = 'video deleted!';
-   }
-   else
-   {
-      $message[] = 'video already deleted!';
-   }
+    $contentcontroller->delete_playlist();
 }
 
 if (isset($_POST['submit'])) 
 {
-
-    $playliscontent->add_content();
-   
-
- }
+    $contentcontroller->add_content();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

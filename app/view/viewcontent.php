@@ -73,9 +73,9 @@ echo'
                                     value="'.$video_id.'">
                                 <a href="update_content.php?get_id='.$video_id.'?>"
                                     class="btn btn-warning w-100">update</a>
-                                <input type="submit" value="delete" class="btn btn-danger w-100"
-                                    onclick="return confirm("delete this video?");"
-                                    name="delete_video">
+                                <button type="submit"  class="btn btn-danger w-100" name="delete_video">
+                                    delete
+                                </button>
                             </form>
                             <a href="view_content.php?get_id='.$video_id.'"
                                 class="btn btn-primary w-100 mt-3">view content</a>
