@@ -219,12 +219,12 @@ $(document).ready(function() {
             var background_class = '';
             var text_class = '';
             if (data.from == 'Me') {
-                row_class = 'row justify-content-start';
+                row_class = 'row justify-content-end';
                 background_class = 'bg-secondary';
                 text_class = 'text-white';
 
             } else {
-                row_class = 'row justify-content-end';
+                row_class = 'row justify-content-start';
                 background_class = 'bg-dark';
                 text_class = 'text-white';
 
@@ -233,8 +233,8 @@ $(document).ready(function() {
             if (receiver_userid == data.userId || data.from == 'Me') {
                 if ($('#is_active_chat').val() == 'Yes') {
                     var html_data = `
-                    <li class="d-flex ` + row_class + `  mb-4 w-100   shadow  ">
-                            <div class="card w-100 ` + background_class + ` ` + text_class + `">
+                    <li class="d-flex ` + row_class + `  mb-4     ">
+                            <div class="card  ` + background_class + ` ` + text_class + ` " style="max-width: 400px;">
                                 <div class="card-header d-flex justify-content-between p-3">
                                     <p class="fw-bold mb-0">` + data.from + `</p>
                                     <p class="` + text_class + ` small mb-0"><i class="far fa-clock"></i> ` + data
@@ -291,11 +291,16 @@ $(document).ready(function() {
                         </div>
         </ul>
         <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
-                        <div class="bg-white mb-3 p-3">
-                        <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
+                        <div class=" mb-3 ps-3 pe-3 pb-3  row d-flex justify-content-center align-items-center">
+                        <div class="col-10">
+                        <textarea class="form-control " id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
+                        </div>
+                        <div class="col-2">   
+                        <button type="submit" name="send" id="send" class="btn btn-primary  ">Send</button>
+                        </div>   
                         </div>
                         <div id="validation_error"></div>
-                        <button type="submit" name="send" id="send" class="btn btn-primary w-100 ">Send</button>
+                       
         </form>
     
 			`;
@@ -357,7 +362,7 @@ $(document).ready(function() {
                         html_data +=
                             `
                         <li class="d-flex ` + row_class + `  mb-4      ">
-                            <div class="card   ` + background_class  + ` ` + text_class + `" style="max-width: 400px;">
+                            <div class="card   ` + background_class  + ` ` + text_class + ` " style="max-width: 400px;">
                                 <div class="card-header d-flex justify-content-between p-3">
                                     <p class="fw-bold mb-0">` + user_name + `</p>
                                     <p class="` + text_class + ` small mb-0"><i class="far fa-clock"></i> ` + data[
