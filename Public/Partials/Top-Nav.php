@@ -39,7 +39,7 @@
 
                     
                     <div class="col">
-                      <a href="Signout.php">
+                      <a href="Partials/Sign-out.php">
 
                         <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>
 

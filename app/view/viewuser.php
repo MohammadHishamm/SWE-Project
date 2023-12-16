@@ -55,8 +55,8 @@ class ViewUser extends View{
 		return $str;
 	}
 
-	function signupForm(){
-		$str='                <form method="post" class="sign-up-form" id="register_form">
+	function signupForm($google_client){
+		echo '<form method="post" class="sign-up-form" id="register_form">
 		<h2 class="title">Sign up</h2>
 		<div class="input-field">
 			<i class="fas fa-user"></i>
@@ -99,15 +99,15 @@ class ViewUser extends View{
 			<a href="#" class="social-icon">
 				<i class="fab fa-twitter"></i>
 			</a>
-			<a href="#" class="social-icon">
-				<i class="fab fa-google"></i>
+			<a href="'.$google_client->createAuthUrl().'"  class="social-icon" >
+			<i class="fab fa-google"></i>
 			</a>
 			<a href="#" class="social-icon">
 				<i class="fab fa-linkedin-in"></i>
 			</a>
 		</div>
 	</form>';
-		return $str;
+		
 	}
 
 	public function view_courses(){

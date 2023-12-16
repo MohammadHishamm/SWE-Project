@@ -22,6 +22,7 @@ class User extends Model
 	private $user_login_status;
 	private $user_token;
 	private $user_connection_id;
+	private $user_google_img;
 	public $connect;
 
 	public function __construct()
@@ -188,6 +189,10 @@ class User extends Model
 		return $this->user_connection_id;
 	}
 
+	function user_google_img($user_google_img)
+	{
+		$this->user_google_img = $user_google_img;
+	}
 	
 
 
@@ -202,6 +207,22 @@ class User extends Model
 	$this->user_img = "default.jpg";
 
     if ($statement->execute([$this->user_name, $this->user_email,$this->user_img ,$this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code])) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function save_google_data()
+{
+	$sql = "
+    INSERT INTO user (user_name, user_email,user_img, user_status, user_created_on) 
+    VALUES (?, ?, ?, ?, ?)
+    ";
+
+    $statement = $this->db->getConn()->prepare($sql);
+
+    if ($statement->execute([$this->user_name, $this->user_email,$this->user_google_img , $this->user_status, $this->user_created_on])) {
         return true;
     } else {
         return false;

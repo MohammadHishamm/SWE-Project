@@ -26,6 +26,8 @@ $controller = new UsersController($model);
 // }
 
 
+
+
 // $wishlist = new wishlist;
 foreach($_SESSION['user_data'] as $key => $value)
          {

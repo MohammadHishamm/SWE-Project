@@ -54,8 +54,8 @@ if(empty($_SESSION['user_data']))
     <?php include "Partials/Side-Nav.php" ?>
 
     <!-- Sidebar filter section -->
-    <div class="row mb-7">
-    <section id="sidebar" class="col-3 ps-5 pt-5">
+    <div class="row mb-7  ms-3">
+    <section id="sidebar" class="col-9 col-md-3 me-0 me-md-5 ps-5 pt-5 pb-3 bg-light shadow h-100 mt-5 rounded rounded-3">
                 <h2>Courses</h2>
                 <div class="border-bottom pb-2 ml-2">
                     <h4 id="burgundy">Filters</h4>
@@ -108,7 +108,7 @@ if(empty($_SESSION['user_data']))
                 </div>
             </section>
     <!-- products section -->
-    <section class="col-9" >
+    <section class="col-8" >
         <div class="container py-5">
             
             <?php
