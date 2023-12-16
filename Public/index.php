@@ -29,10 +29,14 @@ $controller = new UsersController($model);
 
 
 // $wishlist = new wishlist;
-foreach($_SESSION['user_data'] as $key => $value)
-         {
-           $User_ID = $value['id'];
-         }  
+if(isset($_SESSION['user_data']))
+{
+    foreach($_SESSION['user_data'] as $key => $value)
+    {
+      $User_ID = $value['id'];
+    }  
+}
+
         
 
 ?>
