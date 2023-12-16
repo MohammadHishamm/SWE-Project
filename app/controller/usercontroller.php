@@ -35,7 +35,7 @@ class UsersController extends Controller{
                 if($this->model->update_user_login_data())
                 {
                         $_SESSION["error_message"]  = 'You already signup with that account !';
-                        
+
                         $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
@@ -48,7 +48,11 @@ class UsersController extends Controller{
             else
             {
                 $this->model->setUserName($_POST['user_name']);
-                $this->model->user_google_img($_POST['user_img']);
+                
+                $imageContent = file_get_contents($_POST['user_img']);
+                file_put_contents('../Images/users/'.$_POST['user_name'].'.jpg', $imageContent);
+
+                $this->model->user_google_img($_POST['user_name'].'.jpg');
                 $this->model->setUserStatus('Enabled');
                 $this->model->setUserCreatedOn(date('Y-m-d H:i:s'));
         
