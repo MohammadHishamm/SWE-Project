@@ -34,8 +34,6 @@ class UsersController extends Controller{
 
                 if($this->model->update_user_login_data())
                 {
-                        $_SESSION["error_message"]  = 'You already signup with that account !';
-
                         $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
@@ -59,7 +57,31 @@ class UsersController extends Controller{
         
                 if($this->model->save_google_data())
                 {
-                    $_SESSION["error_message"]  = 'Successfully signed up , please signin to continue';
+
+                    $user_data = $this->model->get_user_data_by_email();
+
+                    if(is_array($user_data) && count($user_data) > 0)
+                    {
+
+                        $this->model->setUserId($user_data['user_id']);
+
+                        $this->model->setUserLoginStatus('Login');
+
+                        $user_token = md5(uniqid());
+
+                        $this->model->setUserToken($user_token);
+
+
+                        if($this->model->update_user_login_data())
+                        {
+                            $_SESSION['user_data'][$user_data['user_id']] = [
+                            'id'    =>  $user_data['user_id'],
+                            'name'  =>  $user_data['user_name'],
+                            'token' =>  $user_token
+                        ];
+                        }
+                        header("Location:index.php?login=success");
+                    }
                 }
             }
         
