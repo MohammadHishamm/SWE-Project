@@ -22,7 +22,28 @@ class UsersController extends Controller{
 
             if(is_array($user_data) && count($user_data) > 0)
             {
-                $_SESSION["error_message"]  = 'You already signup with that account !';
+
+                $this->model->setUserId($user_data['user_id']);
+
+                $this->model->setUserLoginStatus('Login');
+
+                $user_token = md5(uniqid());
+
+                $this->model->setUserToken($user_token);
+
+
+                if($this->model->update_user_login_data())
+                {
+                        $_SESSION["error_message"]  = 'You already signup with that account !';
+                        
+                        $_SESSION['user_data'][$user_data['user_id']] = [
+                        'id'    =>  $user_data['user_id'],
+                        'name'  =>  $user_data['user_name'],
+                        'token' =>  $user_token
+                    ];
+                }
+               header("Location:index.php?login=success");
+               
             }
             else
             {
@@ -40,55 +61,6 @@ class UsersController extends Controller{
         
     }
 
-
-    public function signin_with_google() {
-
-      
-        $this->model->setUserEmail($_POST['user_email']);
-    
-        $user_data = $this->model->get_user_data_by_email();
-    
-        if(is_array($user_data) && count($user_data) > 0)
-        {
-          
-            if($user_data['user_status'] == 'Enable')
-            {
-
-                    $this->model->setUserId($user_data['user_id']);
-    
-                    $this->model->setUserLoginStatus('Login');
-    
-                    $user_token = md5(uniqid());
-    
-                    $this->model->setUserToken($user_token);
-    
-    
-                    if($this->model->update_user_login_data())
-                    {
-                        $_SESSION['user_data'][$user_data['user_id']] = [
-                            'id'    =>  $user_data['user_id'],
-                            'name'  =>  $user_data['user_name'],
-                            'token' =>  $user_token
-                        ];
-    
-                       header("Location:index.php?login=success");
-    
-                    }
-                    else
-                    {
-                        $error = 'Wrong Password';
-                    }
-            }
-            else
-            {
-                $error = 'Please Verify Your Email Address';
-            }
-        }
-        else
-        {
-            $error = 'Wrong Email Address';
-        }
-    }
     public function signup() {
         $error = '';
 

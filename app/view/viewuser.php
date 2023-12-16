@@ -16,7 +16,7 @@ class ViewUser extends View{
 		return $str;
 	}
 	
-	function signinForm(){
+	function signinForm($google_client){
 		$str='                
 		<form method="post" class="sign-in-form" id="login_form">
 		<h2 class="title">Sign in</h2>
@@ -44,7 +44,7 @@ class ViewUser extends View{
 			<a href="#" class="social-icon">
 				<i class="fab fa-twitter"></i>
 			</a>
-			<a href="#" class="social-icon">
+			<a href="'.$google_client->createAuthUrl().'" class="social-icon">
 				<i class="fab fa-google"></i>
 			</a>
 			<a href="#" class="social-icon">

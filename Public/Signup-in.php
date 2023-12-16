@@ -2,7 +2,7 @@
 define('__ROOT__', "../app/");
 include_once "../php/chat/vendor/autoload.php";
 ?>
-    <?php
+<?php
     require_once('../app/controller/usercontroller.php');
     require_once('../app/model/user.php');
     require_once('../app/view/viewuser.php');
@@ -18,11 +18,16 @@ include_once "../php/chat/vendor/autoload.php";
 
     $google_client->setClientSecret('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'); //Define your Client Secret Key
   
-    $google_client->setRedirectUri('http://localhost/SWE-PROJECT/public/Signup-in.php'); //Define your Redirect Uri
+
+
+    $redirect_uri = 'http://localhost/SWE-PROJECT/public/Signup-in.php';
+  
+    $google_client->setRedirectUri($redirect_uri);
 
     $google_client->addScope('email');
 
     $google_client->addScope('profile');
+
 
     if(isset($_GET["code"]) ) 
     {
@@ -49,7 +54,7 @@ include_once "../php/chat/vendor/autoload.php";
             $_POST['user_email']=$data['email'];
             $_POST['user_img']=$data['picture'];
             
-
+           
             $controller->signup_with_google();
        
             // echo $token['error'];
@@ -86,7 +91,7 @@ include_once "../php/chat/vendor/autoload.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/signuppage.css" />
-    
+
     <title>Sign in & Sign up Form</title>
 </head>
 
@@ -127,7 +132,7 @@ function showToast() {
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Sign in -->
-                <?= $view->signinForm(); ?>
+                <?= $view->signinForm($google_client); ?>
                 <!-- Sign up -->
                 <?= $view->signupForm($google_client); ?>
 
@@ -145,9 +150,11 @@ function showToast() {
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
                         ex ratione. Aliquid!
                     </p>
-                    <button class="btn transparent" id="sign-up-btn">
+                   
+                    <button class="btn transparent" id="sign-up-btn"  name="Sign up">
                         Sign up
                     </button>
+                
                 </div>
 
             </div>
@@ -158,9 +165,11 @@ function showToast() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
                         laboriosam ad deleniti.
                     </p>
-                    <button class="btn transparent" id="sign-in-btn">
+               
+                    <button class="btn transparent" id="sign-up-btn"  name="Sign in">
                         Sign in
                     </button>
+                    
                 </div>
                 <img src="img/register.svg" class="image" alt="" />
             </div>
