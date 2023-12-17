@@ -1,7 +1,7 @@
 
 
 
-## Home
+
 <p align="center">
   <img src="Images/MyWebsite/Arab%20Data%20Hub%20Logo.png" alt="Arab Data Hub Logo">
 </p>
@@ -20,6 +20,7 @@ Welcome to the Arab Data Hub eLearning platform project repository! This project
 - [🛠️ Contributing](#contributing)
 - [📄 License](#license)
 
+## Home
 <p align="center">
   <img src="Images/MyWebsite/Home_img.png" alt="Arab Data Hub Logo">
 </p>
