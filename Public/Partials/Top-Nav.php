@@ -22,31 +22,38 @@
         if(isset($_SESSION['user_data']))
         {
           foreach($_SESSION['user_data'] as $key => $value)
-{
-  $id = $value['id'];
-}
+          {
+              $id = $value['id'];
+              $img = $value['img'];
+          }
           echo '
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
               <div class="row align-items-center">
 
-              <div class="col">
-              <a class="btn btn-primary p-2  rounded-2"  href="../php/chat/privatechat.php">
-                Chat
-              </a>
+
 
               
-            </div>
+            <div class="dropdown col">
+            <a 
+            data-mdb-dropdown-init
+            href="#"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            aria-expanded="false"
+            href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../images/users/'.$img.'" alt="mdo" width="36" height="36" class="rounded-circle">
+            </a>
 
-                    
-                    <div class="col">
-                      <a href="Partials/Sign-out.php">
 
-                        <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>
-
-                      </a>
-                    </div>
-                    </div>
-                  </div>';
+            <ul class="dropdown-menu text-small " aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-start">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="Partials/Sign-out.php">Sign out</a></li>
+            </ul>
+          </div>
+          ';
      
       } else {
         

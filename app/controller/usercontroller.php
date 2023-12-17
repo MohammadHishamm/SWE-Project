@@ -37,7 +37,8 @@ class UsersController extends Controller{
                         $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
-                        'token' =>  $user_token
+                        'token' =>  $user_token,
+                        'img' =>  $user_data['user_img']
                     ];
                 }
                header("Location:index.php?login=success");
@@ -77,7 +78,8 @@ class UsersController extends Controller{
                             $_SESSION['user_data'][$user_data['user_id']] = [
                             'id'    =>  $user_data['user_id'],
                             'name'  =>  $user_data['user_name'],
-                            'token' =>  $user_token
+                            'token' =>  $user_token,
+                            'img' =>  $user_data['user_img']
                         ];
                         }
                         header("Location:index.php?login=success");
@@ -202,7 +204,8 @@ class UsersController extends Controller{
                     $_SESSION['user_data'][$user_data['user_id']] = [
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
-                        'token' =>  $user_token
+                        'token' =>  $user_token,
+                        'img' =>  $user_data['user_img']
                     ];
 
                    header("Location:index.php?login=success");

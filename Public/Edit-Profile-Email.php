@@ -116,15 +116,21 @@ else
 
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/profile.php" class="btn btn-light mb-0 ps-3  " style="width: 100%;"> <i class="fa-regular fa-user pe-3"></i>Profile</a>
+                                                    <a href="/SWE-PROJECT/php/profile.php"
+                                                        class="btn btn-light mb-0 ps-3  " style="width: 100%;"> <i
+                                                            class="fa-regular fa-user pe-3"></i>Profile</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center  pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_account.php" class="btn btn-light mb-0 ps-3 active" style="width: 100%;"><i class="fa-solid fa-gear pe-3"></i>Account</a>
+                                                    <a href="/SWE-PROJECT/php/Profile_account.php"
+                                                        class="btn btn-light mb-0 ps-3 active" style="width: 100%;"><i
+                                                            class="fa-solid fa-gear pe-3"></i>Account</a>
                                                 </li>
                                                 <li
                                                     class="list-group-item d-flex justify-content-start align-items-center pt-3 ps-3 pe-3 ">
-                                                    <a href="/SWE-PROJECT/php/Profile_courses.php" class="btn btn-light mb-0 ps-3  " style="width: 100%;"><i class="fa-solid fa-book pe-3"></i></i>My Courses</a>
+                                                    <a href="/SWE-PROJECT/php/Profile_courses.php"
+                                                        class="btn btn-light mb-0 ps-3  " style="width: 100%;"><i
+                                                            class="fa-solid fa-book pe-3"></i></i>My Courses</a>
 
                                                 </li>
                                             </ul>
@@ -154,8 +160,10 @@ else
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12 offset-sm-9">
-                                                <button type="submit" class="mb-0 btn btn-danger">Delete Account</button>
-                                                    <button type="submit" class="mb-0 btn btn-success">Update mail</button>
+                                                    <button type="submit" class="mb-0 btn btn-danger">Delete
+                                                        Account</button>
+                                                    <button type="submit" class="mb-0 btn btn-success">Update
+                                                        mail</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +176,9 @@ else
 
 
         <?php include "Bottomnav.php" ?>
-
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js">
+        </script>
         <script>
         const colors = [{
                 font: '#990f0f',
@@ -252,7 +262,3 @@ else
     </body>
 
     </html>
-
-</body>
-
-</html>

@@ -1,3 +1,4 @@
+
 window.onload = () => {
 
   const anchors = document.querySelectorAll('.link-anchor');

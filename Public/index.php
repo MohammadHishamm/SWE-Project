@@ -57,7 +57,7 @@ if(isset($_SESSION['user_data']))
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <script src="../js/MDB java/mdb.min.js"></script>
+
 </head>
 
 
@@ -615,6 +615,17 @@ font-weight: bolder;">Arab Data Hub</p>
     });
     </script>
     <script src="../js/Loaders.js"></script>
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+    >
+    </script>
+
+
+
+
+    </script>
 </body>
 
 </html>
