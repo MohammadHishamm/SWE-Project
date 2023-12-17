@@ -1,4 +1,8 @@
-#<img src="Images/MyWebsite/logo%20only.png" alt="Arab Data Hub Logo" style="width:25px; height:25px;"> Arab Data Hub - eLearning Platform
+<div style="text-align: center;">
+    <img src="Images/MyWebsite/logo%20only.png" alt="Arab Data Hub Logo" style="width: 50px; height: 50px; object-fit: contain;">
+</div>
+<p style="text-align: center; margin-top: 10px; font-weight: bold;">Arab Data Hub - eLearning Platform</p>
+
 
 <p align="center">
   <img src="Images/MyWebsite/Arab%20Data%20Hub%20Logo.png" alt="Arab Data Hub Logo">
