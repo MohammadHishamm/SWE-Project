@@ -20,6 +20,11 @@ Welcome to the Arab Data Hub eLearning platform project repository! This project
 - [🛠️ Contributing](#contributing)
 - [📄 License](#license)
 
+## Home
+<p align="center">
+  <img src="Images/MyWebsite/Home_img.png" alt="Arab Data Hub Logo">
+</p>
+
 ## 📝 Introduction
 
 Arab Data Hub is an eLearning platform developed as a part of a Software Engineering course. The platform caters to the needs of administrators, teachers, and students, providing a robust and user-friendly environment for online education. It allows users to enroll in courses, access learning materials, communicate with peers, and more.
