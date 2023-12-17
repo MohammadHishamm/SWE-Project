@@ -12,6 +12,7 @@ $playlist = new playlist;
 // }
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,20 +27,7 @@ $playlist = new playlist;
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
     <link rel="stylesheet" href="../css/Sidenav.css">
     <link rel="stylesheet" href="../css/All.css">
-    <script>
-    function showUser(str) {
 
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "Search_card.php?q=" + str, true);
-        xmlhttp.send();
-
-    }
-    </script>
 </head>
 <style>
 @media (max-width: 767.98px) {
@@ -48,8 +36,24 @@ $playlist = new playlist;
     }
 }
 </style>
+<script>
+  function showResult(str) {
+  
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+    }
+  }
+  xmlhttp.open("GET","Partials/livesearch.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+
 
 <body style="background-color: #ebeff4">
+<div id ="livesearch"></div>
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
 
@@ -112,7 +116,7 @@ $playlist = new playlist;
         <div class="container py-5">
             
             <?php
-
+                
                 $playlist_data =$playlist->get_playlist_table_row();
                 
                 // define how many results you want per page

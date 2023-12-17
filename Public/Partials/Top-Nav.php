@@ -16,7 +16,7 @@
               <li class="nav-item ">
                   <form class="d-flex" action="categories.php" method="post" role="search">
 
-                      <input class="form-control me-2 rounded-9 rounded-pill search" name="search" type="search"
+                      <input class="form-control me-2 rounded-9 rounded-pill search" onclick="showResult(this.value)" autocomplete="off" name="search" type="search"
                           placeholder="Find a specfic course ?" aria-label="Search">
                   </form>
               </li>
@@ -100,3 +100,5 @@
           ?>
       </div>
   </nav>
+
+
