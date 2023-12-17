@@ -250,9 +250,9 @@
 
       public function search($name)
       {
-        $query = "SELECT * FROM `playlist` WHERE title LIKE ? ORDER BY date DESC";
+        $query = "SELECT * FROM `playlist` WHERE title LIKE $name ORDER BY date DESC";
         $statement =  $this->db->getConn()->prepare($query);
-        $statement->execute([$name]);
+        $statement->execute();
 
        return $statement;
       }
