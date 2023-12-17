@@ -26,12 +26,12 @@ Arab Data Hub is an eLearning platform developed as a part of a Software Enginee
 - Add admins
 - Access analysis panels
 
-### 🔍 Teacher
+### 📚 Teacher
 - Add admins
 - Create and manage courses
 - Access analysis panels
 
-### 🔍 Student
+### 👩‍🎓 Student
 - Enroll in courses
 - View course contents
 - Add courses to the wishlist
