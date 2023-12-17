@@ -35,8 +35,29 @@
             <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
               <div class="row align-items-center">
 
+            <div class="col">
+ 
+            </div>
+
+            <div class="dropdown col me-5">
+            <a 
+            data-mdb-dropdown-init
+            href="#"
+            id="navbarDropdownMenuAvatar"
+            role="button"
+            aria-expanded="false"
+            href="" class="text-dark">
+            <i class="fas fa-envelope fa-lg"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">9</span>
+            </a>
 
 
+
+            <ul class="dropdown-menu text-small  "  aria-labelledby="navbarDropdownMenuAvatar"  style="width: 230px; height: 300px;"  >
+            <li class="p-1"><a class="dropdown-item border border-bottom  " href="#">New project...</a></li>
+            <li class="p-1"><a class="dropdown-item border border-bottom  " href="#">New project...</a></li>
+            </ul>
+            </div>
               
             <div class="dropdown col">
             <a 

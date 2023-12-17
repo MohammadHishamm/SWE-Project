@@ -6,6 +6,11 @@ require_once(__ROOT__ . "controller/controller.php");
 class PlaylistController extends Controller
 {
 
+    function search($name)
+    {
+        $this->model->search($name);
+    }
+
     function delete_playlist($delete_id , $tutor_id)
     {
 

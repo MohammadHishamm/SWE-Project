@@ -248,6 +248,14 @@
             return $total_videos;
       }
 
+      public function search($name)
+      {
+        $query = "SELECT * FROM `playlist` WHERE title LIKE ? ORDER BY date DESC";
+        $statement =  $this->db->getConn()->prepare($query);
+        $statement->execute([$name]);
+
+       return $statement;
+      }
         
     }
 
