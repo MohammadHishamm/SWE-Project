@@ -4,7 +4,9 @@ require_once('../app/controller/usercontroller.php');
 require_once('../app/controller/Playlistcontroller.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewtutor.php');
+require_once('../php/teacher/admin/addplaylistval.php');
 
+$val= new playlistval;
 $tutor = new tutor();
 $playlist = $playlist = $tutor->getplaylist();
 
@@ -26,9 +28,10 @@ if(isset($_POST['delete']))
 
 if(isset($_POST['submit']))
 {
-
+    if($val->testform())
+    {
     $playliscontroller->add_playlist($tutor_id);
-
+    }
 }
 
 if(isset($_POST['update_submit']))
@@ -112,6 +115,9 @@ if(isset($_POST['update_submit']))
         margin-left: 5px;
         font-size: 10px;
     }
+    .error1{
+        color:red;
+    }
     </style>
     <body style="background-color: #ebeff4" >
 
@@ -168,7 +174,7 @@ if(isset($_POST['update_submit']))
                                         $view->show_courses();
                                         break;
                                     case 'add':
-                                        echo $view->add_course();
+                                        echo $view->add_course($val);
                                         break;
                                     case 'view_playlist':
                                         echo $view->view_course_content();

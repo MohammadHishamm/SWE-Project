@@ -1,6 +1,14 @@
+
+
+
+
 <?php
 
 require_once(__ROOT__ . "View/View.php");
+
+
+
+
 
 class ViewTutor extends View{	
 
@@ -94,7 +102,7 @@ echo '
 
 }
 
-function add_course(){
+function add_course($val){
 $str='    
 <div class="col-lg-8 ">
 <div class=" mb-4">
@@ -110,29 +118,33 @@ $str='
 
 <form action="" method="post" enctype="multipart/form-data">
     <p>playlist status <span>*</span></p>
-    <select name="status" class="box" required>
+    <select name="status" class="box" >
         <option value="" selected disabled>-- select status</option>
         <option value="active">active</option>
         <option value="deactive">deactive</option>
     </select>
     <p>playlist title <span>*</span></p>
-    <input type="text" name="title" maxlength="100" required placeholder="enter playlist title" class="box ">
+    <input type="text" name="title" maxlength="100"  placeholder="enter playlist title" class="box ">
+    <span class="error1"> ' .$val->getfielderr().'  </span>
     <p>playlist description <span>*</span></p>
-    <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30"
+    <textarea name="description" class="box"  placeholder="write description" maxlength="1000" cols="30"
         rows="10"></textarea>
+        <span class="error1"> '.$val->getfielderr().'  </span>
     <p>playlist requirements <span>*</span></p>
-    <textarea name="description" class="box" required placeholder="write requirements" maxlength="1000"
+    <textarea name="description" class="box"  placeholder="write requirements" maxlength="1000"
         cols="30" rows="10"></textarea>
-
+        <span class="error1"> '.$val->getfielderr().'  </span>
     <p>what the student will learn from these course <span>*</span></p>
     <input type="text" id="result" hidden name="result">
-    <input type="text" id="input" onkeydown="addTag(event)" class="box"  size="10" maxlength="10" placeholder="Press Enter to add a tag" name="tags">
+    <input type="text" id="input" onkeydown="addTag(event)" required class="box"  size="10" maxlength="10" placeholder="Press Enter to add a tag" name="tags">
+    
     <div class="tags-container"></div>
 
     <p>playlist Price <span>*</span></p>
-    <input type="text" name="price" maxlength="100" required placeholder="enter playlist Price" class="box">
+    <input type="text" name="price" maxlength="100"  placeholder="enter playlist Price" class="box">
+    <span class="error1"> '.$val->getfielderr().'  </span>
     <p>playlist thumbnail <span>*</span></p>
-    <input type="file" name="image" accept="image/*" required class="box">
+    <input type="file" name="image" accept="image/*"  class="box">
     <br>
     <button type="submit"  name="submit" class="btn btn-primary w-100">Create a playlist</button>
 </form>
@@ -177,16 +189,16 @@ $total_videos = $playlist->get_videos_count($playlist_id);
     <input type="hidden" name="old_image" value="'.$fetch_playlist['thumb'].'">
     <input type="hidden" name="playlist_id" value="'.$playlist_id.'">
     <p>playlist status <span>*</span></p>
-    <select name="status" class="box" required>
+    <select name="status" class="box" >
         <option value="'.$fetch_playlist['status'].'" selected>'.$fetch_playlist['status'].'</option>
         <option value="active">active</option>
         <option value="deactive">deactive</option>
     </select>
     <p>playlist title <span>*</span></p>
-    <input type="text" name="title" maxlength="100" required placeholder="enter playlist title"
+    <input type="text" name="title" maxlength="100"  placeholder="enter playlist title"
         value="'.$fetch_playlist['title'].'" class="box">
     <p>playlist description <span>*</span></p>
-    <textarea name="description" class="box" required placeholder="write description" maxlength="1000" cols="30"
+    <textarea name="description" class="box"  placeholder="write description" maxlength="1000" cols="30"
         rows="10">'.$fetch_playlist['description'].'</textarea>
     <p>playlist thumbnail <span>*</span></p>
     <div class="thumb">

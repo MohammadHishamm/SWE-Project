@@ -40,17 +40,17 @@ public function fieldval($field)
        }
  }
 
-public function cvval($cv)
-{
-    $cv1 = $this->test_input($cv);
-    if (empty($cv1)) {
-        $this->cvErr = "Required";
-        return false;
-      }else {
-        return true;
-      }
+// public function cvval($cv)
+// {
+//     $cv1 = $this->test_input($cv);
+//     if (empty($cv1)) {
+//         $this->cvErr = "Required";
+//         return false;
+//       }else {
+//         return true;
+//       }
 
-}
+// }
 
 public function termsval($agree)
 {
@@ -77,7 +77,7 @@ $gen=$_REQUEST['gender_male'];
 }else if(isset($_REQUEST['gender_female'])){
     $gen=$_REQUEST['gender_female'];
 }
-    if($this->genderval($gen) && $this->fieldval($_REQUEST['position']) && $this->cvval($_REQUEST['pdf_file']) && $this->termsval($_REQUEST['agree']) )
+    if($this->genderval($gen) && $this->fieldval($_REQUEST['position']) && $this->termsval($_REQUEST['agree']) )
     {
         return TRUE;
     }

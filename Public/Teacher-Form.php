@@ -33,10 +33,10 @@ else
 
         if (isset($_POST['submit']))
         {
-        //    if($teacher->testform())
-        //    {
+           if($teacher->testform())
+           {
             $tutorcontroller->Add_Tutor($user_id);
-        //    }
+           }
         }
     }
 }
@@ -397,7 +397,7 @@ else
                     <!-- <div class="cvup">
                         <input type="file" name="cv" />
                     </div> -->
-                    <span class="alert"><?php echo $teacher->getcvErr();?> </span>
+                    <!-- <span class="alert"><?php echo $teacher->getcvErr();?> </span> -->
 
                     <br />
                    
