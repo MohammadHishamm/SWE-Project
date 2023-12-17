@@ -41,18 +41,27 @@ Arab Data Hub is an eLearning platform developed as a part of a Software Enginee
 
 ## 💻 Technologies Used
 
-The Arab Data Hub eLearning platform is built using a variety of technologies to ensure a seamless and robust user experience:
+The Arab Data Hub eLearning platform leverages a diverse set of technologies to ensure a seamless and robust user experience:
 
-- ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) PHP
-- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white) MySQL
-- ![WebSocket](https://img.shields.io/badge/WebSocket-4A90E2?style=flat&logo=websocket&logoColor=white) WebSocket
-- ![Pusher](https://img.shields.io/badge/Pusher-6200EA?style=flat&logo=pusher&logoColor=white) Pusher
-- ![Google API](https://img.shields.io/badge/Google%20API-4285F4?style=flat&logo=google&logoColor=white) Google API
-- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) JavaScript
-- ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat&logo=chart-dot-js&logoColor=white) Chart.js
-- ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white) HTML
-- ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white) CSS
-- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white) Bootstrap
+- ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) **PHP:** A server-side scripting language widely used for web development. PHP handles backend logic and interacts with databases to provide dynamic content.
+
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white) **MySQL:** A powerful relational database management system. MySQL is employed to store and retrieve data efficiently, ensuring the persistence of user information and course data.
+
+- ![WebSocket](https://img.shields.io/badge/WebSocket-4A90E2?style=flat&logo=websocket&logoColor=white) **WebSocket:** A communication protocol that enables real-time, bidirectional communication between clients and servers. WebSocket is used for interactive features such as live chat and notifications.
+
+- ![Pusher](https://img.shields.io/badge/Pusher-6200EA?style=flat&logo=pusher&logoColor=white) **Pusher:** A WebSocket API that simplifies the implementation of real-time features. Pusher facilitates the exchange of messages in real-time, enhancing the platform's responsiveness.
+
+- ![Google API](https://img.shields.io/badge/Google%20API-4285F4?style=flat&logo=google&logoColor=white) **Google API:** Integration with various Google services, such as authentication and data retrieval. Google API enhances user experience by providing seamless access to Google-related functionalities.
+
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) **JavaScript:** A versatile programming language used for frontend development. JavaScript adds interactivity to web pages, allowing users to interact with the platform dynamically.
+
+- ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat&logo=chart-dot-js&logoColor=white) **Chart.js:** A JavaScript library for creating interactive and visually appealing charts and graphs. Chart.js is utilized to present data analysis and statistics in a user-friendly manner.
+
+- ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white) **HTML:** The standard markup language for structuring web content. HTML is used to create the basic structure of web pages, defining the content's layout and hierarchy.
+
+- ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white) **CSS:** A stylesheet language used to enhance the presentation of HTML documents. CSS is responsible for styling and formatting, contributing to the platform's visual appeal.
+
+- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white) **Bootstrap:** A popular frontend framework that simplifies the development of responsive and aesthetically pleasing web pages. Bootstrap ensures a consistent and mobile-friendly user interface across devices.
 
 ## 🚀 Getting Started
 
