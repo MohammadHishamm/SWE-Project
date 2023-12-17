@@ -33,10 +33,10 @@ else
 
         if (isset($_POST['submit']))
         {
-           if($teacher->testform())
-           {
+        //    if($teacher->testform())
+        //    {
             $tutorcontroller->Add_Tutor($user_id);
-           }
+        //    }
         }
     }
 }

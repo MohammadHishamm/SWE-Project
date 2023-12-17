@@ -67,8 +67,8 @@ body.dark {
 }
 .logo_name {
   color: #0f141a;
-  font-size: 1.8rem;
-  font-weight: bolder;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .hero_main_text {
@@ -130,7 +130,7 @@ body.dark {
 }
 
 .transition-1 {
-  background-color: #58779d;
+  background-color: #ebeff4;
   opacity: 0;
   position: fixed;
   top: 0;

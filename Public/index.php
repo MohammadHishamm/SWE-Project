@@ -89,10 +89,10 @@ function showToast() {
             <img src="../images/loader.gif">
 
         </div>
-        <p style="margin-top: 20px;   
-        color: #0f141a;
-        font-size: 3.0rem;
-        font-weight: bolder;">Arab Data Hub</p>
+
+        <div class="mx-auto "  style="width: 500px; height: 200px; overflow: hidden; margin-top: 20px;">
+        <img src="../Images/MyWebsite/loader logo.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
     </div>
 
     <!-- Loaders -->

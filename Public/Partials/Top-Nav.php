@@ -1,13 +1,18 @@
-  <!-- TopNav -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-      <div class="container-fluid ">
-          <button class="btn btn-link ms-lg-5  mb-lg-0 mb-3" data-mdb-toggle="offcanvas" href="#offcanvasExample"
-              role="button" aria-controls="offcanvasExample">
-              <i class="fa-solid fa-bars-staggered  btn-open hero_main_text2"></i>
-          </button>
-          <a class=" navbar-brand mx-auto mb-lg-0 mb-3 logo_name" href="index.php">Arab Data Hub</a>
+<!-- TopNav -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="btn btn-link ms-lg-5 mb-lg-0 mb-5" data-mdb-toggle="offcanvas" href="#offcanvasExample"
+            role="button" aria-controls="offcanvasExample">
+            <i class="fa-solid fa-bars-staggered btn-open hero_main_text2"></i>
+        </button>
+        <a class="navbar-brand me-auto mb-lg-0 mb-5" href="index.php" style="width: 360px; height: 72px; overflow: hidden;">
+        <img src="../Images/MyWebsite/logo2.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+        </a>
 
-          <ul class="navbar-nav mx-auto   mb-4 mb-lg-0 mt-2 ">
+
+
+
+          <ul class="navbar-nav mx-auto mb-4 mb-lg-0 mt-2 ">
               <li class="nav-item ">
                   <form class="d-flex" action="categories.php" method="post" role="search">
 
