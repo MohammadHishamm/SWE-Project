@@ -1,6 +1,6 @@
 # 🌐 Arab Data Hub - eLearning Platform
 
-![Arab Data Hub Logo](link-to-logo-image.png)
+![Arab Data Hub Logo](Images/MyWebsite/Arab Data Hub Logo.png)
 
 Welcome to the Arab Data Hub eLearning platform project repository! This project is part of a Software Engineering course and focuses on creating an interactive and feature-rich eLearning platform. The platform is designed to cater to the needs of administrators, teachers, and students, providing a comprehensive environment for online education.
 
