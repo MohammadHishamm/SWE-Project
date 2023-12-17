@@ -11,13 +11,11 @@ $playlist = new playlist;
 // }
 
 
-$q = intval($_GET['q']);
 
-    $result = $playlist->search($q);
-     while($fetch_playlist = $result->fetch(PDO::FETCH_ASSOC) )
-    {
-        echo $result ['title'];
-}
+
+
+
+    
 
 
 

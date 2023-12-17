@@ -14,9 +14,9 @@
 
           <ul class="navbar-nav mx-auto mb-4 mb-lg-0 mt-2 ">
               <li class="nav-item ">
-                  <form class="d-flex" action="categories.php" method="post" role="search">
+                  <form class="d-flex" action="Categories.php" method="post" role="search">
 
-                      <input class="form-control me-2 rounded-9 rounded-pill search" onclick="showResult(this.value)" autocomplete="off" name="search" type="search"
+                      <input class="form-control me-2 rounded-9 rounded-pill search" autocomplete="off" name="search" type="search"
                           placeholder="Find a specfic course ?" aria-label="Search">
                   </form>
               </li>

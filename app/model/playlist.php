@@ -250,9 +250,9 @@
 
       public function search($name)
       {
-        $query = "SELECT * FROM `playlist` WHERE title LIKE $name ORDER BY date DESC";
+        $query = "SELECT * FROM `playlist`  INNER JOIN `tutors` on title = ? and playlist.tutor_id = tutors.tutor_id INNER JOIN `user` on tutors.tutor_id = user.user_id   ";
         $statement =  $this->db->getConn()->prepare($query);
-        $statement->execute();
+        $statement->execute([$name]);
 
        return $statement;
       }
