@@ -3,8 +3,9 @@ define('__ROOT__', "../app/");
 require_once('../app/controller/contentcontroller.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewcontent.php');
+require_once('../php/teacher/admin/addcontentval.php');
 
-
+$val= new contentval;
 $tutor = new tutor();
 $content  = $tutor->getcontent();
 
@@ -23,7 +24,10 @@ if(isset($_POST['delete_video']))
 
 if (isset($_POST['submit'])) 
 {
+    if($val->testform())
+    {
     $contentcontroller->add_content();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -56,7 +60,9 @@ if (isset($_POST['submit']))
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
         <script src="../js/MDB java/mdb.min.js"></script>
     </head>
-
+<style>.error1{
+        color:red;
+    }</style>
     <script>
     function showToast() {
 
@@ -128,7 +134,7 @@ if (isset($_POST['submit']))
                                         $view->show_content();
                                         break;
                                         case 'add':
-                                        $view->add_content();
+                                        $view->add_content($val);
                                         break;
                                     case 'view_playlist':
                                         echo $view->view_course_content();

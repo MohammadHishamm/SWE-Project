@@ -101,7 +101,7 @@ echo '<p class="empty">no contents added yet!</p>';
 
 }
 
-function add_content(){
+function add_content($val){
     $content = $this->model->getcontent();
     $playlist = $this->model->getplaylist();
     
@@ -128,20 +128,22 @@ function add_content(){
 
                 <form action="" method="post" enctype="multipart/form-data">
                     <p>video status <span>*</span></p>
-                    <select name="status" class="box" required>
+                    <select name="status" class="box" >
                         <option value="" selected disabled>-- select status</option>
                         <option value="active">active</option>
                         <option value="deactive">deactive</option>
                     </select>
                     <p>video title <span>*</span></p>
-                    <input type="text" name="title" maxlength="100" required
+                    <input type="text" name="title" maxlength="100" 
                         placeholder="enter video title" class="box">
+                        <span class="error1"> ' .$val->getfielderr().'  </span>
                     <p>video description <span>*</span></p>
-                    <textarea name="description" class="box" required
+                    <textarea name="description" class="box" 
                         placeholder="write description" maxlength="1000" cols="30"
                         rows="10"></textarea>
+                        <span class="error1"> ' .$val->getfielderr().'  </span>
                     <p>video playlist <span>*</span></p>
-                    <select name="playlist" class="box" required>
+                    <select name="playlist" class="box" >
                         <option value="" disabled selected>--select playlist</option>
                         ';
 $select_playlists = $playlist->get_All_playlist($tutor_id);
@@ -160,10 +162,10 @@ echo'
 </select>
 
                     <p>select thumbnail <span>*</span></p>
-                    <input type="file" name="thumb" accept="image/*" required
+                    <input type="file" name="thumb" accept="image/*" 
                         class="box">
                     <p>select video <span>*</span></p>
-                    <input type="file" name="video" accept="video/*" required
+                    <input type="file" name="video" accept="video/*" 
                         class="box">
                     <button type="submit"  name="submit" class="btn btn-primary w-100">
                     upload video

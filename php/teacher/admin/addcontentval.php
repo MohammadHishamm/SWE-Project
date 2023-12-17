@@ -15,7 +15,7 @@ public function fieldval($field)
  {
      $field1= $this->test_input($field);
      if (empty($field1)) {
-         $this->fieldErr = "Required";
+         $this->fieldErr = "Required*";
          return false;
        }else {
         return true;
@@ -25,7 +25,7 @@ public function fieldval($field)
  public function testform()
  {
    
-     if( $this->fieldval($_REQUEST['position']) ) 
+     if( $this->fieldval($_REQUEST['title']) && $this->fieldval($_REQUEST['description']) ) 
      {
          return TRUE;
      }
