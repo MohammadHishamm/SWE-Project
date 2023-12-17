@@ -44,17 +44,17 @@ Arab Data Hub eLearning is an online education platform that supports the roles 
 
 The project is developed using the following technologies:
 <div align="center">
-  <img src="path/to/php_logo.png" alt="PHP Logo" title="PHP" width="50"/>
-  <img src="path/to/mysql_logo.png" alt="MySQL Logo" title="MySQL" width="50"/>
-  <img src="path/to/websockets_logo.png" alt="WebSockets Logo" title="WebSockets" width="50"/>
-  <img src="path/to/pusher_logo.png" alt="Pusher Logo" title="Pusher" width="50"/>
-  <img src="path/to/google_api_logo.png" alt="Google API Logo" title="Google API" width="50"/>
-  <img src="path/to/js_logo.png" alt="JavaScript Logo" title="JavaScript" width="50"/>
-  <img src="path/to/chartjs_logo.png" alt="Chart.js Logo" title="Chart.js" width="50"/>
-  <img src="path/to/vendor_logo.png" alt="Vendor Logo" title="Vendor" width="50"/>
-  <img src="path/to/html_logo.png" alt="HTML Logo" title="HTML" width="50"/>
-  <img src="path/to/css_logo.png" alt="CSS Logo" title="CSS" width="50"/>
-  <img src="path/to/bootstrap_logo.png" alt="Bootstrap Logo" title="Bootstrap" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/php_logo.png" alt="PHP Logo" title="PHP" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/mysql_logo.png" alt="MySQL Logo" title="MySQL" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/websockets_logo.png" alt="WebSockets Logo" title="WebSockets" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/pusher_logo.png" alt="Pusher Logo" title="Pusher" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/google_api_logo.png" alt="Google API Logo" title="Google API" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/js_logo.png" alt="JavaScript Logo" title="JavaScript" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/chartjs_logo.png" alt="Chart.js Logo" title="Chart.js" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/vendor_logo.png" alt="Vendor Logo" title="Vendor" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/html_logo.png" alt="HTML Logo" title="HTML" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/css_logo.png" alt="CSS Logo" title="CSS" width="50"/>
+  <img src="https://raw.githubusercontent.com/your-username/arab-data-hub-elearning/main/path/to/bootstrap_logo.png" alt="Bootstrap Logo" title="Bootstrap" width="50"/>
 </div>
 
 ## Getting Started
@@ -64,4 +64,3 @@ To get started with the Arab Data Hub eLearning platform, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/arab-data-hub-elearning.git
-
