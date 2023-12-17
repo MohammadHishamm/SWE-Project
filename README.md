@@ -1,7 +1,8 @@
 <div style="text-align: center;">
     <img src="Images/MyWebsite/logo%20only.png" alt="Arab Data Hub Logo" style="width: 50px; height: 50px; object-fit: contain;">
+    <p style="text-align: center; margin-top: 10px; font-weight: bold;">Arab Data Hub - eLearning Platform</p>
 </div>
-<p style="text-align: center; margin-top: 10px; font-weight: bold;">Arab Data Hub - eLearning Platform</p>
+
 
 
 <p align="center">
