@@ -1,8 +1,9 @@
-<div class="sidebar close" >
+<div class="sidebar close shadow-lg  rounded rounded-4" >
     <div class="logo-details">
-      <i class='bx bxl-c-plus-plus logo_name'></i>
-      <span class="logo_name">CodingLab</span>
-      <i class="fa-solid fa-x fs-5 logo_name btn-close" style="color: #ffffff;"></i>
+      <span class="logo_name t-4 " style="width: 90px; height: 90px; overflow: hidden;">
+      <img src="../Images/MyWebsite/logo only.png"  style="width: 100%; height: 100%; object-fit: cover;">  
+      </span>
+      <i class="ms-auto fa-solid fa-x fs-5 logo_name btn-close" style="color: #ffffff;"></i>
     </div>
     <ul class="nav-links">
       <li>
@@ -104,18 +105,7 @@
           <li><a class="link_name" href="Edit-Profile.php">Setting</a></li>
         </ul>
       </li>
-      <li>
-    <div class="profile-details">
-      <div class="profile-content">
-        <!--<img src="image/profile.jpg" alt="profileImg">-->
-      </div>
-      <div class="name-job">
-        <div class="profile_name">Prem Shahi</div>
-        <div class="job">Web Desginer</div>
-      </div>
-      <i class='bx bx-log-out' ></i>
-    </div>
-  </li>
+
 </ul>
   </div>
 

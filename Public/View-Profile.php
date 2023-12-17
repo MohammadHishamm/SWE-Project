@@ -62,6 +62,17 @@ else
     <script src="../js/MDB java/mdb.min.js"></script>
 </head>
 
+<style>
+.high-quality-image {
+    max-width: 100%;
+    /* Ensure the image doesn't exceed its container */
+    height: auto;
+    /* Maintain the image's aspect ratio */
+    image-rendering: auto;
+    /* Use the default image rendering algorithm */
+}
+</style>
+
 <body style="background-color: #CED8E3; overflow: hidden;">
 
     <!-- Loaders -->
@@ -91,8 +102,11 @@ else
 
 
                             <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
-                                alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="200" width="200"
-                                class="rounded rounded-5">
+                                alt="<?php echo $fetch_user['user_img'] ?>" class="rounded rounded-5 high-quality-image"
+                                style="width: 400px; height: auto;">
+
+
+
 
                         </div>
                         <div class="col-xxl-2 col-5 ms-5 ">
@@ -105,7 +119,7 @@ else
                               echo ' <span class="fs-6 text-danger"> (Offline) </span>';
                             }
                             ?></span> </p>
-                            <p class="text-muted"><?php echo $fetch_user['user_type'] ?>  </p>
+                            <p class="text-muted"><?php echo $fetch_user['user_type'] ?> </p>
                             <p class="text-muted">User joined on <?=  $fetch_user['user_created_on'] ?> </p>
                             <p class="text-muted"></p>
                         </div>
@@ -238,11 +252,8 @@ else
     </section>
     <?php include "Bottomnav.php" ?>
     <script src="../js/Loaders.js"></script>
-        <!-- MDB -->
-        <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
-    >
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js">
     </script>
 </body>
 
