@@ -88,8 +88,8 @@ class ViewCheckout extends View
    ';
   
           }
-
-
+echo'
+<button class="btn btn-success">Pay</button>';
     }
     else
     {
