@@ -9,6 +9,7 @@
         "phpmailer/phpmailer": "^6.2",
         "cboden/ratchet": "v0.4",
 		"google/apiclient": "^2.12",
-		"pusher/pusher-php-server": "^7.2"
+		"pusher/pusher-php-server": "^7.2",
+		"stripe/stripe-php": "^13.6"
     }
 }
