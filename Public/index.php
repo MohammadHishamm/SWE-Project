@@ -39,6 +39,13 @@ if(isset($_SESSION['user_data']))
     }  
 }
 
+
+if (isset($_GET['add_to_wishlist'])) {
+
+    $wishlist->addwishlist($Course_ID, $User_ID);
+}
+
+
         
 
 ?>
@@ -61,7 +68,7 @@ if(isset($_SESSION['user_data']))
 
 
 </head>
-
+<script src="../js/wishlist.js"></script>
   
 <script>
 function showToast() {

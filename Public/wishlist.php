@@ -61,7 +61,7 @@
   </div>
 </section>
     
-    <script src="../js/wishlist.js"></script>
+
   </body>
 </html>
 
