@@ -42,7 +42,7 @@ $View_checkout = new ViewCheckout($checkout_controller,$checkout_model);
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
     />
 
-    <link rel="stylesheet" href="../css/wishlist.css" />
+    <link rel="stylesheet" href="../css/checkout.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
