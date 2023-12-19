@@ -8,6 +8,15 @@ class Student extends User
     private $course_id;
    
 
+    function setCourseid($course_id)
+    {
+        $this->course_id = $course_id;
+    }
+    function getCourseId()
+    {
+        return $this->course_id;
+    }
+    
     function setStudentId($student_id)
     {
         $this->student_id = $student_id;
@@ -18,14 +27,10 @@ class Student extends User
         return $this->student_id;
     }
     
-    public function add_course($course_id)
-    {
-      
+    public function add_course($course_id) {
         $query = "INSERT INTO course (Course_id, Student_id) VALUES (?, ?)";
-        $statement = $this->connect->prepare($query);
+        $statement =$this->db->getConn()->prepare($query);
         $statement->execute([$course_id, $this->student_id]);
-
-    
     }
 
 

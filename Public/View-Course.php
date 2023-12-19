@@ -4,9 +4,20 @@
 define('__ROOT__', "../app/");
 require_once('../app/controller/usercontroller.php');
 require_once('../app/controller/Playlistcontroller.php');
+require_once('../app/controller/studentcontroller.php');
 require_once('../app/model/tutor.php');
+require_once('../app/model/student.php');
 require_once('../app/view/viewtutor.php');
 require_once('../app/model/notify.php');
+
+if(isset($_SESSION['user_data']))
+{
+    foreach($_SESSION['user_data'] as $key => $value)
+    {
+      $User_ID = $value['id'];
+    }  
+}
+
 
 $notify = new notify();
 $tutor = new tutor();
@@ -21,10 +32,27 @@ $playlist_data =$playlist->get_playlist_by_id($_GET['playlist_id']);
 $content = new content;
 $content_data =$content->get__playlist_by_id($_GET['playlist_id']);
 
+
+
+
+
 if($playlist_data->rowCount() > 0){
     $fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC);
 }
+$student= new Student();
+$student_controller = new Studentcontroller($student);
+if (isset($_POST["enroll_course"])) { 
+    if($student_controller->addcourse())
+    {
+
+   
+     
+        
+    }
+}
+
 ?>
+
 <!DOCTYPE html>
 
 
@@ -62,9 +90,13 @@ if($playlist_data->rowCount() > 0){
             
         </div>
         
-                                  
-        <button class="btn btn-primary btn-lg" name="enroll_course" type="button">Enroll</button>    
-                                 
+        <form action="" method="POST">                  
+    <input type="hidden" name="course_id" value="<?= isset($_GET['playlist_id']) ? htmlspecialchars($_GET['playlist_id']) : '' ?>">
+    <input type="hidden" name="student_id" value="<?= $User_ID ?>">
+
+    <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course" type="submit">Enroll</button>    
+</form>
+             
     </div>
 
     <!-- Course Introduction section -->
