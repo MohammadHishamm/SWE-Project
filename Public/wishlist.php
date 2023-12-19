@@ -7,7 +7,9 @@ require_once('../app/controller/wishlistcontroller.php');
 require_once('../app/model/wishlist.php');
 require_once('../app/view/viewwishlist.php');
 
-$wishlist_controller = ViewWishlist();
+$wishlist_model = new wishlist();
+$wishlist_controller = new WishlistController($wishlist_model);
+$View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
 
 
 ?>
@@ -47,23 +49,25 @@ $wishlist_controller = ViewWishlist();
       crossorigin="anonymous"
     />
     
+    <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
+    
 </head>
-  </head>
   <style>
    
 
     </style>
   <body>
-  <section class="h-100" style="background-color: #eee;">
-  <div class="container h-100 py-5">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+  <section class="container-fluid">
+  <div class=" py-5">
+    <div class="row d-flex justify-content-center align-items-center ">
       <div class="col-10">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
           <h3 class="fw-normal mb-0 text-black">Wishlist</h3>
         </div>
-      
-
+      <?php
+        $View_wishlist->view_wishlist();
+      ?>
       </div>
     </div>
   </div>

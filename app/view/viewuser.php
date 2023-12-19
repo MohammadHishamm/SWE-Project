@@ -178,7 +178,7 @@ class ViewUser extends View{
 										<div class="d-flex col-12 align-items-center w-100 mb-2">
 										
 
-                                    		<a class="addtocart btn btn-primary w-100" href="?add_to_wishlist=true" id="addtocart">
+                                    		<a class="addtocart btn btn-primary w-100" href="?add_to_wishlist=true&Course_Id='.$fetch_playlist['playlist_id'].'" id="addtocart">
                                            	Add to wishlist
                                     		</a>
 										</div>
@@ -193,19 +193,11 @@ class ViewUser extends View{
                         </div>
                     </div>
                 </div>
+				</div>
 					';
-         
-                     $Course_ID = $fetch_playlist['playlist_id'];
-                
 					}
 
                 }
-
-                if (isset($_GET['add_to_wishlist'])) {
-
-                    // $wishlist->addwishlist($Course_ID, $User_ID);
-                }
-
 
 
           

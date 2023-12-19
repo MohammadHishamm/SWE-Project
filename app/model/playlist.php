@@ -56,7 +56,7 @@
             $rename = $this->unique_id.'.'.$ext;
             $image_size = $_FILES['image']['size'];
             $image_tmp_name = $_FILES['image']['tmp_name'];
-            $image_folder = '../Images/courses/'.$rename;  
+            $image_folder = '../images/courses/thumbs/'.$rename;  
             move_uploaded_file($image_tmp_name, $image_folder);       
             $this->playlist_image = $rename;           
         }
@@ -164,7 +164,7 @@
                 $delete_playlist_thumb->execute([$playlist_id]);
 
                 $fetch_thumb = $delete_playlist_thumb->fetch(PDO::FETCH_ASSOC);
-                unlink('../Images/courses/'.$fetch_thumb['thumb']);
+                unlink('../images/courses/thumbs/'.$fetch_thumb['thumb']);
 
 
                 // thumb for content
@@ -174,7 +174,7 @@
 
                 if(!empty($fetch_thumb))
                 {
-                    unlink('../Images/courses/'.$fetch_thumb['thumb']);
+                    unlink('../Images/courses/videos'.$fetch_thumb['thumb']);
                 }
                 
 
@@ -186,7 +186,7 @@
 
                 if(!empty($fetch_video))
                 {       
-                    unlink('../Images/courses/'.$fetch_thumb['video']);
+                    unlink('../images/courses/thumbs/'.$fetch_thumb['video']);
                 }
                 
                

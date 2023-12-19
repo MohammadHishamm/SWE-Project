@@ -9,7 +9,10 @@ require_once('../app/model/user.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewuser.php');
 require_once('../app/model/notify.php');
+require_once('../app/model/wishlist.php');
 
+
+$wishlist_model = new wishlist();
 $notify = new notify();
 
 $tutor = new tutor();
@@ -39,14 +42,10 @@ if(isset($_SESSION['user_data']))
     }  
 }
 
-
 if (isset($_GET['add_to_wishlist'])) {
 
-    $wishlist->addwishlist($Course_ID, $User_ID);
+    $wishlist_model->addwishlist($_GET['Course_Id'], $User_ID);
 }
-
-
-        
 
 ?>
 <!DOCTYPE html>

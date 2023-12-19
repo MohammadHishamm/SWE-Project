@@ -4,7 +4,7 @@
 
 // session_start();
 define('__ROOT__', "../../app/");
-
+require_once(__ROOT__ .'model/notify.php');
 require_once(__ROOT__ . 'model/user.php');
 
 if(!isset($_SESSION['user_data']))
@@ -12,7 +12,7 @@ if(!isset($_SESSION['user_data']))
 	header('location:index.php');
 }
 
-
+$notify = new notify();
 
 ?>
 

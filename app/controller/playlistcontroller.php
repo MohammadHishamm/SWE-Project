@@ -93,7 +93,7 @@ class PlaylistController extends Controller
            {
               if($old_image != '')
               {
-                 unlink('../images/courses/'.$old_image);
+                 unlink('../images/courses/thumbs/'.$old_image);
                  $this->model->setPlaylistImage($image);
               }
            }

@@ -1,6 +1,9 @@
 <?php
+  require_once(__ROOT__ . "model/model.php");
+?>
+<?php
 
-class wishlist extends 
+class wishlist extends Model
 {
 
     public $wishlist_id;
@@ -27,12 +30,19 @@ class wishlist extends
             echo "Already added";
         } else {
        
-         $query = "INSERT INTO wishlist (playlist_id ,User_ID) VALUES ('$courseId', '$userId' )";
+
         
+         $query = "
+         INSERT INTO wishlist (playlist_id, User_ID)
+         VALUES (?, ?)
+         ";
         $stmt = $this->db->getConn()->prepare($query);
       
         
-        if ($stmt->execute()) {
+        if ($stmt->execute([
+            $this->Course_ID,
+            $this->User_ID])) 
+        {
             echo "Added to wishlist successfully!";
         } else {
             echo "Error adding to wishlist: " . $stmt->error;
@@ -66,9 +76,9 @@ class wishlist extends
 
     public function get_All_wishlist($User_ID)
     {
-         $query = "SELECT * FROM `wishlist` INNER JOIN `playlist` ON wishlist.playlist_id = playlist.playlist_id  WHERE User_ID = '$User_ID' ";
+         $query = "SELECT * FROM `wishlist` INNER JOIN `playlist` INNER JOIN `user` ON wishlist.playlist_id = playlist.playlist_id and    wishlist.User_ID = user.user_id  and wishlist.User_ID = ? ";
          $statement = $this->db->getConn()->prepare($query);
-         $statement->execute();
+         $statement->execute([$User_ID]);
 
         return $statement;
 
