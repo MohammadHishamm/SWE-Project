@@ -2,6 +2,7 @@
 define('__ROOT__', "../app/");
 require_once('../app/controller/usercontroller.php');
 require_once('../app/controller/Playlistcontroller.php');
+require_once('../app/model/user.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewtutor.php');
 require_once('../php/teacher/admin/addplaylistval.php');
@@ -10,6 +11,7 @@ require_once('../app/model/notify.php');
 $notify = new notify();
 $val= new playlistval;
 $tutor = new tutor();
+$model = new User();
 $playlist = $playlist = $tutor->getplaylist();
 
 $playliscontroller = new PlaylistController($playlist);
@@ -19,6 +21,17 @@ foreach($_SESSION['user_data'] as $key => $value)
 {
   $tutor_id = $value['id'];
 }
+
+$model->setUserId($tutor_id);
+
+
+$Data = $model->get_user_by_id();
+
+
+if ($Data->rowCount() > 0) {
+    $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
+} 
+
 
 if(isset($_POST['delete']))
 {
@@ -71,7 +84,7 @@ if(isset($_POST['update_submit']))
 
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
 
-     
+
 
     </head>
 
@@ -91,12 +104,9 @@ if(isset($_POST['update_submit']))
         }, 5000);
 
     }
-
-
-
     </script>
 
-<style>
+    <style>
     .tags-container {
         width: 100%
     }
@@ -117,11 +127,13 @@ if(isset($_POST['update_submit']))
         margin-left: 5px;
         font-size: 10px;
     }
-    .error1{
-        color:red;
+
+    .error1 {
+        color: red;
     }
     </style>
-    <body style="background-color: #ebeff4" >
+
+    <body style="background-color: #ebeff4">
 
 
         <audio id="Audio">
@@ -152,24 +164,24 @@ if(isset($_POST['update_submit']))
                     <div class="col-12 ">
 
                         <div class="mt-5 p-4 py-5 ">
-                            <div class="row" style="margin-left: 35px; ">
+                        <div class="row" style="margin-left: 35px; ">
                                 <div class="col-lg-1 col-4 me-5">
 
 
-                                    <img src="teacher/uploaded_files/<?php ?>" alt="<?php  ?>" size="48" height="120"
-                                        width="120" class="rounded rounded-5">
+                                    <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
+                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="120" width="120"
+                                        class="rounded rounded-5">
 
                                 </div>
                                 <div class="col-lg-3  col-5 ">
-                                    <p class="fs-1 "><?php?></p>
+                                    <p class="fs-1 "><?php echo $fetch_user['user_name'] ?></p>
                                     <p class="text-muted">Your personal account</p>
                                 </div>
                             </div>
+                                <div class="row mt-4">
+                                    <?php include "Partials/Profile-Side-Nav.php" ?>
 
-                            <div class="row mt-4">
-                                <?php include "Partials/Profile-Side-Nav.php" ?>
-
-                                <?php
+                                    <?php
                                 if (isset($_GET['action']) && !empty($_GET['action'])) {
                                 switch($_GET['action']){
                                     case 'view':
@@ -256,7 +268,7 @@ if(isset($_POST['update_submit']))
                     `
 
                     tag.push(value);
-                    
+
                     count++;
                     spanElement.classList.add('tag');
                     spanElement.style.backgroundColor = color.background;
@@ -281,12 +293,9 @@ if(isset($_POST['update_submit']))
             tagsContainer.addEventListener('click', removeTag);
         }
         </script>
-                <!-- MDB -->
-                <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
-    >
-    </script>
-</body>
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js">
+        </script>
+    </body>
 
-</html>
+    </html>

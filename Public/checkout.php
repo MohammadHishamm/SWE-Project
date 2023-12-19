@@ -3,15 +3,13 @@
 
 
 define('__ROOT__', "../app/");
-require_once('../app/controller/wishlistcontroller.php');
-require_once('../app/model/wishlist.php');
-require_once('../app/view/viewwishlist.php');
-require_once('../app/model/notify.php');
+require_once('../app/controller/checkoutcontroller.php');
+require_once('../app/model/checkout.php');
+require_once('../app/view/viewcheckout.php');
 
-$notify = new notify();
-$wishlist_model = new wishlist();
-$wishlist_controller = new WishlistController($wishlist_model);
-$View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
+$checkout_model = new checkout();
+$checkout_controller = new CheckoutController($checkout_model);
+$View_checkout = new ViewCheckout($checkout_controller,$checkout_model);
 
 
 
@@ -22,7 +20,7 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Wishlist</title>
+    <title>Checkout</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
@@ -44,7 +42,7 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
     />
 
-    <link rel="stylesheet" href="../css/wishlist.css" />
+    <link rel="stylesheet" href="../css/checkout.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -55,26 +53,21 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
     
 </head>
-<script src="../js/Toast.js"></script>
+  <style>
+   
 
-
+    </style>
   <body>
-
-  <audio id="Audio">
-        <source src="../images/alert.wav">
-    </audio>
-    <?php include "Partials/Toast.php" ?>
-
   <section class="container-fluid">
   <div class=" py-5">
     <div class="row d-flex justify-content-center align-items-center ">
       <div class="col-10">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 class="fw-normal mb-0 text-black">Wishlist</h3>
+          <h3 class="fw-normal mb-0 text-black">Checkout</h3>
         </div>
       <?php
-        $View_wishlist->view_wishlist();
+        $View_checkout->view_checkout();
       ?>
       </div>
     </div>
