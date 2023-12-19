@@ -184,7 +184,7 @@ class ViewUser extends View{
 										</div>
 										<div class="d-flex col-12 align-items-center w-100 ">
 
-											<a class="addtocart btn btn-secondry w-100" href="View-Course.php?playlist_id='.$fetch_playlist['playlist_id'].'" >
+											<a class="addtocart btn btn-secondry w-100" href="#" >
 											view course
 							 				</a>
 										</div>
