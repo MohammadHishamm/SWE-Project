@@ -2,10 +2,13 @@
 define('__ROOT__', "../app/");
 require_once('../app/controller/contentcontroller.php');
 require_once('../app/model/tutor.php');
+require_once('../app/model/user.php');
 require_once('../app/view/viewcontent.php');
 require_once('../php/teacher/admin/addcontentval.php');
 require_once('../app/model/notify.php');
 
+
+$model = new User();
 $notify = new notify();
 $val= new contentval;
 $tutor = new tutor();
@@ -18,6 +21,18 @@ foreach($_SESSION['user_data'] as $key => $value)
 {
    $tutor_id = $value['id'];
 }
+
+$model->setUserId($tutor_id);
+
+
+$Data = $model->get_user_by_id();
+
+
+if ($Data->rowCount() > 0) {
+    $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
+} 
+
+
 
 if(isset($_POST['delete_video']))
 {
@@ -62,9 +77,11 @@ if (isset($_POST['submit']))
         <link rel="stylesheet" href="../php/teacher/css/admin_style.css">
         <script src="../js/MDB java/mdb.min.js"></script>
     </head>
-<style>.error1{
-        color:red;
-    }</style>
+    <style>
+    .error1 {
+        color: red;
+    }
+    </style>
     <script>
     function showToast() {
 
@@ -112,16 +129,17 @@ if (isset($_POST['submit']))
                     <div class="col-12 ">
 
                         <div class="mt-5 p-4 py-5 ">
-                            <div class="row" style="margin-left: 35px; ">
+                        <div class="row" style="margin-left: 35px; ">
                                 <div class="col-lg-1 col-4 me-5">
 
 
-                                    <img src="teacher/uploaded_files/<?php ?>" alt="<?php  ?>" size="48" height="120"
-                                        width="120" class="rounded rounded-5">
+                                    <img src="../images/users/<?php echo $fetch_user['user_img'] ?>"
+                                        alt="<?php echo $fetch_user['user_img'] ?>" size="48" height="120" width="120"
+                                        class="rounded rounded-5">
 
                                 </div>
                                 <div class="col-lg-3  col-5 ">
-                                    <p class="fs-1 "><?php?></p>
+                                    <p class="fs-1 "><?php echo $fetch_user['user_name'] ?></p>
                                     <p class="text-muted">Your personal account</p>
                                 </div>
                             </div>

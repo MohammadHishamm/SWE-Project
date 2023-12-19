@@ -23,6 +23,9 @@ else
   {
     $fetch_user = $Data->fetch(PDO::FETCH_ASSOC);
   }
+
+  require_once('../app/model/notify.php');
+    $notify = new notify();
 }
 
 
