@@ -2,6 +2,14 @@
 
 
 
+define('__ROOT__', "../app/");
+require_once('../app/controller/wishlistcontroller.php');
+require_once('../app/model/wishlist.php');
+require_once('../app/view/viewwishlist.php');
+
+$wishlist_controller = ViewWishlist();
+
+
 ?>
 
 

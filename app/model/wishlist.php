@@ -1,6 +1,7 @@
 <?php
 
-class wishlist{
+class wishlist extends 
+{
 
     public $wishlist_id;
     public $Course_ID;
