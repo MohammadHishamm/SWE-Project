@@ -69,26 +69,15 @@ if (isset($_GET['add_to_wishlist'])) {
 </head>
 <script src="../js/wishlist.js"></script>
   
-<script>
-function showToast() {
-
-    x = document.getElementById("Audio");
-
-    x.play();
-
-    document.getElementById('toast').classList.add('show');
-
-    setTimeout(function() {
-        document.getElementById('toast').classList.remove('show');
-    }, 5000);
-
-}
-</script>
+<script src="../js/Toast.js"></script>
 
 
 
 <body style="overflow: hidden">
 
+<audio id="Audio">
+        <source src="../images/alert.wav">
+    </audio>
     <!-- Loaders -->
     <div class="text-center transition transition-1 is-active" id="preloading">
 
@@ -117,24 +106,10 @@ font-size: 3.0rem;
 font-weight: bolder;">Arab Data Hub</p>
     </div> -->
 
-    <audio id="Audio">
-        <source src="../images/alert.wav">
-    </audio>
 
 
-    <?php if(isset($_SESSION['error_message'])){  ?>
-    <div class="toast fade fixed-bottom shadow border border-3 me-5 mb-5 ms-auto " id="toast">
-        <div class="toast-header ">
-            <strong class="me-auto">Arab Data Hub</strong>
-            <small>Notfication</small>
-        </div>
-        <div class="toast-body text-danger"><?= $_SESSION['error_message'] ?></div>
-    </div>
-    <script>
-    showToast();
-    </script>
-    <?php unset($_SESSION['error_message']); } ?>
 
+    <?php include "Partials/Toast.php" ?>
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
     <?php include "Partials/Top-Button.php" ?>

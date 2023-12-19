@@ -27,7 +27,7 @@ class wishlist extends Model
         $stmt1->execute();
 
         if ($stmt1->fetch()) {
-            echo "Already added";
+            $_SESSION['error_message'] = "Already added";
         } else {
        
 
@@ -43,9 +43,9 @@ class wishlist extends Model
             $this->Course_ID,
             $this->User_ID])) 
         {
-            echo "Added to wishlist successfully!";
+            $_SESSION['error_message'] = "Added to wishlist successfully!";
         } else {
-            echo "Error adding to wishlist: " . $stmt->error;
+            $_SESSION['error_message'] = "Error adding to wishlist: " . $stmt->error;
         }
     }
         
@@ -66,9 +66,9 @@ class wishlist extends Model
         
         $stmt = $this->db->getConn()->prepare($query);
         if ($stmt->execute()) {
-            echo "deleted successfully!";
+            $_SESSION['error_message'] = "deleted successfully!";
         } else {
-            echo "Error deleting: " . $stmt->error;
+            $_SESSION['error_message'] = "Error deleting: " . $stmt->error;
         }
     
 }
