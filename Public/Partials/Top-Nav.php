@@ -114,10 +114,8 @@
             </a>
 
             <ul class="dropdown-menu text-small " aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; inset: 0px auto auto 300px; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-start">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
+         
+          
             <li><a class="dropdown-item" href="Partials/Sign-out.php">Sign out</a></li>
             </ul>
 
