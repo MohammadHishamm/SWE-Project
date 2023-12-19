@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,9 +39,9 @@
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.php">
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutor.php">
                         <i class="fa-solid fa-diagram-project fa-fw"></i>
-                        <span>Projects</span>
+                        <span>Tutors requests</span>
                     </a>
                 </li>
                 <li>
@@ -50,23 +51,13 @@
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="users.php">
-                        <i class="fa-regular fa-circle-user fa-fw"></i>
-                        <span>Users</span>
-                    </a>
+                <a href="users.php?get_users=true" class="d-flex align-center fs-14 c-black rad-6 p-10">
+    <i class="fa-regular fa-circle-user fa-fw"></i>
+    <span>Users</span>
+</a>
                 </li>
-                <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.php">
-                        <i class="fa-regular fa-file fa-fw"></i>
-                        <span>Files</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.php">
-                        <i class="fa-regular fa-credit-card fa-fw"></i>
-                        <span>Plans</span>
-                    </a>
-                </li>
+                
+                
             </ul>
         </div>
         <div class="content w-full">

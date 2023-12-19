@@ -397,12 +397,12 @@ function get_all_users_data()
     $statement = $this->db->getConn()->prepare($query);
     $statement->execute();
 
-    $result = $statement->get_result();
-
-    $users_data = $result->fetch_all(MYSQLI_ASSOC);
+    // Fetch the results as an associative array
+    $users_data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $users_data;
 }
+
 
 function delete_user_by_id()
 {

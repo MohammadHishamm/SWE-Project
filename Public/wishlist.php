@@ -6,7 +6,9 @@ define('__ROOT__', "../app/");
 require_once('../app/controller/wishlistcontroller.php');
 require_once('../app/model/wishlist.php');
 require_once('../app/view/viewwishlist.php');
+require_once('../app/model/notify.php');
 
+$notify = new notify();
 $wishlist_model = new wishlist();
 $wishlist_controller = new WishlistController($wishlist_model);
 $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
@@ -53,11 +55,16 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
     
 </head>
-  <style>
-   
+<script src="../js/Toast.js"></script>
 
-    </style>
+
   <body>
+
+  <audio id="Audio">
+        <source src="../images/alert.wav">
+    </audio>
+    <?php include "Partials/Toast.php" ?>
+
   <section class="container-fluid">
   <div class=" py-5">
     <div class="row d-flex justify-content-center align-items-center ">
