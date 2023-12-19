@@ -23,7 +23,9 @@ class User extends Model
 	private $user_token;
 	private $user_connection_id;
 	private $user_google_img;
+	private $user_type;
 	public $connect;
+
 
 	public function __construct()
 	{
@@ -193,20 +195,28 @@ class User extends Model
 	{
 		$this->user_google_img = $user_google_img;
 	}
-	
-
+	#setters and getters for user_type
+	 function getUserType()
+	{
+		return $this->user_type;
+	}
+	function setUserType($user_type)
+	{
+		$this->user_type = $user_type;
+	}
 
 	function save_data()
 {
     $sql = "
-    INSERT INTO user (user_name, user_email,user_img, user_password, user_status, user_created_on, user_verification_code) 
-    VALUES (?, ?, ?, ?, ?, ?,?)
+    INSERT INTO user (user_name, user_email,user_img, user_password, user_status, user_created_on, user_verification_code, user_type) 
+    VALUES (?, ?, ?, ?, ?, ?,?,?)
     ";
 
     $statement = $this->db->getConn()->prepare($sql);
 	$this->user_img = "default.jpg";
+	$this->user_type='Student';
 
-    if ($statement->execute([$this->user_name, $this->user_email,$this->user_img ,$this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code])) {
+    if ($statement->execute([$this->user_name, $this->user_email,$this->user_img ,$this->user_password, $this->user_status, $this->user_created_on, $this->user_verification_code,$this->user_type])) {
         return true;
     } else {
         return false;
@@ -434,7 +444,7 @@ function update_personal_data()
     $statement->bindParam(':user_password', $this->user_password);
     $statement->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
 
-    if ($statement->execute([])) {
+    if ($statement->execute()) {
         return true;
     } else {
         return false;

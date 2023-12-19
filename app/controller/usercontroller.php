@@ -205,7 +205,8 @@ class UsersController extends Controller{
                         'id'    =>  $user_data['user_id'],
                         'name'  =>  $user_data['user_name'],
                         'token' =>  $user_token,
-                        'img' =>  $user_data['user_img']
+                        'img' =>  $user_data['user_img'],
+                        'type' =>  $user_data['user_type']
                     ];
 
                    header("Location:index.php?login=success");
