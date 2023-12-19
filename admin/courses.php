@@ -1,33 +1,6 @@
 <?php
 
-require_once('../teacher/components/playlist_control.php');
-require_once('../wishlistclass.php');
 
-$playlist = new playlist;
-
-session_start();
-foreach($_SESSION['user_data'] as $key => $value)
-{
-   $tutor_id = $value['id'];
-}
-
-
-if(isset($_POST['delete']))
-{
-   $delete_id = $_POST['playlist_id'];
-   $delete_id = filter_var($delete_id, FILTER_SANITIZE_STRING);
-
-   if(  $playlist->Delete_playlist($delete_id,$tutor_id))
-   {
-      $message[] = 'playlist deleted!';
-   }
-   else
-   {
-      $message[] = 'playlist already deleted!';
-   }
- 
-  
-}
 
 ?>
 
@@ -73,11 +46,11 @@ if(isset($_POST['delete']))
           </a>
         </li>
         <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.php">
-            <i class="fa-solid fa-diagram-project fa-fw"></i>
-            <span>Projects</span>
-          </a>
-        </li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutor.php">
+                        <i class="fa-solid fa-diagram-project fa-fw"></i>
+                        <span>Tutors requests</span>
+                    </a>
+                </li>
         <li>
           <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="courses.php">
             <i class="fa-solid fa-graduation-cap fa-fw"></i>
@@ -85,23 +58,15 @@ if(isset($_POST['delete']))
           </a>
         </li>
         <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="users.php">
-            <i class="fa-regular fa-circle-user fa-fw"></i>
-            <span>Users</span>
-          </a>
+        <form>
+                    <a type="submit" class="d-flex align-center fs-14 c-black rad-6 p-10" name="get_users">
+                         <i class="fa-regular fa-circle-user fa-fw"></i>
+                        <span>Users</span>
+                    </a>
+            </form>
         </li>
-        <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.php">
-            <i class="fa-regular fa-file fa-fw"></i>
-            <span>Files</span>
-          </a>
-        </li>
-        <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.php">
-            <i class="fa-regular fa-credit-card fa-fw"></i>
-            <span>Plans</span>
-          </a>
-        </li>
+        
+        
       </ul>
     </div>
     <div class="content w-full">
