@@ -30,12 +30,7 @@
             <span>Settings</span>
           </a>
         </li>
-        <li>
-          <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.php">
-            <i class="fa-regular fa-user fa-fw"></i>
-            <span>Profile</span>
-          </a>
-        </li>
+     
         <li>
                     <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="tutor.php">
                         <i class="fa-solid fa-diagram-project fa-fw"></i>
