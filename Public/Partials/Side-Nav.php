@@ -1,7 +1,7 @@
 <div class="sidebar close shadow-lg  rounded rounded-4" >
     <div class="logo-details">
       <span class="logo_name t-4 " style="width: 90px; height: 90px; overflow: hidden;">
-      <img src="../Images/MyWebsite/logo only.png"  style="width: 100%; height: 100%; object-fit: cover;">  
+      <img src="/SWE-PROJECT/Images/MyWebsite/logo only.png"  style="width: 100%; height: 100%; object-fit: cover;">  
       </span>
       <i class="ms-auto fa-solid fa-x fs-5 logo_name btn-close" style="color: #ffffff;"></i>
     </div>

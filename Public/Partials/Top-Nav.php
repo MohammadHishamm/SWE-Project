@@ -5,9 +5,9 @@
             role="button" aria-controls="offcanvasExample">
             <i class="fa-solid fa-bars-staggered btn-open hero_main_text2"></i>
         </button>
-        <a class="navbar-brand me-auto mb-lg-0 mb-5" href="index.php"
+        <a class="navbar-brand me-auto mb-lg-0 mb-5" href="/SWE-PROJECT/public/index.php"
             style="width: 360px; height: 72px; overflow: hidden;">
-            <img src="../Images/MyWebsite/logo2.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="/SWE-PROJECT/Images/MyWebsite/logo2.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
         </a>
 
 
@@ -64,7 +64,7 @@
               <div class="row align-items-center">
 
             <div class="col">
- 
+            <a href="/SWE-PROJECT/Public/checkout.php"><i class="fa-solid fa-cart-shopping text-dark"></i></a>
             </div>
 
             <div class="dropdown col-3">
