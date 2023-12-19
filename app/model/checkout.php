@@ -5,12 +5,9 @@
 
 class checkout extends Model
 {
-
     public $checkout_id;
     public $Course_ID;
     public $User_ID;
-
-
 
 	public function __construct()
 	{
