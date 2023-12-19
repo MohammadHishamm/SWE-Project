@@ -5,7 +5,9 @@ require_once('../app/controller/Playlistcontroller.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewtutor.php');
 require_once('../php/teacher/admin/addplaylistval.php');
+require_once('../app/model/notify.php');
 
+$notify = new notify();
 $val= new playlistval;
 $tutor = new tutor();
 $playlist = $playlist = $tutor->getplaylist();

@@ -6,7 +6,9 @@ require_once('../app/controller/usercontroller.php');
 require_once('../app/controller/Playlistcontroller.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewtutor.php');
+require_once('../app/model/notify.php');
 
+$notify = new notify();
 $tutor = new tutor();
 $playlist  = $tutor->getplaylist();
 $content = $tutor->getcontent();

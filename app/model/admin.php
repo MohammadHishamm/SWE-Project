@@ -209,7 +209,14 @@ public function update_tutors_status($id , $status)
         $sql = "UPDATE tutors  SET User_status = :user_status WHERE tutor_id = :tutor_id";
         $statement = $this->db->getConn()->prepare($sql);
 
-        $statement->execute([':tutor_id' => $id , ':user_status' => $status]);
+        if($statement->execute([':tutor_id' => $id , ':user_status' => $status]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 
 }
 

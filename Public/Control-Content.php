@@ -4,7 +4,9 @@ require_once('../app/controller/contentcontroller.php');
 require_once('../app/model/tutor.php');
 require_once('../app/view/viewcontent.php');
 require_once('../php/teacher/admin/addcontentval.php');
+require_once('../app/model/notify.php');
 
+$notify = new notify();
 $val= new contentval;
 $tutor = new tutor();
 $content  = $tutor->getcontent();
