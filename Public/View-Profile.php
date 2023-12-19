@@ -5,7 +5,9 @@ define('__ROOT__', "../app/");
 require_once('../app/controller/usercontroller.php');
 require_once('../app/model/user.php');
 require_once('../app/view/viewuser.php');
+require_once('../app/model/notify.php');
 
+$notify = new notify();
 $user_model = new User();
 $user_controller = new UsersController($user_model);
 $user_view = new ViewUser($user_controller, $user_model);

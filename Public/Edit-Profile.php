@@ -3,8 +3,9 @@ define('__ROOT__', "../app/");
 
 require_once('../app/controller/userController.php');
 require_once('../app/model/user.php');
+require_once('../app/model/notify.php');
 
-
+$notify = new notify();
 $model = new User();
 $controller = new UsersController($model);
 
