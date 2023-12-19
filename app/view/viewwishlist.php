@@ -14,11 +14,17 @@ class ViewWishlist extends View
 
     function view_wishlist()
     {
+
+
         foreach($_SESSION['user_data'] as $key => $value)
         {
           $User_ID = $value['id'];
         }  
+        if (isset($_GET['delete_wishlist'])) 
+        {
         
+            $this->model->deletewishlist($_GET['Course_ID'],$User_ID);
+        }
       $wishlistt= $this->model->get_All_wishlist($User_ID);
         
       if($wishlistt->rowCount() > 0)
@@ -70,9 +76,9 @@ class ViewWishlist extends View
                            <span class="text-danger"><s>$20.99</s></span>
                        </div>
                        <div class="d-flex flex-column mt-4">
-                           <a href="course.php?playlist_id='.$wishlistitem['playlist_id'].'"
-                               class="btn btn-primary btn-sm mt-2">
-                               Add to wishlist
+                           <a href="?delete_wishlist&Course_ID='.$wishlistitem['playlist_id'].'"
+                               class="btn btn-danger btn-sm mt-2">
+                               Delete
                            </a>
                            <a class="btn btn-secondary btn-sm mt-2" href="View-Course.php?playlist_id='.$wishlistitem['playlist_id'].'" >
                                View Courses  
@@ -87,23 +93,18 @@ class ViewWishlist extends View
    ';
   
           }
+
+
     }
-  
-  if (isset($_GET['delete_wishlist'])) 
-  {
+    else
+    {
 
-      $this->model->deletewishlist($_GET['Course_ID'],$User_ID);
-  }
-
-
-
-
-
-      echo '
-      <div class="buttonarea mt-5">
-      <button type="button" class="btn btn-success ">Proceed to Payment</button>
-      </div>
-      ';
+        echo '
+        <div class="text-muted py-5">
+        <p class="text-danger fs-5 text-center ">No Data To show</p>
+        </div>
+        ';
+    }
     }
 
 
