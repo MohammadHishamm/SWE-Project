@@ -85,6 +85,8 @@
             ';                              
             // if( $notifications->rowCount() > 0){
             
+              if(!empty($notifications) )
+              {
             foreach($notifications as $fetch_notifications)
             {
               echo'<li class="p-1"><a class="dropdown-item border border-bottom  text-wrap " href="#">
@@ -97,6 +99,18 @@
               
               </li>';
             }
+          }
+          else{
+            echo'<li class="p-1"><a class="dropdown-item border border-bottom  text-wrap " href="#">
+            <span class="  " style="font-size: 20px; color: #58779D; ">Notification</span>
+            <br>
+            No notification 
+            <br>
+            <span class="  text-muted" style="font-size: 10px;"></span>
+            </a>
+            
+            </li>';
+          }
             // }
             echo '
             </ul>
@@ -121,8 +135,11 @@
 
           </div>
           ';
+
+        }
+  
      
-      } else {
+      else {
         
           echo '
               <div class="mx-auto  mb-4 mb-lg-0 mt-2 " >
