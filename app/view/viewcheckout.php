@@ -27,18 +27,18 @@ class ViewCheckout extends View
         
       if($checkoutt->rowCount() > 0)
       {
-          while($checkoutitem = $cehckoutt->fetch(PDO::FETCH_ASSOC) ){
+          while($checkoutitem = $checkoutt->fetch(PDO::FETCH_ASSOC) ){
         
       
                echo '
-               <div class="row justify-content-center mb-3">
+               <div class="row justify-content-center mb-3 mt-5">
                <div class="col-md-12 col-xl-10">
                    <div class="card shadow-0 border rounded-3">
                        <div class="card-body">
                            <div class="row">
                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                       <img src="../Images/courses/'.$checkoutitem['thumb'].'"
+                                       <img src="/SWE-PROJECT/Images/courses/thumbs/'.$checkoutitem['thumb'].'"
                                        class="w-100" />
                                        <a  href="course.php?playlist_id='.$checkoutitem['playlist_id'].'">
                                    <div class="hover-overlay">
@@ -71,7 +71,7 @@ class ViewCheckout extends View
                            <span class="text-danger"><s>$20.99</s></span>
                        </div>
                        <div class="d-flex flex-column mt-4">
-                           <a href="?delete_wishlist&Course_ID='.$checkoutitem['playlist_id'].'"
+                           <a href="?delete_checkout&Course_ID='.$checkoutitem['playlist_id'].'"
                                class="btn btn-danger btn-sm mt-2">
                                Delete
                            </a>
@@ -89,7 +89,10 @@ class ViewCheckout extends View
   
           }
 echo'
-<button class="btn btn-success">Pay</button>';
+<div class="flex-row row d-flex justify-content-end align-item-end  mb-3 w-100">
+<button class="btn btn-success ms-auto">Pay</button>
+</div>
+';
     }
     else
     {

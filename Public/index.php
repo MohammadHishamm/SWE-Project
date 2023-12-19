@@ -10,8 +10,9 @@ require_once('../app/model/tutor.php');
 require_once('../app/view/viewuser.php');
 require_once('../app/model/notify.php');
 require_once('../app/model/wishlist.php');
+require_once('../app/model/checkout.php');
 
-
+$checkout_model = new checkout();
 $wishlist_model = new wishlist();
 $notify = new notify();
 
@@ -47,6 +48,10 @@ if (isset($_GET['add_to_wishlist'])) {
     $wishlist_model->addwishlist($_GET['Course_Id'], $User_ID);
 }
 
+if (isset($_GET['add_to_cart']))
+{
+    $checkout_model->addcheckout($_GET['Course_Id'], $User_ID);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

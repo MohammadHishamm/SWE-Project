@@ -51,9 +51,16 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
     
     <link rel="stylesheet" href="../css/MDB css/mdb.min.css">
-    
+    <link rel="stylesheet" href="../css/All.css">
+    <link rel="stylesheet" href="../css/Sidenav.css">
 </head>
 <script src="../js/Toast.js"></script>
 
@@ -64,7 +71,9 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
         <source src="../images/alert.wav">
     </audio>
     <?php include "Partials/Toast.php" ?>
-
+    <?php include "Partials/Top-Nav.php" ?>
+    <?php include "Partials/Side-Nav.php" ?>
+    <?php include "Partials/Top-Button.php" ?>
   <section class="container-fluid">
   <div class=" py-5">
     <div class="row d-flex justify-content-center align-items-center ">
@@ -81,6 +90,7 @@ $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
   </div>
 </section>
     
+<?php include "Partials/Bottom-Nav.php" ?>
 
   </body>
 </html>

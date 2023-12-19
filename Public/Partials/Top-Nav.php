@@ -118,7 +118,7 @@
               
 
             <div class="col-3">
-            <a href="../php/chat/privatechat.php"><i class="fas fa-comments text-black fs-6"></i></a>
+            <a href="/SWE-PROJECT/php/chat/privatechat.php"><i class="fas fa-comments text-black fs-6"></i></a>
             </div>
 
             <div class="dropdown col-3">
@@ -129,13 +129,13 @@
             role="button"
             aria-expanded="false"
             href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../images/users/'.$img.'" alt="mdo" width="36" height="36" class="rounded-circle">
+            <img src="/SWE-PROJECT/images/users/'.$img.'" alt="mdo" width="36" height="36" class="rounded-circle">
             </a>
 
             <ul class="dropdown-menu text-small " aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; inset: 0px auto auto 300px; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-start">
          
           
-            <li><a class="dropdown-item" href="Partials/Sign-out.php">Sign out</a></li>
+            <li><a class="dropdown-item" href="/SWE-PROJECT/public/Partials/Sign-out.php">Sign out</a></li>
             </ul>
             
 

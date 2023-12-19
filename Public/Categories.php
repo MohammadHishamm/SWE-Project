@@ -120,7 +120,7 @@ $notify = new notify();
                                 <div class="row">
                                     <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                         <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                            <img src="../Images/courses/'.$fetch_playlist['thumb'].'"
+                                            <img src="/SWE-PROJECT/Images/courses/thumbs/'.$fetch_playlist['thumb'].'"
                                             class="w-100" />
                                             <a  href="course.php?playlist_id='.$fetch_playlist['playlist_id'].'">
                                         <div class="hover-overlay">
@@ -216,7 +216,7 @@ $notify = new notify();
                                 <div class="row">
                                     <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                         <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                            <img src="../Images/courses/<?= $fetch_playlist['thumb'] ?>"
+                                            <img src="/SWE-PROJECT/Images/courses/thumbs/<?= $fetch_playlist['thumb'] ?>"
                                                 class="w-100" />
                                             <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id'] ?>">
                                                 <div class="hover-overlay">

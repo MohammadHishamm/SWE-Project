@@ -175,12 +175,15 @@ class ViewUser extends View{
 
 									<div class="d-flex row align-items-center justify-content-between mb-2">
 									
-										<div class="d-flex col-12 align-items-center w-100 mb-2">
+										<div class="d-flex col-6 align-items-center w-100 mb-2">
 										
 
-                                    		<a class="addtocart btn btn-primary w-100" href="?add_to_wishlist=true&Course_Id='.$fetch_playlist['playlist_id'].'" id="addtocart">
+                                    		<a class="addtocart btn btn-primary w-50 m-2" href="?add_to_wishlist=true&Course_Id='.$fetch_playlist['playlist_id'].'" id="addtocart">
                                            	Add to wishlist
                                     		</a>
+											<a class="addtocart btn btn-success w-50 m-2" href="?add_to_cart=true&Course_Id='.$fetch_playlist['playlist_id'].'" id="addtocart">
+											Add to Cart
+										 </a>
 										</div>
 										<div class="d-flex col-12 align-items-center w-100 ">
 
