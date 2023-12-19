@@ -126,7 +126,7 @@ class ViewUser extends View{
                     <div class="card" style="width: 20rem; height: 25rem;  ">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light"
                             style="width: 20rem; height: 25rem;  ">
-                            <img src="../images/courses/'.$fetch_playlist['thumb'].'"
+                            <img src="../images/courses/thumbs/'.$fetch_playlist['thumb'].'"
                                 style="object-fit: cover ; height: 100%; width: 100%;" />
                             <a href="View-Course.php?playlist_id='.$fetch_playlist['playlist_id'].'">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
