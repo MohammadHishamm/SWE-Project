@@ -91,7 +91,7 @@ if (isset($_GET['get_playlists'])) {
                     <?= $fetch_course['description']; ?>
                 </p>
                 <p class="description c-grey mt-15 fs-14">
-                    <?= $fetch_course['Price']; ?>
+                    <?= $fetch_course['Price']; ?> $
                 </p>
             </div>
 
