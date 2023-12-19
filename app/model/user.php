@@ -225,14 +225,16 @@ class User extends Model
 
 function save_google_data()
 {
+	$this->user_type='Student';
 	$sql = "
-    INSERT INTO user (user_name, user_email,user_img, user_status, user_created_on) 
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO user (user_name, user_email,user_img, user_status, user_created_on, user_type) 
+    VALUES (?, ?, ?, ?, ?,?)
     ";
+	
 
     $statement = $this->db->getConn()->prepare($sql);
 
-    if ($statement->execute([$this->user_name, $this->user_email,$this->user_google_img , $this->user_status, $this->user_created_on])) {
+    if ($statement->execute([$this->user_name, $this->user_email,$this->user_google_img , $this->user_status, $this->user_created_on,$this->user_type])) {
         return true;
     } else {
         return false;
