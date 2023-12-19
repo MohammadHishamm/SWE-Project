@@ -100,8 +100,8 @@ class ViewWishlist extends View
 
 
       echo '
-      <div class="buttonarea">
-      <button type="button" class="btn btn-success">Proceed to Payment</button>
+      <div class="buttonarea mt-5">
+      <button type="button" class="btn btn-success ">Proceed to Payment</button>
       </div>
       ';
     }
