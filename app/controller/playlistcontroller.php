@@ -107,4 +107,10 @@ class PlaylistController extends Controller
         $_SESSION["error_message"]  = 'playlist updated!';  
     }
 
+
+    function getallplaylists(){
+
+        return $this->model->get_All_playlists();
+    }
+
 }
