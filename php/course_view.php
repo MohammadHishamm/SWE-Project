@@ -46,8 +46,8 @@ if(empty($_SESSION['user_data']))
             <video src="teacher/uploaded_files/<?= $fetch_content['video']; ?>" style="height: 500px;" autoplay controls poster="teacher/uploaded_files/<?= $fetch_content['thumb']; ?>" class="w-100 "></video>
             <div class="text-muted mb-4 "><i class="fas fa-calendar pe-4"></i><span><?= $fetch_content['date']; ?></span></div>
             <h3 class="fs-1"><?= $fetch_content['title']; ?></h3>
-            <div class="fs-5"><?= $fetch_content['description']; ?></div>
-            </div>
+            <div cl
+            </div>ass="fs-5"><?= $fetch_content['description']; ?></div>
 
 
             </div>

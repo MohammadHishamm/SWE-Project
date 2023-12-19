@@ -51,11 +51,16 @@ if (isset($_SESSION['user_data'])) {
                     </ul>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-start align-items-start pt-3">
-                <a href="Control-Content.php?action=add" class="btn btn-light w-100 mb-0" style="">Add Content</a>
-            </li>
-            <li class="list-group-item d-flex justify-content-start align-items-start pt-3">
-                <a href="Control-Content.php?action=view" class="btn btn-light w-100 mb-0" style="">View Content</a>
+            <li class="list-group-item d-flex justify-content-start align-items-start pt-3 w-100">
+                <div class="dropdown w-100">
+                    <a class="btn btn-light w-100 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">My Content
+                    </a>
+                    <ul class="dropdown-menu w-100 text-center" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="Control-Content.php?action=add">Add Content</a></li>
+                        <li><a class="dropdown-item" href="Control-Content.php?action=view">View Content</a></li>
+                    </ul>
+                </div>
             </li>
             <?php
         }

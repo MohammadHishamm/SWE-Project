@@ -77,31 +77,33 @@ if (isset($_POST["enroll_course"])) {
     <?php include "Partials/Top-Nav.php" ?>
     <?php include "Partials/Side-Nav.php" ?>
     <!-- Course Image section -->
-    <div class="p-5 "
-        style="background-color: #2d2f31; width: 100%; height: 330px;">
+    <div class="p-5 " style="background-color: #2d2f31; width: 100%; height: 330px;">
         <div class="row" style="margin-top: 130px;">
-        <img src="../Images/courses/<?= $fetch_playlist['thumb']; ?>" alt="" srcset="" style="width: 20%; height: 200px; position: absolute;">
+            <img src="../Images/courses/thumbs/<?= $fetch_playlist['thumb']; ?>" alt="" srcset=""
+                style="width: 20%; height: 200px; position: absolute;">
             <div class="col-12 text-center">
                 <span class="courses_content_name "><?= $fetch_playlist['title'] ?></span>
             </div>
             <div class="col-12 text-center" style="margin-top: 40px;">
                 <span class="courses_content_teacher"><?= $fetch_playlist['user_name'] ?></span>
             </div>
-            
-        </div>
-        
-        <form action="" method="POST">                  
-    <input type="hidden" name="course_id" value="<?= isset($_GET['playlist_id']) ? htmlspecialchars($_GET['playlist_id']) : '' ?>">
-    <input type="hidden" name="student_id" value="<?= $User_ID ?>">
 
-    <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course" type="submit">Enroll</button>    
-</form>
-             
+        </div>
+
+        <form action="" method="POST">
+            <input type="hidden" name="course_id"
+                value="<?= isset($_GET['playlist_id']) ? htmlspecialchars($_GET['playlist_id']) : '' ?>">
+            <input type="hidden" name="student_id" value="<?= $User_ID ?>">
+
+            <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course"
+                type="submit">Enroll</button>
+        </form>
+
     </div>
 
     <!-- Course Introduction section -->
     <div class="container-fluid mb-11">
-        
+
         <div class="row">
             <div class="col-9 ms-5 mt-5" style=" ">
 
@@ -110,14 +112,14 @@ if (isset($_POST["enroll_course"])) {
                         Introduction
                     </span>
 
-                    
-                    
+
+
                     <div class=" mt-5">
                         <p class="sidnav_courses_content ">
                             Course information
                         </p>
                         <p class="courses_content_information">
-                        <?= $content_data->rowCount() ?> lectures
+                            <?= $content_data->rowCount() ?> lectures
                         </p>
                     </div>
                     <div class=" mt-3">
@@ -125,7 +127,7 @@ if (isset($_POST["enroll_course"])) {
                             Description
                         </p>
                         <p class="courses_content_information">
-                        <?= $fetch_playlist['description'] ?>
+                            <?= $fetch_playlist['description'] ?>
                         </p>
                     </div>
                     <div class=" mt-3">
@@ -133,7 +135,7 @@ if (isset($_POST["enroll_course"])) {
                             Requirments
                         </p>
                         <p class="courses_content_information">
-                        <?= $fetch_playlist['requirements'] ?>
+                            <?= $fetch_playlist['requirements'] ?>
                         </p>
                     </div>
                     <div class=" mt-3">
@@ -141,49 +143,50 @@ if (isset($_POST["enroll_course"])) {
                             course skills
                         </p>
                         <p class="courses_content_information">
-                        <?= $fetch_playlist['Tags'] ?>
+                            <?= $fetch_playlist['Tags'] ?>
                         </p>
                     </div>
                 </div>
 
-                <div class="d-flex flex-wrap ms-5 mt-5">
+                <div class="d-flex flex-wrap mt-5">
                     <?php
 
 
                     if($content_data->rowCount() > 0)
                     {
-                        $i=0;
-                        while($fetch_content = $content_data->fetch(PDO::FETCH_ASSOC) && $i<1){
-                            $i += 1 ;
+                        $i = 0;
+                        while($fetch_content = $content_data->fetch(PDO::FETCH_ASSOC)  ){
+                            if($i <= 1)
+                            {
+
+                            
                     ?>
-                    <div class="col-lg-3 col-12 mb-4 me-4">
-                        
-                        <!-- Card -->
-                        <div class="card" >
-                            <!-- Card content -->
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title"><?= $fetch_content['title'] ?></h4>
-                                <!-- Text -->
-                                <p class="card-text"><?= $fetch_content['description'] ?></p>
-                                <!-- Button -->
-                                <a href="course_view.php?content_id=<?= $fetch_content['content_id'] ?> " class="btn" style="background-color: #58779D; color: white;">
-                                    View Content
-                                </a>
-                            </div>
+                    
+                        <p class="text-primary fs-1 ">Tutorial</p>
+                        <div class="container-fluid">
+                            <video src="../Images/courses/videos/<?= $fetch_content['video']; ?>" style="height: 500px;"
+                                autoplay controls poster="../Images/courses/thumbs/<?= $fetch_content['thumb']; ?>"
+                                class="w-100 "></video>
+                            <div class="text-muted mb-4 "><i
+                                    class="fas fa-calendar pe-4"></i><span><?= $fetch_content['date']; ?></span></div>
+                            <h3 class="fs-1"><?= $fetch_content['title']; ?></h3>
+                            <div class="fs-5"><?= $fetch_content['description']; ?></div>
                         </div>
-                    </div>
+
+                 
                     <?php 
                         }
+                        }
+
                     }
                     ?>
 
                 </div>
             </div>
- 
+
             <div class="flex-shrink-0 p-3  mt-5 border shadow col-3 d-none d-xxl-block"
                 style="width: 280px; height: 760px">
-              
+
                 <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                     <svg class="bi me-2" width="30" height="24">
                         <use xlink:href="#bootstrap"></use>
