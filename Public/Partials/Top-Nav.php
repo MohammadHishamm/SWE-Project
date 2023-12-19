@@ -67,7 +67,7 @@
  
             </div>
 
-            <div class="dropdown col me-5">
+            <div class="dropdown col-3">
             <a 
             data-mdb-dropdown-init
             href="#"
@@ -116,7 +116,12 @@
             </ul>
             </div>
               
-            <div class="dropdown col">
+
+            <div class="col-3">
+            <a href="../php/chat/privatechat.php"><i class="fas fa-comments text-black fs-6"></i></a>
+            </div>
+
+            <div class="dropdown col-3">
             <a 
             data-mdb-dropdown-init
             href="#"
@@ -132,8 +137,10 @@
           
             <li><a class="dropdown-item" href="Partials/Sign-out.php">Sign out</a></li>
             </ul>
+            
 
           </div>
+
           ';
 
         }
