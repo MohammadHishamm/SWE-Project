@@ -31,4 +31,11 @@ class AdminController extends Controller
 
     }
 
+    function getallusers(){
+
+        return $this->model->get_all_users_data();
+       
+
+    }
+
 }

@@ -43,7 +43,7 @@ $Data = $admin_model->get_tutors_requests();
 
 <body>
     <div class="page d-flex">
-        <div class="sidebar bg-white p-20 p-relative">
+    <div class="sidebar bg-white p-20 p-relative">
             <h3 class="p-relative txt-c mt-0">Arab Data Hub</h3>
             <ul>
                 <li>
@@ -77,23 +77,13 @@ $Data = $admin_model->get_tutors_requests();
                     </a>
                 </li>
                 <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="users.php">
-                        <i class="fa-regular fa-circle-user fa-fw"></i>
-                        <span>Users</span>
-                    </a>
+                <a href="users.php?get_users=true" class="d-flex align-center fs-14 c-black rad-6 p-10">
+    <i class="fa-regular fa-circle-user fa-fw"></i>
+    <span>Users</span>
+</a>
                 </li>
-                <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.php">
-                        <i class="fa-regular fa-file fa-fw"></i>
-                        <span>Files</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.php">
-                        <i class="fa-regular fa-credit-card fa-fw"></i>
-                        <span>Plans</span>
-                    </a>
-                </li>
+                
+                
             </ul>
         </div>
         <div class="content w-full">
