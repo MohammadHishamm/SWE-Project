@@ -86,8 +86,12 @@ if (isset($_GET['get_playlists'])) {
 
             <div class="p-20">
                 <h4 class="m-0"><?= $fetch_course['title']; ?></h4>
+                  <img class="rad-half mt-10 mb-10 w-100 h-100" src=" ../php/teacher/uploaded_files/<?= $fetch_course['thumb']; ?>" alt="" />
                 <p class="description c-grey mt-15 fs-14">
                     <?= $fetch_course['description']; ?>
+                </p>
+                <p class="description c-grey mt-15 fs-14">
+                    <?= $fetch_course['Price']; ?>
                 </p>
             </div>
 
