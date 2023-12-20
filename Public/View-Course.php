@@ -44,6 +44,12 @@ if($playlist_data->rowCount() > 0){
 }
 $student= new Student();
 $student_controller = new Studentcontroller($student);
+
+
+$student_data = $student->get_course_by_student_id($User_ID);
+
+$fetch_student_data = $student_data->fetch(PDO::FETCH_ASSOC);
+
 if (isset($_POST["enroll_course"])) { 
     if($student_controller->addcourse())
     {
@@ -97,9 +103,12 @@ if (isset($_POST["enroll_course"])) {
             <input type="hidden" name="course_id"
                 value="<?= isset($_GET['playlist_id']) ? htmlspecialchars($_GET['playlist_id']) : '' ?>">
             <input type="hidden" name="student_id" value="<?= $User_ID ?>">
-
+           <?php
+            if($fetch_student_data['Course_id'] != $fetch_playlist['playlist_id'])
+                    {?>
             <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course"
                 type="submit">Enroll</button>
+                <?php } ?>
         </form>
 
     </div>
@@ -154,7 +163,40 @@ if (isset($_POST["enroll_course"])) {
                 <div class="d-flex flex-wrap mt-5">
                     <?php
 
-                   
+         
+                 
+                    
+                    if($fetch_student_data['Course_id'] == $fetch_playlist['playlist_id'])
+                    {
+                        if($content_data->rowCount() > 0)
+                        {
+                            while($fetch_content = $content_data->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <div class="col-lg-3 col-12 mb-4 me-4">
+                            <!-- Card -->
+                            <div class="card" >
+                                <!-- Card content -->
+                                <div class="card-body">
+                                    <!-- Title -->
+                                    <h4 class="card-title"><?= $fetch_content['title'] ?></h4>
+                                    <!-- Text -->
+                                    <p class="card-text text-truncate"><?= $fetch_content['description'] ?></p>
+                                    <!-- Button -->
+                                    <a href="view_Course_Content.php?content_id=<?= $fetch_content['content_id'] ?> " class="btn" style="background-color: #58779D; color: white;">
+                                        View Content
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php 
+                            }
+                        }
+                    }
+                    
+
+                    
+                    else
+                    {
                     if($content_data->rowCount() > 0)
                     {
                         $i = 0 ;
@@ -179,10 +221,13 @@ if (isset($_POST["enroll_course"])) {
                     <?php 
                     $i++;
                         }
+                    }
                         }
 
-                    }
                     ?>
+
+
+                    <?php } ?>
 
                 </div>
             </div>

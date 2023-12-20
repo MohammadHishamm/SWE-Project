@@ -507,7 +507,7 @@ font-weight: bolder;">Arab Data Hub</p>
         </div>
     </section>
     <!-- Start Video -->
-    <div class="video container-fluid py-5  p-5" style="width: 1200px;">
+    <div class="video container-fluid py-5  p-5" style="width: 100%;">
         <video autoplay muted loop>
             <source src="../Images/canva-blue-clean-minimalist-online-education-youtube-video-ad-pzKSOrWMo8Y.mp4" type="video/mp4" />
         </video>

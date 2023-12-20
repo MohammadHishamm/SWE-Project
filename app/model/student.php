@@ -34,12 +34,12 @@ class Student extends User
     }
 
 
-    public function get_course_by_student_id()
+    public function get_course_by_student_id($student_id)
     {
 
-        $query = "SELECT * FROM course  INNER JOIN  playlist INNER JOIN tutors INNER JOIN user ON  user.user_id = tutors.user_id and playlist.tutor_id = tutors.tutor_id  and  course.Course_id = playlist.Playlist_ID AND course.Student_id = ?  ";
-        $statement = $this->connect->prepare($query);
-        $statement->execute([$this->student_id]);
+        $query = "SELECT * FROM course  INNER JOIN  playlist INNER JOIN tutors INNER JOIN user ON  user.user_id = tutors.tutor_id and playlist.tutor_id = tutors.tutor_id  and  course.Course_id = playlist.playlist_id AND course.Student_id = ?  ";
+        $statement =$this->db->getConn()->prepare($query);
+        $statement->execute([$student_id]);
      
         return $statement;
 
