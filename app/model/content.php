@@ -131,10 +131,10 @@ class content extends playlist
 
         public function get__playlist_by_id($id)
         {
-            $query = "SELECT  content.*
+            $query = "SELECT content.*
             FROM `content` 
             INNER JOIN `playlist`
-            ON  content.playlist_id = ? and playlist.playlist_id = content.playlist_id";
+            ON  content.content_id = ? and playlist.playlist_id = content.playlist_id";
 
             $statement =  $this->db->getConn()->prepare($query);
             $statement->execute([$id]);
@@ -182,8 +182,26 @@ class content extends playlist
 
         public function Update_content()
         {
-            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET title = ?, description = ? , video = ? , thumb = ? , status = ? WHERE contetn_id = ?");
-            $update_content->execute([$this->content_title , $this->content_description ,$this->content_video, $this->content_image , $this->content_status , $this->content_id]);   
+            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET  title = ?, thumb = ? , status = ? WHERE content_id = ?");
+            $update_content->execute([ $this->content_title , $this->content_description , $this->content_status , $this->content_id]);   
+        }
+
+        public function Update_play()
+        {
+            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET playlist_id = ? WHERE content_id = ?");
+            $update_content->execute([$this->content_playlist_id , $this->content_id]);   
+        }
+
+        public function Update_thumb()
+        {
+            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET thumb = ? WHERE content_id = ?");
+            $update_content->execute([$this->content_thumb , $this->content_id]);   
+        }
+
+        public function Update_video()
+        {
+            $update_content =  $this->db->getConn()->prepare("UPDATE `content` SET video = ? WHERE content_id = ?");
+            $update_content->execute([$this->content_video , $this->content_id]);   
         }
 
 

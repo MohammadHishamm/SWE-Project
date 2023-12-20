@@ -72,17 +72,19 @@
             return $this->connect;
         }
         public function Save()
-{
-    $add_playlist =  $this->db->getConn()->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, requirements,Tags, price, thumb, status) VALUES(?,?,?,?,?,?,?,?,?)");
-    if ($add_playlist->execute([$this->playlist_id, $this->playlist_tutor, $this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_tag, $this->playlist_price, $this->playlist_image, $this->playlist_status])) {
-        // Insert successful
-        return true;
-    } else {
-        // Insert failed, display error information
-        var_dump($add_playlist->errorInfo());
-        return false;
-    }
-}
+    {
+            $add_playlist =  $this->db->getConn()->prepare("INSERT INTO `playlist`(playlist_id, tutor_id, title, description, requirements,Tags, price, thumb, status) VALUES(?,?,?,?,?,?,?,?,?)");
+            if ($add_playlist->execute([$this->playlist_id, $this->playlist_tutor, $this->playlist_title, $this->playlist_description, $this->playlist_requirements, $this->playlist_tag, $this->playlist_price, $this->playlist_image, $this->playlist_status])) {
+                // Insert successful
+                return true;
+            } 
+            else 
+            {
+                // Insert failed, display error information
+                var_dump($add_playlist->errorInfo());
+                return false;
+            }
+        }
 
 
         public function get_All_playlist($tutor_id)
@@ -90,6 +92,14 @@
             $query = "SELECT * FROM `playlist` WHERE tutor_id = ? ORDER BY date DESC";
             $statement =  $this->db->getConn()->prepare($query);
             $statement->execute([$tutor_id]);
+         
+            return $statement;
+        }
+        public function get_All_playlist_content($content_id)
+        {
+            $query = "SELECT * FROM `content` INNER JOIN `playlist` WHERE playlist.playlist_id = content.playlist_id AND content.content_id = ?";
+            $statement =  $this->db->getConn()->prepare($query);
+            $statement->execute([$content_id]);
          
             return $statement;
         }
