@@ -6,12 +6,21 @@ require_once('../app/controller/usercontroller.php');
 require_once('../app/model/user.php');
 require_once('../app/view/viewuser.php');
 require_once('../app/model/notify.php');
+require_once('../app/controller/Playlistcontroller.php');
+require_once('../app/controller/studentcontroller.php');
+require_once('../app/model/tutor.php');
+require_once('../app/model/student.php');
+require_once('../app/view/viewtutor.php');
+require_once('../app/model/student.php');
 
 $notify = new notify();
 $user_model = new User();
 $user_controller = new UsersController($user_model);
 $user_view = new ViewUser($user_controller, $user_model);
 
+$tutor = new tutor();
+$playlist  = $tutor->getplaylist();
+$student= new Student();
 
 if(!isset($_SESSION['user_data']))
 {
@@ -165,14 +174,9 @@ else
 
 
                             <?php 
-        require_once('teacher/components/playlist_control.php');
-        require_once('User/course.php');
 
-        $playlist = new playlist;
-        $course_object = new Courses;
-        $course_object->setStudentid($_GET["user_id"]);
                    
-        $course_Data = $course_object->get_course_by_student_id();
+        $course_Data = $student->get_course_by_student_id($_GET["user_id"]);
                       
         if($course_Data->rowCount() > 0){
           while($fetch_courses = $course_Data->fetch(PDO::FETCH_ASSOC)){
@@ -189,9 +193,9 @@ else
                             <div class="col-3 mb-3">
                                 <div class="card" style="width: 300px;">
                                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                        <img src="teacher/uploaded_files/<?= $fetch_playlist['thumb'];?>"
+                                        <img src="../Images/courses/thumbs/<?= $fetch_playlist['thumb'];?>"
                                             class="img-fluid" />
-                                        <a href="course.php?playlist_id=<?= $fetch_playlist['playlist_id']; ?>">
+                                        <a href="View-Course.php?playlist_id=<?= $fetch_playlist['playlist_id']; ?>">
                                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
                                             </div>
                                         </a>
@@ -200,10 +204,10 @@ else
                                         <div class="card-title">
                                             <div class="row mb-3">
                                                 <div class="col-7 d-flex justify-content-start align-items-center">
-                                                    <img src="../Images/avatar-2.webp" alt="Generic placeholder image"
+                                                    <img src="../Images/users/<?= $fetch_playlist['user_img']; ?>" alt="Generic placeholder image"
                                                         class="img-fluid rounded-circle border border-dark border-3"
                                                         style="width: 40px;">
-                                                    <span class="ps-2" style="font-size: 13px;">@zayaty750</span>
+                                                    <span class="ps-2" style="font-size: 13px;"><?= $fetch_playlist['user_name']; ?></span>
                                                 </div>
                                                 <div class="col-5 d-flex justify-content-end align-items-center">
                                                     <ul class="mb-0 list-unstyled d-flex flex-row  "
@@ -227,11 +231,11 @@ else
                                                 </div>
                                             </div>
                                             <p class="card-text "><?= $fetch_playlist['title'];?></p>
-                                            <p class="card-text mb-3"><?= $fetch_playlist['description'];?></p>
+                                            <p class="card-text mb-3 text-truncate"><?= $fetch_playlist['description'];?></p>
                                             <div>
                                                 <div class="d-flex align-items-center justify-content-between mb-3">
-                                                    <p class="small mb-0"><i class="far fa-clock me-2"></i>3 hrs</p>
-                                                    <p class="fw-bold mb-0">$90</p>
+                                                    <p class="small mb-0"><i class="far fa-clock me-2"></i><?= $fetch_playlist['date'];?></p>
+                                                    <p class="fw-bold mb-0"><?= $fetch_playlist['Price'];?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,7 +256,7 @@ else
             </div>
         </div>
     </section>
-    <?php include "Bottomnav.php" ?>
+    <?php include "Partials/Bottom-Nav.php" ?>
     <script src="../js/Loaders.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js">
