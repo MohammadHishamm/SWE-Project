@@ -48,12 +48,13 @@
 }
 .sidebar .nav-links li{
   position: relative;
-  margin-bottom: 12px;
+  margin-top: 40px;
   list-style: none;
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #1d1b31;
+  color: #E4E9F7;
+  background: #fff;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -127,6 +128,7 @@
   transition: 0s;
 }
 .sidebar.close .nav-links li:hover .sub-menu{
+  color: #E4E9F7;
   top: 0;
   opacity: 1;
   pointer-events: auto;
@@ -148,6 +150,7 @@
   pointer-events: none;
 }
 .sidebar .nav-links li:hover .sub-menu.blank{
+  color: #E4E9F7;
   top: 50%;
   transform: translateY(-50%);
 }

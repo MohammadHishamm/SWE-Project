@@ -28,6 +28,7 @@ $admincontroller=new AdminController($admin_model);
 
 if (isset($_GET['get_users'])) {
   $usersData =  $admincontroller->getallusers();
+  
 }
 
 

@@ -13,7 +13,10 @@ $wishlist_model = new wishlist();
 $wishlist_controller = new WishlistController($wishlist_model);
 $View_wishlist = new ViewWishlist($wishlist_controller,$wishlist_model);
 
-
+if(!isset($_SESSION['user_data']))
+{
+  header('location:signup-in.php');
+}
 
 ?>
 

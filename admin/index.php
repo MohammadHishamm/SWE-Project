@@ -1,4 +1,36 @@
+<?php
 
+define('__ROOT__', "../app/");
+
+
+require_once('../app/controller/Playlistcontroller.php');
+require_once('../app/controller/usercontroller.php');
+require_once('../app/controller/admincontroller.php');
+require_once('../app/model/user.php');
+require_once('../app/model/tutor.php');
+require_once('../app/model/admin.php');
+require_once('../app/view/viewuser.php');
+require_once('../app/model/notify.php');
+require_once('../app/model/wishlist.php');
+
+
+
+$notify = new notify();
+
+
+$admin_model=new Admin();
+$admincontroller=new AdminController($admin_model);
+
+
+$playlist_model=new playlist();
+
+
+
+  $usersData =  $admin_model->user_count();
+  $playlist_data = $playlist_model->get_playlist_table_row();
+  $playlist_data = $playlist_data->rowCount();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,10 +78,10 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['USERS', 'Courses'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: 'Data',
+                        data: [<?= $usersData ?>, <?= $playlist_data ?>],
                         borderWidth: 1
                     }]
                 },

@@ -3,7 +3,7 @@ session_start();
 
 if(empty($_SESSION['user_data']))
 {
-  header('location:signup.php');
+  header('location:signup-in.php');
 }
 else
 {

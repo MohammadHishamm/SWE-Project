@@ -22,6 +22,11 @@ foreach($_SESSION['user_data'] as $key => $value)
   $tutor_id = $value['id'];
 }
 
+if(!isset($_SESSION['user_data']))
+{
+  header('location:signup-in.php');
+}
+
 $model->setUserId($tutor_id);
 
 

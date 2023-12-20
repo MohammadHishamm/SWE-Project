@@ -9,7 +9,7 @@ require_once(__ROOT__ . 'model/user.php');
 
 if(!isset($_SESSION['user_data']))
 {
-	header('location:index.php');
+	header('location:/SWE-PROJECT/public/signup-in.php');
 }
 
 $notify = new notify();

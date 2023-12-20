@@ -15,11 +15,9 @@ foreach($_SESSION['user_data'] as $key => $value)
   $user_id = $value['id'];
 }
 
-if(!isset($user_id))
+if(!isset($_SESSION['user_data']))
 {
-
-
-    
+  header('location:signup-in.php');
 }
 else
 {

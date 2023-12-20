@@ -18,6 +18,10 @@ if(isset($_SESSION['user_data']))
     }  
 }
 
+if(!isset($_SESSION['user_data']))
+{
+  header('location:signup-in.php');
+}
 
 $notify = new notify();
 $tutor = new tutor();

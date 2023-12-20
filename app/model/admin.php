@@ -348,6 +348,26 @@ function get_all_users_data()
     return $users_data;
 }
 
+function get_all_users_i()
+{
+    $query = "SELECT * FROM user";
+    $statement = $this->db->getConn()->prepare($query);
+    $statement->execute();
+ 
+
+    return $statement ;
+}
+
+function user_count()
+{
+    $query = "SELECT * FROM user";
+    $statement = $this->db->getConn()->prepare($query);
+    $statement->execute();
+ 
+
+    return $statement->rowCount() ;
+}
+
 
 
 function delete_user_by_id()

@@ -16,7 +16,10 @@
 
 
 <div class="sidebar bg-white p-20 p-relative">
+
+      <a href="/SWE-PROJECT/public/index.php">
       <h3 class="p-relative txt-c mt-0">Arab Data Hub</h3>
+      </a>
       <ul>
         <li>
           <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="index.php">

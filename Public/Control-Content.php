@@ -50,6 +50,11 @@ if(isset($_POST['update content'])){
 
     $contentcontroller-> update_playlist();
 }
+
+if(!isset($_SESSION['user_data']))
+{
+  header('location:signup-in.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

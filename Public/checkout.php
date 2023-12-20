@@ -13,6 +13,10 @@ $checkout_model = new checkout();
 $checkout_controller = new CheckoutController($checkout_model);
 $View_checkout = new ViewCheckout($checkout_controller,$checkout_model);
 
+if(!isset($_SESSION['user_data']))
+{
+  header('location:signup-in.php');
+}
 
 
 ?>
