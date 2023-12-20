@@ -79,6 +79,7 @@ class TutorsController extends Controller{
                         
                     if(!$mail->Send()) {
                       echo "Mailer Error: " . $mail->ErrorInfo;
+                      header('location:Home.php');
                     } else {
                       echo 
                       '

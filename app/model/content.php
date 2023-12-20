@@ -131,10 +131,17 @@ class content extends playlist
 
         public function get__playlist_by_id($id)
         {
-            $query = "SELECT content.*
-            FROM `content` 
-            INNER JOIN `playlist`
-            ON  content.content_id = ? and playlist.playlist_id = content.playlist_id";
+            $query = "SELECT content.* FROM `content` INNER JOIN `playlist` ON  content.content_id = ? and playlist.playlist_id = content.playlist_id";
+
+            $statement =  $this->db->getConn()->prepare($query);
+            $statement->execute([$id]);
+         
+            return $statement;
+        }
+        
+        public function get__content_playlist_by_id($id)
+        {
+            $query = "SELECT * FROM `content` INNER JOIN `playlist` ON  content.playlist_id = ? and playlist.playlist_id = content.playlist_id";
 
             $statement =  $this->db->getConn()->prepare($query);
             $statement->execute([$id]);

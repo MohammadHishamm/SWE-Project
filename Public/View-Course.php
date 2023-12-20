@@ -34,11 +34,10 @@ $playlist_data =$playlist->get_playlist_by_id($_GET['playlist_id']);
 
 
 $content = new content;
-$content_data =$content->get__playlist_by_id($_GET['playlist_id']);
 
 
 
-
+$content_data = $content->get__content_playlist_by_id($_GET['playlist_id']);
 
 if($playlist_data->rowCount() > 0){
     $fetch_playlist = $playlist_data->fetch(PDO::FETCH_ASSOC);
@@ -155,14 +154,13 @@ if (isset($_POST["enroll_course"])) {
                 <div class="d-flex flex-wrap mt-5">
                     <?php
 
-
+                   
                     if($content_data->rowCount() > 0)
                     {
-                        $i = 0;
+                        $i = 0 ;
                         while($fetch_content = $content_data->fetch(PDO::FETCH_ASSOC)  ){
-                            if($i <= 1)
-                            {
-
+                        if($i<=1)
+                        {
                             
                     ?>
                     
@@ -179,6 +177,7 @@ if (isset($_POST["enroll_course"])) {
 
                  
                     <?php 
+                    $i++;
                         }
                         }
 

@@ -21,6 +21,7 @@ $notify = new notify();
 $admin_model=new Admin();
 $admincontroller=new AdminController($admin_model);
 
+$tutor_model = new tutor();
 
 $playlist_model=new playlist();
 
@@ -29,6 +30,8 @@ $playlist_model=new playlist();
   $usersData =  $admin_model->user_count();
   $playlist_data = $playlist_model->get_playlist_table_row();
   $playlist_data = $playlist_data->rowCount();
+  $tutor_data = $tutor_model->get_all_tutor();
+  $tutor_data = $tutor_data->rowCount();
 
 ?>
 <!DOCTYPE html>
@@ -78,10 +81,10 @@ $playlist_model=new playlist();
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['USERS', 'Courses'],
+                    labels: ['USERS', 'Courses','teachers'],
                     datasets: [{
                         label: 'Data',
-                        data: [<?= $usersData ?>, <?= $playlist_data ?>],
+                        data: [<?= $usersData ?>, <?= $playlist_data ?>,  <?=$tutor_data?>],
                         borderWidth: 1
                     }]
                 },

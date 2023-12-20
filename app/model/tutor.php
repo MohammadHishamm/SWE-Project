@@ -167,5 +167,20 @@ require_once(__ROOT__ . "model/content.php");
                 return false;
             }
         }
+
+        public function get_all_tutor()
+        {
+            $query = "SELECT * FROM `tutors`";
+            $statement = $this->db->getConn()->prepare($query);
+
+            if($statement->execute([]))
+            {
+                return $statement;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 ?>

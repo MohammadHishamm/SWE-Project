@@ -149,10 +149,14 @@ font-weight: bolder;">Arab Data Hub</p>
                             style="background-color: #58779D; color: white; letter-spacing: 3px;">
                             Apply Now
                         </a>
+                        <a href="/SWE-PROJECT/Public/Categories.php">
                         <button class="btn btn-link ms-5 p-3 fs-7" style="color:black; letter-spacing: 3px;">
                             <i class="fa-sharp fa-solid fa-circle-play" style="color: black;"></i>
+                          
                             Watch Our Courses
+                         
                         </button>
+                        </a>
                     </div>
                 </div>
 
@@ -503,7 +507,7 @@ font-weight: bolder;">Arab Data Hub</p>
         </div>
     </section>
     <!-- Start Video -->
-    <div class="video">
+    <div class="video container-fluid py-5  p-5" style="width: 1200px;">
         <video autoplay muted loop>
             <source src="../Images/canva-blue-clean-minimalist-online-education-youtube-video-ad-pzKSOrWMo8Y.mp4" type="video/mp4" />
         </video>

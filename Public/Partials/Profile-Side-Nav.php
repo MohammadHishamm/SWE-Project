@@ -10,7 +10,7 @@ if (isset($_SESSION['user_data'])) {
     foreach ($_SESSION['user_data'] as $key => $value) {
         $type = $value['type'];
 
-        if ($type == 'Student') {
+        if ($type == 'Student' || $type == 'Admin') {
             ?>
             <li class="list-group-item d-flex justify-content-start align-items-start pt-3">
                 <a href="Edit-Profile.php" class="btn btn-light mb-0 w-100 active" style="">Profile</a>
