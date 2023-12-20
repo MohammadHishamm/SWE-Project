@@ -505,7 +505,7 @@ font-weight: bolder;">Arab Data Hub</p>
     <!-- Start Video -->
     <div class="video">
         <video autoplay muted loop>
-            <source src="../Images/video1.mp4" type="video/mp4" />
+            <source src="../Images/canva-blue-clean-minimalist-online-education-youtube-video-ad-pzKSOrWMo8Y.mp4" type="video/mp4" />
         </video>
 
     </div>
