@@ -72,14 +72,14 @@ echo'
     </div>
     <div class="thumb">
         <span>'.$total_videos.'</span>
-        <img src="../images/courses/'.$fetch_playlist['thumb'].'" alt="">
+        <img src="../Images/courses/thumbs/'.$fetch_playlist['thumb'].'" alt="">
     </div>
     <h3 class="title">'.$fetch_playlist['title'].'</h3>
     <p class="description">'.$fetch_playlist['description'].'
     </p>
     <form action="" method="post" class="flex-btn">
         <input type="hidden" name="playlist_id" value="'.$playlist_id.'">
-        <a href="Courses.php?action=update&get_id='.$playlist_id.'" class="btn btn-warning w-100">update</a>
+        <a href="Control-Courses.php?action=update&get_id='.$playlist_id.'" class="btn btn-warning w-100">update</a>
         <button type="submit"  class="btn btn-danger w-100" name="delete">delete</button>
     </form>
     <a href="Control-Courses.php?action=view_playlist&get_id='.$playlist_id.'" class="btn btn-primary w-100 mt-3">view playlist</a>
@@ -203,7 +203,7 @@ $total_videos = $playlist->get_videos_count($playlist_id);
     <p>playlist thumbnail <span>*</span></p>
     <div class="thumb">
         <span>'.$total_videos.'</span>
-        <img src="../images/courses/'.$fetch_playlist['thumb'].'" alt="">
+        <img src="../images/courses/thumbs/'.$fetch_playlist['thumb'].'" alt="">
     </div>
     <input type="file" name="image" accept="image/*" class="box">
     <button type="submit" name="update_submit" class="btn btn-primary w-100 mb-3">update playlist</button>
@@ -267,7 +267,7 @@ public function view_course_content()
 <div class="row">
     <div class="thumb">
         <span>'.$total_videos.'</span>
-        <img src="../images/courses/'.$fetch_playlist['thumb'].'" alt="">
+        <img src="../Images/courses/thumbs/'.$fetch_playlist['thumb'].'" alt="">
     </div>
     <div class="details">
         <h3 class="title">'.$fetch_playlist['title'].'</h3>

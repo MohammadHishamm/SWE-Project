@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require_once(__ROOT__ . "../php/Chat/vendor/autoload.php");
 require_once(__ROOT__ . "controller/controller.php");
-
+require_once(__ROOT__ . "model/phpmailer.php");
 
 class UsersController extends Controller{
 	
@@ -141,14 +141,6 @@ class UsersController extends Controller{
                             $mail->Username = "mohammad2109652@miuegypt.edu.eg";
                             $mail->Password = "18962283";
                             $mail->setFrom('mohammad2109652@miuegypt.edu.eg', 'Arab Data Hub');
-                            $mail->addAddress($this->model->getUserEmail());
-                            $mail->Subject = "PHPMailer GMail SMTP test";
-                              $mail->Body = '
-                              <p>Thank you for registering for Arab Data Hub.</p>
-                                  <p>This is a verification email, please click the link to verify your email address.</p>
-                                  <p><a href="http://localhost/SWE-Project/php/verify.php?code='.$this->model->getUserVerificationCode().'">Click to Verify</a></p>
-                                  <p>Thank you...</p>
-                              ';
                             $mail->IsHTML(true);
                             $mail->SMTPOptions = array(
                               'ssl' => array(
@@ -156,7 +148,33 @@ class UsersController extends Controller{
                               'verify_peer_name' => false,
                               'allow_self_signed' => true
                               )
+
+
                             );
+
+                            
+                            // Create an instance of PHPMailerAdapter
+                            $mailerAdapter = new PHPMailerAdapter($mail);
+
+                            // Use the sendNotification method from the Notification interface
+                            try 
+                            {
+                                $mailerAdapter->sendNotification(
+                                    $this->model->getUserEmail()
+                                , 
+                                    ' PHPMailer GMail SMTP test'
+                                , 
+                                '                             
+                                    <p>Thank you for registering for Arab Data Hub.</p>
+                                    <p>This is a verification email, please click the link to verify your email address.</p>
+                                    <p><a href="http://localhost/SWE-Project/php/verify.php?code='.$this->model->getUserVerificationCode().'">Click to Verify</a></p>
+                                    <p>Thank you...</p>
+                                ');
+                                echo 'Notification sent successfully!';
+                            } catch (Exception $e) 
+                            {
+                                echo 'Error: ' . $e->getMessage();
+                            }
                                 
                             if(!$mail->Send()) 
                             {

@@ -35,9 +35,10 @@ if(isset($_POST['update'])){
    $update_content = $conn->prepare("UPDATE `content` SET title = ?, description = ?, status = ? WHERE id = ?");
    $update_content->execute([$title, $description, $status, $video_id]);
 
-   if(!empty($playlist)){
+   if(!empty($playlist))
+   {
       $update_playlist = $conn->prepare("UPDATE `content` SET playlist_id = ? WHERE id = ?");
-      $update_playlist->execute([$playlist, $video_id]);
+      $update_playlist->execute([$playlist, $video_id]);  
    }
 
    $old_thumb = $_POST['old_thumb'];

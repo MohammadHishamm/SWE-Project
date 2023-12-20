@@ -46,6 +46,10 @@ if (isset($_POST['submit']))
     $contentcontroller->add_content();
     }
 }
+if(isset($_POST['update content'])){
+
+    $contentcontroller-> update_playlist();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,11 +160,11 @@ if (isset($_POST['submit']))
                                         case 'add':
                                         $view->add_content($val);
                                         break;
-                                    case 'view_playlist':
+                                    case 'view_content':
                                         echo $view->view_course_content();
                                         break;
-                                    case 'update':
-                                        echo $view->update_course();
+                                    case 'update_content':
+                                         $view->update_content();
                                 }
                                 }
                                 ?>
