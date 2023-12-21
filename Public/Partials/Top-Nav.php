@@ -1,3 +1,13 @@
+<!-- Translation Code here -->
+<span>
+					    <div class="translate" id="google_translate_element"></div>
+
+                            <script type="text/javascript">
+                                function googleTranslateElementInit() {  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
+                            </script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+					</span>
+<!-- Translation Code End here -->
 <!-- TopNav -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">

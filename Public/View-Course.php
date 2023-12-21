@@ -104,11 +104,22 @@ if (isset($_POST["enroll_course"])) {
                 value="<?= isset($_GET['playlist_id']) ? htmlspecialchars($_GET['playlist_id']) : '' ?>">
             <input type="hidden" name="student_id" value="<?= $User_ID ?>">
            <?php
+           if($playlist_data->rowCount() > 0){
             if($fetch_student_data['Course_id'] != $fetch_playlist['playlist_id'])
+           
                     {?>
             <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course"
                 type="submit">Enroll</button>
-                <?php } ?>
+                <?php }
+           }
+           else{
+            ?>
+
+            <button style="margin-top: 20px; margin-left: 650px" class="btn btn-primary btn-lg" name="enroll_course"
+            type="submit">Enroll</button>
+                 ?>
+
+                 <?php } ?>
         </form>
 
     </div>
